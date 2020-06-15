@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Courseid:</strong>
+  <%= @article.CourseID %>
+</p>
+
+<p>
+  <strong>Articletitle:</strong>
+  <%= @article.ArticleTitle %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @article.Description %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @article.Tag %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @article.Duration %>
+</p>
+
+<p>
+  <strong>Numbercomplete:</strong>
+  <%= @article.NumberComplete %>
+</p>
+
+<p>
+  <strong>Isfree:</strong>
+  <%= @article.IsFree %>
+</p>
+
+<p>
+  <strong>Linkfileattach:</strong>
+  <%= @article.LinkFileAttach %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
