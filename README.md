@@ -4,6 +4,7 @@ Keep calm and work on Project Capstone
 #set up environment
 
 Download Ruby v 2.6 https://www.ruby-lang.org/en/downloads/
+<br/>
 Installing Node.js https://nodejs.org/en/download/
 Yarn https://classic.yarnpkg.com/en/docs/install#windows-stable
 Installing Rails 
