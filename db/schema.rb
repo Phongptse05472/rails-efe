@@ -10,43 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_090253) do
+ActiveRecord::Schema.define(version: 2020_06_18_053234) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.integer "CourseID"
-    t.string "ArticleTitle"
-    t.text "Description"
-    t.string "Tag"
-    t.time "Duration"
-    t.integer "NumberComplete"
-    t.boolean "IsFree"
-    t.text "LinkFileAttach"
+    t.integer "courseID"
+    t.string "articleTitle"
+    t.text "description"
+    t.string "tag"
+    t.time "duration"
+    t.integer "numberComplete"
+    t.boolean "isFree"
+    t.text "linkFileAttach"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "CourseName"
-    t.text "CourseImage"
-    t.text "CourseDescription"
-    t.integer "Rating"
-    t.integer "NumberEnrollment"
-    t.boolean "IsFree"
+    t.string "courseName"
+    t.text "courseImage"
+    t.text "description"
+    t.integer "rating"
+    t.boolean "isFree"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "Name"
-    t.string "Email"
-    t.string "PhoneNumber"
-    t.integer "RollNumber"
-    t.integer "RoleID"
-    t.text "Avata"
-    t.string "Password"
-    t.boolean "IsActive"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

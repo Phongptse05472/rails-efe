@@ -20,14 +20,14 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.CourseID %></td>
-        <td><%= article.ArticleTitle %></td>
-        <td><%= article.Description %></td>
-        <td><%= article.Tag %></td>
-        <td><%= article.Duration %></td>
-        <td><%= article.NumberComplete %></td>
-        <td><%= article.IsFree %></td>
-        <td><%= article.LinkFileAttach %></td>
+        <td><%= article.courseID %></td>
+        <td><%= article.articleTitle %></td>
+        <td><%= article.description %></td>
+        <td><%= article.tag %></td>
+        <td><%= article.duration %></td>
+        <td><%= article.numberComplete %></td>
+        <td><%= article.isFree %></td>
+        <td><%= article.linkFileAttach %></td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>

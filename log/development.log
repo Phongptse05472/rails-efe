@@ -61,3 +61,884 @@ Migrating to CreateArticles (20200615090253)
   [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-06-18 11:55:15 +0700
+  [1m[35m (4.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 16.8ms | Allocations: 479)
+Completed 200 OK in 43ms (Views: 26.1ms | ActiveRecord: 0.0ms | Allocations: 2771)
+
+
+Started GET "/rails" for ::1 at 2020-06-18 11:55:20 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/rails"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2020-06-18 11:55:25 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:21
+  Rendered users/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1705)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/nguyentai/GitHub/new-dummy/public/packs
+[Webpacker] Hash: 15d1bb7b54cf6326b9ba
+Version: webpack 4.43.0
+Time: 2314ms
+Built at: 06/18/2020 11:55:30 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-9afcbb5693aa87623e69.js    124 KiB  application  [emitted] [immutable]  application
+js/application-9afcbb5693aa87623e69.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-9afcbb5693aa87623e69.js js/application-9afcbb5693aa87623e69.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 4460ms (Views: 4455.6ms | ActiveRecord: 0.8ms | Allocations: 30047)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1049195542136121660)[0m
+  [1m[35m (43.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1049195542136121660)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1049195542136121660)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCourses (20200618051157)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (45.4ms)[0m  [1m[35mCREATE TABLE "courses" ("id" bigserial primary key, "courseName" character varying, "courseImage" text, "description" text, "rating" integer, "isFree" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1049195542136121660)[0m
+Started GET "/" for ::1 at 2020-06-18 12:14:00 +0700
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.3.1) lib/active_record/migration.rb:586:in `check_pending!'
+activerecord (6.0.3.1) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/rails/actions" for ::1 at 2020-06-18 12:14:04 +0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1049195542136121660)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCourses (20200618051157)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "courses" ("id" bigserial primary key, "courseName" character varying, "courseImage" text, "description" text, "rating" integer, "isFree" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1049195542136121660)[0m
+  
+StandardError (An error has occurred, this and all later migrations canceled:
+
+PG::DuplicateTable: ERROR:  relation "courses" already exists
+):
+  
+activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:92:in `exec'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:92:in `block (2 levels) in execute'
+activesupport (6.0.3.1) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (6.0.3.1) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (6.0.3.1) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:91:in `block in execute'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract_adapter.rb:722:in `block (2 levels) in log'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract_adapter.rb:721:in `block in log'
+activesupport (6.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract_adapter.rb:712:in `log'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:90:in `execute'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/schema_statements.rb:315:in `create_table'
+activerecord (6.0.3.1) lib/active_record/migration.rb:890:in `block in method_missing'
+activerecord (6.0.3.1) lib/active_record/migration.rb:858:in `block in say_with_time'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+activerecord (6.0.3.1) lib/active_record/migration.rb:858:in `say_with_time'
+activerecord (6.0.3.1) lib/active_record/migration.rb:879:in `method_missing'
+db/migrate/20200618051157_create_courses.rb:3:in `change'
+activerecord (6.0.3.1) lib/active_record/migration.rb:828:in `exec_migration'
+activerecord (6.0.3.1) lib/active_record/migration.rb:812:in `block (2 levels) in migrate'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+activerecord (6.0.3.1) lib/active_record/migration.rb:811:in `block in migrate'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:471:in `with_connection'
+activerecord (6.0.3.1) lib/active_record/migration.rb:810:in `migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1002:in `migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1310:in `block in execute_migration_in_transaction'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1361:in `block in ddl_transaction'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/database_statements.rb:280:in `block in transaction'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/transaction.rb:280:in `block in within_new_transaction'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/transaction.rb:278:in `within_new_transaction'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/database_statements.rb:280:in `transaction'
+activerecord (6.0.3.1) lib/active_record/transactions.rb:212:in `transaction'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1361:in `ddl_transaction'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1309:in `execute_migration_in_transaction'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1281:in `block in migrate_without_lock'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1280:in `each'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1280:in `migrate_without_lock'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1229:in `block in migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1382:in `with_advisory_lock'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1229:in `migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1061:in `up'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1036:in `migrate'
+activerecord (6.0.3.1) lib/active_record/tasks/database_tasks.rb:238:in `migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:135:in `block in <class:PendingMigrationError>'
+activesupport (6.0.3.1) lib/active_support/actionable_error.rb:28:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:19:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/rails/actions" for ::1 at 2020-06-18 12:14:09 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1049195542136121660)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCourses (20200618051157)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "courses" ("id" bigserial primary key, "courseName" character varying, "courseImage" text, "description" text, "rating" integer, "isFree" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1049195542136121660)[0m
+  
+StandardError (An error has occurred, this and all later migrations canceled:
+
+PG::DuplicateTable: ERROR:  relation "courses" already exists
+):
+  
+activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:92:in `exec'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:92:in `block (2 levels) in execute'
+activesupport (6.0.3.1) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (6.0.3.1) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (6.0.3.1) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:91:in `block in execute'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract_adapter.rb:722:in `block (2 levels) in log'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract_adapter.rb:721:in `block in log'
+activesupport (6.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract_adapter.rb:712:in `log'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:90:in `execute'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/schema_statements.rb:315:in `create_table'
+activerecord (6.0.3.1) lib/active_record/migration.rb:890:in `block in method_missing'
+activerecord (6.0.3.1) lib/active_record/migration.rb:858:in `block in say_with_time'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+activerecord (6.0.3.1) lib/active_record/migration.rb:858:in `say_with_time'
+activerecord (6.0.3.1) lib/active_record/migration.rb:879:in `method_missing'
+db/migrate/20200618051157_create_courses.rb:3:in `change'
+activerecord (6.0.3.1) lib/active_record/migration.rb:828:in `exec_migration'
+activerecord (6.0.3.1) lib/active_record/migration.rb:812:in `block (2 levels) in migrate'
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+activerecord (6.0.3.1) lib/active_record/migration.rb:811:in `block in migrate'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:471:in `with_connection'
+activerecord (6.0.3.1) lib/active_record/migration.rb:810:in `migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1002:in `migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1310:in `block in execute_migration_in_transaction'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1361:in `block in ddl_transaction'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/database_statements.rb:280:in `block in transaction'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/transaction.rb:280:in `block in within_new_transaction'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/transaction.rb:278:in `within_new_transaction'
+activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/database_statements.rb:280:in `transaction'
+activerecord (6.0.3.1) lib/active_record/transactions.rb:212:in `transaction'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1361:in `ddl_transaction'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1309:in `execute_migration_in_transaction'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1281:in `block in migrate_without_lock'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1280:in `each'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1280:in `migrate_without_lock'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1229:in `block in migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1382:in `with_advisory_lock'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1229:in `migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1061:in `up'
+activerecord (6.0.3.1) lib/active_record/migration.rb:1036:in `migrate'
+activerecord (6.0.3.1) lib/active_record/tasks/database_tasks.rb:238:in `migrate'
+activerecord (6.0.3.1) lib/active_record/migration.rb:135:in `block in <class:PendingMigrationError>'
+activesupport (6.0.3.1) lib/active_support/actionable_error.rb:28:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:19:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (157.1ms)[0m  [1m[35mCREATE DATABASE "capstone_develop" ENCODING = 'unicode'[0m
+  [1m[35m (61.6ms)[0m  [1m[35mCREATE DATABASE "capstone_test" ENCODING = 'unicode'[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCourses (20200618051157)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "courses" ("id" bigserial primary key, "courseName" character varying, "courseImage" text, "description" text, "rating" integer, "isFree" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200618051157"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-18 05:20:31.426773"], ["updated_at", "2020-06-18 05:20:31.426773"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-06-18 12:21:20 +0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.1ms | Allocations: 316)
+Completed 200 OK in 18ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 1840)
+
+
+Started GET "/courses" for ::1 at 2020-06-18 12:21:24 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (1.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:18
+  Rendered courses/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 1619)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 63ms (Views: 53.5ms | ActiveRecord: 3.2ms | Allocations: 21156)
+
+
+Started GET "/courses/new" for ::1 at 2020-06-18 12:21:26 +0700
+Processing by CoursesController#new as HTML
+  Rendering courses/new.html.erb within layouts/application
+  Rendered courses/_form.html.erb (Duration: 22.9ms | Allocations: 6575)
+  Rendered courses/new.html.erb within layouts/application (Duration: 24.1ms | Allocations: 6929)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 29.7ms | ActiveRecord: 2.9ms | Allocations: 16155)
+
+
+Started POST "/courses" for ::1 at 2020-06-18 12:21:41 +0700
+Processing by CoursesController#create as HTML
+  Parameters: {"authenticity_token"=>"LrxI+1C6nwpgiBE3jZoGLny9o6QAjszXPm+Y86RFNWWZv2AxfxpHM4+KrLV+F1RcDxf0QEnFQdEHbSeZeZeKzQ==", "course"=>{"courseName"=>"java", "courseImage"=>"nope", "description"=>"this course about java", "rating"=>"1", "isFree"=>"1"}, "commit"=>"Create Course"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courses_controller.rb:30:in `block in create'
+  [1m[36mCourse Create (0.8ms)[0m  [1m[32mINSERT INTO "courses" ("courseName", "courseImage", "description", "rating", "isFree", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["courseName", "java"], ["courseImage", "nope"], ["description", "this course about java"], ["rating", 1], ["isFree", true], ["created_at", "2020-06-18 05:21:41.691863"], ["updated_at", "2020-06-18 05:21:41.691863"]]
+  ↳ app/controllers/courses_controller.rb:30:in `block in create'
+  [1m[35m (38.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courses_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/courses/1
+Completed 302 Found in 46ms (ActiveRecord: 39.4ms | Allocations: 3139)
+
+
+Started GET "/courses/1" for ::1 at 2020-06-18 12:21:41 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:67:in `set_course'
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 344)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 0.4ms | Allocations: 5470)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20200618052401)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (46.1ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "courseID" integer, "articleTitle" character varying, "description" text, "tag" character varying, "duration" time, "numberComplete" integer, "isFree" boolean, "linkFileAttach" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200618052401"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/Aarticles" for ::1 at 2020-06-18 12:25:45 +0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/Aarticles"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/articles" for ::1 at 2020-06-18 12:25:54 +0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1858)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 53.3ms | ActiveRecord: 2.2ms | Allocations: 23998)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-18 12:25:56 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 11.4ms | Allocations: 6353)
+  Rendered articles/new.html.erb within layouts/application (Duration: 12.4ms | Allocations: 6702)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 18.2ms | ActiveRecord: 4.0ms | Allocations: 17927)
+
+
+Started POST "/articles" for ::1 at 2020-06-18 12:26:21 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"haPRqbLyDCh336wjrehTSEVBGvp80svksdNrWzYqp8Rr/bKd1hK5NzbB+23XwUvSNWA5NUBXimurCZ+VJe4znw==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java", "description"=>"Nop", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"18", "duration(4i)"=>"17", "duration(5i)"=>"25", "numberComplete"=>"2", "isFree"=>"1", "linkFileAttach"=>"nope"}, "commit"=>"Create Article"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+  [1m[36mArticle Create (41.6ms)[0m  [1m[32mINSERT INTO "articles" ("courseID", "articleTitle", "description", "tag", "duration", "numberComplete", "isFree", "linkFileAttach", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["courseID", 1], ["articleTitle", "Java"], ["description", "Nop"], ["tag", "#java"], ["duration", "17:25:00"], ["numberComplete", 2], ["isFree", true], ["linkFileAttach", "nope"], ["created_at", "2020-06-18 05:26:21.605391"], ["updated_at", "2020-06-18 05:26:21.605391"]]
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 52ms (ActiveRecord: 42.5ms | Allocations: 3498)
+
+
+Started GET "/articles/1" for ::1 at 2020-06-18 12:26:21 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:67:in `set_article'
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 442)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 9.5ms | ActiveRecord: 0.4ms | Allocations: 5649)
+
+
+Started GET "/articles" for ::1 at 2020-06-18 12:26:23 +0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 859)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 8.5ms | ActiveRecord: 0.3ms | Allocations: 4887)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200618053234)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (43.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200618053234"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles" for ::1 at 2020-06-18 12:44:02 +0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+Completed 500 Internal Server Error in 131ms (ActiveRecord: 0.0ms | Allocations: 54694)
+
+
+  
+NoMethodError (undefined method `authenticate_member!' for #<ArticlesController:0x00007fe10c83fe38>
+Did you mean?  authenticate_user!):
+  
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:200:in `block (2 levels) in halting'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:201:in `block in halting'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:134:in `run_callbacks'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.2) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-06-18 12:44:14 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.4ms | Allocations: 197)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 1067)
+
+
+Started GET "/courses" for ::1 at 2020-06-18 12:44:17 +0700
+Processing by CoursesController#index as HTML
+Completed 500 Internal Server Error in 134ms (ActiveRecord: 0.0ms | Allocations: 54690)
+
+
+  
+NoMethodError (undefined method `authenticate_member!' for #<CoursesController:0x00007fe10a442df0>
+Did you mean?  authenticate_user!):
+  
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:200:in `block (2 levels) in halting'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:201:in `block in halting'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:134:in `run_callbacks'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.2) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/courses" for ::1 at 2020-06-18 12:44:32 +0700
+  
+SyntaxError (/Users/nguyentai/GitHub/new-dummy/app/controllers/application_controller.rb:2: syntax error, unexpected '!', expecting end
+...re_action :authenticate_user  !
+...                              ^):
+  
+app/controllers/application_controller.rb:2: syntax error, unexpected '!', expecting end
+app/controllers/application_controller.rb:2: syntax error, unexpected '!', expecting end
+app/controllers/application_controller.rb:2: syntax error, unexpected '!', expecting end
+app/controllers/courses_controller.rb:1:in `<main>'
+Started GET "/courses" for ::1 at 2020-06-18 12:44:38 +0700
+Started GET "/" for ::1 at 2020-06-18 12:49:46 +0700
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.2ms | Allocations: 316)
+Completed 200 OK in 26ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 1750)
+
+
+Started GET "/courses" for ::1 at 2020-06-18 12:49:50 +0700
+Processing by CoursesController#index as HTML
+Completed 401 Unauthorized in 9ms (ActiveRecord: 0.0ms | Allocations: 1880)
+
+
+Started GET "/auth/login" for ::1 at 2020-06-18 12:49:50 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 643)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 11.4ms | Allocations: 3079)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 35.2ms | ActiveRecord: 5.1ms | Allocations: 17753)
+
+
+Started GET "/articles" for ::1 at 2020-06-18 12:50:03 +0700
+Processing by ArticlesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 398)
+
+
+Started GET "/auth/login" for ::1 at 2020-06-18 12:50:03 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 135)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1069)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.0ms | Allocations: 5399)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-18 12:50:31 +0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"2te+pa2AkN+tnToaW8kNwLIvHs6jC8MWCFZrQtnCHbDGWW+eEpUjDVihqIGj1pOJ8nNiCiAGb+5OwuC/ncqCSw==", "user"=>{"email"=>"tai9dltt@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "tai9dltt@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.7ms | Allocations: 2667)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"2te+pa2AkN+tnToaW8kNwLIvHs6jC8MWCFZrQtnCHbDGWW+eEpUjDVihqIGj1pOJ8nNiCiAGb+5OwuC/ncqCSw==", "user"=>{"email"=>"tai9dltt@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 135)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1064)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 294ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 6494)
+
+
+Started GET "/auth/register/cmon_let_me_in" for ::1 at 2020-06-18 12:50:39 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 215)
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 124)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1880)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 0.0ms | Allocations: 6824)
+
+
+Started POST "/auth/register" for ::1 at 2020-06-18 12:50:57 +0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"lFPVyRGnDqAsWlTBeXiibLl8SR2tE9/JlpoLwK1qb1DMKRc0zLxD3W65okVR0oBUq+EbunYdYDoqwGxck1np7w==", "user"=>{"email"=>"tai9dltt@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tai9dltt@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "tai9dltt@gmail.com"], ["encrypted_password", "$2a$12$4ktHoiRMk79sK7T0Ce3dauijvF9vDRfTzreU6fB82G2CuYk0oWg9u"], ["created_at", "2020-06-18 05:50:58.233509"], ["updated_at", "2020-06-18 05:50:58.233509"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 260ms (ActiveRecord: 2.6ms | Allocations: 8921)
+
+
+Started GET "/articles" for ::1 at 2020-06-18 12:50:58 +0700
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 19.3ms | Allocations: 8784)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 24.5ms | ActiveRecord: 3.7ms | Allocations: 15179)
+
+
+Started POST "/auth/register" for ::1 at 2020-06-18 12:53:48 +0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"iCUQSuNTfsTcoJCMv5G+HESgIQkXCOG+jHu7jiaysESUq8FxXEbNFimcAhdHjiBVBPxdzZQFTUbK7zBzYrovvw==", "user"=>{"email"=>"tai9dltt@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms | Allocations: 1892)
+
+
+Started GET "/" for ::1 at 2020-06-18 12:53:48 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.5ms | Allocations: 192)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 933)
+
+
+Started GET "/courses" for ::1 at 2020-06-18 12:53:51 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:18
+  Rendered courses/index.html.erb within layouts/application (Duration: 14.0ms | Allocations: 6430)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 17.8ms | ActiveRecord: 3.6ms | Allocations: 15759)
+
+
+Started GET "/courses/log_out" for ::1 at 2020-06-18 12:53:59 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"log_out"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:67:in `set_course'
+Completed 404 Not Found in 20ms (ActiveRecord: 0.5ms | Allocations: 2777)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Course with 'id'=log_out):
+  
+app/controllers/courses_controller.rb:67:in `set_course'
+Started GET "/courses/logout" for ::1 at 2020-06-18 12:54:16 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"logout"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:67:in `set_course'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.9ms | Allocations: 2715)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Course with 'id'=logout):
+  
+app/controllers/courses_controller.rb:67:in `set_course'
+Started GET "/auth/logout" for ::1 at 2020-06-18 12:54:26 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/auth/logout"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'

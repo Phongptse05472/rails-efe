@@ -14,14 +14,14 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on "New Article"
 
-    fill_in "Articletitle", with: @article.ArticleTitle
-    fill_in "Courseid", with: @article.CourseID
-    fill_in "Description", with: @article.Description
-    fill_in "Duration", with: @article.Duration
-    check "Isfree" if @article.IsFree
-    fill_in "Linkfileattach", with: @article.LinkFileAttach
-    fill_in "Numbercomplete", with: @article.NumberComplete
-    fill_in "Tag", with: @article.Tag
+    fill_in "Articletitle", with: @article.articleTitle
+    fill_in "Courseid", with: @article.courseID
+    fill_in "Description", with: @article.description
+    fill_in "Duration", with: @article.duration
+    check "Isfree" if @article.isFree
+    fill_in "Linkfileattach", with: @article.linkFileAttach
+    fill_in "Numbercomplete", with: @article.numberComplete
+    fill_in "Tag", with: @article.tag
     click_on "Create Article"
 
     assert_text "Article was successfully created"
@@ -32,14 +32,14 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on "Edit", match: :first
 
-    fill_in "Articletitle", with: @article.ArticleTitle
-    fill_in "Courseid", with: @article.CourseID
-    fill_in "Description", with: @article.Description
-    fill_in "Duration", with: @article.Duration
-    check "Isfree" if @article.IsFree
-    fill_in "Linkfileattach", with: @article.LinkFileAttach
-    fill_in "Numbercomplete", with: @article.NumberComplete
-    fill_in "Tag", with: @article.Tag
+    fill_in "Articletitle", with: @article.articleTitle
+    fill_in "Courseid", with: @article.courseID
+    fill_in "Description", with: @article.description
+    fill_in "Duration", with: @article.duration
+    check "Isfree" if @article.isFree
+    fill_in "Linkfileattach", with: @article.linkFileAttach
+    fill_in "Numbercomplete", with: @article.numberComplete
+    fill_in "Tag", with: @article.tag
     click_on "Update Article"
 
     assert_text "Article was successfully updated"

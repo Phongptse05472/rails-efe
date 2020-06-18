@@ -2,32 +2,27 @@
 
 <p>
   <strong>Coursename:</strong>
-  <%= @course.CourseName %>
+  <%= @course.courseName %>
 </p>
 
 <p>
   <strong>Courseimage:</strong>
-  <%= @course.CourseImage %>
+  <%= @course.courseImage %>
 </p>
 
 <p>
-  <strong>Coursedescription:</strong>
-  <%= @course.CourseDescription %>
+  <strong>Description:</strong>
+  <%= @course.description %>
 </p>
 
 <p>
   <strong>Rating:</strong>
-  <%= @course.Rating %>
-</p>
-
-<p>
-  <strong>Numberenrollment:</strong>
-  <%= @course.NumberEnrollment %>
+  <%= @course.rating %>
 </p>
 
 <p>
   <strong>Isfree:</strong>
-  <%= @course.IsFree %>
+  <%= @course.isFree %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

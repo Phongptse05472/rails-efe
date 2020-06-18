@@ -14,12 +14,11 @@ class CoursesTest < ApplicationSystemTestCase
     visit courses_url
     click_on "New Course"
 
-    fill_in "Coursedescription", with: @course.CourseDescription
-    fill_in "Courseimage", with: @course.CourseImage
-    fill_in "Coursename", with: @course.CourseName
-    check "Isfree" if @course.IsFree
-    fill_in "Numberenrollment", with: @course.NumberEnrollment
-    fill_in "Rating", with: @course.Rating
+    fill_in "Courseimage", with: @course.courseImage
+    fill_in "Coursename", with: @course.courseName
+    fill_in "Description", with: @course.description
+    check "Isfree" if @course.isFree
+    fill_in "Rating", with: @course.rating
     click_on "Create Course"
 
     assert_text "Course was successfully created"
@@ -30,12 +29,11 @@ class CoursesTest < ApplicationSystemTestCase
     visit courses_url
     click_on "Edit", match: :first
 
-    fill_in "Coursedescription", with: @course.CourseDescription
-    fill_in "Courseimage", with: @course.CourseImage
-    fill_in "Coursename", with: @course.CourseName
-    check "Isfree" if @course.IsFree
-    fill_in "Numberenrollment", with: @course.NumberEnrollment
-    fill_in "Rating", with: @course.Rating
+    fill_in "Courseimage", with: @course.courseImage
+    fill_in "Coursename", with: @course.courseName
+    fill_in "Description", with: @course.description
+    check "Isfree" if @course.isFree
+    fill_in "Rating", with: @course.rating
     click_on "Update Course"
 
     assert_text "Course was successfully updated"
