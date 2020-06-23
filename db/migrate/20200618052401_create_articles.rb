@@ -1,7 +1,6 @@
 class CreateArticles < ActiveRecord::Migration[6.0]
   def change
     create_table :articles do |t|
-      t.integer :courseID
       t.string :articleTitle
       t.text :description
       t.string :tag
@@ -9,7 +8,6 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.integer :numberComplete
       t.boolean :isFree
       t.text :linkFileAttach
-
       t.timestamps
     end
   end
