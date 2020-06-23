@@ -75,3 +75,10 @@ google-services.json
 # MacOS
 .DS_Store
 *.jks
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
