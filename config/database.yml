@@ -7,8 +7,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  database: capstone
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   password: 12345678
@@ -29,6 +28,6 @@ test:
 #
 production:
   <<: *default
-  database: new-dummy_production
-  username: new-dummy
+  database: rails-efe_production
+  username: rails-ede
   password: <%= ENV['EDF_PROJECT_DATABASE_PASSWORD'] %>
