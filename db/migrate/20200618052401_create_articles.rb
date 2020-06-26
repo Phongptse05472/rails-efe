@@ -9,6 +9,7 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.integer :number_complete
       t.boolean :is_free
       t.text :link_file_attach
+
       t.timestamps
     end
   end
