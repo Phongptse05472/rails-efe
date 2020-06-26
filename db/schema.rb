@@ -10,45 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_173455) do
+ActiveRecord::Schema.define(version: 2020_06_23_135953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.string "articleTitle"
+    t.string "title"
+    t.integer "course_id"
     t.text "description"
     t.string "tag"
     t.time "duration"
-    t.integer "numberComplete"
-    t.boolean "isFree"
-    t.text "linkFileAttach"
+    t.integer "number_complete"
+    t.boolean "is_free"
+    t.text "link_file_attach"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "course_articles", force: :cascade do |t|
-    t.integer "courseID"
-    t.integer "articleID"
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "courseName"
-    t.text "courseImage"
+    t.string "name"
+    t.text "image"
     t.text "description"
     t.integer "rating"
-    t.boolean "isFree"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "topic_courses", force: :cascade do |t|
-    t.integer "topicID"
-    t.integer "courseID"
-  end
-
-  create_table "topics", force: :cascade do |t|
-    t.string "topicName"
+    t.boolean "is_free"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

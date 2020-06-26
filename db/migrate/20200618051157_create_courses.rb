@@ -1,11 +1,11 @@
 class CreateCourses < ActiveRecord::Migration[6.0]
   def change
     create_table :courses do |t|
-      t.string :courseName
-      t.text :courseImage
+      t.string :name
+      t.text :image
       t.text :description
       t.integer :rating
-      t.boolean :isFree
+      t.boolean :is_free
 
       t.timestamps
     end

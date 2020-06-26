@@ -3430,3 +3430,615 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 5441)
 
 
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/bin/rake:23)
+Started GET "/" for ::1 at 2020-06-25 12:02:48 +0700
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.6ms | Allocations: 316)
+Completed 200 OK in 26ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 1737)
+
+
+Started GET "/courses" for ::1 at 2020-06-25 12:02:52 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (40.7ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:18
+  Rendered courses/index.html.erb within layouts/application (Duration: 45.5ms | Allocations: 4263)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 85ms (Views: 31.7ms | ActiveRecord: 42.2ms | Allocations: 14837)
+
+
+Started GET "/courses/new" for ::1 at 2020-06-25 12:02:54 +0700
+Processing by CoursesController#new as HTML
+  Rendering courses/new.html.erb within layouts/application
+  Rendered courses/_form.html.erb (Duration: 38.3ms | Allocations: 4636)
+  Rendered courses/new.html.erb within layouts/application (Duration: 40.1ms | Allocations: 4990)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 45.8ms | ActiveRecord: 3.8ms | Allocations: 14268)
+
+
+Started POST "/courses" for ::1 at 2020-06-25 12:03:19 +0700
+Processing by CoursesController#create as HTML
+  Parameters: {"authenticity_token"=>"QMcwqg4XR4XsT0R5fu9KvcZZ7zbGKLnDp9Xkub5RKF8advpeLffI9aqYnCJ+LjJPZh3eoeiEzL9BbdM12mcO9w==", "course"=>{"courseName"=>"java", "courseImage"=>"java.image.pgn", "description"=>"this is a course about java ", "rating"=>"5", "isFree"=>"0"}, "commit"=>"Create Course"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courses_controller.rb:30:in `block in create'
+  [1m[36mCourse Create (1.6ms)[0m  [1m[32mINSERT INTO "courses" ("courseName", "courseImage", "description", "rating", "isFree", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["courseName", "java"], ["courseImage", "java.image.pgn"], ["description", "this is a course about java "], ["rating", 5], ["isFree", false], ["created_at", "2020-06-25 05:03:19.814600"], ["updated_at", "2020-06-25 05:03:19.814600"]]
+  ↳ app/controllers/courses_controller.rb:30:in `block in create'
+  [1m[35m (38.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courses_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/courses/1
+Completed 302 Found in 48ms (ActiveRecord: 39.8ms | Allocations: 3353)
+
+
+Started GET "/courses/1" for ::1 at 2020-06-25 12:03:19 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:67:in `set_course'
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 347)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 8.0ms | ActiveRecord: 0.4ms | Allocations: 5515)
+
+
+Started GET "/courses/1.json" for ::1 at 2020-06-25 12:03:27 +0700
+Processing by CoursesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:67:in `set_course'
+  Rendering courses/show.json.jbuilder
+  Rendered courses/_course.json.jbuilder (Duration: 1.0ms | Allocations: 175)
+  Rendered courses/show.json.jbuilder (Duration: 2.4ms | Allocations: 607)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 0.4ms | Allocations: 2956)
+
+
+Started GET "/articles" for ::1 at 2020-06-25 13:08:17 +0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (41.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 50.8ms | Allocations: 1781)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 86ms (Views: 32.8ms | ActiveRecord: 44.6ms | Allocations: 7701)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-25 13:08:20 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 12.9ms | Allocations: 4724)
+  Rendered articles/new.html.erb within layouts/application (Duration: 19.6ms | Allocations: 5071)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 26.9ms | ActiveRecord: 3.4ms | Allocations: 15397)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /Users/nguyentai/.rvm/rubies/ruby-2.6.6/bin/rake:23)
+Started GET "/" for ::1 at 2020-06-25 21:07:22 +0700
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.8ms | Allocations: 474)
+Completed 200 OK in 23ms (Views: 15.1ms | ActiveRecord: 0.0ms | Allocations: 2797)
+
+
+Started GET "/courses" for ::1 at 2020-06-25 21:07:32 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:18
+  Rendered courses/index.html.erb within layouts/application (Duration: 64.2ms | Allocations: 9542)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 177ms (Views: 93.6ms | ActiveRecord: 50.0ms | Allocations: 38896)
+
+
+Started GET "/courses.json" for ::1 at 2020-06-25 21:07:50 +0700
+Processing by CoursesController#index as JSON
+  Rendering courses/index.json.jbuilder
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.json.jbuilder:1
+  Rendered courses/_course.json.jbuilder (Duration: 1.8ms | Allocations: 182)
+  Rendered courses/index.json.jbuilder (Duration: 6.1ms | Allocations: 1374)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.3ms | Allocations: 3203)
+
+
+Started GET "/articles" for ::1 at 2020-06-25 21:12:04 +0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (40.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 46.6ms | Allocations: 1698)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 67ms (Views: 18.0ms | ActiveRecord: 41.5ms | Allocations: 7731)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-25 21:12:05 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 28.2ms | Allocations: 11276)
+  Rendered articles/new.html.erb within layouts/application (Duration: 29.5ms | Allocations: 11631)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 64ms (Views: 34.6ms | ActiveRecord: 1.9ms | Allocations: 22021)
+
+
+Started POST "/articles" for ::1 at 2020-06-25 21:12:44 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"l6Sev/bw1w6iWBRWKF+Yza4Zxmf+56d4FtyVnZLfcwImcd+afv758W5fM13rD5xER16VBe8+dcyN5dFhCFBvug==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"This is a java article", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"12", "numberComplete"=>"4", "isFree"=>"0", "linkFileAttach"=>"Nope"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1088)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+Started POST "/__web_console/repl_sessions/b47ee196c9ae64451cf63d0aceec1e46/trace" for ::1 at 2020-06-25 21:12:53 +0700
+Started POST "/articles" for ::1 at 2020-06-25 21:13:43 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"l6Sev/bw1w6iWBRWKF+Yza4Zxmf+56d4FtyVnZLfcwImcd+afv758W5fM13rD5xER16VBe8+dcyN5dFhCFBvug==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"This is a java article", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"12", "numberComplete"=>"4", "isFree"=>"0", "linkFileAttach"=>"Nope"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 3.4ms | Allocations: 8831)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+Started POST "/articles" for ::1 at 2020-06-25 21:13:46 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"9nCnjfPIMVHIS8bFiHIFbT3Hg+zrhEzQAyvWRXGhGEz8YJR/s1+DIXKSQDSAZoL/xU5L+T+UWeSPh8RfCFp0Jw==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"This is a java article", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"12", "numberComplete"=>"4", "isFree"=>"0", "linkFileAttach"=>"Nope"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1008)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+Started POST "/articles" for ::1 at 2020-06-25 21:14:06 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"9nCnjfPIMVHIS8bFiHIFbT3Hg+zrhEzQAyvWRXGhGEz8YJR/s1+DIXKSQDSAZoL/xU5L+T+UWeSPh8RfCFp0Jw==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"This is a java article", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"17", "duration(5i)"=>"12", "numberComplete"=>"4", "isFree"=>"1", "linkFileAttach"=>"Nope"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1008)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+Started POST "/__web_console/repl_sessions/51bd9d095772d7085e0978f205c40f0d/trace" for ::1 at 2020-06-25 21:14:49 +0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (42.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/articles" for ::1 at 2020-06-25 21:17:25 +0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"9nCnjfPIMVHIS8bFiHIFbT3Hg+zrhEzQAyvWRXGhGEz8YJR/s1+DIXKSQDSAZoL/xU5L+T+UWeSPh8RfCFp0Jw==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"This is a java article", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"17", "duration(5i)"=>"12", "numberComplete"=>"4", "isFree"=>"1", "linkFileAttach"=>"Nope"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 4.7ms | Allocations: 9835)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+Started GET "/articles/new" for ::1 at 2020-06-25 21:17:30 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 9.4ms | Allocations: 6902)
+  Rendered articles/new.html.erb within layouts/application (Duration: 10.3ms | Allocations: 7257)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 0.0ms | Allocations: 15219)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-25 21:17:32 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.3ms | Allocations: 3271)
+  Rendered articles/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 3366)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms | Allocations: 7476)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-25 21:17:32 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.5ms | Allocations: 3260)
+  Rendered articles/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 3353)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms | Allocations: 7453)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-25 21:17:32 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.2ms | Allocations: 3260)
+  Rendered articles/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 3353)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 7437)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-25 21:17:33 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.6ms | Allocations: 3260)
+  Rendered articles/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 3353)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 7459)
+
+
+Started POST "/articles" for ::1 at 2020-06-25 21:17:47 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"YLBK7gSWwvWeARl2RNN4y+rnDvT3ZDpNWijuhPOm+qdqoHkcRAFwhSTYn4dMx/9ZEm7G4SN0L3nWhPyeil2WzA==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"Nothing", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"17", "numberComplete"=>"1", "isFree"=>"1", "linkFileAttach"=>"Nothing"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1010)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/articles" for ::1 at 2020-06-25 21:19:54 +0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"YLBK7gSWwvWeARl2RNN4y+rnDvT3ZDpNWijuhPOm+qdqoHkcRAFwhSTYn4dMx/9ZEm7G4SN0L3nWhPyeil2WzA==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"Nothing", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"17", "numberComplete"=>"1", "isFree"=>"1", "linkFileAttach"=>"Nothing"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 3.8ms | Allocations: 9831)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+Started POST "/articles" for ::1 at 2020-06-25 21:19:57 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"YLBK7gSWwvWeARl2RNN4y+rnDvT3ZDpNWijuhPOm+qdqoHkcRAFwhSTYn4dMx/9ZEm7G4SN0L3nWhPyeil2WzA==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"Nothing", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"17", "numberComplete"=>"1", "isFree"=>"1", "linkFileAttach"=>"Nothing"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1010)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+Started GET "/" for ::1 at 2020-06-25 21:20:04 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.2ms | Allocations: 190)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 1072)
+
+
+Started GET "/articles" for ::1 at 2020-06-25 21:20:09 +0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1390)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 21.0ms | ActiveRecord: 0.5ms | Allocations: 11993)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-25 21:20:10 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 13.8ms | Allocations: 6889)
+  Rendered articles/new.html.erb within layouts/application (Duration: 15.3ms | Allocations: 7239)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 22.5ms | ActiveRecord: 0.0ms | Allocations: 11488)
+
+
+Started POST "/articles" for ::1 at 2020-06-25 21:20:25 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"NhWsFVnNIGmJ3OqBZXsqJ08zF37NAJ1TikjgOovRqYmHwO0w0cMOlkXbzYqmKy6upnREHNzZT+cRcaTGEV61MQ==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"nothing", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"20", "numberComplete"=>"1", "isFree"=>"1", "linkFileAttach"=>"Nothing"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1046)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles/new" for ::1 at 2020-06-25 21:21:57 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 4.4ms | Allocations: 3440)
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 3534)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 10.7ms | ActiveRecord: 3.8ms | Allocations: 15583)
+
+
+Started POST "/articles" for ::1 at 2020-06-25 21:22:13 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"a+xhRUJfQPSeAhH/pJQQfa3n/A5ATDwWQGl+6S+B9Rdh/FK3AsjyhCTblw6sgJfvVW40G5RcKSLMxWzzVnqZfA==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"noting", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"21", "numberComplete"=>"1", "isFree"=>"1", "linkFileAttach"=>"Nothing"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1056)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'courseID' for Article.):
+  
+app/controllers/articles_controller.rb:27:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-06-25 21:25:34 +0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.7ms | Allocations: 309)
+Completed 200 OK in 16ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 1873)
+
+
+Started GET "/articles" for ::1 at 2020-06-25 21:25:38 +0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 4091)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 22.4ms | ActiveRecord: 3.0ms | Allocations: 14276)
+
+
+Started GET "/articles/new" for ::1 at 2020-06-25 21:25:39 +0700
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 10.6ms | Allocations: 6780)
+  Rendered articles/new.html.erb within layouts/application (Duration: 11.6ms | Allocations: 7135)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 57ms (Views: 39.4ms | ActiveRecord: 4.3ms | Allocations: 18422)
+
+
+Started POST "/articles" for ::1 at 2020-06-25 21:25:52 +0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"Sc0pdMFYdz7Ul4yAa9qWQphG0smvIXnrJLupD6i0rMD4GGhRSVZZwRiQq4uoipLLcQGBq774q1+/gu3zMjuweA==", "article"=>{"courseID"=>"1", "articleTitle"=>"Java regex", "description"=>"no", "tag"=>"#java", "duration(1i)"=>"2020", "duration(2i)"=>"6", "duration(3i)"=>"25", "duration(4i)"=>"14", "duration(5i)"=>"25", "numberComplete"=>"2", "isFree"=>"1", "linkFileAttach"=>"no"}, "commit"=>"Create Article"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+  [1m[36mArticle Create (40.8ms)[0m  [1m[32mINSERT INTO "articles" ("articleTitle", "description", "tag", "duration", "numberComplete", "isFree", "linkFileAttach", "created_at", "updated_at", "courseID") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["articleTitle", "Java regex"], ["description", "no"], ["tag", "#java"], ["duration", "14:25:00"], ["numberComplete", 2], ["isFree", true], ["linkFileAttach", "no"], ["created_at", "2020-06-25 14:25:52.212137"], ["updated_at", "2020-06-25 14:25:52.212137"], ["courseID", 1]]
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 49ms (ActiveRecord: 41.6ms | Allocations: 3731)
+
+
+Started GET "/articles/1" for ::1 at 2020-06-25 21:25:52 +0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:67:in `set_article'
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 431)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 7.6ms | ActiveRecord: 1.1ms | Allocations: 5724)
+
+
+Started GET "/articles/1.json" for ::1 at 2020-06-25 21:26:00 +0700
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:67:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/_article.json.jbuilder (Duration: 1.2ms | Allocations: 198)
+  Rendered articles/show.json.jbuilder (Duration: 2.4ms | Allocations: 670)
+Completed 200 OK in 8ms (Views: 5.0ms | ActiveRecord: 0.4ms | Allocations: 3095)
+
+
+Started GET "/articles" for ::1 at 2020-06-25 21:45:03 +0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1001)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.7ms | Allocations: 5085)
+
+
+Started GET "/login" for ::1 at 2020-06-25 21:46:40 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/auth/login" for ::1 at 2020-06-25 21:46:47 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.1ms | Allocations: 703)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 13.0ms | Allocations: 2927)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 29.5ms | ActiveRecord: 4.9ms | Allocations: 17509)
+
+
+Started GET "/auth/register/cmon_let_me_in" for ::1 at 2020-06-25 21:46:49 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.1ms | Allocations: 209)
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 24.7ms | Allocations: 1914)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 34.8ms | ActiveRecord: 0.0ms | Allocations: 7250)
+
+
+Started POST "/auth/register" for ::1 at 2020-06-25 21:46:57 +0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"eE3TbV1bwQ+bDnh43nKWRmmKXqprnWgKK7o8v2w/56SMPAEOhqlsvQRZt/jb5958/IIfeBMhXDWHkaW7XFponQ==", "user"=>{"email"=>"tai9dltt@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (6.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tai9dltt@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "tai9dltt@gmail.com"], ["encrypted_password", "$2a$12$.wJmWXgI4Ia7dFu02EUKdeGj.yyqnznXOzrcNrOUN/3Tx.siQ1YPK"], ["confirmation_token", "pFDzmst9Q9t244hHVckw"], ["confirmation_sent_at", "2020-06-25 14:46:57.587088"], ["created_at", "2020-06-25 14:46:57.586896"], ["updated_at", "2020-06-25 14:46:57.586896"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (Duration: 1.2ms | Allocations: 240)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 8.7ms
+Delivered mail 5ef4b8e195d58_a7383ff380d4fbf8816f9@Nguyens-MacBook-Pro.local.mail (60132.0ms)
+Date: Thu, 25 Jun 2020 21:46:57 +0700
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: tai9dltt@gmail.com
+Message-ID: <5ef4b8e195d58_a7383ff380d4fbf8816f9@Nguyens-MacBook-Pro.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome tai9dltt@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/auth/verification?confirmation_token=pFDzmst9Q9t244hHVckw">Confirm my account</a></p>
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 60465ms (ActiveRecord: 8.1ms | Allocations: 19668)
+
+
+Started GET "/" for ::1 at 2020-06-25 21:47:57 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.1ms | Allocations: 184)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 947)
+
+
+Started GET "/auth/login" for ::1 at 2020-06-25 21:49:01 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 192)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1134)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 5505)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-25 21:49:06 +0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"CXxluZ4W42H4gmYhU6RxLbz0DQsOCoIMOpoLlBR4gDYDbFZL3oFREUJb4NBbsPa/RH3FHtoalzi2NhmObYPsXQ==", "user"=>{"email"=>"tai9dltt@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "tai9dltt@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 297ms (ActiveRecord: 0.5ms | Allocations: 5624)
+
+
+Started GET "/auth/login" for ::1 at 2020-06-25 21:49:07 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 192)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1125)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 5484)
+
+
+Started GET "/" for ::1 at 2020-06-25 21:52:23 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 7)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 463)
+
+
+Started GET "/auth/login" for ::1 at 2020-06-25 21:52:30 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 192)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 12.3ms | Allocations: 1124)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.0ms | Allocations: 5477)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-25 21:52:35 +0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"YKF3/0YqsiDYPivmBKkV8GOrPbwTPcYq6QX2iy4tP5BqsUQNBr0AUGLnrRcMvZJimyL1qcct0x5lqeSRV9ZT+w==", "user"=>{"email"=>"tai9dltt@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "tai9dltt@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 275ms (ActiveRecord: 0.4ms | Allocations: 3500)
+
+
+Started GET "/" for ::1 at 2020-06-25 21:52:35 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 472)
+
+
+  [1m[35m (173.9ms)[0m  [1m[35mCREATE DATABASE "capstone_develop" ENCODING = 'unicode'[0m
+  [1m[35m (92.5ms)[0m  [1m[35mCREATE DATABASE "capstone_test" ENCODING = 'unicode'[0m
+  [1m[35m (48.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (46.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCourses (20200618051157)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (46.6ms)[0m  [1m[35mCREATE TABLE "courses" ("id" bigserial primary key, "name" character varying, "image" text, "description" text, "rating" integer, "is_free" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200618051157"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArticles (20200618052401)
+  [1m[35m (40.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "title" character varying, "course_id" integer, "description" text, "tag" character varying, "duration" time, "number_complete" integer, "is_free" boolean, "link_file_attach" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200618052401"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20200623135953)
+  [1m[35m (39.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200623135953"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-26 08:42:22.145160"], ["updated_at", "2020-06-26 08:42:22.145160"]]
+  [1m[35m (31.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "capstone_develop" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "capstone_test" ENCODING = 'unicode'[0m
