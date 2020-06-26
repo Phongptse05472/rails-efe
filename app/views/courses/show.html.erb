@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Coursename:</strong>
-  <%= @course.courseName %>
+  <strong>Course name:</strong>
+  <%= @course.name %>
 </p>
 
 <p>
-  <strong>Courseimage:</strong>
-  <%= @course.courseImage %>
+  <strong>link course image:</strong>
+  <%= @course.image %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>Isfree:</strong>
-  <%= @course.isFree %>
+  <%= @course.is_free %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

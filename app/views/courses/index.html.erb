@@ -17,11 +17,11 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.courseName %></td>
-        <td><%= course.courseImage %></td>
+        <td><%= course.name %></td>
+        <td><%= course.image %></td>
         <td><%= course.description %></td>
         <td><%= course.rating %></td>
-        <td><%= course.isFree %></td>
+        <td><%= course.is_free %></td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
