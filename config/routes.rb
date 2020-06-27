@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :user_infos
+  resources :customers
   # devise_for :users
   resources :articles
   resources :courses

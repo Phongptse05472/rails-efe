@@ -4,6 +4,6 @@ class Comment < ApplicationRecord
   belongs_to :article
 
   # comment is wrote by 1 user
-  belongs_to :user_info
+  belongs_to :customer
 
 end

@@ -8,9 +8,13 @@ class Course < ApplicationRecord
   has_many :topics, through: :topic_courses
 
   #courses are only had by one user
-  belongs_to :user_info
+  belongs_to :customer
 
-  # 1 course have 1 progression
+  # 1 courses.rb have 1 progression
   has_one :course_progression
+
+  #userInfo_course
+  has_many :customer_courses
+  has_many :customers , through: :customer_courses
 
 end
