@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_075620) do
+ActiveRecord::Schema.define(version: 2020_06_28_063923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "article_progressions", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "customer_id"
     t.integer "article_id"
     t.time "time_point"
     t.boolean "is_viewed"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_075620) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
-    t.integer "course_id"
+    t.integer "customer_id"
     t.text "description"
     t.string "tag"
     t.time "duration"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_075620) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "customer_id"
     t.integer "article_id"
     t.text "content"
     t.integer "parent_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_075620) do
   end
 
   create_table "course_progressions", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "customer_id"
     t.integer "course_id"
     t.float "progression"
     t.integer "current_article_id"
@@ -64,15 +64,17 @@ ActiveRecord::Schema.define(version: 2020_06_27_075620) do
   end
 
   create_table "courses", force: :cascade do |t|
-
     t.string "name"
     t.text "image"
     t.text "description"
-    t.integer "rate"
     t.boolean "is_free"
+    t.boolean "is_save"
+    t.boolean "is_owner"
+    t.float "rate"
+    t.integer "number_enrollment"
+    t.date "enrollment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["id"], name: "index_courses_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -86,17 +88,6 @@ ActiveRecord::Schema.define(version: 2020_06_27_075620) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_customer_on_user_id"
-  end
-
-  create_table "customer_courses", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "user_id"
-    t.date "enrollment_date"
-    t.boolean "is_save"
-    t.boolean "is_owner"
-    t.float "rating"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "roles", force: :cascade do |t|

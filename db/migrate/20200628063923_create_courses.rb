@@ -5,8 +5,12 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :image
       t.text :description
-      t.integer :rating
       t.boolean :is_free
+      t.boolean :is_save
+      t.boolean :is_owner
+      t.float :rate , limit: 1
+      t.integer :number_enrollment, limit: 2
+      t.date :enrollment_date
 
       t.timestamps
     end

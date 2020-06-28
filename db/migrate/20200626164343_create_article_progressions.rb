@@ -2,7 +2,7 @@ class CreateArticleProgressions < ActiveRecord::Migration[6.0]
   def change
     create_table :article_progressions do |t|
       t.belongs_to :article, :customer
-      t.integer :user_id
+      t.integer :customer_id
       t.integer :article_id
       t.time :time_point
       t.boolean :is_viewed

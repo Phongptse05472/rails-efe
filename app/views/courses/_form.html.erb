@@ -27,13 +27,33 @@
   </div>
 
   <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating %>
+    <%= form.label :is_free %>
+    <%= form.check_box :is_free %>
   </div>
 
   <div class="field">
-    <%= form.label :isFree %>
-    <%= form.check_box :is_free %>
+    <%= form.label :is_save %>
+    <%= form.check_box :is_save %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_owner %>
+    <%= form.check_box :is_owner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rate %>
+    <%= form.text_field :rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_enrollment %>
+    <%= form.number_field :number_enrollment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enrollment_date %>
+    <%= form.date_select :enrollment_date %>
   </div>
 
   <div class="actions">
