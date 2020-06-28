@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Rails new-dummy: test" uuid="8df6b2dc-78fc-4c14-9c67-b818e3ef4a7c">
-      <driver-ref>greenplum</driver-ref>
+    <data-source source="LOCAL" name="postgres@localhost" uuid="56326f11-35b2-4403-aece-5435cd90d929">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/capstone_test</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="Rails new-dummy: development" uuid="4ae7cac8-787e-4d03-8e63-9f5b2cb6d617">
-      <driver-ref>greenplum</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/capstone_develop</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="Rails new-dummy: production" uuid="0b26aa4f-8dcd-404a-84da-d211e8cbd666">
-      <driver-ref>greenplum</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/new-dummy_production</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
     </data-source>
   </component>
 </project>

@@ -1,21 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  courseID: 1
-  articleTitle: MyString
+  title: MyString
   description: MyText
+  link_article: MyText
   tag: MyString
-  duration: 2020-06-18 12:24:01
-  numberComplete: 1
-  isFree: false
-  linkFileAttach: MyText
+  duration: 2020-06-28 16:30:12
+  number_complete: 1
+  is_free: false
+  link_attach_file: MyText
 
 two:
-  courseID: 1
-  articleTitle: MyString
+  title: MyString
   description: MyText
+  link_article: MyText
   tag: MyString
-  duration: 2020-06-18 12:24:01
-  numberComplete: 1
-  isFree: false
-  linkFileAttach: MyText
+  duration: 2020-06-28 16:30:12
+  number_complete: 1
+  is_free: false
+  link_attach_file: MyText

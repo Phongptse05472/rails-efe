@@ -1,0 +1,2 @@
+class ArticleProgression < ApplicationRecord
+end

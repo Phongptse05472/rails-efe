@@ -1,15 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  courseName: MyString
-  courseImage: MyText
+  name: MyString
+  image: MyText
   description: MyText
-  rating: 1
-  isFree: false
+  is_free: false
+  is_save: false
+  is_owner: false
+  rate: 1.5
+  number_enrollment: 1
+  enrollment_date: 2020-06-28
 
 two:
-  courseName: MyString
-  courseImage: MyText
+  name: MyString
+  image: MyText
   description: MyText
-  rating: 1
-  isFree: false
+  is_free: false
+  is_save: false
+  is_owner: false
+  rate: 1.5
+  number_enrollment: 1
+  enrollment_date: 2020-06-28

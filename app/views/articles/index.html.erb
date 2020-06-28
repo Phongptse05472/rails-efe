@@ -5,14 +5,14 @@
 <table>
   <thead>
     <tr>
-      <th>Courseid</th>
-      <th>Articletitle</th>
+      <th>Title</th>
       <th>Description</th>
+      <th>Link article</th>
       <th>Tag</th>
       <th>Duration</th>
-      <th>Numbercomplete</th>
-      <th>Isfree</th>
-      <th>Linkfileattach</th>
+      <th>Number complete</th>
+      <th>Is free</th>
+      <th>Link attach file</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,14 +20,14 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.courseID %></td>
-        <td><%= article.articleTitle %></td>
+        <td><%= article.title %></td>
         <td><%= article.description %></td>
+        <td><%= article.link_article %></td>
         <td><%= article.tag %></td>
         <td><%= article.duration %></td>
-        <td><%= article.numberComplete %></td>
-        <td><%= article.isFree %></td>
-        <td><%= article.linkFileAttach %></td>
+        <td><%= article.number_complete %></td>
+        <td><%= article.is_free %></td>
+        <td><%= article.link_attach_file %></td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>

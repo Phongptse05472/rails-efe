@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  course_id: 1
+  progression: 1.5
+  current_article_id: 1
+  updated_time: 2020-06-26 21:37:08
+
+two:
+  user_id: 1
+  course_id: 1
+  progression: 1.5
+  current_article_id: 1
+  updated_time: 2020-06-26 21:37:08

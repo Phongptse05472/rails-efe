@@ -17,7 +17,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create article" do
     assert_difference('Article.count') do
-      post articles_url, params: { article: { articleTitle: @article.articleTitle, courseID: @article.courseID, description: @article.description, duration: @article.duration, isFree: @article.isFree, linkFileAttach: @article.linkFileAttach, numberComplete: @article.numberComplete, tag: @article.tag } }
+      post articles_url, params: { article: { description: @article.description, duration: @article.duration, is_free: @article.is_free, link_article: @article.link_article, link_attach_file: @article.link_attach_file, number_complete: @article.number_complete, tag: @article.tag, title: @article.title } }
     end
 
     assert_redirected_to article_url(Article.last)
@@ -34,7 +34,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update article" do
-    patch article_url(@article), params: { article: { articleTitle: @article.articleTitle, courseID: @article.courseID, description: @article.description, duration: @article.duration, isFree: @article.isFree, linkFileAttach: @article.linkFileAttach, numberComplete: @article.numberComplete, tag: @article.tag } }
+    patch article_url(@article), params: { article: { description: @article.description, duration: @article.duration, is_free: @article.is_free, link_article: @article.link_article, link_attach_file: @article.link_attach_file, number_complete: @article.number_complete, tag: @article.tag, title: @article.title } }
     assert_redirected_to article_url(@article)
   end
 
