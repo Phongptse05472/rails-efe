@@ -16,7 +16,9 @@ class ArticlesTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @article.description
     fill_in "Duration", with: @article.duration
+    check "Is free" if @article.is_free
     fill_in "Link article", with: @article.link_article
+    fill_in "Link attach file", with: @article.link_attach_file
     fill_in "Number complete", with: @article.number_complete
     fill_in "Tag", with: @article.tag
     fill_in "Title", with: @article.title
@@ -32,7 +34,9 @@ class ArticlesTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @article.description
     fill_in "Duration", with: @article.duration
+    check "Is free" if @article.is_free
     fill_in "Link article", with: @article.link_article
+    fill_in "Link attach file", with: @article.link_attach_file
     fill_in "Number complete", with: @article.number_complete
     fill_in "Tag", with: @article.tag
     fill_in "Title", with: @article.title

@@ -5,13 +5,17 @@ one:
   description: MyText
   link_article: MyText
   tag: MyString
-  duration: 2020-06-28 16:07:17
+  duration: 2020-06-28 16:30:12
   number_complete: 1
+  is_free: false
+  link_attach_file: MyText
 
 two:
   title: MyString
   description: MyText
   link_article: MyText
   tag: MyString
-  duration: 2020-06-28 16:07:17
+  duration: 2020-06-28 16:30:12
   number_complete: 1
+  is_free: false
+  link_attach_file: MyText

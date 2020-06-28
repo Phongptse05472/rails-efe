@@ -7,6 +7,8 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.string :tag
       t.time :duration
       t.integer :number_complete
+      t.boolean :is_free
+      t.text :link_attach_file
 
       t.timestamps
     end

@@ -41,6 +41,16 @@
     <%= form.number_field :number_complete %>
   </div>
 
+  <div class="field">
+    <%= form.label :is_free %>
+    <%= form.check_box :is_free %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link_attach_file %>
+    <%= form.text_area :link_attach_file %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
