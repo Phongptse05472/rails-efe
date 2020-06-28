@@ -14,14 +14,12 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on "New Article"
 
-    fill_in "Articletitle", with: @article.articleTitle
-    fill_in "Courseid", with: @article.courseID
     fill_in "Description", with: @article.description
     fill_in "Duration", with: @article.duration
-    check "Isfree" if @article.isFree
-    fill_in "Linkfileattach", with: @article.linkFileAttach
-    fill_in "Numbercomplete", with: @article.numberComplete
+    fill_in "Link article", with: @article.link_article
+    fill_in "Number complete", with: @article.number_complete
     fill_in "Tag", with: @article.tag
+    fill_in "Title", with: @article.title
     click_on "Create Article"
 
     assert_text "Article was successfully created"
@@ -32,14 +30,12 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on "Edit", match: :first
 
-    fill_in "Articletitle", with: @article.articleTitle
-    fill_in "Courseid", with: @article.courseID
     fill_in "Description", with: @article.description
     fill_in "Duration", with: @article.duration
-    check "Isfree" if @article.isFree
-    fill_in "Linkfileattach", with: @article.linkFileAttach
-    fill_in "Numbercomplete", with: @article.numberComplete
+    fill_in "Link article", with: @article.link_article
+    fill_in "Number complete", with: @article.number_complete
     fill_in "Tag", with: @article.tag
+    fill_in "Title", with: @article.title
     click_on "Update Article"
 
     assert_text "Article was successfully updated"

@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Course id:</strong>
-  <%= @article.course_id %>
-</p>
-
-<p>
-  <strong>Article title:</strong>
+  <strong>Title:</strong>
   <%= @article.title %>
 </p>
 
 <p>
   <strong>Description:</strong>
   <%= @article.description %>
+</p>
+
+<p>
+  <strong>Link article:</strong>
+  <%= @article.link_article %>
 </p>
 
 <p>
@@ -26,18 +26,8 @@
 </p>
 
 <p>
-  <strong>Numbercomplete:</strong>
+  <strong>Number complete:</strong>
   <%= @article.number_complete %>
-</p>
-
-<p>
-  <strong>Isfree:</strong>
-  <%= @article.is_free %>
-</p>
-
-<p>
-  <strong>Linkfileattach:</strong>
-  <%= @article.link_file_attach %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |

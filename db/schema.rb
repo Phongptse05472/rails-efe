@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_063923) do
+ActiveRecord::Schema.define(version: 2020_06_28_090717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,11 @@ ActiveRecord::Schema.define(version: 2020_06_28_063923) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
-    t.integer "customer_id"
     t.text "description"
+    t.text "link_article"
     t.string "tag"
     t.time "duration"
     t.integer "number_complete"
-    t.boolean "is_free"
-    t.text "link_file_attach"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -49,8 +47,12 @@ ActiveRecord::Schema.define(version: 2020_06_28_063923) do
   end
 
   create_table "course_articles", force: :cascade do |t|
+    t.bigint "course_id"
+    t.bigint "article_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_course_articles_on_article_id"
+    t.index ["course_id"], name: "index_course_articles_on_course_id"
   end
 
   create_table "course_progressions", force: :cascade do |t|
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_063923) do
   end
 
   create_table "courses", force: :cascade do |t|
+    t.bigint "customer_id"
     t.string "name"
     t.text "image"
     t.text "description"
@@ -71,10 +74,11 @@ ActiveRecord::Schema.define(version: 2020_06_28_063923) do
     t.boolean "is_save"
     t.boolean "is_owner"
     t.float "rate"
-    t.integer "number_enrollment"
+    t.integer "number_enrollment", limit: 2
     t.date "enrollment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_courses_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -87,16 +91,24 @@ ActiveRecord::Schema.define(version: 2020_06_28_063923) do
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_customer_on_user_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "role_id"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_roles_on_customer_id"
+    t.index ["role_id"], name: "index_roles_on_role_id"
   end
 
   create_table "topic_courses", force: :cascade do |t|
+    t.bigint "course_id"
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_topic_courses_on_article_id"
+    t.index ["course_id"], name: "index_topic_courses_on_course_id"
   end
 
   create_table "topics", force: :cascade do |t|

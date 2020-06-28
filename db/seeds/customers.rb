@@ -32,7 +32,7 @@ c.save!
 #
 puts "\n...Seeing Mentors & Students...\n"
 #mentors & customer accounts
-(100101..100105).each do |x|
+(100101..100120).each do |x|
   u = User.find_or_initialize_by(id: x)
   u.email = Faker::Internet.email
   u.password = Faker::Internet.password
@@ -51,18 +51,38 @@ puts "\n...Seeing Mentors & Students...\n"
 end
 
 puts "\n...Seeing Courses...\n"
-(100101..100105).each do |x1|
+(100101..100150).each do |x1|
   c1 = Course.find_or_initialize_by(id: x1)
   c1.name = Faker::Name.name
   c1.image = Faker::Internet.url
   c1.description = Faker::Lorem.paragraphs
-  c1.rate = Faker::Number.within(1..5)
+  c1.rate = Faker::Number.within(range: 1..5)
   c1.is_free = Faker::Boolean.boolean
   c1.is_save = Faker::Boolean.boolean
   c1.is_owner = Faker::Boolean.boolean
-  c1.number_enrollment = Faker::Number.within(1..10)
+  c1.number_enrollment = Faker::Number.within(range: 1..10)
   c1.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
   c1.save!
+end
+
+puts "\n ...seeing Article...\n"
+(10101...10100).each do |x2|
+  c2 = Article.find_or_initialize_by(id: x2)
+  c2.title = Faker::Educator.course_name
+  c2.description = Faker::Lorem.paragraphs
+  c2.tag = Faker::Verb.base
+  c2.duration = Faker::Time.backward(days: 5, period: :morning, format: :short)
+  c2.number_complete = Faker::Number.within(range: 1..10)
+  c2.is_free = Faker::Boolean.boolean
+  c2.link_file_attach = Faker::Internet.url
+  c2.save!
+end
+
+puts "\n ...seeing Topic...\n"
+(101...110).each do |x3|
+  c3 = Topic.find_or_initialize_by(id: x3)
+  c3.name = Faker::Name.first_name
+  c3.save!
 end
 
 
