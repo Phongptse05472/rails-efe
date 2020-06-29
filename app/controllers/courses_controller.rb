@@ -4,8 +4,13 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    #hot course
+    @courses = Course.order(number_enrollment: :desc).limit(10)
+    @rate_course = Course.order(rate: :desc).limit(5)
+    @free_course = Course.where(is_free: true).limit(5)
+    @sidebar_course = Course.select(:name, :enrollment_date).order(enrollment_date: :desc).limit(5)
   end
+
 
   # GET /courses/1
   # GET /courses/1.json

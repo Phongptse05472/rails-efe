@@ -42,13 +42,28 @@
   </div>
 
   <div class="field">
+    <%= form.label :view_number %>
+    <%= form.number_field :view_number %>
+  </div>
+
+  <div class="field">
     <%= form.label :is_free %>
     <%= form.check_box :is_free %>
   </div>
 
   <div class="field">
-    <%= form.label :link_attach_file %>
-    <%= form.text_area :link_attach_file %>
+    <%= form.label :is_favor %>
+    <%= form.check_box :is_favor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_owner %>
+    <%= form.check_box :is_owner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link_file_attach %>
+    <%= form.text_area :link_file_attach %>
   </div>
 
   <div class="actions">
