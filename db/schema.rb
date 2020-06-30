@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_093012) do
+ActiveRecord::Schema.define(version: 2020_06_29_045415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,11 @@ ActiveRecord::Schema.define(version: 2020_06_28_093012) do
     t.string "tag"
     t.time "duration"
     t.integer "number_complete"
+    t.integer "view_number"
     t.boolean "is_free"
-    t.text "link_attach_file"
+    t.boolean "is_favor"
+    t.boolean "is_owner"
+    t.text "link_file_attach"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

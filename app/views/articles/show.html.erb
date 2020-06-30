@@ -31,13 +31,28 @@
 </p>
 
 <p>
+  <strong>View number:</strong>
+  <%= @article.view_number %>
+</p>
+
+<p>
   <strong>Is free:</strong>
   <%= @article.is_free %>
 </p>
 
 <p>
-  <strong>Link attach file:</strong>
-  <%= @article.link_attach_file %>
+  <strong>Is favor:</strong>
+  <%= @article.is_favor %>
+</p>
+
+<p>
+  <strong>Is owner:</strong>
+  <%= @article.is_owner %>
+</p>
+
+<p>
+  <strong>Link file attach:</strong>
+  <%= @article.link_file_attach %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |

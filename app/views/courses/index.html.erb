@@ -38,6 +38,105 @@
   </tbody>
 </table>
 
+<h2>Top Rate Courses</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Is free</th>
+    <th>Is save</th>
+    <th>Is owner</th>
+    <th>Rate</th>
+    <th>Number enrollment</th>
+    <th>Enrollment date</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @rate_course.each do |course| %>
+    <tr>
+      <td><%= course.name %></td>
+      <td><%= course.image %></td>
+      <td><%= course.description %></td>
+      <td><%= course.is_free %></td>
+      <td><%= course.is_save %></td>
+      <td><%= course.is_owner %></td>
+      <td><%= course.rate %></td>
+      <td><%= course.number_enrollment %></td>
+      <td><%= course.enrollment_date %></td>
+      <td><%= link_to 'Show', course %></td>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Free Courses</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Is free</th>
+    <th>Is save</th>
+    <th>Is owner</th>
+    <th>Rate</th>
+    <th>Number enrollment</th>
+    <th>Enrollment date</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @free_course.each do |course| %>
+    <tr>
+      <td><%= course.name %></td>
+      <td><%= course.image %></td>
+      <td><%= course.description %></td>
+      <td><%= course.is_free %></td>
+      <td><%= course.is_save %></td>
+      <td><%= course.is_owner %></td>
+      <td><%= course.rate %></td>
+      <td><%= course.number_enrollment %></td>
+      <td><%= course.enrollment_date %></td>
+      <td><%= link_to 'Show', course %></td>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<h2>Free Courses</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Enrollment date</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sidebar_course.each do |course| %>
+    <tr>
+      <td><%= course.name %></td>
+      <td><%= course.enrollment_date %></td>
+<!--      <td><%#= link_to 'Show', course %></td>-->
+<!--      <td><%#= link_to 'Edit', edit_course_path(course) %></td>-->
+<!--      <td><%#= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 <br>
 
 <%= link_to 'New Course', new_course_path %>
