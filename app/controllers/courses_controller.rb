@@ -9,7 +9,14 @@ class CoursesController < ApplicationController
     @rate_course = Course.order(rate: :desc).limit(5)
     @free_course = Course.where(is_free: true).limit(5)
     @sidebar_course = Course.select(:name, :enrollment_date).order(enrollment_date: :desc).limit(5)
+
+
+    # @topic_course = Course.find_by(id: 100101)
+
   end
+
+
+
 
 
   # GET /courses/1
