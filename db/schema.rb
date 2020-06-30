@@ -110,10 +110,10 @@ ActiveRecord::Schema.define(version: 2020_06_29_045415) do
   end
 
   create_table "topic_courses", force: :cascade do |t|
+    t.bigint "topic_id"
     t.bigint "course_id"
-    t.bigint "article_id"
-    t.index ["article_id"], name: "index_topic_courses_on_article_id"
-    t.index ["course_id"], name: "index_topic_courses_on_course_id"
+    t.index ["course_id"], name: "index_topic_courses_on__id"
+    t.index ["topic_id"], name: "index_topic_courses_on_topic_id"
   end
 
   create_table "topics", force: :cascade do |t|
