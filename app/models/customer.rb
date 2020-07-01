@@ -6,9 +6,11 @@ class Customer < ApplicationRecord
 
 # # 1 user can have many progression
 #   has_many :course_progressions
-# # 1 user can have many comment
-#   has_many :comments
+# 1 user can have many comment
+  has_many :comments
 #
   has_many :courses
+
+  has_many :comment, dependent: :destroy
 
 end
