@@ -10,8 +10,11 @@ class CoursesController < ApplicationController
     @free_course = Course.where(is_free: true).limit(5)
     @sidebar_course = Course.select(:name, :enrollment_date).order(enrollment_date: :desc).limit(5)
 
+    @topic_course = Course.find_by(params[:id])
+    # @topic_course = Course.find_by(params[:id])
 
-    # @topic_course = Course.find_by(id: 100101)
+    @course_topic = Topic.includes(:courses).all
+
 
   end
 
@@ -22,6 +25,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+
   end
 
   # GET /courses/new
