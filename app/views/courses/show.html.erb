@@ -5,10 +5,18 @@
   <%= @course.name %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @course.image %>
-</p>
+<strong>Avatar:</strong>
+<div style="width: 400px; height: auto">
+  <%= image_tag(@course.image) if @course.image.attached? %>
+</div>
+
+<!--<div>-->
+  <%# @course.image.each do |file| %>
+<!--    <div>-->
+      <%#= image_tag file.preview(resize: "100x100>") %>
+<!--    </div>-->
+  <%# end %>
+<!--</div>-->
 
 <p>
   <strong>Description:</strong>

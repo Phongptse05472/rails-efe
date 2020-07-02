@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-# 1 user have one User_info
+  # 1 user have one User_info
   belongs_to :user
 # # 1 User can have many role
   has_one :role
@@ -11,4 +11,6 @@ class Customer < ApplicationRecord
 #
   has_many :courses
 
+#active storage
+  has_one_attached :image
 end

@@ -27,7 +27,7 @@ c.name = 'admin'
 c.phone_number = Faker::PhoneNumber.phone_number
 c.roll_number = Faker::IDNumber.valid
 c.is_active = Faker::Boolean.boolean
-c.avatar = Faker::Internet.url
+# c.avatar = Faker::Internet.url
 c.save!
 #
 puts "\n...Seeing Mentors & Students...\n"
@@ -46,7 +46,7 @@ puts "\n...Seeing Mentors & Students...\n"
   c.phone_number = Faker::PhoneNumber.phone_number
   c.roll_number = Faker::IDNumber.valid
   c.is_active = Faker::Boolean.boolean
-  c.avatar = Faker::Internet.url
+  c.avatar = Faker::Avatar.image
   c.save!
 end
 
@@ -54,7 +54,7 @@ puts "\n...Seeing Courses...\n"
 (100101..100110).each do |x1|
   c1 = Course.find_or_initialize_by(id: x1)
   c1.name = Faker::Name.name
-  c1.image = Faker::Internet.url
+  # c1.image = Faker::Internet.url
   c1.description = Faker::Lorem.paragraphs
   c1.rate = Faker::Number.within(range: 1..5)
   c1.is_free = Faker::Boolean.boolean
