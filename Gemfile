@@ -34,6 +34,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem "azure-storage-blob", require: false
 
+gem 'foreman'
+
 
 
 group :development, :test do

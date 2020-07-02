@@ -31092,3 +31092,148 @@ app/controllers/courses_controller.rb:57:in `update'
   [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8444538517198013370)[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-07-02 20:52:18 +0700
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.5ms | Allocations: 309)
+Completed 200 OK in 27ms (Views: 15.5ms | ActiveRecord: 0.0ms | Allocations: 1869)
+
+
+Started GET "/courses" for ::1 at 2020-07-02 20:52:27 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (1.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (40.7ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (0.6ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 87.0ms | Allocations: 18296)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 265ms (Views: 99.6ms | ActiveRecord: 100.0ms | Allocations: 45490)
+
+
+Started GET "/courses/100101" for ::1 at 2020-07-02 20:52:30 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"100101"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 100101], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:83:in `set_course'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (41.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 100101], ["record_type", "Course"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:10
+  Rendered courses/show.html.erb within layouts/application (Duration: 122.0ms | Allocations: 19479)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 133ms (Views: 78.3ms | ActiveRecord: 49.6ms | Allocations: 24558)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d901f997f0ef69be7b655f31dcc0b98f4d04a885/Social-Media-Branding.png" for ::1 at 2020-07-02 20:52:30 +0700
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d901f997f0ef69be7b655f31dcc0b98f4d04a885", "filename"=>"Social-Media-Branding"}
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (174.8ms) [0m[34mGenerated URL for file at key: 6qwetk2g1928328h9qhsec22ggwv (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhObkYzWlhSck1tY3hPVEk0TXpJNGFEbHhhSE5sWXpJeVoyZDNkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjMxLjE1MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c10ea0244d106720a65b190329b372ddc3873156/Social-Media-Branding.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Social-Media-Branding.png%22%3B+filename%2A%3DUTF-8%27%27Social-Media-Branding.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhObkYzWlhSck1tY3hPVEk0TXpJNGFEbHhhSE5sWXpJeVoyZDNkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjMxLjE1MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c10ea0244d106720a65b190329b372ddc3873156/Social-Media-Branding.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Social-Media-Branding.png%22%3B+filename%2A%3DUTF-8%27%27Social-Media-Branding.png
+Completed 302 Found in 179ms (ActiveRecord: 0.3ms | Allocations: 196445)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhObkYzWlhSck1tY3hPVEk0TXpJNGFEbHhhSE5sWXpJeVoyZDNkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjMxLjE1MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c10ea0244d106720a65b190329b372ddc3873156/Social-Media-Branding.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Social-Media-Branding.png%22%3B+filename%2A%3DUTF-8%27%27Social-Media-Branding.png" for ::1 at 2020-07-02 20:52:31 +0700
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"content_type"=>"image/png", "disposition"=>"inline; filename=\"Social-Media-Branding.png\"; filename*=UTF-8''Social-Media-Branding.png", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhObkYzWlhSck1tY3hPVEk0TXpJNGFEbHhhSE5sWXpJeVoyZDNkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjMxLjE1MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c10ea0244d106720a65b190329b372ddc3873156", "filename"=>"Social-Media-Branding"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 685)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhObkYzWlhSck1tY3hPVEk0TXpJNGFEbHhhSE5sWXpJeVoyZDNkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjMxLjE1MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c10ea0244d106720a65b190329b372ddc3873156/Social-Media-Branding.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Social-Media-Branding.png%22%3B+filename%2A%3DUTF-8%27%27Social-Media-Branding.png" for ::1 at 2020-07-02 20:52:32 +0700
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"content_type"=>"image/png", "disposition"=>"inline; filename=\"Social-Media-Branding.png\"; filename*=UTF-8''Social-Media-Branding.png", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhObkYzWlhSck1tY3hPVEk0TXpJNGFEbHhhSE5sWXpJeVoyZDNkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjMxLjE1MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c10ea0244d106720a65b190329b372ddc3873156", "filename"=>"Social-Media-Branding"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 708)
+
+
+Started GET "/courses/100104/edit" for ::1 at 2020-07-02 20:52:34 +0700
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"100104"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 100104], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:83:in `set_course'
+  Rendering courses/edit.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 100104], ["record_type", "Course"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/courses/_form.html.erb:26
+  Rendered courses/_form.html.erb (Duration: 15.4ms | Allocations: 6337)
+  Rendered courses/edit.html.erb within layouts/application (Duration: 16.9ms | Allocations: 6744)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 22.0ms | ActiveRecord: 0.8ms | Allocations: 11823)
+
+
+Started PATCH "/courses/100104" for ::1 at 2020-07-02 20:52:41 +0700
+Processing by CoursesController#update as HTML
+  Parameters: {"authenticity_token"=>"TyNyYiwiYo0dVFGGqU0aE/JpS3LDEk1EO10EFQNp/UiSQYH1yCTuOK0eNrmgjMVynETtK9OEDwZYVObwY0QJEw==", "course"=>{"name"=>"Mr. Quiana Kemmer", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fb0c6c8fa68 @tempfile=#<Tempfile:/var/folders/8s/pt0lprms0d316dkpyld14sxh0000gn/T/RackMultipart20200702-88521-l91fnk.png>, @original_filename="Social-Media-Branding.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"course[image]\"; filename=\"Social-Media-Branding.png\"\r\nContent-Type: image/png\r\n">, "description"=>"[\"Id qui id. Enim alias repellat. Est consequatur incidunt.\", \"Omnis perferendis aliquam. Eos quis et. Molestiae voluptas sequi.\", \"Voluptatum vel eos. Aut temporibus est. Voluptatibus sapiente quo.\"]", "is_free"=>"1", "is_save"=>"0", "is_owner"=>"0", "rate"=>"4.0", "number_enrollment"=>"6", "enrollment_date(1i)"=>"2020", "enrollment_date(2i)"=>"9", "enrollment_date(3i)"=>"20"}, "commit"=>"Update Course", "id"=>"100104"}
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 100104], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:83:in `set_course'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courses_controller.rb:58:in `block in update'
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 100104], ["record_type", "Course"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:58:in `block in update'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 100104], ["record_type", "Course"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:58:in `block in update'
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "qnm46xdvaltefl1mwr7r0bq3xvqx"], ["filename", "Social-Media-Branding.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["byte_size", 6323], ["checksum", "Cuk45MJvkoXThIHkk0MqEA=="], ["created_at", "2020-07-02 13:52:41.060102"]]
+  ↳ app/controllers/courses_controller.rb:58:in `block in update'
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Course"], ["record_id", 100104], ["blob_id", 7], ["created_at", "2020-07-02 13:52:41.063058"]]
+  ↳ app/controllers/courses_controller.rb:58:in `block in update'
+  [1m[36mCourse Update (0.4ms)[0m  [1m[33mUPDATE "courses" SET "updated_at" = $1 WHERE "courses"."id" = $2[0m  [["updated_at", "2020-07-02 13:52:41.065604"], ["id", 100104]]
+  ↳ app/controllers/courses_controller.rb:58:in `block in update'
+  [1m[35m (39.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courses_controller.rb:58:in `block in update'
+[36m  Disk Storage (3.1ms) [0m[32mUploaded file to key: qnm46xdvaltefl1mwr7r0bq3xvqx (checksum: Cuk45MJvkoXThIHkk0MqEA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: fa75ab5f-c35e-4956-83dd-30c791a64a51) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007fb0c3e97930 @uri=#<URI::GID gid://capstone/ActiveStorage::Blob/7>>
+Redirected to http://localhost:3000/courses/100104
+Completed 302 Found in 79ms (ActiveRecord: 42.9ms | Allocations: 28963)
+
+
+Started GET "/courses/100104" for ::1 at 2020-07-02 20:52:41 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"100104"}
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 100104], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:83:in `set_course'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 100104], ["record_type", "Course"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:10
+  Rendered courses/show.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2600)
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa75ab5f-c35e-4956-83dd-30c791a64a51] Performing ActiveStorage::AnalyzeJob (Job ID: fa75ab5f-c35e-4956-83dd-30c791a64a51) from Async(active_storage_analysis) enqueued at 2020-07-02T13:52:41Z with arguments: #<GlobalID:0x00007fb0cfe7e5a0 @uri=#<URI::GID gid://capstone/ActiveStorage::Blob/7>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa75ab5f-c35e-4956-83dd-30c791a64a51] [36m  Disk Storage (0.9ms) [0m[34mDownloaded file from key: qnm46xdvaltefl1mwr7r0bq3xvqx[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa75ab5f-c35e-4956-83dd-30c791a64a51] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa75ab5f-c35e-4956-83dd-30c791a64a51]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa75ab5f-c35e-4956-83dd-30c791a64a51]   [1m[36mActiveStorage::Blob Update (0.9ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 7]]
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 25.0ms | ActiveRecord: 1.5ms | Allocations: 13554)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa75ab5f-c35e-4956-83dd-30c791a64a51]   [1m[35m (40.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa75ab5f-c35e-4956-83dd-30c791a64a51] Performed ActiveStorage::AnalyzeJob (Job ID: fa75ab5f-c35e-4956-83dd-30c791a64a51) from Async(active_storage_analysis) in 52.71ms
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff72cb6ec83a37383dc4228c9733ef975148ee75/Social-Media-Branding.png" for ::1 at 2020-07-02 20:52:41 +0700
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff72cb6ec83a37383dc4228c9733ef975148ee75", "filename"=>"Social-Media-Branding"}
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: qnm46xdvaltefl1mwr7r0bq3xvqx (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjVzV0TkRaNFpIWmhiSFJsWm13eGJYZHlOM0l3WW5FemVIWnhlQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjQxLjIxNFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--b61324ad395f9e6d5e583d5e79e413506a63ac3a/Social-Media-Branding.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Social-Media-Branding.png%22%3B+filename%2A%3DUTF-8%27%27Social-Media-Branding.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjVzV0TkRaNFpIWmhiSFJsWm13eGJYZHlOM0l3WW5FemVIWnhlQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjQxLjIxNFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--b61324ad395f9e6d5e583d5e79e413506a63ac3a/Social-Media-Branding.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Social-Media-Branding.png%22%3B+filename%2A%3DUTF-8%27%27Social-Media-Branding.png
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1891)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjVzV0TkRaNFpIWmhiSFJsWm13eGJYZHlOM0l3WW5FemVIWnhlQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjQxLjIxNFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--b61324ad395f9e6d5e583d5e79e413506a63ac3a/Social-Media-Branding.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Social-Media-Branding.png%22%3B+filename%2A%3DUTF-8%27%27Social-Media-Branding.png" for ::1 at 2020-07-02 20:52:41 +0700
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"content_type"=>"image/png", "disposition"=>"inline; filename=\"Social-Media-Branding.png\"; filename*=UTF-8''Social-Media-Branding.png", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjVzV0TkRaNFpIWmhiSFJsWm13eGJYZHlOM0l3WW5FemVIWnhlQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpWFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjFOdlkybGhiQzFOWldScFlTMUNjbUZ1WkdsdVp5NXdibWNHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc1cGJXRm5aUzl3Ym1jR093WlUiLCJleHAiOiIyMDIwLTA3LTAyVDEzOjU3OjQxLjIxNFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--b61324ad395f9e6d5e583d5e79e413506a63ac3a", "filename"=>"Social-Media-Branding"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 396)
+
+
