@@ -32441,3 +32441,35 @@ Processing by CoursesController#index as HTML
 Completed 200 OK in 73ms (Views: 41.0ms | ActiveRecord: 11.2ms | Allocations: 31701)
 
 
+Started GET "/" for ::1 at 2020-07-03 19:58:49 +0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.9ms | Allocations: 309)
+Completed 200 OK in 18ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 1935)
+
+
+Started GET "/courses" for ::1 at 2020-07-03 19:58:53 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (3.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (40.2ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (0.4ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (0.5ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 91.0ms | Allocations: 18256)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 215ms (Views: 81.2ms | ActiveRecord: 98.2ms | Allocations: 45456)
+
+

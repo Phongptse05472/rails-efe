@@ -22,12 +22,11 @@ local:
 #   bucket: ""
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
- microsoft:
-   service: AzureStorage
-   storage_account_name: efeproject
-#   storage_access_key: <%#= Rails.application.credentials.dig(:azure_storage, 'CAD1VUyhKs6zKZW/e3+EtVHK8fzT1qz+bz66XsBQRrKjqwaUWVZFGI8D0y/TXuFgPj+PHB94X9xAJu3DGscAYg==') %>
-   storage_access_key:  CAD1VUyhKs6zKZW/e3+EtVHK8fzT1qz+bz66XsBQRrKjqwaUWVZFGI8D0y/TXuFgPj+PHB94X9xAJu3DGscAYg==
-   container: efe-project
+# microsoft:
+#   service: AzureStorage
+#   storage_account_name: efeproject
+#   storage_access_key: <%#= Rails.application.credentials.dig(:azure_storage,:secret_access_key) %>
+#   container: efe-project
 
 
 # mirror:
