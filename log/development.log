@@ -31237,3 +31237,278 @@ Processing by ActiveStorage::DiskController#show as PNG
 Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 396)
 
 
+Started GET "/" for ::1 at 2020-07-03 14:16:57 +0700
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nguyentai/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.7ms | Allocations: 309)
+Completed 200 OK in 21ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 1891)
+
+
+Started GET "/courses" for ::1 at 2020-07-03 14:17:03 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (2.7ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (42.5ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (1.4ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (41.2ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 138.5ms | Allocations: 18256)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: f54b0a823ca9dfa9c083
+Version: webpack 4.43.0
+Time: 2511ms
+Built at: 07/03/2020 2:17:08 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-9afcbb5693aa87623e69.js    124 KiB  application  [emitted] [immutable]  application
+js/application-9afcbb5693aa87623e69.js.map    139 KiB  application  [emitted] [dev]        application
+      js/hello_vue-c66a007336ab1f2cf4c5.js    239 KiB    hello_vue  [emitted] [immutable]  hello_vue
+  js/hello_vue-c66a007336ab1f2cf4c5.js.map    292 KiB    hello_vue  [emitted] [dev]        hello_vue
+                             manifest.json  689 bytes               [emitted]              
+Entrypoint application = js/application-9afcbb5693aa87623e69.js js/application-9afcbb5693aa87623e69.js.map
+Entrypoint hello_vue = js/hello_vue-c66a007336ab1f2cf4c5.js js/hello_vue-c66a007336ab1f2cf4c5.js.map
+[./app/javascript/app.vue] 291 bytes {hello_vue} [built] [failed] [1 error]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./app/javascript/packs/hello_vue.js] 1.89 KiB {hello_vue} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {hello_vue} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 7 hidden modules
+
+ERROR in ./app/javascript/app.vue 1:0
+Module parse failed: Unexpected token (1:0)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+> <template>
+|   <div id="app">
+|     <p>{{ message }}</p>
+ @ ./app/javascript/packs/hello_vue.js 8:0-29 12:15-18
+
+Completed 200 OK in 5136ms (Views: 4953.4ms | ActiveRecord: 143.5ms | Allocations: 46659)
+
+
+Started GET "/courses/100101" for ::1 at 2020-07-03 14:17:10 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"100101"}
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 100101], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:83:in `set_course'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (2.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 100101], ["record_type", "Course"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:10
+  Rendered courses/show.html.erb within layouts/application (Duration: 76.3ms | Allocations: 13334)
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 46.8ms | Allocations: 14742)
+
+
+  
+ActionView::Template::Error (YAML syntax error occurred while parsing /Users/nguyentai/GitHub/rails-efe/config/storage.yml. Please note that YAML must be consistently indented using spaces. Tabs are not allowed. Error: (<unknown>): did not find expected key while parsing a block mapping at line 1 column 1):
+     7: 
+     8: <strong>Avatar:</strong>
+     9: <div style="width: 400px; height: auto">
+    10:   <%= image_tag(@course.image) if @course.image.attached? %>
+    11: </div>
+    12: 
+    13: <!--<div>-->
+  
+app/views/courses/show.html.erb:10
+Started GET "/courses" for ::1 at 2020-07-03 14:17:15 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (0.3ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (0.5ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 16.4ms | Allocations: 8745)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 24.3ms | ActiveRecord: 2.7ms | Allocations: 14079)
+
+
+Started GET "/courses" for ::1 at 2020-07-03 14:18:02 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (0.2ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (0.3ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 14.3ms | Allocations: 9910)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 27ms (Views: 21.4ms | ActiveRecord: 2.0ms | Allocations: 16254)
+
+
+Started GET "/courses/100101" for ::1 at 2020-07-03 14:18:03 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"100101"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 100101], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:83:in `set_course'
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/show.html.erb within layouts/application (Duration: 305.6ms | Allocations: 165281)
+Completed 500 Internal Server Error in 308ms (ActiveRecord: 0.3ms | Allocations: 166555)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00007fd4b6566750>:0x00007fd4b6594880>
+Did you mean?  for
+               fork):
+    11: <!--</div>-->
+    12: 
+    13: <div class="field">
+    14:   <%= form.label :thumbnail %>
+    15:   <%= form.file_field :image %>
+    16: </div>
+    17: <!--<div>-->
+  
+app/views/courses/show.html.erb:14
+Started GET "/courses" for ::1 at 2020-07-03 14:18:05 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (0.2ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (0.2ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (0.2ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 26.0ms | Allocations: 8747)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 30.5ms | ActiveRecord: 2.0ms | Allocations: 14065)
+
+
+Started GET "/courses" for ::1 at 2020-07-03 14:18:15 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (0.2ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (0.2ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (0.4ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 16.2ms | Allocations: 9912)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 22.3ms | ActiveRecord: 2.4ms | Allocations: 16277)
+
+
+Started GET "/courses" for ::1 at 2020-07-03 14:18:15 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (0.3ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (0.5ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 18.1ms | Allocations: 8744)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 22.5ms | ActiveRecord: 3.1ms | Allocations: 14063)
+
+
+Started GET "/courses/100101" for ::1 at 2020-07-03 14:18:17 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"100101"}
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 100101], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:83:in `set_course'
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/show.html.erb within layouts/application (Duration: 282.0ms | Allocations: 165238)
+Completed 500 Internal Server Error in 285ms (ActiveRecord: 0.4ms | Allocations: 166493)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00007fd4ae426910>:0x00007fd4b1a19d38>
+Did you mean?  for
+               fork):
+    11: <!--</div>-->
+    12: 
+    13: <div class="field">
+    14:   <%= form.file_field :image %>
+    15: </div>
+    16: <!--<div>-->
+    17:   <%# @course.image.each do |file| %>
+  
+app/views/courses/show.html.erb:14
+Started GET "/courses" for ::1 at 2020-07-03 14:19:28 +0700
+Processing by CoursesController#index as HTML
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:13:in `index'
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."number_enrollment" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/courses/index.html.erb:22
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."rate" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:59
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."is_free" = $1 LIMIT $2[0m  [["is_free", true], ["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:96
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses"."name", "courses"."enrollment_date" FROM "courses" ORDER BY "courses"."enrollment_date" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/courses/index.html.erb:128
+  [1m[36mTopicCourse Load (0.2ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."course_id" = $1[0m  [["course_id", 100102]]
+  ↳ app/views/courses/index.html.erb:154
+  [1m[36mTopic Load (0.4ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/views/courses/index.html.erb:179
+  [1m[36mTopicCourse Load (0.3ms)[0m  [1m[34mSELECT "topic_courses".* FROM "topic_courses" WHERE "topic_courses"."topic_id" IN ($1, $2)[0m  [["topic_id", 1], ["topic_id", 2]]
+  ↳ app/views/courses/index.html.erb:179
+  Rendered courses/index.html.erb within layouts/application (Duration: 22.7ms | Allocations: 9909)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 28.4ms | ActiveRecord: 2.9ms | Allocations: 16254)
+
+
