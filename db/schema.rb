@@ -63,14 +63,13 @@ ActiveRecord::Schema.define(version: 2020_07_02_064640) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "comment_history", default: ""
-    t.integer "commentable_id"
-    t.string "commentable_type"
-    t.bigint "customer_id", null: false
-    t.boolean "reply", default: false
+    t.integer "customer_id"
+    t.integer "article_id"
+    t.text "content"
+    t.integer "parent_id"
+    t.datetime "time_comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_comments_on_customer_id"
   end
 
   create_table "course_articles", force: :cascade do |t|
@@ -95,6 +94,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_064640) do
   create_table "courses", force: :cascade do |t|
     t.bigint "customer_id"
     t.string "name"
+    t.text "image"
     t.text "description"
     t.boolean "is_free"
     t.boolean "is_save"
@@ -108,14 +108,17 @@ ActiveRecord::Schema.define(version: 2020_07_02_064640) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
     t.string "name"
     t.string "phone_number"
     t.integer "roll_number"
+    t.text "avatar"
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_id"], name: "index_customers_on_role_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -131,7 +134,9 @@ ActiveRecord::Schema.define(version: 2020_07_02_064640) do
   create_table "topic_courses", force: :cascade do |t|
     t.bigint "topic_id"
     t.bigint "course_id"
-    t.index ["course_id"], name: "index_topic_courses_on__id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_topic_courses_on_course_id"
     t.index ["topic_id"], name: "index_topic_courses_on_topic_id"
   end
 
