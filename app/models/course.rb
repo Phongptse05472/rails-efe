@@ -10,4 +10,9 @@ class Course < ApplicationRecord
   #courses are only had by one user
   belongs_to :customer, optional: true
 
+  #activeStorage image
+  has_one_attached :image
+
+
+
 end
