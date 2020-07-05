@@ -37,7 +37,9 @@ gem "azure-storage-blob", require: false
 
 gem 'foreman'
 
-
+gem 'route_translator'
+gem 'kaminari'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
