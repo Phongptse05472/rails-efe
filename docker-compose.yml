@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  db:
+    image: 'postgres:11.5-alpine'
+    ports:
+      -  54321:5432
+    volumes:
+      - 'db:/var/lib/postgresql/data'
+    networks:
+      - lite
+
+  app:
+    build: .
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && rails s -p 3000 -b 0.0.0.0"
+    environment:
+      - SPROCKETS_CACHE=/cache
+    tty: true
+    stdin_open: true
+    tmpfs:
+      - /tmp
+    ports:
+      - 3000:3000
+    volumes:
+      - bundle_core:/bundle
+      - .:/app
+      - storage:/app/storage
+    depends_on:
+      - db
+    networks:
+      - lite
+
+volumes:
+  db:
+  bundle_core:
+  storage:
+
+networks:
+  lite:
+    driver: bridge
