@@ -52,17 +52,30 @@ end
 
 puts "\n...Seeing Courses...\n"
 (100101..100110).each do |x1|
-  c1 = Course.find_or_initialize_by(id: x1)
-  c1.name = Faker::Name.name
+  course = Course.find_or_initialize_by(id: x1)
+  course.name = Faker::Name.name
   # c1.image = Faker::Internet.url
-  c1.description = Faker::Lorem.paragraphs
-  c1.rate = Faker::Number.within(range: 1..5)
-  c1.is_free = Faker::Boolean.boolean
-  c1.is_save = Faker::Boolean.boolean
-  c1.is_owner = Faker::Boolean.boolean
-  c1.number_enrollment = Faker::Number.within(range: 1..10)
-  c1.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
-  c1.save!
+  course.customer_id = c.id_in_database
+  course.description = Faker::Lorem.paragraphs
+  course.rate = Faker::Number.within(range: 1..5)
+  course.is_free = Faker::Boolean.boolean
+  course.is_save = Faker::Boolean.boolean
+  course.is_owner = Faker::Boolean.boolean
+  course.number_enrollment = Faker::Number.within(range: 1..10)
+  course.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
+  course.save!
+
+  puts "\n ...seeing Course_progression..."
+    c4 = CourseProgression.find_or_initialize_by(id: x1)
+    # c4.customer_id = Faker::Number.within(range: 100101..100102)
+    c4.customer_id = c.id
+    # c4.course_id = Faker::Number.within(range: 100101..100110)
+    c4.course_id = course.id
+    c4.progression = Faker::Number.within(range: 1..100)
+    c4.current_article_id = Faker::Number.within(range: 100101...100111)
+    c4.updated_time = Faker::Time.backward(days: 5, period: :morning, format: :short)
+    c4.save!
+
 end
 
 puts "\n ...seeing Article...\n"
@@ -88,6 +101,8 @@ puts "\n ...seeing Topic...\n"
   c3.name = Faker::Name.first_name
   c3.save!
 end
+
+
 
 
 

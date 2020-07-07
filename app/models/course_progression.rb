@@ -1,8 +1,8 @@
 class CourseProgression < ApplicationRecord
-  # 1 user can have many procession
+  #customer_course through: course_progression
+  belongs_to :course
   belongs_to :customer
 
-  # 1 progression have 1 courses.rb
-  # belongs_to :course
+
 
 end
