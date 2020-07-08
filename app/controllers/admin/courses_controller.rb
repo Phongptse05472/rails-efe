@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
     @course_topic = Topic.includes(:courses).all
 
 
+
   end
 
 

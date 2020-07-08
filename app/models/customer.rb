@@ -8,10 +8,9 @@ class Customer < ApplicationRecord
   has_many :course_progressions
   has_many :courses, through: :course_progressions
 
-# # 1 user can have many comment
-#   has_many :comments
-#
-  has_many :courses
+#customer_article through: article_progression
+  has_many :article_progressions
+  has_many :articles, through: :article_progressions
 
 #active storage
   has_one_attached :image
