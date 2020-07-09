@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
-  resources :articles
-  resources :customers
-  # devise_for :users
-  resources :courses
 
+  devise_for :users, path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      password: 'secret',
+      confirmation: 'verification',
+      unlock: 'unblock',
+      registration: 'register',
+      sign_up: 'sign_up'}
 
-
-  devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'sign_up' }
-
-    #devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
-
+  namespace :admin do
+    as :user do
+      get "sign_in" => "devise/sessions#new"
+      delete 'sign_out', to: '/devise/sessions#destroy'
+    end
+    resources :users, except: :delete
+    resources :courses, except: [:create, :delete]
+    resources :articles , except: [:create, :delete]
+  end
 end
