@@ -1,11 +1,14 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show]
+  before_action :get_course, :set_article, only: [:show]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.limit(10)
-    @top_view_article = Article.order(view_number: :desc).limit(10)
+    # @articles = Course.find_by(params[:id])
+    #
+    @article_by_course = Course.find_by(params[:id])
+    # @article_by_course = Course.where("course_id = ?"  ,course_articles.id).order('created_at DESC')
+
   end
 
   # GET /articles/1
@@ -28,6 +31,10 @@ class ArticlesController < ApplicationController
     def set_article
       @article = Article.find(params[:id])
     end
+
+  def get_course
+    @course = Course.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
     def article_params

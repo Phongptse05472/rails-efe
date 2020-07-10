@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Hot Courses</h1>
+<h1>Courses</h1>
 
 <table>
   <thead>
@@ -43,7 +43,7 @@
   <thead>
   <tr>
     <th>Name</th>
-<!--    <th>Image</th>-->
+    <th>Image</th>
     <th>Description</th>
     <th>Is free</th>
     <th>Is save</th>
@@ -68,8 +68,8 @@
       <td><%= course.number_enrollment %></td>
       <td><%= course.enrollment_date %></td>
       <td><%= link_to 'Show', course %></td>
-<!--      <td><%#= link_to 'Edit', edit_course_path(course) %></td>-->
-<!--      <td><%#= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'} %></td>-->
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
   </tbody>
@@ -80,7 +80,7 @@
   <thead>
   <tr>
     <th>Name</th>
-<!--    <th>Image</th>-->
+    <th>Image</th>
     <th>Description</th>
     <th>Is free</th>
     <th>Is save</th>
@@ -114,7 +114,7 @@
 
 <br>
 
-<h2>side bar courses</h2>
+<h2>Free Courses</h2>
 <table>
   <thead>
   <tr>
@@ -136,86 +136,59 @@
 </table>
 <br>
 
-
-<!--<h2>Display Topic by Course</h2>-->
-
-<!--<table>-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th>Topic_Id</th>-->
-<!--    <th>Topic</th>-->
-<!--    <th>Course</th>-->
-<!--    <th>Enrollment Date</th>-->
-<!--    <th colspan="3"></th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-  <%# @course_topic.each do |course_topic| %>
-    <%# course_topic.courses.each do |x| %>
-<!--      <tr>-->
-<!--        <td><%#= course_topic.id %></td>-->
-<!--        <td><%#= course_topic.name %></td>-->
-<!--        <td><%#= x.name %></td>-->
-<!--        <td><%#= x.enrollment_date %></td>-->
-<!--        <td><%#= link_to 'Show', course %></td>-->
-<!--      </tr>-->
-    <%# end %>
-  <%# end %>
-<!--  </tbody>-->
-<!--</table>-->
-<!--<br>-->
-
-
-<h2>Top view Articles</h2>
+<h2>Display course by Topic</h2>
 
 <table>
   <thead>
   <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Link article</th>
-    <th>Tag</th>
-    <th>Duration</th>
-    <th>View number</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+    <th>Course_Id</th>
+    <th>Course</th>
+    <th>Course</th>
+    <th>Topic</th>
+    <th>Enrollment Date</th>
 
-  <tbody>
-<% @top_view_article.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.description %></td>
-      <td><%= article.link_article %></td>
-      <td><%= article.tag %></td>
-      <td><%= article.duration %></td>
-      <td><%= article.view_number %></td>
-      <td><%= link_to 'Show', article %></td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<h2> Topic</h2>
-
-<table>
-  <thead>
-  <tr>
-    <th>TopicID</th>
-    <th>TopicName</th>
     <th colspan="3"></th>
   </tr>
   </thead>
   <tbody>
-  <% @topic.each do |topic| %>
+  <% @topic_course.topic_courses.each do |topic_course| %>
     <tr>
-      <td><%= topic.id %></td>
-      <td><%= topic.name %></td>
-      <td><a href="#">Link to search page</a></td>
+      <td><%= topic_course.course.id %></td>
+      <td><%= topic_course.course.name %></td>
+      <td><%= topic_course.topic.name %></td>
+      <td><%= topic_course.course.enrollment_date %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 <br>
+
+<h2>Display Topic by Course</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Topic_Id</th>
+    <th>Topic</th>
+    <th>Course</th>
+    <th>Enrollment Date</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @course_topic.each do |course_topic| %>
+    <% course_topic.courses.each do |x| %>
+      <tr>
+        <td><%= course_topic.id %></td>
+        <td><%= course_topic.name %></td>
+        <td><%= x.name %></td>
+        <td><%= x.enrollment_date %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+<br>
+
 
 <%#= link_to 'New Course', new_course_path %>

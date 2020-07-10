@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action  :set_course, only: [:show]
 
   # GET /courses
   # GET /courses.json
@@ -10,11 +10,9 @@ class CoursesController < ApplicationController
     @free_course = Course.where(is_free: true).limit(5)
     @sidebar_course = Course.select(:name, :enrollment_date).order(enrollment_date: :desc).limit(5)
 
-    @topic_course = Course.find_by(params[:id])
-    # @topic_course = Course.find_by(params[:id])
+    @topic = Topic.all
 
-    @course_topic = Topic.includes(:courses).all
-
+    @top_view_article =Article.order(view_number: :desc).limit(5)
 
   end
 
@@ -35,62 +33,63 @@ class CoursesController < ApplicationController
 
   end
 
-  def update_enrollment_number
-    @course_enroll = Course.find_by(params[:id])
-    @course_enroll.increment(:number_enrollment, 1)
-    flash[:notice] = "Course has been enrolled!"
-
-  end
+  # def update_enrollment_number
+  #   @course_enroll = Course.find_by(params[:id])
+  #   @course_enroll.increment(:number_enrollment, 1)
+  #   flash[:notice] = "Course has been enrolled!"
+  #
+  # end
 
 
   #
   # POST /courses
   # POST /courses.json
-  def create
-    @course = Course.new(course_params)
-
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def create
+  #   @course = Course.new(course_params)
+  #
+  #   respond_to do |format|
+  #     if @course.save
+  #       format.html { redirect_to @course, notice: 'Course was successfully created.' }
+  #       format.json { render :show, status: :created, location: @course }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @course.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
-  def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @course.update(course_params)
+  #       format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @course }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @course.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /courses/1
   # # DELETE /courses/1.json
-  def destroy
-    @course.destroy
-    respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @course.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.find(params[:id])
+    @course = Course.find(params[:id  ])
   end
+
 
   # Only allow a list of trusted parameters through.
   def course_params

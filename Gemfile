@@ -37,6 +37,8 @@ gem "azure-storage-blob", require: false
 
 gem 'foreman'
 
+gem 'byebug'
+
 
 
 group :development, :test do

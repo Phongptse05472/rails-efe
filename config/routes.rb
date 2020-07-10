@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root "courses#index"
+
+  # match 'courses/update_enrollment_number' => 'courses#update_enrollment_number', via: :post
 
   devise_for :users,path: '', path_names: {
       sign_in: 'login',
@@ -9,13 +12,17 @@ Rails.application.routes.draw do
       registration: 'register',
       sign_up: 'sign_up'}
 
+  resources :courses, only: [:index, :show] do
+    resources :articles, only: [:index, :show]
+    get '/courses/:id', to: 'article#index'
+  end
+  resources :articles , only: [:index, :show]
+
+
   namespace :admin do
-    as :user do
-      get "sign_in" => "devise/sessions#new"
-      delete 'sign_out', to: '/devise/sessions#destroy'
-    end
     resources :users, except: :delete
     resources :courses, except: [:create, :delete]
     resources :articles , except: [:create, :delete]
+
   end
 end
