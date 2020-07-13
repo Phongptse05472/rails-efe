@@ -39,6 +39,8 @@ gem 'foreman'
 
 gem 'byebug'
 
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 
 
 group :development, :test do

@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Capstone</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'page', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'page', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'page' "data-turbolinks-track" => true %>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Edfective.vn - Homepage</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
+  <!-- CSS -->
 
-  <div class="container-fluid">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
+</head>
 
-    <%= yield %>
-  </body>
+<body>
+<div class="container-fluid">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+
+<div id='app'>
+  <router-view></router-view>
+</div>
+<%= javascript_pack_tag 'page'  %>
+
+<%= yield %>
+</body>
 </html>

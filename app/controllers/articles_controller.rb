@@ -1,12 +1,21 @@
 class ArticlesController < ApplicationController
-  before_action :get_course, :set_article, only: [:show]
+  before_action :set_article, only: [:show]
 
   # GET /articles
   # GET /articles.json
   def index
     # @articles = Course.find_by(params[:id])
     #
-    @article_by_course = Course.find_by(params[:id])
+    # @article_by_course = Course.find_by(params[:id])
+
+    @course_id = Article.find_by_id(params[:id])
+
+    @article_by_course =  Article.joins(:course_articles).where(course_articles: { course_id: @course_id })
+
+    # puts("course_id + ", @course_id)
+    # puts(@course_id).to_s
+
+    # @article_by_course = CourseArticle.joins(:article, :course).where("course_id = " + @course_id)
     # @article_by_course = Course.where("course_id = ?"  ,course_articles.id).order('created_at DESC')
 
   end
@@ -32,9 +41,7 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-  def get_course
-    @course = Course.find(params[:id])
-  end
+
 
     # Only allow a list of trusted parameters through.
     def article_params

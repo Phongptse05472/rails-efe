@@ -1,0 +1,553 @@
+
+#exampleSlider{
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+@media (max-width: 767px) {
+  #exampleSlider {
+    border-color: transparent;
+  }
+}
+#exampleSlider .MS-content {
+  margin: 15px 5%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  #exampleSlider .MS-content {
+    margin: 0;
+  }
+}
+#exampleSlider .MS-content .item {
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  border-right: none;
+  width: 23%;
+  margin-left: 30px;
+}
+#exampleSlider .MS-content .item:first-child {
+  margin-left: 0px;
+}
+@media (max-width: 992px) {
+  #exampleSlider .MS-content .item {
+    width: 30%;
+    margin: 20px;
+  }
+  #exampleSlider {
+    width: 90%;
+  }
+}
+@media (max-width: 991px) {
+  #exampleSlider .MS-content .item {
+    width: 49%;
+    margin: 20px;
+  }
+}
+@media (max-width: 767px) {
+  #exampleSlider .MS-content .item {
+    width: 80%;
+  }
+}
+
+#exampleSlider .MS-controls button {
+  position: absolute;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  outline: 0;
+  top: 25%;
+  color: black;
+}
+@media (max-width: 767px) {
+  #exampleSlider .MS-controls button {
+    display: none;
+  }
+}
+#exampleSlider .MS-controls button:hover {
+  cursor: pointer;
+}
+#exampleSlider .MS-controls .MS-left {
+  left: 10px;
+  /* background-color: black; */
+  padding: 10px;
+  /* border-radius: 50%; */
+}
+@media (max-width: 992px) {
+  #exampleSlider .MS-controls .MS-left {
+    left: -2px;
+  }
+}
+#exampleSlider .MS-controls .MS-right {
+  right: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider .MS-controls .MS-right {
+    right: -2px;
+  }
+}
+.item{
+  height: 100%;
+}
+.MS-content{
+  height: 100%;
+}
+
+ /* css of per course */
+.item img{
+	width: 100%;
+	height: 215px;
+  border-radius: 5px;
+    /* border: 1px solid black; */
+}
+.thumbnai video{
+  width: 100%;
+  height: 215px;
+  border-radius: 5px;
+}
+.author{
+    display: flex;
+    margin-top: 5px;
+    height: 120px;
+}
+.icon{
+    width: 20%;
+}
+.name{
+  width: 90%;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.4em;
+  height: 2.8em;
+  overflow: hidden;
+  white-space: initial;
+  text-overflow: ellipsis;
+}
+.title{
+    width: 80%;
+    font-size: 16px;
+    font-family: "Sinkin Sans 500 Medium",Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.title p{
+  font-size: 14px;
+}
+.title span{
+    font-weight: normal;
+}
+.icon img{
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+}
+.checked{
+    color: orange;
+}
+progress{
+  width: 90%;
+}
+.status{
+  margin-bottom: 0;
+  color: #2bc3cc;
+}
+
+/* css of topic  */
+.topic{
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+	grid-template-rows: 60px 60px;
+  grid-gap: 20px;
+  padding-left: 5%;
+}
+.topic a{
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 20px 20%;
+  background-color: #F69B58;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #F69B58;
+  /* font-size: 20px; */
+
+}
+.topic a:hover{
+  
+  background-color: white;
+  color: #F69B58;
+  border: 1px solid #F69B58;
+  /* font-size: 20px; */
+
+}
+
+
+/* slide 1 */
+#exampleSlider1{
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+@media (max-width: 767px) {
+  #exampleSlider1 {
+    border-color: transparent;
+  }
+}
+#exampleSlider1 .MS-content {
+  margin: 15px 5%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  #exampleSlider1 .MS-content {
+    margin: 0;
+  }
+}
+#exampleSlider1 .MS-content .item {
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  border-right: none;
+  width: 23%;
+  margin-left: 30px;
+}
+#exampleSlider1 .MS-content .item:first-child {
+  margin-left: 0px;
+}
+@media (max-width: 992px) {
+  #exampleSlider1 .MS-content .item {
+    width: 30%;
+    margin: 20px;
+  }
+  #exampleSlider1 {
+    width: 90%;
+  }
+}
+@media (max-width: 991px) {
+  #exampleSlider1 .MS-content .item {
+    width: 49%;
+    margin: 20px;
+  }
+}
+@media (max-width: 767px) {
+  #exampleSlider1 .MS-content .item {
+    width: 80%;
+  }
+}
+/* #exampleSlider .MS-content .item p {
+  font-size: 30px;
+  text-align: center;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0;
+  padding: 10px 0;
+} */
+#exampleSlider1 .MS-controls button {
+  position: absolute;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  outline: 0;
+  top: 45%;
+  color: orange;
+}
+@media (max-width: 767px) {
+  #exampleSlider1 .MS-controls button {
+    display: none;
+  }
+}
+#exampleSlider1 .MS-controls button:hover {
+  cursor: pointer;
+}
+#exampleSlider1 .MS-controls .MS-left {
+  left: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider1 .MS-controls .MS-left {
+    left: -2px;
+  }
+}
+#exampleSlider1 .MS-controls .MS-right {
+  right: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider1 .MS-controls .MS-right {
+    right: -2px;
+  }
+}
+
+/* slide 3 */
+#exampleSlider2{
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+@media (max-width: 767px) {
+  #exampleSlider2{
+    border-color: transparent;
+  }
+}
+#exampleSlider2 .MS-content {
+  margin: 15px 5%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  #exampleSlider2 .MS-content {
+    margin: 0;
+  }
+}
+#exampleSlider2 .MS-content .item {
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  border-right: none;
+  width: 23%;
+  margin-left: 30px;
+}
+#exampleSlider2 .MS-content .item:first-child {
+  margin-left: 0px;
+}
+@media (max-width: 992px) {
+  #exampleSlider2 .MS-content .item {
+    width: 30%;
+    margin: 20px;
+  }
+  #exampleSlider2 {
+    width: 90%;
+  }
+}
+@media (max-width: 991px) {
+  #exampleSlider2 .MS-content .item {
+    width: 49%;
+    margin: 20px;
+  }
+}
+@media (max-width: 767px) {
+  #exampleSlider2 .MS-content .item {
+    width: 80%;
+  }
+}
+
+#exampleSlider2 .MS-controls button {
+  position: absolute;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  outline: 0;
+  top: 45%;
+  color: orange;
+}
+@media (max-width: 767px) {
+  #exampleSlider2 .MS-controls button {
+    display: none;
+  }
+}
+#exampleSlider2 .MS-controls button:hover {
+  cursor: pointer;
+}
+#exampleSlider2 .MS-controls .MS-left {
+  left: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider2 .MS-controls .MS-left {
+    left: -2px;
+  }
+}
+#exampleSlider2 .MS-controls .MS-right {
+  right: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider2 .MS-controls .MS-right {
+    right: -2px;
+  }
+}
+/* slide 4 */
+
+#exampleSlider3{
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+@media (max-width: 767px) {
+  #exampleSlider3{
+    border-color: transparent;
+  }
+}
+#exampleSlider3 .MS-content {
+  margin: 15px 5%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  #exampleSlider3 .MS-content {
+    margin: 0;
+  }
+}
+#exampleSlider3 .MS-content .item {
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  border-right: none;
+  width: 23%;
+  margin-left: 30px;
+}
+#exampleSlider3 .MS-content .item:first-child {
+  margin-left: 0px;
+}
+@media (max-width: 992px) {
+  #exampleSlider3 .MS-content .item {
+    width: 30%;
+    margin: 20px;
+  }
+  #exampleSlider3 {
+    width: 90%;
+  }
+}
+@media (max-width: 991px) {
+  #exampleSlider3 .MS-content .item {
+    width: 49%;
+    margin: 20px;
+  }
+}
+@media (max-width: 767px) {
+  #exampleSlider3 .MS-content .item {
+    width: 80%;
+  }
+}
+
+#exampleSlider3 .MS-controls button {
+  position: absolute;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  outline: 0;
+  top: 45%;
+  color: orange;
+}
+@media (max-width: 767px) {
+  #exampleSlider3 .MS-controls button {
+    display: none;
+  }
+}
+#exampleSlider3 .MS-controls button:hover {
+  cursor: pointer;
+}
+#exampleSlider3 .MS-controls .MS-left {
+  left: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider3 .MS-controls .MS-left {
+    left: -2px;
+  }
+}
+#exampleSlider3 .MS-controls .MS-right {
+  right: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider3 .MS-controls .MS-right {
+    right: -2px;
+  }
+}
+
+/* slide 5 */
+#exampleSlider4{
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+@media (max-width: 767px) {
+  #exampleSlider4{
+    border-color: transparent;
+  }
+}
+#exampleSlider4 .MS-content {
+  margin: 15px 5%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  #exampleSlider4 .MS-content {
+    margin: 0;
+  }
+}
+#exampleSlider4 .MS-content .item {
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  border-right: none;
+  width: 23%;
+  margin-left: 30px;
+}
+#exampleSlider4 .MS-content .item:first-child {
+  margin-left: 0px;
+}
+@media (max-width: 992px) {
+  #exampleSlider4 .MS-content .item {
+    width: 30%;
+    margin: 20px;
+  }
+  #exampleSlider4 {
+    width: 90%;
+  }
+}
+@media (max-width: 991px) {
+  #exampleSlider4 .MS-content .item {
+    width: 49%;
+    margin: 20px;
+  }
+}
+@media (max-width: 767px) {
+  #exampleSlider4 .MS-content .item {
+    width: 80%;
+  }
+}
+
+#exampleSlider4 .MS-controls button {
+  position: absolute;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  outline: 0;
+  top: 45%;
+  color: orange;
+}
+@media (max-width: 767px) {
+  #exampleSlider4 .MS-controls button {
+    display: none;
+  }
+}
+#exampleSlider4 .MS-controls button:hover {
+  cursor: pointer;
+}
+#exampleSlider4 .MS-controls .MS-left {
+  left: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider4 .MS-controls .MS-left {
+    left: -2px;
+  }
+}
+#exampleSlider4 .MS-controls .MS-right {
+  right: 10px;
+}
+@media (max-width: 992px) {
+  #exampleSlider4 .MS-controls .MS-right {
+    right: -2px;
+  }
+}

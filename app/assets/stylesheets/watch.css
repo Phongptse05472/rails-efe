@@ -1,0 +1,172 @@
+.container{
+    position: relative;
+}
+.main{
+    margin: 20px auto;
+    /* display: flex; */
+    width: 85%;
+    height: auto;
+}
+.watch video{
+    width: 96%;
+    height: auto;
+}
+.watch{
+    width: 70%;
+    height: auto;
+}
+.list{
+    width: 30%;
+    height: auto;
+}
+.list-video ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.list-video ul li{
+    display: flex;
+}
+.l-left{
+    width: 35%;
+    margin-right: 10px;
+}
+.l-left video{
+    width: 100%;
+}
+.l-left img{
+    width: 100%;
+    height: 90px;
+}
+.l-right{
+    width: 60%;
+    
+}
+.l-title{
+    font-weight: bold;
+    font-family: sans-serif;
+}
+.l-author{
+    margin-top: 10px;
+    font-family: roboto;
+    color:#606060;
+}
+.l-view{
+    margin-top: 10px;
+    font-family: roboto;
+    color:#606060;
+}
+.list-video{
+    overflow-y: scroll;
+    height: 500px;
+    margin-bottom: 50px;
+    border-bottom: 2px solid linen;
+    border-top: 2px solid linen;
+    padding-top: 20px;
+}
+.list-video:last-child{
+    height: 800px;
+}
+
+.list-video::-webkit-scrollbar{
+    width: 10px;
+    background-color: #f9f9f9;
+}
+.list-video::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #cfcfcf;
+}
+/* .w-information{
+    width: 96%;
+    height: 300px;
+    border: 1px solid black;
+} */
+.comment{
+    width: 96%;
+    height: 600px;
+}
+.list h1{
+    color: peru;
+}
+.w-title{
+    padding-top: 20px;
+    height: auto;
+    border-bottom: 1px solid lightgray;
+    font-weight: bold;
+    width: 96%;
+}
+.w-title h2{
+   margin: 0px;
+}
+.w-description{
+    display: flex;
+    padding-top: 5px;
+    border-bottom: 1px solid lightgrey;
+    width: 96%;
+    margin-bottom: 50px;
+}
+.w-icon{
+    width: 10%;
+}
+.w-icon img{
+    width: 80px;
+    border: 1px solid gainsboro;
+    border-radius: 50px;
+}
+.w-author{
+    width: 90%;
+}
+.user-comment{
+width: 100%;
+display: flex;
+margin-top: 10px;
+height: auto;
+}
+.input{
+    width: 100%;
+display: flex;
+margin-top: 10px;
+height: auto;
+}
+.user-input{
+    width: 90%;
+    height: auto;
+}
+.user-input input{
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+.user-icon img{
+width: 50px;
+height: 50px;
+margin-right: 20px;
+vertical-align: middle;
+}
+.user-name{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.u-comment{
+    font-size: 15px;
+    font-family: sans-serif;
+}
+.list h1{
+    color: #2bc3cc;
+}
+/* body{
+    overflow: scroll;
+    height: 100%;
+} 
+body::-webkit-scrollbar{
+    width: 10px !important;
+    background-color: #f9f9f9;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #cfcfcf;
+} */

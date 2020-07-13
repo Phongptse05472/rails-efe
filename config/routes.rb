@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "courses#index"
+  root "pages#rootpage"
+  resources :courses
 
   # match 'courses/update_enrollment_number' => 'courses#update_enrollment_number', via: :post
 
@@ -12,11 +13,14 @@ Rails.application.routes.draw do
       registration: 'register',
       sign_up: 'sign_up'}
 
+  get 'home', to: 'courses#index'
   resources :courses, only: [:index, :show] do
     resources :articles, only: [:index, :show]
-    get '/courses/:id', to: 'article#index'
   end
-  resources :articles , only: [:index, :show]
+  resources :articles , only: [:index, :show]do
+    resources :articles, only: [:index, :show]
+
+  end
 
 
   namespace :admin do

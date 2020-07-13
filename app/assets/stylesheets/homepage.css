@@ -1,0 +1,162 @@
+body {
+    background-color: white;
+    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
+    color: #676767;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    position: fixed;
+    /* overflow-y: scroll; */
+}
+
+.main {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.right {
+    width: 88%;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(249, 249, 249);
+}
+
+.right h1 {
+    color: #676767;
+    font-size: 35px;
+    /* font-family: sans-serif; */
+}
+
+body::-webkit-scrollbar {
+    width: 0px;
+}
+
+
+/* .left{
+    width: 12%;
+} */
+
+@media only screen and (min-width: 768px) {
+    .left {
+        width: 210px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .left {
+        display: none;
+    }
+}
+
+.left ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.left ul a {
+    text-decoration: none;
+}
+
+.left ul li {
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10%;
+    font-size: 15px;
+    font-weight: bold;
+    color: #676767;
+    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
+}
+
+
+/* .top li:first-child{
+    background-color: lightgray;
+    font-weight: bold;
+} */
+
+.left ul li:hover {
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+.left {
+    height: 850px;
+    overflow-y: scroll;
+    font-size: 16px;
+    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
+}
+
+.left::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f9f9f9;
+}
+
+.left::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #cfcfcf;
+}
+
+.right {
+    height: 1000px;
+    overflow-y: scroll;
+}
+
+.right::-webkit-scrollbar {
+    width: 10px;
+    background-color: lightgrey;
+}
+
+.right::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: grey;
+}
+
+.top li a {
+    color: #676767;
+    vertical-align: middle;
+}
+
+.top li i {
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 5px;
+    color: #F69B58;
+    width: 28px;
+}
+
+.top li a i {
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 5px;
+    color: #F69B58;
+    width: 28px;
+}
+
+.show {
+    text-align: left;
+    padding-left: 0px !important;
+}
+
+.show a {
+    margin-left: 25px;
+    color: #F69B58;
+}
+
+
+/* .top li a i {} */
+
+.left h2 {
+    color: #676767;
+    padding-left: 12%;
+}
+
+.end {
+    height: 200px;
+}

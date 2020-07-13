@@ -21,29 +21,31 @@
   </tr>
   </thead>
 
-  <tbody>
-  <% @article_by_course.course_articles.each do |course_article| %>
+
+
+<!--  <tbody>-->
+  <%# @article_by_course.course_articles.each do |course_article| %>
     <%# course_article.articles.each do |x| %>
-    <tr>
-      <td><%= course_article.course.name %></td>
-      <td><%= course_article.article.id %></td>
-      <td><%= course_article.article.title %></td>
-      <td><%= course_article.article.description %></td>
-      <td><%= course_article.article.link_article %></td>
-      <td><%= course_article.article.tag %></td>
-      <td><%= course_article.article.duration %></td>
-      <td><%= course_article.article.number_complete %></td>
-      <td><%= course_article.article.view_number %></td>
-      <td><%= course_article.article.is_free %></td>
-      <td><%= course_article.article.is_favor %></td>
-      <td><%= course_article.article.link_file_attach %></td>
-      <td><a href="#">Play</a></td>
+<!--    <tr>-->
+<!--      <td><%#= course_article.course.name %></td>-->
+<!--      <td><%#= course_article.article.id %></td>-->
+<!--      <td><%#= course_article.article.title %></td>-->
+<!--      <td><%#= course_article.article.description %></td>-->
+<!--      <td><%#= course_article.article.link_article %></td>-->
+<!--      <td><%#= course_article.article.tag %></td>-->
+<!--      <td><%#= course_article.article.duration %></td>-->
+<!--      <td><%#= course_article.article.number_complete %></td>-->
+<!--      <td><%#= course_article.article.view_number %></td>-->
+<!--      <td><%#= course_article.article.is_free %></td>-->
+<!--      <td><%#= course_article.article.is_favor %></td>-->
+<!--      <td><%#= course_article.article.link_file_attach %></td>-->
+<!--      <td><a href="#">Play</a></td>-->
       <!--        <td><%#= link_to 'Edit', edit_article_path(article) %></td>-->
       <!--        <td><%#= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-    </tr>
-  <% end %>
+<!--    </tr>-->
   <%# end %>
-  </tbody>
+  <%# end %>
+<!--  </tbody>-->
 </table>
 
 <br>

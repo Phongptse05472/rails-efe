@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_064640) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
+    t.string "author"
     t.text "description"
     t.text "link_article"
     t.string "tag"

@@ -5,10 +5,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     #hot course
+    # byebug
     @courses = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(5)
     @free_course = Course.where(is_free: true).limit(5)
-    @sidebar_course = Course.select(:name, :enrollment_date).order(enrollment_date: :desc).limit(5)
 
     @topic = Topic.all
 
@@ -87,7 +87,7 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.find(params[:id  ])
+    @course = Course.find(params[:id])
   end
 
 

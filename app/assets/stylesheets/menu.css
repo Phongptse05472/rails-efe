@@ -1,0 +1,158 @@
+.menu {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    padding-top: 20px;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+}
+
+.logo {
+    padding-left: 1%;
+    height: 30px;
+    width: 20%;
+}
+
+.logo img {
+    height: 50px;
+    float: left;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.logo span {
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    color: dimgray;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+.search {
+    min-width: fit-content;
+    height: 35px;
+    border: 1px solid lightgray;
+    display: flex;
+    border-radius: 5px;
+    margin-left: 10%;
+    margin-right: 15%;
+}
+
+.search form {
+    display: flex;
+}
+
+.search input {
+    height: 35px;
+    width: 450px;
+    margin: 0;
+    border: none;
+    padding: 0;
+    padding-left: 20px;
+    border-right: 1px solid lightgrey;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.search button {
+    height: 35px;
+    width: 70px;
+    margin: 0;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.search button:hover {
+    background-color: lightgrey;
+}
+
+.search button img {
+    width: 20px;
+    vertical-align: middle;
+}
+
+.user {
+    height: 50px;
+    width: 25%;
+}
+
+.user img:first-child {
+    height: 50px;
+    vertical-align: middle;
+    border: 1px solid lawngreen;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user img {
+    height: 50px;
+    vertical-align: middle;
+    border: 1px solid lawngreen;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.notification {
+    border: none !important;
+    height: 30px !important;
+}
+
+
+/* .user a {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 20px;
+    background-color: #F69B58;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #F69B58;
+} */
+
+
+/* .user a:hover {
+    background-color: white;
+    color: #F69B58;
+    border: 1px solid #F69B58;
+} */
+
+.login {
+    margin-right: 20px;
+}
+
+.login {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 20px;
+    background-color: #F69B58;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #F69B58;
+}
+
+.signup {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 20px;
+    background-color: #F69B58;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #F69B58;
+}
+
+.login:hover,
+.signup:hover {
+    background-color: white;
+    color: #F69B58;
+    border: 1px solid #F69B58;
+}

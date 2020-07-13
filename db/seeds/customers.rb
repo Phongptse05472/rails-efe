@@ -51,9 +51,10 @@ puts "\n...Seeing Mentors & Students...\n"
 end
 
 puts "\n...Seeing Courses...\n"
-(100101..100110).each do |x1|
+(1..20).each do |x1|
   course = Course.find_or_initialize_by(id: x1)
   course.name = Faker::Name.name
+  course.author = Faker::Name.name
   # c1.image = Faker::Internet.url
   course.customer_id = c.id_in_database
   course.description = Faker::Lorem.paragraphs
@@ -73,13 +74,13 @@ puts "\n...Seeing Courses...\n"
     c4.current_article_id = Faker::Number.within(range: 100101...100111)
     c4.updated_time = Faker::Time.backward(days: 5, period: :morning, format: :short)
     c4.save!
-
 end
 
 puts "\n ...seeing Article...\n"
-(100101...100111).each do |x2|
+(1...30).each do |x2|
   c2 = Article.find_or_initialize_by(id: x2)
   c2.title = Faker::Educator.course_name
+  c2.author = Faker::Name.name
   c2.description = Faker::Lorem.paragraphs
   c2.link_article = Faker::Internet.url
   c2.tag = Faker::Verb.base
@@ -102,7 +103,7 @@ puts "\n ...seeing Article...\n"
 end
 
 puts "\n ...seeing Topic...\n"
-(1...3).each do |x3|
+(1...5).each do |x3|
   c3 = Topic.find_or_initialize_by(id: x3)
   c3.name = Faker::Name.first_name
   c3.save!
