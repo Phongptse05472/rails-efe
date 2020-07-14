@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <!DOCTYPE html>
+<header>
+
+</header>
 <div class="container">
   <div class="menu">
     <div class="logo">
@@ -30,16 +33,28 @@
           <% @courses.each do |course| %>
             <div id="item" class="item">
               <div class="thumbnai">
-                <a href="">
-                  <%= image_tag('java.png') %>
-                </a>
+
+                <% if course.image.attached? %>
+                  <%= image_tag(course.image) %>
+                <% else %>
+                  <%= image_tag('khoa_hoc_2.jpg') %>
+                <% end %>
+
+                <% if course.image.attached? %>
+                  <%= image_tag(course.image) %>
+                <% else %>
+                  <%= image_tag('khoa_hoc_2.jpg') %>
+                <% end %>
+
               </div>
               <div class="author">
                 <div class="icon">
                   <%= image_tag("2.jpg", alt: "") %>
                 </div>
                 <div class="title">
+
                   <%= course.name %>
+
                   <p><%= course.author %>></p>
                   <span v-for="n in parseInt(a.rate)" class="fa fa-star checked"></span>
                   <span class="fa fa-star-half-o checked"></span>
@@ -63,7 +78,11 @@
           <% @rate_course.each do |rate_course| %>
             <div id="item" class="item">
               <div class="thumbnai">
-                <%= image_tag("khoa_hoc_1.jpg", alt: "") %>
+                <% if rate_course.image.attached? %>
+                  <%= image_tag(rate_course.image) %>
+                <% else %>
+                  <%= image_tag('khoa_hoc_2.jpg') %>
+                <% end %>
               </div>
               <div class="author">
                 <div class="icon">
@@ -108,7 +127,7 @@
                 <div class="title">
                   <%= article.title %>
                   <p><%= article.tag %></p>
-                  <span><%= article.view_number %></span> <br> <span>4 năm trước</span>
+                  <span>View: <%= article.view_number %></span>
                 </div>
               </div>
             </div>
@@ -127,7 +146,12 @@
           <% @free_course.each do |free_course| %>
             <div id="item" class="item">
               <div class="thumbnai">
-                <%= image_tag('khoa_hoc_2.jpg') %>
+                <% if free_course.image.attached? %>
+                  <%= image_tag(free_course.image) %>
+                <% else %>
+                  <%= image_tag('khoa_hoc_2.jpg') %>
+                <% end %>
+
               </div>
               <div class="author">
                 <div class="icon">
@@ -135,7 +159,7 @@
                 </div>
                 <div class="title">
                   <%= free_course.name %>
-                  <p><%= free_course.author %></p>
+                  <p><%= free_course.description %></p>
                   <p> Rate : <%= free_course.rate %></p>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
@@ -158,6 +182,44 @@
     </div>
   </div>
 </div>
+
+<h1>Courses</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Is free</th>
+    <th>Is save</th>
+    <th>Is owner</th>
+    <th>Rate</th>
+    <th>Number enrollment</th>
+    <th>Enrollment date</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.name %></td>
+      <td><%= course.image %></td>
+      <td><%= course.description %></td>
+      <td><%= course.is_free %></td>
+      <td><%= course.is_save %></td>
+      <td><%= course.is_owner %></td>
+      <td><%= course.rate %></td>
+      <td><%= course.number_enrollment %></td>
+      <td><%= course.enrollment_date %></td>
+      <td><%= link_to 'Show', course %></td>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <script>
     $('#exampleSlider').multislider({

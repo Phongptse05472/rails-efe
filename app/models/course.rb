@@ -19,4 +19,5 @@ class Course < ApplicationRecord
 
 
 
+
 end

@@ -1,0 +1,9 @@
+<Cors>
+  <CorsRule>
+    <AllowedOrigins>http://localhost:3000</AllowedOrigins>
+    <AllowedMethods>PUT,GET</AllowedMethods>
+    <AllowedHeaders>x-ms-meta-data*,x-ms-meta-target*,x-ms-meta-abc</AllowedHeaders>
+    <ExposedHeaders>x-ms-meta-*</ExposedHeaders>
+    <MaxAgeInSeconds>200</MaxAgeInSeconds>
+  </CorsRule>
+  <Cors>
