@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'direct_upload' "data-turbolinks-track" => true %>
 <%= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
@@ -19,7 +20,7 @@
   <div class="field">
 
     <%= form.label :thumbnail %>
-    <%= form.file_field :image  %>
+    <%= form.file_field :image , multiple: true, direct_upload: true %>
 
   </div>
 

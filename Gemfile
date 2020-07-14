@@ -33,7 +33,7 @@ gem 'devise'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem "azure-storage-blob", require: false
+# gem "azure-storage-blob", require: false
 
 gem 'foreman'
 
@@ -41,7 +41,9 @@ gem 'byebug'
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
+gem "google-cloud-storage", "~> 1.11", require: false
 
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

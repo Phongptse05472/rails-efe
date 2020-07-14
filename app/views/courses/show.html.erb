@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= javascript_include_tag 'direct_upload' "data-turbolinks-track" => true %>
 <p>
   <strong>Name:</strong>
   <%= @course.name %>
@@ -9,6 +9,7 @@
 <div style="width: 400px; height: auto">
   <%= image_tag(@course.image) if @course.image.attached? %>
 </div>
+<%#= form.file_field :image, multiple: true, direct_upload: true %>
 
 <!--<div>-->
 <%# @course.image.each do |file| %>
