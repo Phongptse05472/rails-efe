@@ -3,38 +3,35 @@
   <ul class="top">
     <a href="#">
       <li>
-        <i class="fa fa-home"></i> Home Page
+        <i style="color: #2bc3cc;" class="fa fa-home"></i> Home Page
       </li>
     </a>
     <a href="#">
       <li>
         <a href="login.html">
-          <i class="fa fa-sign-in"></i> Sign in
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
         </a>
       </li>
     </a>
     <a href="#">
       <li>
         <a href="signup.html">
-          <i class="fa fa-user-circle-o"></i> Sign up
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
         </a>
       </li>
     </a>
   </ul>
 
-
+  <ul class="top">
+    <% courses.each do |c| %>
+      <li>
+        <a href="#">
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i><%= c.name %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
 
   <h2>Follow</h2>
-
-  <ul class="top">
-    <a href="#">
-      <%# byebug %>
-      <li>
-          <% courses.each do |c| %>
-            <i class="fa fa-graduation-cap"></i>
-            <%= c.name %>
-          <% end %>
-      </li>
-    </a>
-  </ul>
 </div>
+<!--</div>-->

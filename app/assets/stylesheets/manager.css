@@ -1,0 +1,26 @@
+.right table {
+    width: 60%;
+    color: white;
+    background-color: #454d55;
+    /* border-bottom: 1px solid lightslategray; */
+}
+
+.right table tr {
+    border-bottom: 1px solid lightslategray;
+}
+
+.right td {
+    border-bottom: 1px solid white;
+    padding: 0;
+}
+
+.right table tr {
+    border-bottom: 1px solid lightslategray;
+    height: 40px;
+}
+
+.right table tr th {
+    text-align: left;
+    height: 50px;
+    padding: 0;
+}

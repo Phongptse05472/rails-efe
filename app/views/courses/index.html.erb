@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
-
 <!DOCTYPE html>
-<header>
+<html>
+<%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-</header>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="icon" href="../logo/logo_1.PNG">
+
+
+</head>
+
+<body>
 <div class="container">
   <div class="menu">
     <div class="logo">
@@ -26,40 +34,35 @@
   <div class="main">
     <%= render partial: "layouts/left_side", locals: {courses: @left_side_courses} %>
 
+
     <div class="right">
       <h1>Hot Course</h1>
       <div id="exampleSlider1">
-        <div id="item" class="MS-content">
+        <div class="MS-content">
           <% @courses.each do |course| %>
             <div id="item" class="item">
               <div class="thumbnai">
-
                 <% if course.image.attached? %>
                   <%= image_tag(course.image) %>
                 <% else %>
                   <%= image_tag('khoa_hoc_2.jpg') %>
                 <% end %>
-
-                <% if course.image.attached? %>
-                  <%= image_tag(course.image) %>
-                <% else %>
-                  <%= image_tag('khoa_hoc_2.jpg') %>
-                <% end %>
-
               </div>
               <div class="author">
                 <div class="icon">
                   <%= image_tag("2.jpg", alt: "") %>
                 </div>
                 <div class="title">
-
-                  <%= course.name %>
-
-                  <p><%= course.author %>></p>
-                  <span v-for="n in parseInt(a.rate)" class="fa fa-star checked"></span>
+                  <div class="name">
+                    <%= course.name %>
+                  </div>
+                  <p><%= course.author %></p>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
                   <span class="fa fa-star-half-o checked"></span>
-                  <span v-for="n in (4- parseInt(a.rate))" class="fa fa-star-o"></span>
-                  <span><%= course.rate %></span>
+                  <span class="fa fa-star-o checked"></span>
+                  <span><%= course.rate %></span> <span>(<%= course.number_enrollment %>)</span>
                 </div>
               </div>
             </div>
@@ -70,8 +73,6 @@
           <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
         </div>
       </div>
-
-      <!--    Top courese-->
       <h1>Top Course</h1>
       <div id="exampleSlider">
         <div id="top" class="MS-content">
@@ -86,19 +87,20 @@
               </div>
               <div class="author">
                 <div class="icon">
-                  <%= image_tag("2.jpg", alt: "") %>
-
+                  <img src="../image/2.jpg" alt="">
                 </div>
                 <div class="title">
-                  <%= rate_course.name %>
-                  <p> <%= rate_course.author %></p>
-                  <p>Rate: <%= rate_course.rate %></p>
+                  <div class="name">
+                    <%= rate_course.name %>
+                  </div>
+                  <p><%= rate_course.author %></p>
+
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
-                  <span> Roll number: <%= rate_course.number_enrollment %></span>
+                  <span><%= rate_course.rate %></span> <span>  <%= rate_course.number_enrollment %></span>
                 </div>
               </div>
             </div>
@@ -109,9 +111,6 @@
           <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
         </div>
       </div>
-
-
-      <!--    top view-->
       <h1>Top views article</h1>
       <div id="exampleSlider2">
         <div id="topView" class="MS-content">
@@ -125,9 +124,11 @@
                   <img src="../image/2.jpg" alt="">
                 </div>
                 <div class="title">
-                  <%= article.title %>
-                  <p><%= article.tag %></p>
-                  <span>View: <%= article.view_number %></span>
+                  <div class="name">
+                    <%= article.title %>
+                  </div>
+                  <p><%= article.author %></p>
+                  <span><%= article.view_number %>lượt xem</span>
                 </div>
               </div>
             </div>
@@ -138,8 +139,6 @@
           <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
         </div>
       </div>
-
-      <!--      Free course-->
       <h1>Free Course</h1>
       <div id="exampleSlider3">
         <div id="free" class="MS-content">
@@ -151,22 +150,22 @@
                 <% else %>
                   <%= image_tag('khoa_hoc_2.jpg') %>
                 <% end %>
-
               </div>
               <div class="author">
                 <div class="icon">
                   <%= image_tag('2.jpg') %>
                 </div>
                 <div class="title">
-                  <%= free_course.name %>
-                  <p><%= free_course.description %></p>
-                  <p> Rate : <%= free_course.rate %></p>
+                  <div class="name">
+                    <%= free_course.name %>
+                  </div>
+                  <p><%= free_course.author %></p>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
-                  <span>enroll: <%= free_course.number_enrollment %></span>
+                  <span>(<%= free_course.number_enrollment %>)</span>
                 </div>
               </div>
             </div>
@@ -180,47 +179,20 @@
       <div class="end">
       </div>
     </div>
+
   </div>
+
 </div>
 
-<h1>Courses</h1>
+<!--<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<!--<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>-->
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Image</th>
-    <th>Description</th>
-    <th>Is free</th>
-    <th>Is save</th>
-    <th>Is owner</th>
-    <th>Rate</th>
-    <th>Number enrollment</th>
-    <th>Enrollment date</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<script src="../js/jquery-2.2.4.min.js"></script>
 
-  <tbody>
-  <% @courses.each do |course| %>
-    <tr>
-      <td><%= course.name %></td>
-      <td><%= course.image %></td>
-      <td><%= course.description %></td>
-      <td><%= course.is_free %></td>
-      <td><%= course.is_save %></td>
-      <td><%= course.is_owner %></td>
-      <td><%= course.rate %></td>
-      <td><%= course.number_enrollment %></td>
-      <td><%= course.enrollment_date %></td>
-      <td><%= link_to 'Show', course %></td>
-      <td><%= link_to 'Edit', edit_course_path(course) %></td>
-      <td><%= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<!-- Include Multislider -->
+<script src="../js/multislider.min.js"></script>
 
+<!-- Initialize element with Multislider -->
 <script>
     $('#exampleSlider').multislider({
         interval: 100000,
@@ -248,3 +220,26 @@
     //     duration: 1500
     // });
 </script>
+</body>
+
+</html>
+
+
+<%# @courses.each do |course| %>
+<!--    <tr>-->
+<!--      <td><%#= course.name %></td>-->
+<!--      <td><%#= course.image %></td>-->
+<!--      <td><%#= course.description %></td>-->
+<!--      <td><%#= course.is_free %></td>-->
+<!--      <td><%#= course.is_save %></td>-->
+<!--      <td><%#= course.is_owner %></td>-->
+<!--      <td><%#= course.rate %></td>-->
+<!--      <td><%#= course.number_enrollment %></td>-->
+<!--      <td><%#= course.enrollment_date %></td>-->
+<!--      <td><%#= link_to 'Show', course %></td>-->
+<!--            <td><%#= link_to 'Edit', edit_course_path(course) %></td>-->
+<!--      <td><%#= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'} %></td>-->
+<!--    </tr>-->
+<%# end %>
+<!--  </tbody>-->
+<!--</table>-->

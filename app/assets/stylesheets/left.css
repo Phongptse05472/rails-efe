@@ -1,7 +1,8 @@
-.left{
+.left {
     width: 12%;
 }
-.left ul{
+
+.left ul {
     list-style: none;
     padding: 0px;
     margin: 0px;
@@ -10,58 +11,68 @@
     margin-bottom: 10px;
 }
 
-.left ul li{
+.left ul li {
     height: 50px;
     line-height: 50px;
     padding-left: 10%;
     font-size: 15px;
     font-weight: bold;
     color: #333333;
-    font-family: "Sinkin Sans 500 Medium",Arial, Helvetica, sans-serif;
+    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
 }
+
+
 /* .top li:first-child{
     background-color: lightgray;
     font-weight: bold;
 } */
 
-.left ul li:hover{
+.left ul li:hover {
     background-color: lightgray;
     font-weight: bold;
 }
-.left{
+
+.left {
     height: 850px;
     overflow-y: scroll;
     font-size: 16px;
-    font-family: "Sinkin Sans 500 Medium",Arial, Helvetica, sans-serif;
+    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
 }
-.left::-webkit-scrollbar{
+
+.left::-webkit-scrollbar {
     width: 10px;
     background-color: #f9f9f9;
 }
-.left::-webkit-scrollbar-thumb{
+
+.left::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: #cfcfcf;
 }
-.right{
+
+.right {
     height: 1000px;
     overflow-y: scroll;
 }
-.right::-webkit-scrollbar{
+
+.right::-webkit-scrollbar {
     width: 10px;
     background-color: lightgrey;
 }
-.right::-webkit-scrollbar-thumb{
+
+.right::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: grey;
 }
-.top li i{
+
+.top li i {
     font-size: 25px;
     margin-left: 10px;
     margin-right: 5px;
-    color: #fcb53f;
+    color: #2bc3cc;
     width: 28px;
 }
-.left h2{
-    color: #2bc3cc;
+
+.left h2 {
+    color: #273044;
     padding-left: 12%;
 }

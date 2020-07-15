@@ -1,15 +1,14 @@
 body {
     background-color: white;
     font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
-    color: #676767;
+    color: #273044;
 }
 
 .container {
     width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin: -8px auto;
     position: fixed;
-    /* overflow-y: scroll; */
 }
 
 .main {
@@ -26,19 +25,14 @@ body {
 }
 
 .right h1 {
-    color: #676767;
-    font-size: 35px;
+    color: #273044;
+    font-size: 25px;
     /* font-family: sans-serif; */
 }
 
 body::-webkit-scrollbar {
     width: 0px;
 }
-
-
-/* .left{
-    width: 12%;
-} */
 
 @media only screen and (min-width: 768px) {
     .left {
@@ -71,15 +65,9 @@ body::-webkit-scrollbar {
     padding-left: 10%;
     font-size: 15px;
     font-weight: bold;
-    color: #676767;
+    color: #273044;
     font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
 }
-
-
-/* .top li:first-child{
-    background-color: lightgray;
-    font-weight: bold;
-} */
 
 .left ul li:hover {
     background-color: lightgray;
@@ -119,7 +107,7 @@ body::-webkit-scrollbar {
 }
 
 .top li a {
-    color: #676767;
+    color: #273044;
     vertical-align: middle;
 }
 
@@ -153,7 +141,7 @@ body::-webkit-scrollbar {
 /* .top li a i {} */
 
 .left h2 {
-    color: #676767;
+    color: #273044;
     padding-left: 12%;
 }
 
