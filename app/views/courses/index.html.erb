@@ -1,40 +1,20 @@
 <!DOCTYPE html>
 <html>
-<%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
-
 <head>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">-->
 
-  <link rel="icon" href="../logo/logo_1.PNG">
+<!--  <link rel="icon" href="../logo/logo_1.PNG">-->
 
-
+<!--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 </head>
 
 <body>
 <div class="container">
-  <div class="menu">
-    <div class="logo">
-      <a href="userhome.html">
-        <%= image_tag("logo_1.PNG") %>
-        <span>Edfective</span>
-      </a>
-    </div>
-    <div class="search">
-      <input type="text" placeholder="Tìm kiếm">
-      <button>
-        <%= image_tag("search.png") %>
-      </button>
-    </div>
-    <div class="user">
-      <a class="login" href="login.html">Sign in</a>
-      <a class="signup" href="signup.html">Sign up</a>
-    </div>
-  </div>
+  <%= render "layouts/header" %>
   <div class="main">
     <%= render partial: "layouts/left_side", locals: {courses: @left_side_courses} %>
-
-
     <div class="right">
       <h1>Hot Course</h1>
       <div id="exampleSlider1">
@@ -57,12 +37,22 @@
                     <%= course.name %>
                   </div>
                   <p><%= course.author %></p>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star-half-o checked"></span>
-                  <span class="fa fa-star-o checked"></span>
-                  <span><%= course.rate %></span> <span>(<%= course.number_enrollment %>)</span>
+
+                  <script>
+                      $(function(){
+                          $('.stars').stars();
+                      });
+                  </script>
+                  <div class="star">
+                  <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5" ></span>
+                  </div>
+
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star-half-o checked"></span>-->
+<!--                  <span class="fa fa-star-o checked"></span>-->
+                   <span>(<%= course.number_enrollment %>)</span>
                 </div>
               </div>
             </div>
@@ -87,7 +77,7 @@
               </div>
               <div class="author">
                 <div class="icon">
-                  <img src="../image/2.jpg" alt="">
+                  <%= image_tag("2.jpg", alt: "") %>
                 </div>
                 <div class="title">
                   <div class="name">
@@ -95,12 +85,20 @@
                   </div>
                   <p><%= rate_course.author %></p>
 
+                  <script>
+                      $(function(){
+                          $('.stars').stars();
+                      });
+                  </script>
+                  <span class="stars " data-rating="<%= rate_course.rate %>" data-num-stars="5" ></span>
+
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span><%= rate_course.rate %></span> <span>  <%= rate_course.number_enrollment %></span>
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span><%#= rate_course.rate %></span> -->
+                  <span>  <%= rate_course.number_enrollment %></span>
                 </div>
               </div>
             </div>
@@ -121,14 +119,14 @@
               </div>
               <div class="author">
                 <div class="icon">
-                  <img src="../image/2.jpg" alt="">
+                  <%= image_tag("2.jpg", alt: "") %>
                 </div>
                 <div class="title">
                   <div class="name">
                     <%= article.title %>
                   </div>
                   <p><%= article.author %></p>
-                  <span><%= article.view_number %>lượt xem</span>
+                  <span><%= article.view_number %> view</span>
                 </div>
               </div>
             </div>
@@ -153,18 +151,26 @@
               </div>
               <div class="author">
                 <div class="icon">
-                  <%= image_tag('2.jpg') %>
+                  <%= image_tag("2.jpg", alt: "") %>
                 </div>
                 <div class="title">
                   <div class="name">
                     <%= free_course.name %>
                   </div>
                   <p><%= free_course.author %></p>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
+
+                  <script>
+                      $(function(){
+                          $('.stars').stars();
+                      });
+                  </script>
+                  <span class="stars " data-rating="<%= free_course.rate %>" data-num-stars="5" ></span>
+
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
                   <span>(<%= free_course.number_enrollment %>)</span>
                 </div>
               </div>
@@ -179,21 +185,30 @@
       <div class="end">
       </div>
     </div>
-
   </div>
-
 </div>
 
 <!--<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<%#= javascript_include_tag "multislider", 'data-turbolinks-track': 'reload'  %>
+
+<%#= javascript_include_tag "jquery-2.2.4.min", 'data-turbolinks-track': 'reload'  %>
+<%#= javascript_include_tag "jquery-2.2.4.min.min" %>
+
 <!--<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>-->
 
-<script src="../js/jquery-2.2.4.min.js"></script>
+<!--<script src="jquery-2.2.4.min.js"></script>-->
+
+<!--<script src="/jquery-2.2.4.min.js?body=1"></script>-->
+
+
+<!--<script src="/multislider.min.js?body=1"></script>-->
 
 <!-- Include Multislider -->
-<script src="../js/multislider.min.js"></script>
+<!--<script src="multislider.min.js"></script>-->
 
 <!-- Initialize element with Multislider -->
 <script>
+
     $('#exampleSlider').multislider({
         interval: 100000,
         continuous: false
@@ -241,5 +256,5 @@
 <!--      <td><%#= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'} %></td>-->
 <!--    </tr>-->
 <%# end %>
-<!--  </tbody>-->
-<!--</table>-->
+
+

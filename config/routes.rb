@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # root "pages#rootpage"
-  # resources :courses
-  # resources :articles
+  # topics :courses
+  # topics :articles
   # match 'courses/update_enrollment_number' => 'courses#update_enrollment_number', via: :post
 
   devise_for :users,path: '', path_names: {
@@ -14,8 +14,17 @@ Rails.application.routes.draw do
       sign_up: 'sign_up'}
 
   get 'home', to: 'courses#index'
+  get 'topic', to: 'topics#show'
+
+  get 'courses', to: 'customers#index'
+  get 'mycourses', to: 'customers#mycourse'
+  get 'archives', to: 'customers#archive'
+  get 'favors', to: 'customers#favor'
+
   resources :courses, only: [:index, :show] do
     resources :articles, only: [:index, :show]
+    resources :topics, only: [:index, :show]
+
   end
   resources :articles , only: [:index, :show]do
     resources :articles, only: [:index, :show]

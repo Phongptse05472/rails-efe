@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     def left_side_data
       #mentor
       #admin
-      @left_side_courses = Course.select(:name).order(enrollment_date: :desc).limit(5)
+      @left_side_courses = Topic.select(:name).limit(5)
     end
+
+
+
+
 end

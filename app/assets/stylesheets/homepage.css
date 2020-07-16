@@ -109,6 +109,11 @@ body::-webkit-scrollbar {
 .top li a {
     color: #273044;
     vertical-align: middle;
+    display: inline-block;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .top li i {

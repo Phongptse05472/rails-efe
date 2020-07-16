@@ -7,14 +7,13 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     #hot course
-    # byebug
     @courses = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(5)
     @free_course = Course.where(is_free: true).limit(5)
 
     @topic = Topic.all
 
-    @top_view_article =Article.order(view_number: :desc).limit(5)
+    @top_view_article =Article.order(view_number: :desc).limit(10)
 
     # cover_url = rails_blob_path(@event.cover, disposition: "attachment", only_path: true)
 

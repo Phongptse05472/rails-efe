@@ -1,37 +1,30 @@
 <div class="left">
   <h2>Menu</h2>
   <ul class="top">
-    <a href="#">
-      <li>
+    <li>
+      <a href="#">
         <i style="color: #2bc3cc;" class="fa fa-home"></i> Home Page
-      </li>
-    </a>
-    <a href="#">
-      <li>
-        <a href="login.html">
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
-        </a>
-      </li>
-    </a>
-    <a href="#">
-      <li>
-        <a href="signup.html">
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
-        </a>
-      </li>
-    </a>
+      </a>
+    </li>
+    <li>
+      <a href="login.html">
+        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
+      </a>
+    </li>
+    <li>
+      <a href="signup.html">
+        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
+      </a>
+    </li>
   </ul>
-
+  <h2>Topic</h2>
   <ul class="top">
     <% courses.each do |c| %>
       <li>
-        <a href="#">
+        <%#= link_to c.name, topic_path, class: 'fa fa-user-circle-o', style: "color: #2bc3cc" %>
           <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i><%= c.name %>
-        </a>
+
       </li>
     <% end %>
   </ul>
-
-  <h2>Follow</h2>
 </div>
-<!--</div>-->
