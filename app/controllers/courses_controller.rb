@@ -1,13 +1,15 @@
 class CoursesController < ApplicationController
   # before_action  :set_course, only: [:show]
-  before_action  :set_course
-  include Rails.application.routes.url_helpers
-  # include ActiveStorage::Downloading
+  # before_action  :set_course , only: [:show, :show]
+  # before_save :to_slug
+
   # GET /courses
   # GET /courses.json
   def index
+
     #hot course
-    @courses = Course.order(number_enrollment: :desc).limit(20)
+    @course = Course.order(number_enrollment: :desc).limit(20)
+
     @rate_course = Course.order(rate: :desc).limit(5)
     @free_course = Course.where(is_free: true).limit(5)
 
@@ -15,7 +17,6 @@ class CoursesController < ApplicationController
 
     @top_view_article =Article.order(view_number: :desc).limit(10)
 
-    # cover_url = rails_blob_path(@event.cover, disposition: "attachment", only_path: true)
 
   end
 
@@ -23,9 +24,22 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-  rescue ActiveRecord::RecordNotFound
-    redirect_to :controller => "courses", :action => "index"
-    return
+    @course = Course.friendly.find(params[:id])
+    @free_course = Course.friendly.find(params[:id])
+    @rate_course = Course.friendly.find(params[:id])
+
+  end
+
+  def mycourse
+  end
+
+  def archived_courses
+  end
+
+  def favor_articles
+  end
+
+  def search
   end
 
   # GET /courses/new
@@ -35,14 +49,8 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+
     # @course.attachment_changes['image'].attachable
-
-  end
-
-  def update_enrollment_number
-    @course_enroll = Course.find_by(params[:id])
-    @course_enroll.increment(:number_enrollment, 1)
-    flash[:notice] = "Course has been enrolled!"
 
   end
 
@@ -93,12 +101,16 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.find(params[:id]) rescue nil
+    @course = Course.find(params[:id])
   end
 
 
   # Only allow a list of trusted parameters through.
   def course_params
     params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
+  end
+
+  def to_slug
+    self.slug = slug.parameterize.truncate(80, omission: "")
   end
 end

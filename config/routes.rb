@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # root "pages#rootpage"
+  root "pages#rootpage"
   # topics :courses
   # topics :articles
   # match 'courses/update_enrollment_number' => 'courses#update_enrollment_number', via: :post
@@ -14,12 +14,14 @@ Rails.application.routes.draw do
       sign_up: 'sign_up'}
 
   get 'home', to: 'courses#index'
-  get 'topic', to: 'topics#show'
+  get 'courses', to: 'courses#show'
+  get 'mycourses', to:'courses#mycourse'
+  get 'archived-courses', to:'courses#archived_courses'
+  get 'favor-articles', to:'courses#favor_articles'
+  get 'topic' ,to: 'topics#show'
+  get 'search' ,to: 'courses#search'
 
-  get 'courses', to: 'customers#index'
-  get 'mycourses', to: 'customers#mycourse'
-  get 'archives', to: 'customers#archive'
-  get 'favors', to: 'customers#favor'
+
 
   resources :courses, only: [:index, :show] do
     resources :articles, only: [:index, :show]

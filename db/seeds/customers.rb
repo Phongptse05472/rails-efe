@@ -1,4 +1,4 @@
-puts "\n...Seeding customers....\n"
+puts "\n...Seeding students....\n"
 #role
 r1 = Role.find_or_initialize_by(id: 1)
 r1.name = 'admin'

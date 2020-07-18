@@ -1,4 +1,8 @@
 class Course < ApplicationRecord
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   #course_article
   has_many :course_articles
   has_many :articles, through: :course_articles

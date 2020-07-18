@@ -6,7 +6,6 @@
   <title>Edfective.vn - favorite video</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
@@ -22,13 +21,13 @@
       <div class="menu-course">
         <ul>
           <li>
-            <a href="<%= mycourses_path %>">All course</a>
+            <%= link_to "My courses", "/mycourses"%>
           </li>
           <li>
-            <a href="<%= archives_path %>">Archive course</a>
+            <%= link_to "Archive course", "/archived-courses",  style: "color: #F69B58"%>
           </li>
           <li>
-            <a href="<%= favors_path %>" style="color: #F69B58;font-size: 16px;">Favor video</a>
+            <%= link_to "Favor article", "/favor-articles"%>
           </li>
         </ul>
       </div>

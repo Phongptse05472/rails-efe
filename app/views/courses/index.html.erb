@@ -1,14 +1,6 @@
-<!DOCTYPE html>
 <html>
 <head>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">-->
-
-<!--  <link rel="icon" href="../logo/logo_1.PNG">-->
-
-<!--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-</head>
 
 <body>
 <div class="container">
@@ -19,7 +11,7 @@
       <h1>Hot Course</h1>
       <div id="exampleSlider1">
         <div class="MS-content">
-          <% @courses.each do |course| %>
+          <% @course.each do |course| %>
             <div id="item" class="item">
               <div class="thumbnai">
                 <% if course.image.attached? %>
@@ -34,7 +26,7 @@
                 </div>
                 <div class="title">
                   <div class="name">
-                    <%= course.name %>
+                    <%= link_to course.name, course %>
                   </div>
                   <p><%= course.author %></p>
 
@@ -44,15 +36,14 @@
                       });
                   </script>
                   <div class="star">
-                  <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5" ></span>
+                    <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5" ></span>
                   </div>
-
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star-half-o checked"></span>-->
-<!--                  <span class="fa fa-star-o checked"></span>-->
-                   <span>(<%= course.number_enrollment %>)</span>
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star-half-o checked"></span>-->
+                  <!--                  <span class="fa fa-star-o checked"></span>-->
+                  <span>(<%= course.number_enrollment %>)</span>
                 </div>
               </div>
             </div>
@@ -81,7 +72,7 @@
                 </div>
                 <div class="title">
                   <div class="name">
-                    <%= rate_course.name %>
+                    <%= link_to rate_course.name, rate_course %>
                   </div>
                   <p><%= rate_course.author %></p>
 
@@ -94,10 +85,10 @@
 
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span><%#= rate_course.rate %></span> -->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span><%#= rate_course.rate %></span> -->
                   <span>  <%= rate_course.number_enrollment %></span>
                 </div>
               </div>
@@ -155,7 +146,7 @@
                 </div>
                 <div class="title">
                   <div class="name">
-                    <%= free_course.name %>
+                    <%= link_to free_course.name, free_course %>
                   </div>
                   <p><%= free_course.author %></p>
 
@@ -166,11 +157,11 @@
                   </script>
                   <span class="stars " data-rating="<%= free_course.rate %>" data-num-stars="5" ></span>
 
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star checked"></span>-->
-<!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
+                  <!--                  <span class="fa fa-star checked"></span>-->
                   <span>(<%= free_course.number_enrollment %>)</span>
                 </div>
               </div>
@@ -256,5 +247,4 @@
 <!--      <td><%#= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'} %></td>-->
 <!--    </tr>-->
 <%# end %>
-
 
