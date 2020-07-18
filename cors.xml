@@ -1,8 +1,8 @@
 <Cors>
-<CorsRule>
-<AllowedOrigins>https://localhost:3000</AllowedOrigins>
-<AllowedMethods>PUT</AllowedMethods>
-<AllowedHeaders>Origin, Content-Type, Content-MD5, x-ms-blob-content-disposition, x-ms-blob-type</AllowedHeaders>
-<MaxAgeInSeconds>3600</MaxAgeInSeconds>
-</CorsRule>
-<Cors>
+  <CorsRule>
+    <AllowedOrigins>https://localhost:3000</AllowedOrigins>
+    <AllowedMethods>PUT</AllowedMethods>
+    <AllowedHeaders>Origin, Content-Type, Content-MD5, x-ms-blob-content-disposition, x-ms-blob-type</AllowedHeaders>
+    <MaxAgeInSeconds>3600</MaxAgeInSeconds>
+  </CorsRule>
+  <Cors>

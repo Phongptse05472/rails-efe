@@ -1,17 +1,14 @@
-<%= javascript_include_tag 'direct_upload' "data-turbolinks-track" => true %>
-<%= form_with(model: course, local: true) do |form| %>
-  <% if course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-      <ul>
-        <% course.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_with(model: courses, local: true) do |form| %>
+  <%# if course.errors.any? %>
+<!--    <div id="error_explanation">-->
+<!--      <h2><%#= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>-->
+<!--      <ul>-->
+        <%# course.errors.full_messages.each do |message| %>
+<!--          <li><%#= message %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+  <%# end %>
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -24,17 +21,17 @@
 
   </div>
 
-  <p>
-    <% if @course.image.attached? %>
-      <%= form_for @course do |f| %>
-        <%= f.fields_for :avatar_attachment_attributes do |avatar_form| %>
-          <%= avatar_form.hidden_field :id, value: @course.image.id %>
-          <%= avatar_form.hidden_field :_destroy, value: true %>
-        <% end %>
-        <%= f.submit "Delete avatar" %>
-      <% end %>
-    <% end %>
-  </p>
+<!--  <p>-->
+    <%# if @course.image.attached? %>
+      <%#= form_for @course do |f| %>
+        <%#= f.fields_for :avatar_attachment_attributes do |avatar_form| %>
+          <%#= avatar_form.hidden_field :id, value: @course.image.id %>
+          <%#= avatar_form.hidden_field :_destroy, value: true %>
+        <%# end %>
+        <%#= f.submit "Delete avatar" %>
+      <%# end %>
+    <%# end %>
+<!--  </p>-->
 
   <div class="field">
     <%= form.label :description %>

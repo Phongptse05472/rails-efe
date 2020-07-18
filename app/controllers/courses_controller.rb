@@ -1,20 +1,19 @@
 class CoursesController < ApplicationController
   # before_action  :set_course, only: [:show]
-  before_action  :set_course
-  include Rails.application.routes.url_helpers
-  # include ActiveStorage::Downloading
+  # before_action  :set_course
+
   # GET /courses
   # GET /courses.json
   def index
     #hot course
     # byebug
     @courses = Course.order(number_enrollment: :desc).limit(20)
-    @rate_course = Course.order(rate: :desc).limit(5)
-    @free_course = Course.where(is_free: true).limit(5)
-
-    @topic = Topic.all
-
-    @top_view_article =Article.order(view_number: :desc).limit(5)
+    # @rate_course = Course.order(rate: :desc).limit(5)
+    # @free_course = Course.where(is_free: true).limit(5)
+    #
+    # @topic = Topic.all
+    #
+    # @top_view_article =Article.order(view_number: :desc).limit(5)
 
     # cover_url = rails_blob_path(@event.cover, disposition: "attachment", only_path: true)
 
@@ -31,7 +30,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @courses = Course.new
   end
 
   # GET /courses/1/edit
@@ -40,19 +39,12 @@ class CoursesController < ApplicationController
 
   end
 
-  def update_enrollment_number
-    @course_enroll = Course.find_by(params[:id])
-    @course_enroll.increment(:number_enrollment, 1)
-    flash[:notice] = "Course has been enrolled!"
-
-  end
-
 
 
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    @courses = Course.new(course_params)
 
     respond_to do |format|
       if @course.save
@@ -69,12 +61,12 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
+      if @courses.update(course_params)
+        format.html { redirect_to @courses, notice: 'Course was successfully updated.' }
+        format.json { render :show, status: :ok, location: @courses }
       else
         format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        format.json { render json: @courses.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -82,7 +74,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/
   # DELETE /courses/1.json
   def destroy
-    @course.destroy
+    @courses.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
       format.json { head :no_content }
@@ -94,7 +86,7 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.find(params[:id]) rescue nil
+    @courses = Course.find(params[:id])
   end
 
 

@@ -1,188 +1,188 @@
 <p id="notice"><%= notice %></p>
 
-<!DOCTYPE html>
-<header>
-  <script src="/assets/stylesheets/"></script>
+<!--<!DOCTYPE html>-->
+<!--<header>-->
+<!--  <script src="/assets/stylesheets/"></script>-->
   <%#= javascript_tag "alert('Just an example.')" %>
-</header>
-<div class="container">
-  <div class="menu">
-    <div class="logo">
-      <a href="userhome.html">
-        <%= image_tag("logo_1.PNG") %>
-        <span>Edfective</span>
-      </a>
-    </div>
-    <div class="search">
-      <input type="text" placeholder="Tìm kiếm">
-      <button>
-        <%= image_tag("search.png") %>
-      </button>
-    </div>
-    <div class="user">
-      <a class="login" href="login.html">Sign in</a>
-      <a class="signup" href="signup.html">Sign up</a>
-    </div>
-  </div>
-  <div class="main">
-    <%= render partial: "layouts/left_side", locals: {courses: @left_side_courses} %>
+<!--</header>-->
+<!--<div class="container">-->
+<!--  <div class="menu">-->
+<!--    <div class="logo">-->
+<!--      <a href="userhome.html">-->
+        <%#= image_tag("logo_1.PNG") %>
+<!--        <span>Edfective</span>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--    <div class="search">-->
+<!--      <input type="text" placeholder="Tìm kiếm">-->
+<!--      <button>-->
+        <%#= image_tag("search.png") %>
+<!--      </button>-->
+<!--    </div>-->
+<!--    <div class="user">-->
+<!--      <a class="login" href="login.html">Sign in</a>-->
+<!--      <a class="signup" href="signup.html">Sign up</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="main">-->
+    <%#= render partial: "layouts/left_side", locals: {courses: @left_side_courses} %>
 
-    <div class="right">
-      <h1>Hot Course</h1>
-      <div id="exampleSlider1">
-        <div id="item" class="MS-content">
-          <% @courses.each do |course| %>
-            <div id="item" class="item">
-              <div class="thumbnai">
+<!--    <div class="right">-->
+<!--      <h1>Hot Course</h1>-->
+<!--      <div id="exampleSlider1">-->
+<!--        <div id="item" class="MS-content">-->
+          <%# @courses.each do |course| %>
+<!--            <div id="item" class="item">-->
+<!--              <div class="thumbnai">-->
 
-                <% if course.image.attached? %>
-                  <%= image_tag(course.image) %>
-                <% else %>
-                  <%= image_tag('khoa_hoc_2.jpg') %>
-                <% end %>
+                <%# if course.image.attached? %>
+                  <%#= image_tag(course.image) %>
+                <%# else %>
+                  <%#= image_tag('khoa_hoc_2.jpg') %>
+                <%# end %>
 
-                <% if course.image.attached? %>
-                  <%= image_tag(course.image) %>
-                <% else %>
-                  <%= image_tag('khoa_hoc_2.jpg') %>
-                <% end %>
+                <%# if course.image.attached? %>
+                  <%#= image_tag(course.image) %>
+                <%# else %>
+                  <%#= image_tag('khoa_hoc_2.jpg') %>
+                <%# end %>
 
-              </div>
-              <div class="author">
-                <div class="icon">
-                  <%= image_tag("2.jpg", alt: "") %>
-                </div>
-                <div class="title">
+<!--              </div>-->
+<!--              <div class="author">-->
+<!--                <div class="icon">-->
+                  <%#= image_tag("2.jpg", alt: "") %>
+<!--                </div>-->
+<!--                <div class="title">-->
 
-                  <%= course.name %>
+                  <%#= course.name %>
 
-                  <p><%= course.author %>></p>
-                  <span v-for="n in parseInt(a.rate)" class="fa fa-star checked"></span>
-                  <span class="fa fa-star-half-o checked"></span>
-                  <span v-for="n in (4- parseInt(a.rate))" class="fa fa-star-o"></span>
-                  <span><%= course.rate %></span>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="MS-controls">
-          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
-      </div>
+<!--                  <p><%#= course.author %>></p>-->
+<!--                  <span v-for="n in parseInt(a.rate)" class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star-half-o checked"></span>-->
+<!--                  <span v-for="n in (4- parseInt(a.rate))" class="fa fa-star-o"></span>-->
+<!--                  <span><%#= course.rate %></span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+          <%# end %>
+<!--        </div>-->
+<!--        <div class="MS-controls">-->
+<!--          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>-->
+<!--          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      Top courese
-      <h1>Top Course</h1>
-      <div id="exampleSlider">
-        <div id="top" class="MS-content">
-          <% @rate_course.each do |rate_course| %>
-            <div id="item" class="item">
-              <div class="thumbnai">
-                <% if rate_course.image.attached? %>
-                  <%= image_tag(rate_course.image) %>
-                <% else %>
-                  <%= image_tag('khoa_hoc_2.jpg') %>
-                <% end %>
-              </div>
-              <div class="author">
-                <div class="icon">
-                  <%= image_tag("2.jpg", alt: "") %>
+<!--      Top courese-->
+<!--      <h1>Top Course</h1>-->
+<!--      <div id="exampleSlider">-->
+<!--        <div id="top" class="MS-content">-->
+          <%# @rate_course.each do |rate_course| %>
+<!--            <div id="item" class="item">-->
+<!--              <div class="thumbnai">-->
+                <%# if rate_course.image.attached? %>
+                  <%#= image_tag(rate_course.image) %>
+                <%# else %>
+                  <%#= image_tag('khoa_hoc_2.jpg') %>
+                <%# end %>
+<!--              </div>-->
+<!--              <div class="author">-->
+<!--                <div class="icon">-->
+                  <%#= image_tag("2.jpg", alt: "") %>
 
-                </div>
-                <div class="title">
-                  <%= rate_course.name %>
-                  <p> <%= rate_course.author %></p>
-                  <p>Rate: <%= rate_course.rate %></p>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span> Roll number: <%= rate_course.number_enrollment %></span>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="MS-controls">
-          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
-      </div>
+<!--                </div>-->
+<!--                <div class="title">-->
+                  <%#= rate_course.name %>
+<!--                  <p> <%#= rate_course.author %></p>-->
+<!--                  <p>Rate: <%#= rate_course.rate %></p>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span> Roll number: <%#= rate_course.number_enrollment %></span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+          <%# end %>
+<!--        </div>-->
+<!--        <div class="MS-controls">-->
+<!--          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>-->
+<!--          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>-->
+<!--        </div>-->
+<!--      </div>-->
 
 
-      top view
-      <h1>Top views article</h1>
-      <div id="exampleSlider2">
-        <div id="topView" class="MS-content">
-          <% @top_view_article.each do |article| %>
-            <div id="item" class="item">
-              <div class="thumbnai">
-                <%= image_tag('java.png') %>
-              </div>
-              <div class="author">
-                <div class="icon">
-                  <img src="../image/2.jpg" alt="">
-                </div>
-                <div class="title">
-                  <%= article.title %>
-                  <p><%= article.tag %></p>
-                  <span>View: <%= article.view_number %></span>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="MS-controls">
-          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
-      </div>
+<!--      top view-->
+<!--      <h1>Top views article</h1>-->
+<!--      <div id="exampleSlider2">-->
+<!--        <div id="topView" class="MS-content">-->
+          <%# @top_view_article.each do |article| %>
+<!--            <div id="item" class="item">-->
+<!--              <div class="thumbnai">-->
+                <%#= image_tag('java.png') %>
+<!--              </div>-->
+<!--              <div class="author">-->
+<!--                <div class="icon">-->
+<!--                  <img src="../image/2.jpg" alt="">-->
+<!--                </div>-->
+<!--                <div class="title">-->
+                  <%#= article.title %>
+<!--                  <p><%#= article.tag %></p>-->
+<!--                  <span>View: <%#= article.view_number %></span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+          <%# end %>
+<!--        </div>-->
+<!--        <div class="MS-controls">-->
+<!--          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>-->
+<!--          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      Free course
-      <h1>Free Course</h1>
-      <div id="exampleSlider3">
-        <div id="free" class="MS-content">
-          <% @free_course.each do |free_course| %>
-            <div id="item" class="item">
-              <div class="thumbnai">
-                <% if free_course.image.attached? %>
-                  <%= image_tag(free_course.image) %>
-                <% else %>
-                  <%= image_tag('khoa_hoc_2.jpg') %>
-                <% end %>
+<!--      Free course-->
+<!--      <h1>Free Course</h1>-->
+<!--      <div id="exampleSlider3">-->
+<!--        <div id="free" class="MS-content">-->
+          <%# @free_course.each do |free_course| %>
+<!--            <div id="item" class="item">-->
+<!--              <div class="thumbnai">-->
+                <%# if free_course.image.attached? %>
+                  <%#= image_tag(free_course.image) %>
+                <%# else %>
+                  <%#= image_tag('khoa_hoc_2.jpg') %>
+                <%# end %>
 
-              </div>
-              <div class="author">
-                <div class="icon">
-                  <%= image_tag('2.jpg') %>
-                </div>
-                <div class="title">
-                  <%= free_course.name %>
-                  <p><%= free_course.description %></p>
-                  <p> Rate : <%= free_course.rate %></p>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span>enroll: <%= free_course.number_enrollment %></span>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="MS-controls">
-          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
-      </div>
-      <div class="end">
-      </div>
-    </div>
-  </div>
-</div>
+<!--              </div>-->
+<!--              <div class="author">-->
+<!--                <div class="icon">-->
+                  <%#= image_tag('2.jpg') %>
+<!--                </div>-->
+<!--                <div class="title">-->
+                  <%#= free_course.name %>
+<!--                  <p><%#= free_course.description %></p>-->
+<!--                  <p> Rate : <%#= free_course.rate %></p>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span class="fa fa-star checked"></span>-->
+<!--                  <span>enroll: <%#= free_course.number_enrollment %></span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+          <%# end %>
+<!--        </div>-->
+<!--        <div class="MS-controls">-->
+<!--          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>-->
+<!--          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="end">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <h1>Courses</h1>
 
@@ -224,30 +224,30 @@
 
 <%= link_to 'New Courese', new_course_path %>
 
-<script>
-    $('#exampleSlider').multislider({
-        interval: 100000,
-        continuous: false
-    });
-    $('#exampleSlider1').multislider({
-        interval: 10000,
-        continuous: false
-    });
-    $('#exampleSlider2').multislider({
-        interval: 10000,
-        continuous: false
-    });
-    $('#exampleSlider3').multislider({
-        interval: 10000,
-        continuous: false
-    });
-    $('#exampleSlider4').multislider({
-        interval: 10000,
-        continuous: false
-    });
-    // {
-    //     interval: 8000,
-    //     slideAll: true,
-    //     duration: 1500
-    // });
-</script>
+<!--<script-->
+<!--    $('#exampleSlider').multislider({-->
+<!--        interval: 100000,-->
+<!--        continuous: false-->
+<!--    });-->
+<!--    $('#exampleSlider1').multislider({-->
+<!--        interval: 10000,-->
+<!--        continuous: false-->
+<!--    });-->
+<!--    $('#exampleSlider2').multislider({-->
+<!--        interval: 10000,-->
+<!--        continuous: false-->
+<!--    });-->
+<!--    $('#exampleSlider3').multislider({-->
+<!--        interval: 10000,-->
+<!--        continuous: false-->
+<!--    });-->
+<!--    $('#exampleSlider4').multislider({-->
+<!--        interval: 10000,-->
+<!--        continuous: false-->
+<!--    });-->
+<!--    // {-->
+<!--    //     interval: 8000,-->
+<!--    //     slideAll: true,-->
+<!--    //     duration: 1500-->
+<!--    // });-->
+<!--</script>-->
