@@ -1,20 +1,21 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
-
+  # before_action  :set_course, only: [:show]
+  before_action  :set_course
+  include Rails.application.routes.url_helpers
+  # include ActiveStorage::Downloading
   # GET /courses
   # GET /courses.json
   def index
     #hot course
-    @courses = Course.order(number_enrollment: :desc).limit(10)
+    @courses = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(5)
     @free_course = Course.where(is_free: true).limit(5)
-    @sidebar_course = Course.select(:name, :enrollment_date).order(enrollment_date: :desc).limit(5)
 
-    @topic_course = Course.find_by(params[:id])
-    # @topic_course = Course.find_by(params[:id])
+    @topic = Topic.all
 
-    @course_topic = Topic.includes(:courses).all
+    @top_view_article =Article.order(view_number: :desc).limit(10)
 
+    # cover_url = rails_blob_path(@event.cover, disposition: "attachment", only_path: true)
 
   end
 
@@ -22,7 +23,9 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-
+  rescue ActiveRecord::RecordNotFound
+    redirect_to :controller => "courses", :action => "index"
+    return
   end
 
   # GET /courses/new
@@ -32,8 +35,18 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    # @course.attachment_changes['image'].attachable
 
   end
+
+  def update_enrollment_number
+    @course_enroll = Course.find_by(params[:id])
+    @course_enroll.increment(:number_enrollment, 1)
+    flash[:notice] = "Course has been enrolled!"
+
+  end
+
+
 
   # POST /courses
   # POST /courses.json
@@ -65,7 +78,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
+  # DELETE /courses/
   # DELETE /courses/1.json
   def destroy
     @course.destroy
@@ -80,11 +93,12 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.find(params[:id])
+    @course = Course.find(params[:id]) rescue nil
   end
+
 
   # Only allow a list of trusted parameters through.
   def course_params
-    params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date, :image)
+    params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
   end
 end

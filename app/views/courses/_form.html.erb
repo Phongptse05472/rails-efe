@@ -17,12 +17,13 @@
   </div>
 
   <div class="field">
+
     <%= form.label :thumbnail %>
-    <%= form.file_field :image %>
+    <%= form.file_field :image  %>
+
   </div>
 
   <p>
-    <strong>Avatar:</strong><br />
     <% if @course.image.attached? %>
       <%= form_for @course do |f| %>
         <%= f.fields_for :avatar_attachment_attributes do |avatar_form| %>

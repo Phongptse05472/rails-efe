@@ -1,0 +1,28 @@
+.created {
+    padding: 20px 80px;
+    background-color: #F69B58;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.add_video {
+    height: auto;
+    display: inline-block;
+}
+
+.add_video a {
+    padding: 20px 30px;
+    background-color: #F69B58;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.c-right {
+    width: 50% !important;
+}

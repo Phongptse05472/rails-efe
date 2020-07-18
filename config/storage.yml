@@ -27,6 +27,10 @@ local:
 #   storage_account_name: efeproject
 #   storage_access_key: <%#= Rails.application.credentials.dig(:azure_storage,:secret_access_key) %>
 #   container: efe-project
+#service: AzureStorage
+#storage_account_name: <%#= ENV['efeproject'] %>
+#storage_access_key: <%#= ENV['u1gaHnD3F46pYIi+9q5xJ0H5/ucadT1BbSxIHT2VdkKr0y2fRfQs2Tx4UyBSgX9ZUen2AnJ3zJuLdgXyn07DNA=='] %>
+#container: <%#= ENV['efe-project'] %>
 
 
 # mirror:

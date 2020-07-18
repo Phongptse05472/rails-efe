@@ -1,0 +1,34 @@
+body{
+    background-color: white;
+    font-family: "Sinkin Sans 500 Medium",Arial, Helvetica, sans-serif;
+    color: #484848;
+}
+.container{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    position: fixed;
+    /* overflow-y: scroll; */
+}
+
+.main{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.right{
+    width: 88%;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(249, 249, 249);
+}
+.right h1{
+    color: #2bc3cc;
+    font-size: 35px;
+    /* font-family: sans-serif; */
+}
+body::-webkit-scrollbar{
+    width: 0px;
+}

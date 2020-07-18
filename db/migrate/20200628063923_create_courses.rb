@@ -3,6 +3,7 @@ class CreateCourses < ActiveRecord::Migration[6.0]
     create_table :courses do |t|
       t.belongs_to :customer
       t.string :name
+      t.string :author
       t.text :image
       t.text :description
       t.boolean :is_free

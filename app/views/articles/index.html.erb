@@ -4,51 +4,9 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Link article</th>
-      <th>Tag</th>
-      <th>Duration</th>
-      <th>Number complete</th>
-      <th>View number</th>
-      <th>Is free</th>
-      <th>Is favor</th>
-      <th>Is owner</th>
-      <th>Link file attach</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= article.link_article %></td>
-        <td><%= article.tag %></td>
-        <td><%= article.duration %></td>
-        <td><%= article.number_complete %></td>
-        <td><%= article.view_number %></td>
-        <td><%= article.is_free %></td>
-        <td><%= article.is_favor %></td>
-        <td><%= article.is_owner %></td>
-        <td><%= article.link_file_attach %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<h2>Top view Articles</h2>
-
-<table>
-  <thead>
   <tr>
+    <th>CourseName</th>
+    <th>ArticleID</th>
     <th>Title</th>
     <th>Description</th>
     <th>Link article</th>
@@ -58,32 +16,80 @@
     <th>View number</th>
     <th>Is free</th>
     <th>Is favor</th>
-    <th>Is owner</th>
     <th>Link file attach</th>
     <th colspan="3"></th>
   </tr>
   </thead>
 
-  <tbody>
-  <% @top_view_article.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.description %></td>
-      <td><%= article.link_article %></td>
-      <td><%= article.tag %></td>
-      <td><%= article.duration %></td>
-      <td><%= article.number_complete %></td>
-      <td><%= article.view_number %></td>
-      <td><%= article.is_free %></td>
-      <td><%= article.is_favor %></td>
-      <td><%= article.is_owner %></td>
-      <td><%= article.link_file_attach %></td>
-      <td><%= link_to 'Show', article %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </tbody>
+
+
+<!--  <tbody>-->
+  <%# @article_by_course.course_articles.each do |course_article| %>
+    <%# course_article.articles.each do |x| %>
+<!--    <tr>-->
+<!--      <td><%#= course_article.course.name %></td>-->
+<!--      <td><%#= course_article.article.id %></td>-->
+<!--      <td><%#= course_article.article.title %></td>-->
+<!--      <td><%#= course_article.article.description %></td>-->
+<!--      <td><%#= course_article.article.link_article %></td>-->
+<!--      <td><%#= course_article.article.tag %></td>-->
+<!--      <td><%#= course_article.article.duration %></td>-->
+<!--      <td><%#= course_article.article.number_complete %></td>-->
+<!--      <td><%#= course_article.article.view_number %></td>-->
+<!--      <td><%#= course_article.article.is_free %></td>-->
+<!--      <td><%#= course_article.article.is_favor %></td>-->
+<!--      <td><%#= course_article.article.link_file_attach %></td>-->
+<!--      <td><a href="#">Play</a></td>-->
+      <!--        <td><%#= link_to 'Edit', edit_article_path(article) %></td>-->
+      <!--        <td><%#= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--    </tr>-->
+  <%# end %>
+  <%# end %>
+<!--  </tbody>-->
 </table>
 
-<%= link_to 'New Article', new_article_path %>
+<br>
+
+<!--<h2>Top view Articles</h2>-->
+
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>Title</th>-->
+<!--    <th>Description</th>-->
+<!--    <th>Link article</th>-->
+<!--    <th>Tag</th>-->
+<!--    <th>Duration</th>-->
+<!--    <th>Number complete</th>-->
+<!--    <th>View number</th>-->
+<!--    <th>Is free</th>-->
+<!--    <th>Is favor</th>-->
+<!--    <th>Is owner</th>-->
+<!--    <th>Link file attach</th>-->
+<!--    <th colspan="3"></th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+<%# @top_view_article.each do |article| %>
+<!--    <tr>-->
+<!--      <td><%#= article.title %></td>-->
+<!--      <td><%#= article.description %></td>-->
+<!--      <td><%#= article.link_article %></td>-->
+<!--      <td><%#= article.tag %></td>-->
+<!--      <td><%#= article.duration %></td>-->
+<!--      <td><%#= article.number_complete %></td>-->
+<!--      <td><%#= article.view_number %></td>-->
+<!--      <td><%#= article.is_free %></td>-->
+<!--      <td><%#= article.is_favor %></td>-->
+<!--      <td><%#= article.is_owner %></td>-->
+<!--      <td><%#= article.link_file_attach %></td>-->
+<!--      <td><%#= link_to 'Show', article %></td>-->
+<!--      <td><%#= link_to 'Edit', edit_article_path(article) %></td>-->
+<!--      <td><%#= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--    </tr>-->
+<%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<%#= link_to 'New Article', new_article_path %>

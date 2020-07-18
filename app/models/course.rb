@@ -13,6 +13,11 @@ class Course < ApplicationRecord
   #activeStorage image
   has_one_attached :image
 
+  #customer_course through: course_progression
+  has_many :course_progressions
+  has_many :customers, through: :course_progressions
+
+
 
 
 end

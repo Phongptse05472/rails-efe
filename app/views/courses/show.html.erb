@@ -11,11 +11,11 @@
 </div>
 
 <!--<div>-->
-  <%# @course.image.each do |file| %>
+<%# @course.image.each do |file| %>
 <!--    <div>-->
-      <%#= image_tag file.preview(resize: "100x100>") %>
+<%#= image_tag file.preview(resize: "100x100>") %>
 <!--    </div>-->
-  <%# end %>
+<%# end %>
 <!--</div>-->
 
 <p>
@@ -54,6 +54,9 @@
 </p>
 
 
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
+<!--<%#= link_to 'Edit', edit_course_path(@course) %> |-->
 <%= link_to 'Back', courses_path %>
+<%= link_to 'View article',  articles_path %>
+
+
+<%= render 'form_enroll', course: @course %>

@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_064640) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
+    t.string "author"
     t.text "description"
     t.text "link_article"
     t.string "tag"
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_064640) do
   create_table "courses", force: :cascade do |t|
     t.bigint "customer_id"
     t.string "name"
+    t.string "author"
     t.text "image"
     t.text "description"
     t.boolean "is_free"

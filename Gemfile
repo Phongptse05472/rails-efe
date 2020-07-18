@@ -37,6 +37,12 @@ gem "azure-storage-blob", require: false
 
 gem 'foreman'
 
+gem 'byebug'
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+
+gem 'jquery-ui-rails'
 
 
 group :development, :test do
