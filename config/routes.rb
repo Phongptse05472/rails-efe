@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "pages#rootpage"
+  # root "pages#rootpage"
   # topics :courses
   # topics :articles
   # match 'courses/update_enrollment_number' => 'courses#update_enrollment_number', via: :post
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       registration: 'register',
       sign_up: 'sign_up'}
 
+  #common routes
   get 'home', to: 'courses#index'
   get 'courses', to: 'courses#show'
   get 'mycourses', to:'courses#mycourse'
@@ -33,7 +34,12 @@ Rails.application.routes.draw do
 
   end
 
+  #mentor routes
+  namespace :mentor do
+    resources :courses
+  end
 
+  #admin routes
   namespace :admin do
     resources :users, except: :delete
     resources :courses, except: [:create, :delete]
