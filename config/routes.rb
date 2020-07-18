@@ -13,9 +13,9 @@ Rails.application.routes.draw do
       registration: 'register',
       sign_up: 'sign_up'}
 
+  #common routes
   get 'home', to: 'courses#index'
   get 'topic', to: 'topics#show'
-
   get 'courses', to: 'customers#index'
   get 'mycourses', to: 'customers#mycourse'
   get 'archives', to: 'customers#archive'
@@ -31,11 +31,15 @@ Rails.application.routes.draw do
 
   end
 
+  #mentor routes
+  namespace :mentor do
+    resources :courses
+  end
 
+  #admin routes
   namespace :admin do
-    resources :users, except: :delete
+    resources :customers, except: :delete
     resources :courses, except: [:create, :delete]
     resources :articles , except: [:create, :delete]
-
   end
 end
