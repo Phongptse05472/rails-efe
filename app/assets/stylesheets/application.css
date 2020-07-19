@@ -12,5 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require homepage
+ *= require menu
+ *= require custom
+ *= require mycourse
+ *= require index
 
  */

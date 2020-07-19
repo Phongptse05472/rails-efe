@@ -19,14 +19,13 @@ Rails.application.routes.draw do
   get 'mycourses', to:'courses#mycourse'
   get 'archived-courses', to:'courses#archived_courses'
   get 'favor-articles', to:'courses#favor_articles'
-  get 'topic' ,to: 'topics#show'
+  get 'topic/:id' ,to: 'topics#show', :as => :show_topic
   get 'search' ,to: 'courses#search'
 
 
 
   resources :courses, only: [:index, :show] do
     resources :articles, only: [:index, :show]
-    resources :topics, only: [:index, :show]
 
   end
   resources :articles , only: [:index, :show]do

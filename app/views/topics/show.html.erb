@@ -3,11 +3,8 @@
 
 <head>
   <meta charset='utf-8'>
-  <title>Edfective.vn - course of topic</title>
+  <title>Course of topic</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel='stylesheet' type='text/css' href='../css/mycourse.css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="icon" href="../logo/logo_1.PNG">
   <!-- CSS -->
   <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
 
@@ -18,7 +15,7 @@
 <div class="container">
   <div class="main">
 
-    <%= render partial: "layouts/left_side", locals: {courses: @left_side_courses} %>
+    <%= render partial: "layouts/left_side", locals: {data: @data} %>
 
     <div class="right">
       <h1>

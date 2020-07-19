@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-
+    @courses = Course.where(topic_id: params[:id] )
   end
 
   private

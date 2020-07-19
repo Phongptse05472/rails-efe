@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     def left_side_data
       #mentor
       #admin
-      @left_side_courses = Topic.select(:name).limit(5)
+      @data = Topic.select(:name, :id).limit(5)
     end
 
 

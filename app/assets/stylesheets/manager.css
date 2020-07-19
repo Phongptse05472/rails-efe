@@ -6,12 +6,30 @@
 }
 
 .right table tr {
-    border-bottom: 1px solid lightslategray;
+    border-bottom: 1px solid springgreen;
+    border: 1px solid springgreen;
 }
 
 .right td {
-    border-bottom: 1px solid white;
+    /* border-bottom: 1px solid white; */
     padding: 0;
+}
+
+.right tr td:first-child {
+    padding-left: 5px;
+}
+
+.right tr th:first-child {
+    padding-left: 5px;
+}
+
+.right tr td a {
+    padding: 3px 10px;
+    background-color: #2bc3cc;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 2px;
+    color: white;
 }
 
 .right table tr {
@@ -23,4 +41,106 @@
     text-align: left;
     height: 50px;
     padding: 0;
+}
+
+.paging {
+    height: 100px;
+    display: block;
+}
+
+.paging a {
+    padding: 5px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #2bc3cc;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #2bc3cc;
+    line-height: 76px;
+}
+
+.paging a:first-child {
+    margin-right: 5px;
+    padding: 5px 25px;
+}
+
+.paging a:last-child {
+    padding: 5px 25px;
+}
+
+.right select {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    outline: white;
+    margin-bottom: 20px;
+}
+
+.right select option {
+    padding-top: 10px;
+    height: 20px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+.right select option:hover {
+    border: none;
+    outline: none;
+}
+
+.per-course {
+    display: flex;
+    height: 200px;
+    margin-bottom: 25px;
+}
+
+.list-course {
+    height: auto;
+}
+
+.c-left img {
+    width: 300px;
+    height: 160px;
+    margin-right: 10px;
+}
+
+.c-right {
+    width: 60%;
+}
+
+.c-right h2 {
+    margin-top: 0px;
+}
+
+.c-right span {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+    display: block;
+    line-height: 1.4em;
+    height: 4.2em;
+}
+
+.name {
+    font-weight: normal;
+    font-size: 12px;
+    margin: 0;
+}
+
+.video_course {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+}
+
+.managerAccount {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: fit-content;
 }

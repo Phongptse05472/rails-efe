@@ -1,0 +1,147 @@
+.right table {
+    width: 60%;
+    color: white;
+    background-color: #454d55;
+}
+
+.right table tr {
+    border-bottom: 1px solid springgreen;
+    border: 1px solid springgreen;
+}
+
+.right td {
+    padding: 0;
+    background-color: white;
+}
+
+.right tr td:first-child {
+    padding-left: 5px;
+}
+
+.right tr td a {
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 2px;
+    color: #273044;
+}
+
+.right tr td h2 a {
+    color: #273044;
+}
+
+.right table tr td:first-child {
+    color: #273044;
+}
+
+.right table tr {
+    border-bottom: 1px solid lightslategray;
+    height: 40px;
+}
+
+.right table tr th {
+    text-align: left;
+    height: 50px;
+    padding: 0;
+    padding-left: 5px;
+}
+
+.disable {
+    background-color: #2bc3cc;
+    color: white !important;
+}
+
+.paging {
+    height: 100px;
+    display: block;
+}
+
+.paging a {
+    padding: 5px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #2bc3cc;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #2bc3cc;
+    line-height: 76px;
+}
+
+.right select {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    outline: white;
+    margin-bottom: 20px;
+}
+
+.right select option {
+    padding-top: 10px;
+    height: 20px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+.right select option:hover {
+    border: none;
+    outline: none;
+}
+
+.per-course {
+    display: flex;
+    height: auto;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.list-course {
+    height: auto;
+}
+
+.c-left img {
+    width: 300px;
+    height: 160px;
+    margin-right: 10px;
+}
+
+.c-right {
+    width: 60%;
+}
+
+.c-right h2 {
+    margin-top: 0px;
+    padding-left: 0;
+}
+
+.c-right span {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+    display: block;
+    line-height: 1.4em;
+    height: 4.2em;
+}
+
+.name {
+    font-weight: normal;
+    font-size: 12px;
+    margin: 0;
+}
+
+.video_course {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+}
+
+.active {
+    color: #14bdee;
+    font-size: 18px;
+    text-decoration: underline;
+    text-underline-position: under;
+}

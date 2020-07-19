@@ -16,17 +16,36 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 
 </head>
-
 <body>
 <div class="container-fluid">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-</div>
 
-<div id='app'>
-  <router-view></router-view>
 </div>
-<%= javascript_pack_tag 'application' %>
-<%= yield %>
+<div class="container">
+  <div id="header">
+    <div class="menu">
+      <div class="logo">
+        <a href="#">
+          <%= image_tag("logo_1.PNG") %>
+          <span>Edfective</span><span style="color: #14bdee;">ly</span>
+        </a>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Tìm kiếm">
+        <button>
+          <%= image_tag("search.png") %>
+        </button>
+      </div>
+      <div class="user">
+        <a class="login" href="login.html">Sign in</a>
+        <a class="signup" href="signup.html">Sign up</a>
+      </div>
+    </div>
+  </div>
+  <%= yield %>
+  <div id="footer">
+  </div>
+</div>
 </body>
 </html>
