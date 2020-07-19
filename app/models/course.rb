@@ -18,8 +18,8 @@ class Course < ApplicationRecord
   has_one_attached :image
 
   #customer_course through: course_progression
-  has_many :course_progressions
-  has_many :customers, through: :course_progressions
+  has_many :customer_courses
+  has_many :customers, through: :customer_courses
 
 
 

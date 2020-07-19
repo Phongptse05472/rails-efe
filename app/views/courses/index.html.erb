@@ -1,205 +1,184 @@
-<html>
 <head>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Edfective.vn - Homepage</title>
+</head>
 
 <body>
-<div class="container">
-  <%= render "layouts/header" %>
-  <div class="main">
-    <%= render partial: "layouts/left_side", locals: {courses: @left_side_courses} %>
-    <div class="right">
-      <h1>Hot Course</h1>
-      <div id="exampleSlider1">
-        <div class="MS-content">
-          <% @course.each do |course| %>
-            <div id="item" class="item">
-              <div class="thumbnai">
-                <% if course.image.attached? %>
-                  <%= image_tag(course.image) %>
-                <% else %>
-                  <%= image_tag('khoa_hoc_2.jpg') %>
-                <% end %>
+<div class="main">
+  <%= render partial: "layouts/left_side", locals: {data: @data} %>
+  <div class="right">
+<!--    No login-->
+    <h1>Hot Course</h1>
+    <div id="exampleSlider1">
+      <div class="MS-content">
+        <% @course.each do |course| %>
+          <div id="item" class="item">
+            <div class="thumbnai">
+              <% if course.image.attached? %>
+                <%= image_tag(course.image) %>
+              <% else %>
+                <%= image_tag('course_1.jpg') %>
+              <% end %>
+            </div>
+            <div class="author">
+              <div class="icon">
+                <%= image_tag("2.jpg", alt: "") %>
               </div>
-              <div class="author">
-                <div class="icon">
-                  <%= image_tag("2.jpg", alt: "") %>
+              <div class="title">
+                <div class="name">
+                  <%= link_to course.name, course %>
                 </div>
-                <div class="title">
-                  <div class="name">
-                    <%= link_to course.name, course %>
-                  </div>
-                  <p><%= course.author %></p>
+                <p><%= course.author %></p>
 
-                  <script>
-                      $(function(){
-                          $('.stars').stars();
-                      });
-                  </script>
-                  <div class="star">
-                    <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5" ></span>
-                  </div>
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star-half-o checked"></span>-->
-                  <!--                  <span class="fa fa-star-o checked"></span>-->
-                  <span>(<%= course.number_enrollment %>)</span>
+                <script>
+                    $(function () {
+                        $('.stars').stars();
+                    });
+                </script>
+                <div class="star">
+                  <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
                 </div>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star-half-o checked"></span>
+                <span class="fa fa-star-o checked"></span>
+                <span>(<%= course.number_enrollment %>)</span>
               </div>
             </div>
-          <% end %>
-        </div>
-        <div class="MS-controls">
-          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
+          </div>
+        <% end %>
       </div>
-      <h1>Top Course</h1>
-      <div id="exampleSlider">
-        <div id="top" class="MS-content">
-          <% @rate_course.each do |rate_course| %>
-            <div id="item" class="item">
-              <div class="thumbnai">
-                <% if rate_course.image.attached? %>
-                  <%= image_tag(rate_course.image) %>
-                <% else %>
-                  <%= image_tag('khoa_hoc_2.jpg') %>
-                <% end %>
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <h1>Top Course</h1>
+    <div id="exampleSlider">
+      <div id="top" class="MS-content">
+        <% @rate_course.each do |rate_course| %>
+          <div id="item" class="item">
+            <div class="thumbnai">
+              <% if rate_course.image.attached? %>
+                <%= image_tag(rate_course.image) %>
+              <% else %>
+                <%= image_tag('khoa_hoc_2.jpg') %>
+              <% end %>
+            </div>
+            <div class="author">
+              <div class="icon">
+                <%= image_tag("2.jpg", alt: "") %>
               </div>
-              <div class="author">
-                <div class="icon">
-                  <%= image_tag("2.jpg", alt: "") %>
+              <div class="title">
+                <div class="name">
+                  <%= link_to rate_course.name, rate_course %>
                 </div>
-                <div class="title">
-                  <div class="name">
-                    <%= link_to rate_course.name, rate_course %>
-                  </div>
-                  <p><%= rate_course.author %></p>
+                <p><%= rate_course.author %></p>
 
-                  <script>
-                      $(function(){
-                          $('.stars').stars();
-                      });
-                  </script>
-                  <span class="stars " data-rating="<%= rate_course.rate %>" data-num-stars="5" ></span>
+                <script>
+                    $(function () {
+                        $('.stars').stars();
+                    });
+                </script>
+                <span class="stars " data-rating="<%= rate_course.rate %>" data-num-stars="5"></span>
 
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span><%#= rate_course.rate %></span> -->
-                  <span>  <%= rate_course.number_enrollment %></span>
-                </div>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span>  <%= rate_course.number_enrollment %></span>
               </div>
             </div>
-          <% end %>
-        </div>
-        <div class="MS-controls">
-          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
+          </div>
+        <% end %>
       </div>
-      <h1>Top views article</h1>
-      <div id="exampleSlider2">
-        <div id="topView" class="MS-content">
-          <% @top_view_article.each do |article| %>
-            <div id="item" class="item">
-              <div class="thumbnai">
-                <%= image_tag('java.png') %>
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <h1>Top views article</h1>
+    <div id="exampleSlider2">
+      <div id="topView" class="MS-content">
+        <% @top_view_article.each do |article| %>
+          <div id="item" class="item">
+            <div class="thumbnai">
+              <%= image_tag('java.png') %>
+            </div>
+            <div class="author">
+              <div class="icon">
+                <%= image_tag("2.jpg", alt: "") %>
               </div>
-              <div class="author">
-                <div class="icon">
-                  <%= image_tag("2.jpg", alt: "") %>
+              <div class="title">
+                <div class="name">
+                  <%= article.title %>
                 </div>
-                <div class="title">
-                  <div class="name">
-                    <%= article.title %>
-                  </div>
-                  <p><%= article.author %></p>
-                  <span><%= article.view_number %> view</span>
-                </div>
+                <p><%= article.author %></p>
+                <span><%= article.view_number %> view</span>
               </div>
             </div>
-          <% end %>
-        </div>
-        <div class="MS-controls">
-          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
+          </div>
+        <% end %>
       </div>
-      <h1>Free Course</h1>
-      <div id="exampleSlider3">
-        <div id="free" class="MS-content">
-          <% @free_course.each do |free_course| %>
-            <div id="item" class="item">
-              <div class="thumbnai">
-                <% if free_course.image.attached? %>
-                  <%= image_tag(free_course.image) %>
-                <% else %>
-                  <%= image_tag('khoa_hoc_2.jpg') %>
-                <% end %>
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <h1>Free Course</h1>
+    <div id="exampleSlider3">
+      <div id="free" class="MS-content">
+        <% @free_course.each do |free_course| %>
+          <div id="item" class="item">
+            <div class="thumbnai">
+              <% if free_course.image.attached? %>
+                <%= image_tag(free_course.image) %>
+              <% else %>
+                <%= image_tag('khoa_hoc_2.jpg') %>
+              <% end %>
+            </div>
+            <div class="author">
+              <div class="icon">
+                <%= image_tag("2.jpg", alt: "") %>
               </div>
-              <div class="author">
-                <div class="icon">
-                  <%= image_tag("2.jpg", alt: "") %>
+              <div class="title">
+                <div class="name">
+                  <%= link_to free_course.name, free_course %>
                 </div>
-                <div class="title">
-                  <div class="name">
-                    <%= link_to free_course.name, free_course %>
-                  </div>
-                  <p><%= free_course.author %></p>
+                <p><%= free_course.author %></p>
 
-                  <script>
-                      $(function(){
-                          $('.stars').stars();
-                      });
-                  </script>
-                  <span class="stars " data-rating="<%= free_course.rate %>" data-num-stars="5" ></span>
+                <script>
+                    $(function () {
+                        $('.stars').stars();
+                    });
+                </script>
+                <span class="stars " data-rating="<%= free_course.rate %>" data-num-stars="5"></span>
 
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <!--                  <span class="fa fa-star checked"></span>-->
-                  <span>(<%= free_course.number_enrollment %>)</span>
-                </div>
+                <span>(<%= free_course.number_enrollment %>)</span>
               </div>
             </div>
-          <% end %>
-        </div>
-        <div class="MS-controls">
-          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
+          </div>
+        <% end %>
       </div>
-      <div class="end">
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
       </div>
+    </div>
+    <div class="end">
     </div>
   </div>
 </div>
 
-<!--<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>-->
-<%#= javascript_include_tag "multislider", 'data-turbolinks-track': 'reload'  %>
-
-<%#= javascript_include_tag "jquery-2.2.4.min", 'data-turbolinks-track': 'reload'  %>
-<%#= javascript_include_tag "jquery-2.2.4.min.min" %>
-
-<!--<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>-->
-
-<!--<script src="jquery-2.2.4.min.js"></script>-->
-
-<!--<script src="/jquery-2.2.4.min.js?body=1"></script>-->
 
 
-<!--<script src="/multislider.min.js?body=1"></script>-->
 
 <!-- Include Multislider -->
-<!--<script src="multislider.min.js"></script>-->
+<!--<script src="../js/multislider.min.js"></script>-->
 
 <!-- Initialize element with Multislider -->
 <script>
-
     $('#exampleSlider').multislider({
         interval: 100000,
         continuous: false
@@ -227,24 +206,4 @@
     // });
 </script>
 </body>
-
-</html>
-
-
-<%# @courses.each do |course| %>
-<!--    <tr>-->
-<!--      <td><%#= course.name %></td>-->
-<!--      <td><%#= course.image %></td>-->
-<!--      <td><%#= course.description %></td>-->
-<!--      <td><%#= course.is_free %></td>-->
-<!--      <td><%#= course.is_save %></td>-->
-<!--      <td><%#= course.is_owner %></td>-->
-<!--      <td><%#= course.rate %></td>-->
-<!--      <td><%#= course.number_enrollment %></td>-->
-<!--      <td><%#= course.enrollment_date %></td>-->
-<!--      <td><%#= link_to 'Show', course %></td>-->
-<!--            <td><%#= link_to 'Edit', edit_course_path(course) %></td>-->
-<!--      <td><%#= link_to 'Destroy', course, method: :delete, data: {confirm: 'Are you sure?'} %></td>-->
-<!--    </tr>-->
-<%# end %>
 

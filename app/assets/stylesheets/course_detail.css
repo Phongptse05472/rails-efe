@@ -1,0 +1,112 @@
+.paging a {
+    padding: 5px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #2bc3cc;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #2bc3cc;
+    line-height: 76px;
+}
+
+.paging a:first-child {
+    margin-right: 5px;
+    padding: 5px 25px;
+}
+
+.paging a:last-child {
+    padding: 5px 25px;
+}
+
+.right .intro {
+    width: 80%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.top span:last-of-type {
+    font-weight: bold;
+}
+
+.intro img {
+    width: 30%;
+    float: left;
+    margin-right: 20px;
+}
+
+.right progress {
+    width: 300px;
+}
+
+.right .top {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 40px;
+}
+
+.top h1 {
+    font-size: xx-large;
+}
+
+.per-course {
+    display: flex;
+    height: auto;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    border-bottom: 1px dotted lightgray;
+    min-width: fit-content;
+    padding-bottom: 3px;
+}
+
+.list-course {
+    height: auto;
+}
+
+.c-left img {
+    width: 150px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.c-right {
+    width: 60%;
+}
+
+.c-right h2 {
+    margin-top: 0px;
+    padding-left: 0;
+    margin-bottom: 3px;
+}
+
+.c-right h2 a {
+    text-decoration: none;
+    color: #273044;
+}
+
+.c-right span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+    display: block;
+    line-height: 1.4em;
+    height: 2.8em;
+    font-weight: normal;
+}
+
+.name {
+    font-weight: normal;
+    font-size: 12px;
+    margin: 0;
+}
+
+.video_course {
+    /* font-weight: bold; */
+    font-size: 14px;
+    margin: 0;
+}
+
+.top p {
+    margin-bottom: 0;
+    font-weight: bold;
+    color: #2bc3cc;
+}

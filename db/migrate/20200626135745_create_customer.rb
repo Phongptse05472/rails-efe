@@ -6,7 +6,6 @@ class CreateCustomer < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :phone_number
       t.integer :roll_number
-      t.text :avatar
       t.boolean :is_active
 
       t.timestamps

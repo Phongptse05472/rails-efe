@@ -19,11 +19,11 @@
   </ul>
   <h2>Topic</h2>
   <ul class="top">
-    <% courses.each do |c| %>
+    <% data.each do |c| %>
       <li>
-        <%#= link_to c.name, topic_path, class: 'fa fa-user-circle-o', style: "color: #2bc3cc" %>
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i><%= c.name %>
-
+        <div>
+          <%= link_to c.name, show_topic_path(c.id) %>
+        </div>
       </li>
     <% end %>
   </ul>

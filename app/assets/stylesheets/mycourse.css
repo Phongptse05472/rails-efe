@@ -22,6 +22,19 @@
     line-height: 50px;
 }
 
+.menu-course ul li a:hover {
+    text-decoration: none;
+    color: #14bdee;
+    line-height: 50px;
+}
+
+.menu-course .active {
+    color: #14bdee;
+    font-size: 18px;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
 .per-course {
     display: flex;
     height: 200px;
@@ -67,23 +80,42 @@
 }
 
 .paging a {
-    padding: 10px 20px;
+    padding: 5px 12px;
     border-radius: 5px;
     text-decoration: none;
-    background-color: #F69B58;
+    background-color: #2bc3cc;
     font-weight: bold;
     color: white;
-    border: 1px solid #F69B58;
+    border: 1px solid #2bc3cc;
+    line-height: 76px;
+}
+
+.paging a:first-child {
+    margin-right: 5px;
+    padding: 5px 25px;
+}
+
+.paging a:last-child {
+    padding: 5px 25px;
+}
+
+.paging a:first-child:hover {
+    padding: 6px 25px;
+    background-color: #1f9da3;
+}
+
+.paging a:last-child:hover {
+    padding: 6px 25px;
+    background-color: #1f9da3;
 }
 
 .paging a:hover {
-    padding: 10px 20px;
+    padding: 6px 12px;
     border-radius: 5px;
     text-decoration: none;
-    background-color: white;
+    background-color: #1f9da3;
     font-weight: bold;
-    color: #F69B58;
-    border: 1px solid #F69B58;
+    border: 1px solid #1f9da3;
 }
 
 .end {
