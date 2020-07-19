@@ -28,6 +28,12 @@ class CoursesController < ApplicationController
     @free_course = Course.friendly.find(params[:id])
     @rate_course = Course.friendly.find(params[:id])
 
+
+
+  end
+
+  def customer_home
+
   end
 
   def mycourse

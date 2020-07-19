@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'archived-courses', to:'courses#archived_courses'
   get 'favor-articles', to:'courses#favor_articles'
   get 'topic/:id' ,to: 'topics#show', :as => :show_topic
+  get 'topic/:id/course' ,to: 'courses#show' , :as => :show_course_topic
   get 'search' ,to: 'courses#search'
 
 
