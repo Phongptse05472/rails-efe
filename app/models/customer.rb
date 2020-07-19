@@ -5,13 +5,13 @@ class Customer < ApplicationRecord
   has_one :role
 
 #customer_course through: course_progression
-  has_many :course_progressions
-  has_many :courses, through: :course_progressions
+  has_many :customer_courses
+  has_many :courses, through: :customer_courses
 
 #customer_article through: article_progression
-  has_many :article_progressions
-  has_many :articles, through: :article_progressions
+  has_many :customer_articles
+  has_many :articles, through: :customer_articles
 
 #active storage
-  has_one_attached :image
+  has_one_attached :avatar
 end

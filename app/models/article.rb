@@ -4,8 +4,10 @@ class Article < ApplicationRecord
   has_many :courses, through: :course_articles
 
   #customer_article through: article_progression
-  has_many :article_progressions
-  has_many :customers, through: :article_progressions
+  has_many :customer_articles
+  has_many :customers, through: :customer_articles
+
+  has_one_attached :image
 
 
 end

@@ -66,13 +66,13 @@ puts "\n...Seeing Courses...\n"
   course.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
   course.save!
 
-  puts "\n ...seeing Course_progression..."
-    c4 = CourseProgression.find_or_initialize_by(id: x1)
+  puts "\n ...seeing Customer_course..."
+    c4 = CustomerCourse.find_or_initialize_by(id: x1)
     c4.customer_id = c.id
     c4.course_id = course.id
-    c4.progression = Faker::Number.within(range: 1..100)
-    c4.current_article_id = Faker::Number.within(range: 100101...100111)
-    c4.updated_time = Faker::Time.backward(days: 5, period: :morning, format: :short)
+    c4.is_owner = Faker::Boolean.boolean
+    c4.progression = Faker::Number.within(range: 0...100)
+    c4.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
     c4.save!
 end
 
@@ -83,22 +83,20 @@ puts "\n ...seeing Article...\n"
   c2.author = Faker::Name.name
   c2.description = Faker::Lorem.paragraphs
   c2.link_article = Faker::Internet.url
-  c2.tag = Faker::Verb.base
+  # c2.tag_name.push("#java")
   c2.duration = Faker::Time.backward(days: 5, period: :morning, format: :short)
-  c2.number_complete = Faker::Number.within(range: 1..10)
   c2.view_number = Faker::Number.within(range: 1..100)
   c2.is_free = Faker::Boolean.boolean
-  c2.is_favor = Faker::Boolean.boolean
-  c2.is_owner = Faker::Boolean.boolean
   c2.link_file_attach = Faker::Internet.url
   c2.save!
 
-  c5 = ArticleProgression.find_or_initialize_by(id: x2)
+  c5 = CustomerArticle.find_or_initialize_by(id: x2)
   c5.customer_id = c.id
   c5.article_id = c2.id
+  c5.is_owner = Faker::Boolean.boolean
   c5.time_point = Faker::Time.backward(days: 5, period: :morning, format: :short)
   c5.is_viewed = Faker::Boolean.boolean
-  c5.updated_time = Faker::Time.backward(days: 5, period: :morning, format: :short)
+  c5.is_favor = Faker::Boolean.boolean
   c5.save!
 end
 

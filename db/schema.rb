@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_081058) do
+ActiveRecord::Schema.define(version: 2020_07_19_033035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,13 +51,10 @@ ActiveRecord::Schema.define(version: 2020_07_18_081058) do
     t.string "author"
     t.text "description"
     t.text "link_article"
-    t.string "tag"
+    t.string "tag_name"
     t.time "duration"
-    t.integer "number_complete"
     t.integer "view_number"
     t.boolean "is_free"
-    t.boolean "is_favor"
-    t.boolean "is_owner"
     t.text "link_file_attach"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -109,6 +106,27 @@ ActiveRecord::Schema.define(version: 2020_07_18_081058) do
     t.string "slug"
     t.index ["customer_id"], name: "index_courses_on_customer_id"
     t.index ["slug"], name: "index_courses_on_slug", unique: true
+  end
+
+  create_table "customer_articles", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "article_id"
+    t.boolean "is_owner"
+    t.time "time_point"
+    t.boolean "is_viewed"
+    t.boolean "is_favor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "customer_courses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "course_id"
+    t.boolean "is_owner"
+    t.float "progression"
+    t.date "enrollment_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customers", force: :cascade do |t|
