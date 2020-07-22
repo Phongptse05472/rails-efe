@@ -23,8 +23,6 @@ Rails.application.routes.draw do
   get 'topic/:id/course' ,to: 'courses#show' , :as => :show_course_topic
   get 'search' ,to: 'courses#search'
 
-
-
   resources :courses, only: [:index, :show] do
     resources :articles, only: [:index, :show]
 
@@ -41,9 +39,8 @@ Rails.application.routes.draw do
 
   #admin routes
   namespace :admin do
-    resources :users, except: :delete
-    resources :courses, except: [:create, :delete]
-    resources :articles , except: [:create, :delete]
-
+    resources :users, except: :destroy
+    resources :courses
+    resources :articles , except: [:create, :destroy]
   end
 end

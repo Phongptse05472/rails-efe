@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_pack_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Edfective.vn - Admin Page</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+<body>
+  <div class="container-fluid">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+  <div class="container">
+    <%= render "shared/header" %>
+    <div class="body-content">
+      <%= render "shared/admin_left_side" %>
+      <div class="right">
+        <%= yield %>
+      </div>
+      <div id="footer">
+    </div>
+    </div>
+  </div>
+</body>
+</html>
