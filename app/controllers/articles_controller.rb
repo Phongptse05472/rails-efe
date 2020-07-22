@@ -8,9 +8,7 @@ class ArticlesController < ApplicationController
     #
     # @article_by_course = Course.find_by(params[:id])
 
-    @course_id = Article.find_by_id(params[:id])
 
-    @article_by_course =  Article.joins(:course_articles).where(course_articles: { course_id: @course_id })
 
     # puts("course_id + ", @course_id)
     # puts(@course_id).to_s
@@ -23,6 +21,10 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article_detail = Article.all.where(id: params[:id])
+
+    @list_article = Article.joins(:courses).where('courses.id = ?' , params[:id])
+
   end
 
   # GET /articles/new

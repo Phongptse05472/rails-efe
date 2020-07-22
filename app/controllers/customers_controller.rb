@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show]
 
   # GET /customers
   # GET /customers.json
@@ -10,6 +10,7 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+
   end
 
   # GET /customers/new
@@ -18,12 +19,11 @@ class CustomersController < ApplicationController
   end
 
   def archive
-
   end
 
-  def mycourse
-
+  def profile
   end
+
 
   def favor
   end
@@ -31,6 +31,8 @@ class CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
   end
+
+
 
   # POST /customers
   # POST /customers.json
@@ -83,3 +85,4 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:user_id, :role_id, :name, :phone_number, :roll_number, :is_active, :image)
     end
 end
+

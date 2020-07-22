@@ -23,10 +23,11 @@
 
 </div>
 <div class="container">
+
   <div id="header">
     <div class="menu">
       <div class="logo">
-        <a href="#">
+        <a href="/home">
           <%= image_tag("logo_1.PNG") %>
           <span>Edfective</span><span style="color: #14bdee;">ly</span>
         </a>
@@ -37,12 +38,27 @@
           <%= image_tag("search.png") %>
         </button>
       </div>
-      <div class="user">
-        <a class="login" href="login.html">Sign in</a>
+
+      <% if   @devise_current_user.nil? %>
+        <div class="user">
+          <a href="#" id="myBtn">
+            <i onmouseover="myfunction()" onclick="myfunction()" class="fa fa-bell"></i>
+          </a>
+          <div id="notifications" style="margin-top: 13px;">
+            <h3>Notifications</h3>
+            <div style="height:200px;"></div>
+          </div>
+          <a href="profile.html" class="profile"><%= image_tag('1.jpg') %></a>
+        </div>
+      <% else %>
+        <div class="user">
+          <a class="login" href="login.html">Sign in</a>
+        </div>
         <a class="signup" href="signup.html">Sign up</a>
-      </div>
+      <% end %>
     </div>
   </div>
+
   <%= yield %>
   <div id="footer">
   </div>

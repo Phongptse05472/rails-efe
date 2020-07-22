@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   # before_action  :set_course, only: [:show]
   # before_action  :set_course , only: [:show, :show]
-  # before_save :to_slug
 
   # GET /courses
   # GET /courses.json
@@ -11,6 +10,7 @@ class CoursesController < ApplicationController
     @course = Course.order(number_enrollment: :desc).limit(20)
 
     @rate_course = Course.order(rate: :desc).limit(5)
+
     @free_course = Course.where(is_free: true).limit(5)
 
     @topic = Topic.all
@@ -25,9 +25,13 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.friendly.find(params[:id])
-    @free_course = Course.friendly.find(params[:id])
-    @rate_course = Course.friendly.find(params[:id])
+    # @free_course = Course.friendly.find(params[:id])
+    # @rate_course = Course.friendly.find(params[:id])
 
+    # article_article_path(id: @article.slug)
+
+    @list_article = Article.joins(:courses).where('courses.id = ?' , params[:id])
+    # @list_article = Article.joins(:courses).where('slug = :parameter OR courses.id = :parameter' , parameter:params[:id] )
 
 
   end

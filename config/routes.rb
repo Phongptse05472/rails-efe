@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   # topics :articles
   # match 'courses/update_enrollment_number' => 'courses#update_enrollment_number', via: :post
 
+  # devise_for :users, controllers: {
+  #     sessions: 'users/sessions'
+  # }
+
+
+
   devise_for :users,path: '', path_names: {
       sign_in: 'login',
       sign_out: 'logout',
@@ -16,17 +22,28 @@ Rails.application.routes.draw do
   #common routes
   get 'home', to: 'courses#index'
   get 'courses', to: 'courses#show'
+
+
   get 'mycourses', to:'courses#mycourse'
   get 'archived-courses', to:'courses#archived_courses'
   get 'favor-articles', to:'courses#favor_articles'
   get 'topic/:id' ,to: 'topics#show', :as => :show_topic
-  get 'topic/:id/course' ,to: 'courses#show' , :as => :show_course_topic
+
+  get 'course/:id' ,to: 'courses#show' , :as => :show_course_topic
+
+  get 'articles/:id', to: 'articles#show' , :as => :play_article
+
   get 'search' ,to: 'courses#search'
+
+  get 'user-home', to: 'courses#customer_home'
+
+  get 'profile', to: 'customers#index'
+
 
 
 
   resources :courses, only: [:index, :show] do
-    resources :articles, only: [:index, :show]
+    resources :articles,  only: [:index, :show]
 
   end
   resources :articles , only: [:index, :show]do
