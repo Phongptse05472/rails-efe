@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
     @course = Course.order(number_enrollment: :desc).limit(20)
 
     @rate_course = Course.order(rate: :desc).limit(5)
+
     @free_course = Course.where(is_free: true).limit(5)
 
     @topic = Topic.all
@@ -27,8 +28,6 @@ class CoursesController < ApplicationController
     @course = Course.friendly.find(params[:id])
     @free_course = Course.friendly.find(params[:id])
     @rate_course = Course.friendly.find(params[:id])
-
-
 
   end
 

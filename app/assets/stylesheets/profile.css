@@ -1,12 +1,16 @@
-.profile {
+/*.profile {*/
+/*    width: 60%;*/
+/*    height: 700px;*/
+/*    border: 1px dashed black;*/
+/*    margin-top: 40px;*/
+/*    margin-left: 40px;*/
+/*    padding: 30px;*/
+/*}*/
+.profile-page{
     width: 60%;
     height: 700px;
     border: 1px dashed black;
-    margin-top: 40px;
-    margin-left: 40px;
-    padding: 30px;
 }
-
 .avatar {
     display: flex;
 }
@@ -27,25 +31,25 @@
     margin-left: 20px;
 }
 
-.profile table tr td {
+.profile-page table tr td {
     height: 60px;
     vertical-align: middle;
     width: 200px;
 }
 
-.profile table {
+.profile-page table {
     width: 40%;
     margin-bottom: 20px;
 }
 
-.profile table tr td input {
+.profile-page table tr td input {
     height: 20px;
     border: 1px solid lightgray;
     border-radius: 5px;
     padding: 5px 10px;
 }
 
-.profile table tr td::before {
+.profile-page table tr td::before {
     height: 50px;
     font-weight: bold;
 }

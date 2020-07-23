@@ -1,0 +1,54 @@
+<head>
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- CSS -->
+  <%= stylesheet_link_tag 'profile', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="right">
+  <div class="profile-page">
+    <div class="avatar">
+      <%= image_tag('1.jpg') %>
+      <button>Change avatar</button>
+    </div>
+    <table>
+      <tr>
+        <th>Account</th>
+        <td><input type="text" value="TuanAnh123" disabled></td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td><input type="text" value="Tuan Anh"></td>
+      </tr>
+      <tr>
+        <th>Gender</th>
+        <td>
+          <input type="radio" name="male" checked>Male
+          <input type="radio" name="female" checked>Female
+        </td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><input type="text" value="Tuananh8989@gmail.com"></td>
+      </tr>
+      <tr>
+        <th>Phone Number</th>
+        <td><input type="text" value="0345666656"></td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>
+          Active
+          <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
+        </td>
+      </tr>
+
+    </table>
+    <a class="logout" href="homepage.html">Log out</a>
+
+
+  </div>
+
+  <div class="end">
+  </div>
+</div>

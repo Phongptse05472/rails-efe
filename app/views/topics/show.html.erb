@@ -8,50 +8,42 @@
   <!-- CSS -->
   <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-
 </head>
 
 <body>
-<div class="container">
-  <div class="main">
+<div class="right">
+  <h1>
+    Topic: <%= @topic.name %>
+  </h1>
 
-    <%= render partial: "layouts/left_side", locals: {data: @data} %>
-
-    <div class="right">
-      <h1>
-        Topic: <%= @topic.name %>
-      </h1>
-
-      <div class="list-course">
-        <% @courses.each do |c| %>
-          <div class="per-course">
-            <div class="c-left">
-              <%= image_tag('java.png') %>
-            </div>
-            <div class="c-right">
-<!--              <h2><%#= link_to c.name, course_path %></h2>-->
-              <h2><%= link_to c.name,  show_course_topic_path(c.id) %></h2>
-              <p><%= c.description %></p>
-              <p class="name"> Author: <%= c.author %></p>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-            </div>
-          </div>
-        <% end %>
+  <div class="list-course">
+    <% @courses.each do |c| %>
+      <div class="per-course">
+        <div class="c-left">
+          <%= image_tag('java.png') %>
+        </div>
+        <div class="c-right">
+          <!--              <h2><%#= link_to c.name, course_path %></h2>-->
+          <h2><%= link_to c.name, show_course_topic_path(c.id) %></h2>
+          <p><%= c.description %></p>
+          <p class="name"> Author: <%= c.author %></p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+        </div>
       </div>
-      <div class="paging">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-      </div>
-      <div class="end">
-      </div>
-    </div>
+    <% end %>
+  </div>
+  <div class="paging">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+  </div>
+  <div class="end">
   </div>
 </div>
 </body>

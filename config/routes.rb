@@ -13,6 +13,13 @@ Rails.application.routes.draw do
       registration: 'register',
       sign_up: 'sign_up'}
 
+  # Rails.application.routes.draw do
+  #   devise_for :users, controllers: {
+  #       sessions: 'users/sessions'
+  #   }
+  # end
+
+
   #common routes
   get 'home', to: 'courses#index'
   get 'courses', to: 'courses#show'
@@ -22,6 +29,7 @@ Rails.application.routes.draw do
   get 'topic/:id' ,to: 'topics#show', :as => :show_topic
   get 'topic/:id/course' ,to: 'courses#show' , :as => :show_course_topic
   get 'search' ,to: 'courses#search'
+  get 'profile' , to:'customers#show'
 
   resources :courses, only: [:index, :show] do
     resources :articles, only: [:index, :show]
