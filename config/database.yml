@@ -4,8 +4,8 @@ default: &default
   host: <%= ENV.fetch("DATABASE") { 'localhost' } %>
   database: capstone
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: 12345678
+  # username: postgres
+  # password: 12345678
 
 development:
   <<: *default
