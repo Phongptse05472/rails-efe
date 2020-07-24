@@ -6,16 +6,26 @@
         <i style="color: #2bc3cc;" class="fa fa-home"></i> Home Page
       </a>
     </li>
-    <li>
-      <a href="login.html">
-        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
-      </a>
-    </li>
-    <li>
-      <a href="signup.html">
-        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
-      </a>
-    </li>
+    <% if !current_user.present? %>
+      <li>
+        <a href="login.html">
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
+        </a>
+      </li>
+      <li>
+        <a href="signup.html">
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
+        </a>
+      </li>
+    <% else %>
+      <li>
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My courses
+      </li>
+
+
+
+    <% end %>
+
   </ul>
   <h2>Topic</h2>
   <ul class="top">

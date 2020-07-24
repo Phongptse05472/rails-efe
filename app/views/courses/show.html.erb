@@ -7,153 +7,65 @@
   <%= stylesheet_pack_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
-  <div class="right">
-    <div class="top">
+<div class="right">
+  <div class="top">
 
-      <h1>
-        <%= @course.name %>
-      </h1>
-      <span>by</span>
-      <span><%= @course.author %></span>
-      <div class="intro">
-        <%= image_tag('java_script.jpg') %>
-        <span><%= @course.description %> <br> <br></span>
-        <br>
-        <br>
-      </div>
-      <p>Progress(80%)</p>
-      <progress max="100" value="80"></progress>
+    <h1>
+      <%= @course.name %>
+    </h1>
+    <span>by</span>
+    <span><%= @course.author %></span>
+    <div class="intro">
+      <%= image_tag('java_script.jpg') %>
+      <span><%= @course.description %> <br> <br></span>
+      <br>
+      <br>
     </div>
-
-    <div class="buttom">
-      <h2>List Article in Java fundamental</h2>
-      <div class="per-course">
-        <div class="c-left">
-          <a href="#">
-            <img src="../thum/Capture60.PNG">
-          </a>
-        </div>
-        <div class="c-right">
-          <h2>
-            <a href="#">
-              Câu lệnh try catch
-            </a>
-          </h2>
-          <span>
-                            Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                            Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
-                            components, and powerful JavaScript plugins. Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                            responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                        </span>
-
-        </div>
-      </div>
-      <div class="per-course">
-        <div class="c-left">
-          <a href="#">
-            <img src="../thum/Capture60.PNG">
-          </a>
-        </div>
-        <div class="c-right">
-          <h2>
-            <a href="#">
-              Câu lệnh try catch
-            </a>
-          </h2>
-          <span>
-                                Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
-                                components, and powerful JavaScript plugins. Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                                responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                            </span>
-
-        </div>
-      </div>
-      <div class="per-course">
-        <div class="c-left">
-          <a href="#">
-            <img src="../thum/Capture60.PNG">
-          </a>
-        </div>
-        <div class="c-right">
-          <h2>
-            <a href="#">
-              Câu lệnh try catch
-            </a>
-          </h2>
-          <span>
-                                    Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                    Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
-                                    components, and powerful JavaScript plugins. Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                                    responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                </span>
-
-        </div>
-      </div>
-      <div class="per-course">
-        <div class="c-left">
-          <a href="#">
-            <img src="../thum/Capture60.PNG">
-          </a>
-        </div>
-        <div class="c-right">
-          <h2>
-            <a href="#">
-              Câu lệnh try catch
-            </a>
-          </h2>
-          <span>
-                                        Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                        Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
-                                        components, and powerful JavaScript plugins. Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                                        responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-          </span>
-
-        </div>
-      </div>
-      <div class="per-course">
-        <div class="c-left">
-          <a href="#">
-            <img src="../thum/Capture60.PNG">
-          </a>
-        </div>
-        <div class="c-right">
-          <h2>
-            <a href="#">
-              Câu lệnh try catch
-            </a>
-          </h2>
-          <span>
-                                            Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                            Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
-                                            components, and powerful JavaScript plugins. Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                                            responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                        </span>
-
-        </div>
-      </div>
-    </div>
-    <div class="paging">
-      <a href="#">
-        <i class="fa fa-caret-left"></i>
-      </a>
-      <a href="#">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">
-        <!--        <i class="fa fa-caret-right"></i>-->
-      </a>
-    </div>
-    <div class="end">
-    </div>
+    <p>Progress(80%)</p>
+    <progress max="100" value="80"></progress>
   </div>
 
+  <div class="buttom">
+    <h2>List Article in '<%= @course.name %>'</h2>
+    <% @list_article.each do |a| %>
+      <div class="per-course">
+        <div class="c-left">
+          <a href="#">
+            <%= image_tag('japanese.png') %>
+          </a>
+        </div>
+        <div class="c-right">
+          <h2>
+            <a href="#">
+             <%= link_to a.title, play_path(a.id) %>
+            </a>
+          </h2>
+          <span>
+          <%= a.description %>
+        </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="paging">
+    <a href="#">
+      <i class="fa fa-caret-left"></i>
+    </a>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">
+      <i class="fa fa-caret-right"></i>
+    </a>
+  </div>
+  <div class="end">
+  </div>
+</div>
 
 
 
-<!--<%#= link_to 'Edit', edit_course_path(@course) %> |-->
-<%= link_to 'Back', courses_path %>
-<%= link_to 'View article', articles_path %>
+
+
 

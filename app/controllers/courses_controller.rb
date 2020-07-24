@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
-  # before_action  :set_course, only: [:show]
-  # before_action  :set_course , only: [:show, :show]
+  before_action  :set_course, only: [:show]
   # before_save :to_slug
+
 
   # GET /courses
   # GET /courses.json
@@ -26,8 +26,10 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.friendly.find(params[:id])
-    @free_course = Course.friendly.find(params[:id])
-    @rate_course = Course.friendly.find(params[:id])
+    # @free_course = Course.friendly.find(params[:id])
+    # @rate_course = Course.friendly.find(params[:id])
+
+    @list_article = Article.joins(:courses).where('courses.id = ?', @course)
 
   end
 
@@ -106,7 +108,7 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.find(params[:id])
+    @course = Course.friendly.find(params[:id])
   end
 
 
@@ -115,7 +117,7 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
   end
 
-  def to_slug
-    self.slug = slug.parameterize.truncate(80, omission: "")
-  end
+  # def set_slug
+  #   @transaction = Transaction.find_by slug: params[:slug]
+  # end
 end

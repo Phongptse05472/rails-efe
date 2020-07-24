@@ -23,6 +23,13 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article_detail = Article.all.where(id: params[:id])
+
+    #right side - List arrticle in course
+    @course = Course.friendly.find(params[:id])
+    @list_article = Article.joins(:courses).where('courses.id = ?', @course)
+
+
   end
 
   # GET /articles/new

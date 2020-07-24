@@ -4,20 +4,20 @@ Rails.application.routes.draw do
   # topics :articles
   # match 'courses/update_enrollment_number' => 'courses#update_enrollment_number', via: :post
 
-  devise_for :users,path: '', path_names: {
-      sign_in: 'login',
-      sign_out: 'logout',
-      password: 'secret',
-      confirmation: 'verification',
-      unlock: 'unblock',
-      registration: 'register',
-      sign_up: 'sign_up'}
+  # devise_for :users,path: '', path_names: {
+  #     sign_in: 'login',
+  #     sign_out: 'logout',
+  #     password: 'secret',
+  #     confirmation: 'verification',
+  #     unlock: 'unblock',
+  #     registration: 'register',
+  #     sign_up: 'sign_up'}
 
-  # Rails.application.routes.draw do
-  #   devise_for :users, controllers: {
-  #       sessions: 'users/sessions'
-  #   }
-  # end
+  Rails.application.routes.draw do
+    devise_for :users, controllers: {
+        sessions: 'users/sessions'
+    }
+  end
 
 
   #common routes
@@ -30,12 +30,13 @@ Rails.application.routes.draw do
   get 'topic/:id/course' ,to: 'courses#show' , :as => :show_course_topic
   get 'search' ,to: 'courses#search'
   get 'profile' , to:'customers#show'
-
+  get 'user-home' , to:'courses#customer_home'
+  get 'articles/:id', to: 'articles#show' , :as => :play
   resources :courses, only: [:index, :show] do
-    resources :articles, only: [:index, :show]
+    resources :articles, only: [:index, :show], param: :slug
 
   end
-  resources :articles , only: [:index, :show]do
+  resources :articles , only: [:index, :show] do
     resources :articles, only: [:index, :show]
 
   end
