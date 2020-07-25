@@ -8,9 +8,9 @@ class ArticlesController < ApplicationController
     #
     # @article_by_course = Course.find_by(params[:id])
 
-    @course_id = Article.find_by_id(params[:id])
-
-    @article_by_course =  Article.joins(:course_articles).where(course_articles: { course_id: @course_id })
+    # @course_id = Article.find_by_id(params[:id])
+    #
+    # @article_by_course =  Article.joins(:course_articles).where(course_articles: { course_id: @course_id })
 
     # puts("course_id + ", @course_id)
     # puts(@course_id).to_s
@@ -23,11 +23,13 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @show_leftside = false
     @article_detail = Article.all.where(id: params[:id])
+    @course = Course.friendly.find(params[:course_slug])
 
     #right side - List arrticle in course
-    @course = Course.friendly.find(params[:id])
-    @list_article = Article.joins(:courses).where('courses.id = ?', @course)
+
+    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id)
 
 
   end
