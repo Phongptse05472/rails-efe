@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @course = Course.friendly.find(params[:id])
+    #@course = Course.friendly.find(params[:slug])
     # @free_course = Course.friendly.find(params[:id])
     # @rate_course = Course.friendly.find(params[:id])
 
@@ -73,7 +73,7 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.friendly.find(params[:id])
+    @course = Course.friendly.find(params[:slug])
   end
 
 

@@ -22,23 +22,18 @@ Rails.application.routes.draw do
 
   #common routes
   get 'home', to: 'courses#index'
-  get 'courses', to: 'courses#show'
-  get 'mycourses', to:'courses#mycourse'
-  get 'archived-courses', to:'courses#archived_courses'
-  get 'favor-articles', to:'courses#favor_articles'
-  get 'topic/:id' ,to: 'topics#show', :as => :show_topic
-  get 'topic/:id/course' ,to: 'courses#show' , :as => :show_course_topic
-  get 'search' ,to: 'courses#search', :as => :search_courses
-  get 'profile' , to:'customers#show'
-  get 'user-home' , to:'courses#customer_home'
-  get 'articles/:id', to: 'articles#show' , :as => :play
-  resources :courses, only: [:index, :show] do
-    resources :articles, only: [:index, :show], param: :slug
-
-  end
-  resources :articles , only: [:index, :show] do
-    resources :articles, only: [:index, :show]
-
+  get 'mycourses', to: 'courses#mycourse'
+  get 'archived-courses', to: 'courses#archived_courses'
+  get 'favor-articles', to: 'courses#favor_articles'
+  get 'topic/:id', to: 'topics#show', :as => :show_topic
+  get 'topic/:id/course', to: 'courses#show', :as => :show_course_topic
+  get 'search', to: 'courses#search'
+  get 'profile', to: 'customers#show'
+  get 'user-home', to: 'courses#customer_home'
+  # get 'articles/:id', to: 'articles#show' , :as => :play
+  # get 'courses/:id', to: 'courses#show' , :as => :course_details
+    resources :courses, only: [:index, :show], param: :slug do
+      resources :articles, only: [:index, :show]
   end
 
   #mentor routes
