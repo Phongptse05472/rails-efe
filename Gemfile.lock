@@ -108,6 +108,7 @@ GEM
       activesupport (>= 5.0.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    jw_player_helper (0.0.1)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -253,6 +254,7 @@ DEPENDENCIES
   friendly_id (~> 5.2.4)
   jbuilder (~> 2.7)
   jquery-ui-rails
+  jw_player_helper
   listen (~> 3.2)
   pg (~> 1.2)
   pg_search
