@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     #admin
     @data = Topic.select(:name, :id).limit(5)
 
+    # @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)
     @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)
   end
 end

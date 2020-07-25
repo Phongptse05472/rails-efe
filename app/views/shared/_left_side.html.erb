@@ -19,9 +19,15 @@
       </li>
     <% else %>
       <li>
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My courses
+        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My courses
       </li>
 
+      <% course.each do |a| %>
+        <li>
+         <%= link_to a.name, "/"%>
+
+        </li>
+      <% end %>
 
 
     <% end %>
