@@ -6,12 +6,12 @@
         <span>Edfective</span><span style="color: #14bdee;">ly</span>
       </a>
     </div>
-    <div class="search">
-      <input type="text" placeholder="Search">
-      <button>
+    <%= form_tag search_courses_path, class: "search", method: :get do %>
+      <%= text_field_tag 'q', params[:q], placeholder: "Search a Courses...", required: true, autocomplete: "off" %>
+      <button type="submit">
         <%= image_tag("search.png") %>
       </button>
-    </div>
+    <% end %>
     <% if !current_user.present? %>
       <div class="user">
         <a class="login" href="/login">Sign in</a>

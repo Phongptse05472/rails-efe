@@ -1,142 +1,37 @@
-<!DOCTYPE html>
-<html>
+<%= content_for :page_title, 'Search courses' %>
+<div class="right">
+  <h1>
+    Search result for "<%= params[:q] %>"
+  </h1>
 
-<head>
-  <meta charset='utf-8'>
-  <title>Edfective.vn - course of topic</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= render "layouts/header" %>
-</head>
-
-<body>
-<div class="container">
-  <div class="main">
-    <%= render partial: "layouts/left_side", locals: {courses: @left_side_courses} %>
-    <div class="right">
-      <h1>
-        #Java
-      </h1>
-
-      <div class="list-course">
-        <div class="per-course">
-          <div class="c-left">
-            <%= image_tag('java.png') %>
-          </div>
-          <div class="c-right">
-            <h2>Lập trình java cơ bản</h2>
-            <p>
-              Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular
-              front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
-              prebuilt components, and powerful JavaScript plugins.
-
-            </p>
-            <p class="name"> Author: Alias</p>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-          </div>
+  <div class="list-course">
+    <% @search_result.each do |course| %>
+      <div class="per-course">
+        <div class="c-left">
+          <%= image_tag('java.png') %>
         </div>
-        <div class="per-course">
-          <div class="c-left">
-            <img src="../images/japanese.png">
-          </div>
-          <div class="c-right">
-            <h2>Lập trình java oop</h2>
-            <p>
-              Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular
-              front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
-              prebuilt components, and powerful JavaScript plugins.
-
-            </p>
-            <p class="name">Author: Alias</p>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-          </div>
-        </div>
-        <div class="per-course">
-          <div class="c-left">
-            <img src="../images/java_script.jpg">
-          </div>
-          <div class="c-right">
-            <h2>Lập trình java nâng cao</h2>
-            <p>
-              Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular
-              front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
-              prebuilt components, and powerful JavaScript plugins.
-
-            </p>
-            <p class="name">Author: Alias</p>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-          </div>
-        </div>
-        <div class="per-course">
-          <div class="c-left">
-            <img src="../images/khoa_hoc_1.jpg">
-          </div>
-          <div class="c-right">
-            <h2>Lập trình java desk - java swing</h2>
-            <p>
-              Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular
-              front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
-              prebuilt components, and powerful JavaScript plugins.
-
-            </p>
-            <p class="name">Author: Alias</p>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-          </div>
-        </div>
-        <div class="per-course">
-          <div class="c-left">
-            <img src="../images/khoa_hoc_1.jpg">
-          </div>
-          <div class="c-right">
-            <h2>Lập trình java web - jsp servlet</h2>
-            <p>
-              Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular
-              front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
-              prebuilt components, and powerful JavaScript plugins.
-
-            </p>
-            <p class="name">Author: Alias</p>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-          </div>
+        <div class="c-right">
+          <h2><%= link_to course.name, course_path(course) %></h2>
+          <p><%= course.description %></p>
+          <p class="name"> Author: course.author</p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
         </div>
       </div>
-      <div class="paging">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-
-      </div>
-
-      <div class="end">
-      </div>
-    </div>
-
+    <% end %>
+  </div>
+  <div class="paging">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
   </div>
 
+  <div class="end">
+  </div>
 </div>
 <script src="../js/video.js"></script>
-</body>
-
-</html>

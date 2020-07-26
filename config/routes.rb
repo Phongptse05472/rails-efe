@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get 'favor-articles', to:'courses#favor_articles'
   get 'topic/:id' ,to: 'topics#show', :as => :show_topic
   get 'topic/:id/course' ,to: 'courses#show' , :as => :show_course_topic
-  get 'search' ,to: 'courses#search'
+  get 'search' ,to: 'courses#search', :as => :search_courses
   get 'profile' , to:'customers#show'
   get 'user-home' , to:'courses#customer_home'
   get 'articles/:id', to: 'articles#show' , :as => :play
