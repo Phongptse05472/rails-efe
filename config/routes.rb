@@ -48,6 +48,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, except: :destroy
     resources :courses
-    resources :articles , except: [:create, :destroy]
+    resources :articles, except: [:create, :destroy]
   end
 end

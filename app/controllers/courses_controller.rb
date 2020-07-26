@@ -34,7 +34,8 @@ class CoursesController < ApplicationController
   end
 
   def customer_home
-
+    @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)
+    @topic = Topic.all.limit(8)
   end
 
   def mycourse

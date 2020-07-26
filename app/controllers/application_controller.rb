@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
 
   private
   def left_side_data
-    if !current_user.present?
-      @topics = Topic.select(:name, :id).limit(5)
-    else
-      @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)
-    end
+    #mentor
+    #admin
+    @data = Topic.select(:name, :id).limit(5)
+
+    # @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)
+    @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)
   end
 end
