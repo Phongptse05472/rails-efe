@@ -6,6 +6,7 @@ class CreateCustomerCourses < ActiveRecord::Migration[6.0]
       t.integer :customer_id
       t.integer :course_id
       t.boolean :is_owner
+      t.boolean :is_save
       t.float :progression
       t.date :enrollment_date
 

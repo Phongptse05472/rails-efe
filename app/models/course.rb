@@ -1,9 +1,32 @@
 class Course < ApplicationRecord
+  include PgSearch::Model
   before_create :update_slug
 
 
   extend FriendlyId
   friendly_id :name, use: [:slugged]
+
+  pg_search_scope :search, against:[
+      [:name, 'A'],
+      [:description, 'B']
+  ], using: {
+      tsearch: {
+          prefix: true,
+          dictionary: 'english',
+          any_word: true,
+      },
+  }
+
+  scope :by_rates, ->(rate) { where("rate = ?", rate)}
+  scope :by_levels, ->(level) { where("level = ?", level)}
+  scope :by_prices, ->(price) { where("price = ?", price)}
+
+  # scope :search_by_criteria, lamda { |filter|
+  #   cakes = all
+  #   cakes = cakes.by_rates(filter[:rate]) if filter[:rate].present?
+  #   cakes = cakes.by_prices(filter[:price]) if filter[:price].present?
+  #   cakes = cakes.by_levels(filter[:level]) if filter[:level].present?
+  # }
 
   STEPS = %i(over_view create_content comfirmed)
 

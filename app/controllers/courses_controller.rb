@@ -47,6 +47,11 @@ class CoursesController < ApplicationController
   end
 
   def search
+    if params[:q].present?
+      @search_result = Course.search(params[:q])
+    else
+      @search_result = []
+    end
   end
 
   # GET /courses/new

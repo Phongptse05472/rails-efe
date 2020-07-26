@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  article_id: 1
+  is_owner: false
+  time_point: 2020-07-19 10:30:35
+  is_viewed: false
+  is_favor: false
+
+two:
+  customer_id: 1
+  article_id: 1
+  is_owner: false
+  time_point: 2020-07-19 10:30:35
+  is_viewed: false
+  is_favor: false

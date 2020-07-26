@@ -29,7 +29,6 @@ class ArticlesController < ApplicationController
     @course = Course.friendly.find(params[:id])
     @list_article = Article.joins(:courses).where('courses.id = ?', @course)
 
-
   end
 
   # GET /articles/new
