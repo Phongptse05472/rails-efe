@@ -26,7 +26,7 @@
   <% if !current_user.present? %>
     <h2>Topic</h2>
     <ul class="top">
-      <% topic.each do |topic| %>
+      <% topics.each do |topic| %>
         <li>
           <div>
             <%= link_to topic.name, show_topic_path(topic.id) %>
@@ -37,10 +37,10 @@
   <% else %>
     <h2>My Courses</h2>
     <ul class="top">
-      <% topic.each do |topic| %>
+      <% my_courses.each do |course| %>
         <li>
           <div>
-            <%= link_to topic.name, show_topic_path(topic.id) %>
+            <%= link_to course.name, show_topic_path(course.id) %>
           </div>
         </li>
       <% end %>

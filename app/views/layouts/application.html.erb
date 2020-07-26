@@ -23,7 +23,7 @@
   </div>
   <%= render partial: "shared/header" %>
   <div class="main">
-    <%= render partial: "shared/left_side", locals: {data: @data} %>
+    <%= render partial: "shared/left_side", locals: {topics: @topics, my_courses: @my_courses} %>
     <%= yield %>
   </div>
   <%#= render partial: "shared/left_side", locals: {data: @data}  %>

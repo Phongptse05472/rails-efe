@@ -1,44 +1,37 @@
 <%= content_for :page_title, 'Search courses' %>
-<div class="container">
-  <div class="main">
-    <div class="right">
-      <h1>
-        Search result for "<%= params[:q] %>"
-      </h1>
+<div class="right">
+  <h1>
+    Search result for "<%= params[:q] %>"
+  </h1>
 
-      <div class="list-course">
-        <% @search_result.each do |course| %>
-          <div class="per-course">
-            <div class="c-left">
-              <%= image_tag('java.png') %>
-            </div>
-            <div class="c-right">
-              <h2><%= link_to course.name, course_path(course) %></h2>
-              <p><%= course.description %></p>
-              <p class="name"> Author: course.author</p>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-            </div>
-          </div>
-        <% end %>
+  <div class="list-course">
+    <% @search_result.each do |course| %>
+      <div class="per-course">
+        <div class="c-left">
+          <%= image_tag('java.png') %>
+        </div>
+        <div class="c-right">
+          <h2><%= link_to course.name, course_path(course) %></h2>
+          <p><%= course.description %></p>
+          <p class="name"> Author: course.author</p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+        </div>
       </div>
-      <div class="paging">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-
-      </div>
-
-      <div class="end">
-      </div>
-    </div>
-
+    <% end %>
+  </div>
+  <div class="paging">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
   </div>
 
+  <div class="end">
+  </div>
 </div>
 <script src="../js/video.js"></script>
