@@ -39,15 +39,15 @@ puts "\n...Seeing Mentors & Students...\n"
   u.encrypted_password = '#$taawktljasktlw4aaglj'
   u.save!
 
-  c = Customer.find_or_initialize_by(id: x)
-  c.role_id = rand(2..3)
-  c.user_id = u.id
-  c.name = Faker::Name.name
-  c.phone_number = Faker::PhoneNumber.phone_number
-  c.roll_number = Faker::IDNumber.valid
-  c.is_active = Faker::Boolean.boolean
-  c.avatar = Faker::Avatar.image
-  c.save!
+  # c = Customer.find_or_initialize_by(id: x)
+  # c.role_id = rand(2..3)
+  # c.user_id = u.id
+  # c.name = Faker::Name.name
+  # c.phone_number = Faker::PhoneNumber.phone_number
+  # c.roll_number = Faker::IDNumber.valid
+  # c.is_active = Faker::Boolean.boolean
+  # c.avatar = Faker::Avatar.image
+  # c.save!
 end
 
 puts "\n...Seeing Courses...\n"

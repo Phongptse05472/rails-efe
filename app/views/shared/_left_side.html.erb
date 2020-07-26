@@ -18,13 +18,20 @@
         </a>
       </li>
     <% else %>
+
       <li>
-        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My courses
+        <a href="/mycourses">
+        <i  style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My Course
+        </a>
+      </li>
+
+      <li>
+        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Your Course
       </li>
 
       <% course.each do |a| %>
         <li>
-          <%= link_to a.name, "/" %>
+          <%= link_to a.name, course_path(a.id)  %>
         </li>
       <% end %>
 
@@ -37,7 +44,7 @@
     <% data.each do |c| %>
       <li>
         <div>
-          <%= link_to c.name, show_topic_path(c.id) %>
+          <%= link_to c.name, topic_path(c.id) %>
         </div>
       </li>
     <% end %>

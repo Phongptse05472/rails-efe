@@ -39,6 +39,7 @@ class CoursesController < ApplicationController
   end
 
   def mycourse
+
   end
 
   def archived_courses
