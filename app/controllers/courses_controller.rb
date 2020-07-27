@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
-  before_action  :set_course, only: [:show]
-
+  before_action :set_course, only: [:show, :update_archive]
 
 
   # GET /courses
@@ -16,11 +15,10 @@ class CoursesController < ApplicationController
 
     @topic = Topic.all
 
-    @top_view_article =Article.order(view_number: :desc).limit(10)
+    @top_view_article = Article.order(view_number: :desc).limit(10)
 
 
   end
-
 
   # GET /courses/1
   # GET /courses/1.json
@@ -39,14 +37,37 @@ class CoursesController < ApplicationController
   end
 
   def mycourse
+    @my_courses = Course.all.where('customer_id = ?', current_user.id)
 
   end
 
   def archived_courses
+    @archived_course = Course.all.where('customer_id = ? AND is_save = ?', current_user.id, true)
+
   end
 
-  def favor_articles
+  def update_archive
+    @archived_course = Course.friendly.find(params[:slug])
+
+    if @archived_course.is_save == true
+      @archived_course.update_attribute("is_save", "false")
+    else
+      @archived_course.update_attribute("is_save", "true")
+    end
+
+    respond_to do |format|
+      if @archived_course.save
+        # format.html { redirect_to @archived_course, notice: 'Save Course was successfully update.' }
+        # format.json { render :show, status: :created, location: @archived_course }
+        format.js { render js: 'window.top.location.reload(true);' }
+      else
+        format.html { render :new }
+        format.json { render json: @archived_course.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
+
 
   def search
     if params[:q].present?
@@ -80,9 +101,9 @@ class CoursesController < ApplicationController
 
 
   # Only allow a list of trusted parameters through.
-  # def course_params
-  #   params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
-  # end
+  def course_params
+    params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
+  end
 
   # def set_slug
   #   @transaction = Transaction.find_by slug: params[:slug]

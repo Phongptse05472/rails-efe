@@ -3,7 +3,6 @@
   <title>Edfective.vn - favorite video</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
 <div class="right">
   <h1>
@@ -12,34 +11,32 @@
   <div class="menu-course">
     <ul>
       <li>
-        <%= link_to "My courses", "/mycourses", style: "color: #F69B58" %>
+        <%= link_to "My courses", "/mycourses" %>
       </li>
       <li>
         <%= link_to "Archive course", "/archived-courses" %>
       </li>
       <li>
-        <%= link_to "Favor article", "/favor-articles" %>
+        <%= link_to "Favor article", "/favor-articles", style: "color: #F69B58" %>
       </li>
     </ul>
   </div>
   <div class="list-course">
-    <% @my_courses.each do |my_course| %>
-    <div class="per-course">
-      <div class="c-left">
-        <%= image_tag('course_2.jpg') %>
-      </div>
-      <div class="c-right">
-        <h2><%= link_to my_course.name, course_article_path(my_course ,my_course.id) %></h2>
-        <p>
-          <%= my_course.description %>
+    <% @favor_article.each do |favor_article| %>
+      <div class="per-course">
+        <div class="c-left">
+          <%= image_tag('course_3.jpg') %>
+        </div>
+        <div class="c-right">
+          <h2><%= link_to favor_article.title, course_article_path(favor_article, favor_article.id) %></h2>
+          <%= button_to "favor", update_favor_path(favor_article.id), method: :put, remote: true %>
+          <p><%= favor_article.description %></p>
+          <p class="name">Author: <%= favor_article.author %></p>
 
-        </p>
-        <p class="name">Author: <%= my_course.author %></p>
-        <p class="video_course">Course: <%= my_course.name %></p>
 
+        </div>
       </div>
-    </div>
-<% end %>
+    <% end %>
   </div>
   <div class="paging">
     <a href="#">1</a>
@@ -47,10 +44,10 @@
     <a href="#">3</a>
     <a href="#">4</a>
     <a href="#">5</a>
-
   </div>
 
   <div class="end">
   </div>
 </div>
+
 </body>

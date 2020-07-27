@@ -25,13 +25,16 @@ Rails.application.routes.draw do
   get 'home', to: 'courses#index'
   get 'mycourses', to: 'courses#mycourse'
   get 'archived-courses', to: 'courses#archived_courses'
-  get 'favor-articles', to: 'courses#favor_articles'
+  get 'favor-articles', to: 'articles#favor_articles'
   get 'search', to: 'courses#search'
   get 'profile', to: 'customers#show'
   get 'user-home', to: 'courses#customer_home'
   get 'search' ,to: 'courses#search', :as => :search_courses
 
-    resources :courses, only: [:index, :show], param: :slug do
+  put 'courses/:slug', to: 'courses#update_archive', :as => :update_archived
+  put 'articles/:id', to: 'articles#update_favor' , :as => :update_favor
+
+    resources :courses, only: [:index, :show, :update], param: :slug do
       resources :articles, only: [:index, :show]
     end
 
