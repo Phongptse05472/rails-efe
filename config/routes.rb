@@ -26,13 +26,11 @@ Rails.application.routes.draw do
   get 'mycourses', to: 'courses#mycourse'
   get 'archived-courses', to: 'courses#archived_courses'
   get 'favor-articles', to: 'courses#favor_articles'
-  # get 'topic/:slug', to: 'topics#show', :as => :show_topic, param: :slug
-  get 'topic/:slug', to: 'courses#show', :as => :show_course_topic, param: :slug
   get 'search', to: 'courses#search'
   get 'profile', to: 'customers#show'
   get 'user-home', to: 'courses#customer_home'
-  # get 'articles/:id', to: 'articles#show' , :as => :play
-  # get 'courses/:id', to: 'courses#show' , :as => :course_details
+  get 'search' ,to: 'courses#search', :as => :search_courses
+
     resources :courses, only: [:index, :show], param: :slug do
       resources :articles, only: [:index, :show]
     end

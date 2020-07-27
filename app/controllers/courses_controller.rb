@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action  :set_course, only: [:show]
-  # before_save :to_slug
+
 
 
   # GET /courses
@@ -80,9 +80,9 @@ class CoursesController < ApplicationController
 
 
   # Only allow a list of trusted parameters through.
-  def course_params
-    params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
-  end
+  # def course_params
+  #   params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
+  # end
 
   # def set_slug
   #   @transaction = Transaction.find_by slug: params[:slug]

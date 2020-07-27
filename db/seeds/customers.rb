@@ -60,7 +60,7 @@ puts "\n...Seeding Courses...\n"
   course.description = Faker::Lorem.paragraphs
   course.rate = Faker::Number.within(range: 1..5)
   course.is_free = Faker::Boolean.boolean
-  course.level = Faker::Level.
+  # course.level = Faker::Level.
   course.number_enrollment = Faker::Number.within(range: 1..10)
   course.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
   course.save!

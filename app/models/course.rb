@@ -3,6 +3,7 @@ class Course < ApplicationRecord
   before_create :update_slug
 
 
+
   extend FriendlyId
   friendly_id :name, use: [:slugged]
 
@@ -40,9 +41,6 @@ class Course < ApplicationRecord
   has_many :customer_courses
   has_many :customers, through: :customer_courses
 
-  # def to_param
-  #   "#{id}-#{name.parameterize}"
-  # end
 
   def update_slug
     self.slug = name.parameterize
@@ -51,4 +49,9 @@ class Course < ApplicationRecord
   def to_params
     slug
   end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
+
 end

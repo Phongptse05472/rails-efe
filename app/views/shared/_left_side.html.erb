@@ -21,7 +21,7 @@
 
       <li>
         <a href="/mycourses">
-        <i  style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My Course
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My Course
         </a>
       </li>
 
@@ -31,11 +31,9 @@
 
       <% course.each do |a| %>
         <li>
-          <%= link_to a.name, course_path(a.id)  %>
+          <%= link_to a.name, course_path(a.id) %>
         </li>
       <% end %>
-
-
     <% end %>
 
   </ul>

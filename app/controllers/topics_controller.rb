@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic
+  before_action :set_topic, only: [:index, :show]
 
 
   def index
@@ -7,8 +7,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic_slug = Topic.friendly.find(params[:slug])
-    @courses = Course.joins(:topics).where('topics.id = ?' , @topic_slug.id)
+    @courses = Course.joins(:topics).where('topics.id = ?' , @topic)
   end
 
   private
