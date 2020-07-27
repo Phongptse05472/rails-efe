@@ -54,9 +54,23 @@
 .c-right {
     width: 60%;
 }
+.c-right a{
+    text-decoration: none;
+    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
+    color: #273044;
+}
+.c-right p{
+    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
+    color: #273044;
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
 
 .name {
-    font-weight: normal;
+    font-weight: bold;
     font-size: 12px;
     margin: 0;
 }
