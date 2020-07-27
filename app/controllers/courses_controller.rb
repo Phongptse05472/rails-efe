@@ -5,30 +5,21 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-
-    #hot course
     @course = Course.order(number_enrollment: :desc).limit(20)
-
     @rate_course = Course.order(rate: :desc).limit(5)
-
     @free_course = Course.where(is_free: true).limit(5)
-
     @topic = Topic.all
-
     @top_view_article = Article.order(view_number: :desc).limit(10)
-
-
   end
 
-  # GET /courses/1
-  # GET /courses/1.json
-  def show
-    #@course = Course.friendly.find(params[:slug])
-    # @free_course = Course.friendly.find(params[:id])
-    # @rate_course = Course.friendly.find(params[:id])
+  def add_course_to_archived
+    @add_archived = CustomerCourse.find(params[:slug])
+    @add_archived = CustomerCourse.new(course_archived_params)
+    @add_archived.save
+  end
 
+  def shows
     @list_article = Article.joins(:courses).where('courses.id = ?', @course)
-
   end
 
   def customer_home
@@ -37,31 +28,21 @@ class CoursesController < ApplicationController
   end
 
   def mycourse
-    @my_courses = Course.all.where('customer_id = ?', current_user.id)
-
+    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ?', current_user.id)
   end
 
   def archived_courses
-    @archived_course = Course.all.where('customer_id = ? AND is_save = ?', current_user.id, true)
-
+    @archived_course = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true)
   end
 
-  def update_archive
-    @archived_course = Course.friendly.find(params[:slug])
 
-    if @archived_course.is_save == true
-      @archived_course.update_attribute("is_save", "false")
-    else
-      @archived_course.update_attribute("is_save", "true")
-    end
+  def update_archive
+    @archived_course = CustomerCourse.find(params[:slug])
 
     respond_to do |format|
-      if @archived_course.save
-        # format.html { redirect_to @archived_course, notice: 'Save Course was successfully update.' }
-        # format.json { render :show, status: :created, location: @archived_course }
+      if @archived_course.update_attribute("is_save", !@archived_course.is_save)
         format.js { render js: 'window.top.location.reload(true);' }
       else
-        format.html { render :new }
         format.json { render json: @archived_course.errors, status: :unprocessable_entity }
       end
     end
@@ -103,6 +84,10 @@ class CoursesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def course_params
     params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
+  end
+
+  def course_archived_params
+    params.require(:customer_courses).permit(customer_id: current_user.id, course_id: @course.id, is_save: true)
   end
 
   # def set_slug

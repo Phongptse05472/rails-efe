@@ -8,41 +8,38 @@
     </li>
     <% if !current_user.present? %>
       <li>
-        <a href="login.html">
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
-        </a>
+        <%= link_to new_user_session_path do %>
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign in
+        <% end %>
       </li>
       <li>
-        <a href="signup.html">
+        <%= link_to new_user_registration_path do %>
           <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
-        </a>
+        <% end %>
       </li>
     <% else %>
-
       <li>
         <a href="/mycourses">
           <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My Course
         </a>
       </li>
-
       <li>
         <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Your Course
       </li>
-
       <% course.each do |a| %>
         <li>
-          <%= link_to a.name, course_path(a.id) %>
+          <%= link_to a.name, course_path(a.slug) %>
         </li>
       <% end %>
     <% end %>
 
   </ul>
-  <h2>Topic</h2>
+  <h2>Topics</h2>
   <ul class="top">
     <% data.each do |c| %>
       <li>
         <div>
-          <%= link_to c.name, topic_path(c.id) %>
+          <%= link_to c.name, topic_path(c.slug) %>
         </div>
       </li>
     <% end %>

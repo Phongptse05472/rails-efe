@@ -90,21 +90,17 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.bigint "customer_id"
     t.string "name"
     t.string "author"
     t.text "image"
     t.text "description"
     t.boolean "is_free"
-    t.boolean "is_save"
-    t.boolean "is_owner"
     t.float "rate"
     t.integer "number_enrollment", limit: 2
     t.date "enrollment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
-    t.index ["customer_id"], name: "index_courses_on_customer_id"
     t.index ["slug"], name: "index_courses_on_slug", unique: true
   end
 
@@ -123,6 +119,8 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.integer "customer_id"
     t.integer "course_id"
     t.boolean "is_owner"
+    t.boolean "is_save"
+    t.integer "current_article_id"
     t.float "progression"
     t.date "enrollment_date"
     t.datetime "created_at", precision: 6, null: false
@@ -167,6 +165,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|

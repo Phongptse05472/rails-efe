@@ -6,9 +6,7 @@ class ApplicationController < ActionController::Base
   def left_side_data
     #mentor
     #admin
-    @data = Topic.select(:name, :id).limit(5)
-
-
-    @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)
+    @data = Topic.select(:name, :slug).limit(5)
+    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? ', current_user.id)
   end
 end

@@ -56,7 +56,7 @@ puts "\n...Seeding Courses...\n"
   course.name = Faker::Name.name
   course.author = Faker::Name.name
   # c1.image = Faker::Internet.url
-  course.customer_id = c.id_in_database
+  # course.customer_id = c.id_in_database
   course.description = Faker::Lorem.paragraphs
   course.rate = Faker::Number.within(range: 1..5)
   course.is_free = Faker::Boolean.boolean
@@ -70,6 +70,7 @@ puts "\n...Seeding Courses...\n"
     c4.customer_id = c.id
     c4.course_id = course.id
     c4.is_owner = Faker::Boolean.boolean
+    c4.is_save = Faker::Boolean.boolean
     c4.progression = Faker::Number.within(range: 0...100)
     c4.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
     c4.save!

@@ -38,20 +38,11 @@ class ArticlesController < ApplicationController
   def update_favor
     @favor_article = CustomerArticle.find(params[:id])
 
-    if @favor_article.is_favor == true
-      @favor_article.update_attribute("is_favor", "false")
-    else
-      @favor_article.update_attribute("is_favor", "true")
-    end
-
-    respond_to do |format1|
-      if @favor_article.save
-        # format1.html { redirect_to @favor_article, notice: 'Save article was successfully update.' }
-        # format.json { render :show, status: :created, location: @favor_article }
-        format1.js { render js: 'window.top.location.reload(true);' }
+    respond_to do |format|
+      if  @favor_article.update_attribute("is_favor", !@favor_article.is_favor)
+        format.js { render js: 'window.top.location.reload(true);' }
       else
-        format1.html { render :new }
-        format1.json { render json: @favor_article.errors, status: :unprocessable_entity }
+        format.json { render json: @favor_article.errors, status: :unprocessable_entity }
       end
     end
 
@@ -75,7 +66,5 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :description, :link_article, :tag, :duration, :number_complete, :view_number, :is_free, :link_file_attach)
   end
 
-  def customer_article_params
-    params.require(:customer_articles).permit(:customer_id, :article_id, :is_owner, :time_point, :is_viewed, :is_favor)
-  end
+
 end

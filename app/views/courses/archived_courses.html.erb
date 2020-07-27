@@ -32,9 +32,9 @@
         <div class="c-right">
           <h2><%= link_to archived_course.name, course_article_path(archived_course, archived_course.id) %></h2>
 
-          <%#= image_tag('archived.png',  style: 'height:11%; width:auto') %>
-
-          <%= button_to "archive", update_archived_path(archived_course.id), method: :put, remote: true %>
+          <%= button_to update_archived_path(archived_course.id), method: :put, remote: true do %>
+            "archive"
+            <% end %>
           <%#= link_to archived_course.is_save == true ? "yes" : "no" , update_archived_path, :class => 'item' %>
 
           <%#= image_tag('nosave.png',  style: 'height:10%; width:auto') %>

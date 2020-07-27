@@ -1,17 +1,6 @@
 Rails.application.routes.draw do
   # root "pages#rootpage"
-  # topics :courses
-  # topics :articles
-  # match 'courses/update_enrollment_number' => 'courses#update_enrollment_number', via: :post
 
-  # devise_for :users,path: '', path_names: {
-  #     sign_in: 'login',
-  #     sign_out: 'logout',
-  #     password: 'secret',
-  #     confirmation: 'verification',
-  #     unlock: 'unblock',
-  #     registration: 'register',
-  #     sign_up: 'sign_up'}
 
   Rails.application.routes.draw do
     devise_for :users, controllers: {
@@ -32,6 +21,9 @@ Rails.application.routes.draw do
   get 'search' ,to: 'courses#search', :as => :search_courses
 
   put 'courses/:slug', to: 'courses#update_archive', :as => :update_archived
+
+  put 'courses/:id', to: 'courses#add_course_to_archived', :as => :add_to_archived
+
   put 'articles/:id', to: 'articles#update_favor' , :as => :update_favor
 
     resources :courses, only: [:index, :show, :update], param: :slug do
