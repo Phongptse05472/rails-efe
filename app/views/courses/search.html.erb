@@ -1,44 +1,271 @@
 <%= content_for :page_title, 'Search courses' %>
-<div class="container">
-  <div class="main">
-    <div class="right">
-      <h1>
-        Search result for "<%= params[:q] %>"
-      </h1>
-
-      <div class="list-course">
-        <% @search_result.each do |course| %>
-          <div class="per-course">
-            <div class="c-left">
-              <%= image_tag('java.png') %>
-            </div>
-            <div class="c-right">
-              <h2><%= link_to course.name, course_path(course) %></h2>
-              <p><%= course.description %></p>
-              <p class="name"> Author: course.author</p>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-            </div>
-          </div>
-        <% end %>
+<div class="right">
+  <h1>
+    Search result for "<%= params[:q] %>"
+  </h1>
+  <div id="filter_parent" class="filter_parent">
+    <div id="filter" onclick="filter()" class="filter">
+      <i class="fa fa-filter" aria-hidden="true"></i>
+      <span>Filter</span>
+    </div>
+    <div id="rating" class="rating">
+      <div class="rate">
+        <div class="text-rate">
+          Rating
+          <span class="fa fa-star checked"></span>
+        </div>
+        <div class="rate_perrow">
+          <input onclick="addtoFilter(this)" value="4.5" type="radio" name="rate">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span>4.5 & up</span>
+        </div>
+        <div class="rate_perrow">
+          <input onclick="addtoFilter(this)" value="4.0" type="radio" name="rate">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span>4.0 & up</span>
+        </div>
+        <div class="rate_perrow">
+          <input onclick="addtoFilter(this)" value="3.5" type="radio" name="rate">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span>3.5 & up</span>
+        </div>
+        <div class="rate_perrow">
+          <input onclick="addtoFilter(this)" value="3.0" type="radio" name="rate">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span>3.0 & up</span>
+        </div>
       </div>
-      <div class="paging">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-
+      <div class="price">
+        <div class="text-rate">
+          Price
+          <span class="fa fa-money"></span>
+        </div>
+        <div class="rate_perrow">
+          <input onclick="addtoFilter_Price(this)" type="radio" name="price" value="Free"> <span>Free</span>
+        </div>
+        <div class="rate_perrow">
+          <input onclick="addtoFilter_Price(this)" type="radio" name="price" value="Paid"> <span>Paid</span>
+        </div>
       </div>
-
-      <div class="end">
+      <div class="level">
+        <div class="text-rate">
+          Level
+          <span class="fa fa-money"></span>
+        </div>
+        <div class="rate_perrow">
+          <input id="begin" onclick="addtoLevel_1(this)" type="checkbox" value="Beginner"> <span>Beginner</span>
+        </div>
+        <div class="rate_perrow">
+          <input id="inter" onclick="addtoLevel_2(this)" type="checkbox" value="Intermediate"> <span>Intermediate</span>
+        </div>
+        <div class="rate_perrow">
+          <input id="advance" onclick="addtoLevel_3(this)" type="checkbox" value="Advanced"> <span>Advanced</span>
+        </div>
+      </div>
+      <div class="sort_by_anphabet">
+        <div onclick="addtoSort()" class="text-rate">
+          Sort
+          <span id="desc" class="fa fa-sort-alpha-asc"></span>
+          <span style="display: none;" id="asc" class="fa fa-sort-alpha-desc"></span>
+        </div>
       </div>
     </div>
+  </div>
+  <div id="show_filter_parent" onchange="searchByAjax()" class="show_filter">
+    <span id="show_filter"></span> <i onclick="deleteFilter()" id="show_filter_x"></i>
+    <span id="show_price"></span><i onclick="deletePrice()" id="show_price_x"></i>
+    <span id="show_level_begin"></span><i onclick="deleteLevel1()" id="show_begin_x"></i>
+    <span id="show_level_inter"></span><i onclick="deleteLevel2()" id="show_inter_x"></i>
+    <span id="show_level_advance"></span><i onclick="deleteLevel3()" id="show_advance_x"></i>
+    <span id="sort"></span><i onclick="deleteSort()" id="sort_x"></i>
+    <span onclick="clearAll()" id="clear">
+                        Clear All
+                        <i class="fa fa-window-close"></i>
+                    </span>
+
+  </div>
+  <div class="list-course">
+    <% @search_result.each do |course| %>
+      <div class="per-course">
+        <div class="c-left">
+          <%= image_tag('java.png') %>
+        </div>
+        <div class="c-right">
+          <h2><%= link_to course.name, course_path(course) %></h2>
+          <p><%= course.description %></p>
+          <p class="name"> Author: course.author</p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="paging">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
 
   </div>
 
+  <div class="end">
+  </div>
 </div>
-<script src="../js/video.js"></script>
+
+<script>
+    function filter() {
+        var x = document.getElementById('rating');
+        var displayValue = window.getComputedStyle(x).visibility;
+        if (displayValue == "hidden") {
+            document.getElementById('rating').style.visibility = "visible";
+            document.getElementById('show_filter_parent').style.visibility = "visible";
+            document.getElementById('filter_parent').style.height = "auto";
+        } else {
+            document.getElementById('rating').style.visibility = "hidden";
+            document.getElementById('show_filter_parent').style.visibility = "hidden";
+            document.getElementById('filter_parent').style.height = "55px";
+        }
+    }
+
+    function changeSort() {
+        if (document.getElementById('desc').style.display == "none") {
+            document.getElementById('desc').style.display = "inline-block";
+        } else {
+            document.getElementById('desc').style.display = "none";
+
+        }
+        if (document.getElementById('asc').style.display == "none") {
+            document.getElementById('asc').style.display = "inline-block";
+        } else {
+            document.getElementById('asc').style.display = "none";
+        }
+    }
+
+    function addtoSort() {
+        if (document.getElementById('sort').textContent.includes('a-z')) {
+            document.getElementById('sort').innerText = "Sort: z-a ";
+            document.getElementById('sort_x').className = "fa fa-window-close";
+        } else {
+            document.getElementById('sort').innerText = "Sort: a-z ";
+            document.getElementById('sort_x').className = "fa fa-window-close";
+        }
+    }
+
+    function addtoFilter(rate) {
+        var x = rate.value;
+        document.getElementById('show_filter').innerText = "Rating: " + x;
+        document.getElementById('show_filter_x').className = "fa fa-window-close";
+    }
+
+    function addtoFilter_Price(price) {
+        var x = price.value;
+        document.getElementById('show_price').innerText = "Price: " + x + " ";
+        document.getElementById('show_price_x').className = "fa fa-window-close";
+    }
+
+    function addtoLevel_1(level) {
+        var x = level.value;
+
+        if (document.getElementById('show_level_begin').textContent.includes(x)) {
+            document.getElementById('show_level_begin').innerText = "";
+            document.getElementById('show_begin_x').className = "";
+        } else {
+            document.getElementById('show_level_begin').innerText = "#" + x + " ";
+            document.getElementById('show_begin_x').className = "fa fa-window-close";
+        }
+    }
+
+    function addtoLevel_2(level) {
+        var x = level.value;
+        if (document.getElementById('show_level_inter').textContent.includes(x)) {
+            document.getElementById('show_level_inter').innerText = "";
+            document.getElementById('show_inter_x').className = "";
+        } else {
+            document.getElementById('show_level_inter').innerText = "#" + x + " ";
+            document.getElementById('show_inter_x').className = "fa fa-window-close";
+        }
+    }
+
+    function addtoLevel_3(level) {
+        var x = level.value;
+        if (document.getElementById('show_level_advance').textContent.includes(x)) {
+            document.getElementById('show_level_advance').innerText = "";
+            document.getElementById('show_advance_x').className = "";
+        } else {
+            document.getElementById('show_level_advance').innerText = "#" + x + " ";
+            document.getElementById('show_advance_x').className = "fa fa-window-close";
+        }
+    }
+
+    function deleteFilter() {
+        document.getElementById('show_filter').innerText = "";
+        document.getElementById('show_filter_x').className = "";
+        var ele = document.getElementsByName('rate');
+        for (i = 0; i < ele.length; i++) {
+            ele[i].checked = false;
+        }
+    }
+
+    function deletePrice() {
+        document.getElementById('show_price').innerText = "";
+        document.getElementById('show_price_x').className = "";
+        var ele = document.getElementsByName('price');
+        for (i = 0; i < ele.length; i++) {
+            ele[i].checked = false;
+        }
+    }
+
+    function deleteLevel1() {
+        document.getElementById('show_level_begin').innerText = "";
+        document.getElementById('show_begin_x').className = "";
+        document.getElementById("begin").checked = false;
+
+    }
+
+    function deleteLevel2() {
+        document.getElementById('show_level_inter').innerText = "";
+        document.getElementById('show_inter_x').className = "";
+        document.getElementById("inter").checked = false;
+    }
+
+    function deleteLevel3() {
+        document.getElementById('show_level_advance').innerText = "";
+        document.getElementById('show_advance_x').className = "";
+        document.getElementById("advance").checked = false;
+    }
+
+    function deleteSort() {
+        document.getElementById('sort').innerText = "";
+        document.getElementById('sort_x').className = "";
+    }
+
+    function clearAll() {
+        deleteLevel1();
+        deleteLevel2();
+        deleteLevel3();
+        deleteSort();
+        deletePrice();
+        deleteFilter();
+
+    }
+</script>

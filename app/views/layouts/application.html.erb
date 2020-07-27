@@ -17,17 +17,18 @@
 
 </head>
 <body>
-  <div class="container-fluid">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
+  <div class="container">
+<!--    <p class="notice"><%#= notice %></p>-->
+<!--    <p class="alert"><%#= alert %></p>-->
+
   <%= render partial: "shared/header" %>
   <div class="main">
     <%= render partial: "shared/left_side", locals: {data: @data} %>
     <%= yield %>
   </div>
   <%#= render partial: "shared/left_side", locals: {data: @data}  %>
-  <div id="footer">
+    <div id="footer">
+    </div>
   </div>
 </body>
 </html>

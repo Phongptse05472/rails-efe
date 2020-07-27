@@ -26,7 +26,7 @@
   <% if !current_user.present? %>
     <h2>Topic</h2>
     <ul class="top">
-      <% topic.each do |topic| %>
+      <% data.each do |topic| %>
         <li>
           <div>
             <%= link_to topic.name, show_topic_path(topic.id) %>

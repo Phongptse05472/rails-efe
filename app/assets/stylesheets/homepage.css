@@ -8,7 +8,8 @@ body {
     width: 100%;
     height: auto;
     margin: -8px auto;
-    position: fixed;
+    position: relative;
+    /* position: fixed; */
 }
 
 .main {
@@ -99,7 +100,7 @@ body::-webkit-scrollbar {
 }
 
 .right::-webkit-scrollbar {
-    width: 15px;
+    width: 6px;
     background-color: lightgrey;
 }
 
@@ -208,14 +209,19 @@ body::-webkit-scrollbar {
 }
 
 .name {
-    width: 90%;
+    width: 100%;
     font-weight: bold;
     margin: 0;
     line-height: 1.4em;
     height: 2.8em;
     overflow: hidden;
-    white-space: initial;
+    /* white-space: initial; */
     text-overflow: ellipsis;
+    /* overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; */
 }
 
 .title {

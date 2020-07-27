@@ -1,0 +1,120 @@
+.rating {
+    height: auto;
+    padding-bottom: 20px;
+    visibility: hidden;
+    transition: opacity 1s ease;
+    display: flex;
+}
+
+.filter_parent {
+    display: flex;
+    width: 100%;
+    height: 55px;
+}
+
+.filter {
+    padding: 10px;
+    border: 1px solid #14bdee;
+    max-width: fit-content;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #14bdee;
+    cursor: pointer;
+    height: fit-content;
+}
+
+.filter:hover {
+    color: white;
+    background-color: #14bdee;
+}
+
+.text-rate {
+    padding: 10px;
+    border: 1px solid #14bdee;
+    max-width: fit-content;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #14bdee;
+    cursor: pointer;
+    height: fit-content;
+    margin-bottom: 10px;
+}
+
+.text-rate:hover {
+    color: white;
+    background-color: #14bdee;
+}
+
+.rate {
+    margin-left: 50px;
+    width: 200px;
+}
+
+.price {
+    margin-left: 20px;
+    width: 200px;
+}
+
+.level {
+    margin-left: 20px;
+    width: 200px;
+}
+
+.sort_by_anphabet {
+    width: 200px;
+    margin-left: 20px;
+}
+
+.show_filter {
+    visibility: hidden;
+}
+
+#show_price {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#show_level {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#show_filter {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#show_level_begin {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#show_level_inter {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#show_level_advance {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#sort {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#clear {
+    font-weight: bold;
+    color: tomato;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.show_filter {
+    height: 30px;
+}
+
+.show_filter i {
+    cursor: pointer;
+}
