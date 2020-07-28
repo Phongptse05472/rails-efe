@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   post 'courses/:slug', to: 'courses#add_course_to_archived', :as => :add_to_archived
 
+  post 'courses/:slug', to: 'courses#enroll_courses', :as => :enroll_to_course
+
   put 'articles/:id', to: 'articles#update_favor' , :as => :update_favor
 
     resources :courses, only: [:index, :show, :update], param: :slug do

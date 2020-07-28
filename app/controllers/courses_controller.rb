@@ -17,9 +17,16 @@ class CoursesController < ApplicationController
     CustomerCourse.create(customer_id: current_user.id, course_id: add_to_archived.id, is_save: true)
   end
 
+  def enroll_courses
+    enroll_course = Course.find(params[:slug])
+    CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, is_save: true, enrollment_date: Date.now)
+  end
+
   def show
+    # @course_index = select("courses.*, customer_courses.*").joins(:customer_courses).where()
     @list_article = Article.joins(:courses).where('courses.id = ?', @course.id)
   end
+
 
   def customer_home
     @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)

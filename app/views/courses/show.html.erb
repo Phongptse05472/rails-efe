@@ -6,7 +6,6 @@
   <%= stylesheet_link_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
-
 <div class="right">
   <div class="top">
     <h1>
@@ -22,7 +21,9 @@
     </div>
     <p>Progress(80%)</p>
     <progress max="100" value="80"></progress>
-    <button>Start learn</button>
+    <%= button_to enroll_to_course_path(@course.id), method: :post do %>
+      Start learn
+    <% end %>
   </div>
 
   <div class="buttom">

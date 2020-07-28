@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
     #mentor
     #admin
     @data = Topic.select(:name, :slug).limit(5)
-    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? ', current_user.id)
+    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? ', current_user.id).limit(5)
   end
 end

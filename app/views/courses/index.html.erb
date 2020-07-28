@@ -22,14 +22,9 @@
                   <%= link_to course.name, course_path(course.slug) %>
                 </div>
                 <p><%= course.author %></p>
-
-
                 <%= button_to add_to_archived_path(course.id), method: :post do %>
                   "archive" <i class="fa"></i>
                 <% end %>
-
-
-
                 <script>
                     $(function () {
                         $('.stars').stars();
