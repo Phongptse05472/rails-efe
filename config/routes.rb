@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   put 'courses/:slug', to: 'courses#update_archive', :as => :update_archived
 
-  put 'courses/:id', to: 'courses#add_course_to_archived', :as => :add_to_archived
+  post 'courses/:slug', to: 'courses#add_course_to_archived', :as => :add_to_archived
 
   put 'articles/:id', to: 'articles#update_favor' , :as => :update_favor
 

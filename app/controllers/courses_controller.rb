@@ -14,11 +14,12 @@ class CoursesController < ApplicationController
 
   def add_course_to_archived
     @add_archived = CustomerCourse.find(params[:slug])
-    @add_archived = CustomerCourse.new(course_archived_params)
-    @add_archived.save
+    @add_archived = CustomerCourse.create(customer_id: current_user.id, course_id: @course.id, is_save: true)
+
   end
 
-  def shows
+
+  def show
     @list_article = Article.joins(:courses).where('courses.id = ?', @course)
   end
 
@@ -28,7 +29,7 @@ class CoursesController < ApplicationController
   end
 
   def mycourse
-    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ?', current_user.id)
+    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
   end
 
   def archived_courses
@@ -89,6 +90,8 @@ class CoursesController < ApplicationController
   def course_archived_params
     params.require(:customer_courses).permit(customer_id: current_user.id, course_id: @course.id, is_save: true)
   end
+
+
 
   # def set_slug
   #   @transaction = Transaction.find_by slug: params[:slug]

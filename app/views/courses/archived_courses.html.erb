@@ -30,18 +30,13 @@
           <%= image_tag('course_6.jpg') %>
         </div>
         <div class="c-right">
-          <h2><%= link_to archived_course.name, course_article_path(archived_course, archived_course.id) %></h2>
-
+          <h2><%= link_to archived_course.name, course_path(archived_course.slug) %></h2>
           <%= button_to update_archived_path(archived_course.id), method: :put, remote: true do %>
-            "archive"
-            <% end %>
-          <%#= link_to archived_course.is_save == true ? "yes" : "no" , update_archived_path, :class => 'item' %>
-
-          <%#= image_tag('nosave.png',  style: 'height:10%; width:auto') %>
-
+            "Remove archive"
+          <% end %>
           <p><%= archived_course.description %></p>
-
           <p class="name">Author: <%= archived_course.author %></p>
+          Date Enrollment : <%= archived_course.enrollment_date.to_s %>
 
 
         </div>

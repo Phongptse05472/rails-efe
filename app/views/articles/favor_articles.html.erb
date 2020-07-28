@@ -29,7 +29,7 @@
         </div>
         <div class="c-right">
           <h2><%= link_to favor_article.title, course_article_path(favor_article, favor_article.id) %></h2>
-          <%= button_to "favor", update_favor_path(favor_article.id), method: :put, remote: true %>
+          <%= button_to "remove favor", update_favor_path(favor_article.id), method: :put, remote: true %>
           <p><%= favor_article.description %></p>
           <p class="name">Author: <%= favor_article.author %></p>
 
