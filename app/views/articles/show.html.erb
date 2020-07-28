@@ -1,17 +1,10 @@
 <head>
-  <title>Watch</title>
-
+  <%= content_for :page_title, 'Play article' %>
   <%= stylesheet_link_tag 'watch', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'watch', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-  <script src="//content.jwplatform.com/libraries/eX4mp13.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <script type="text/javascript" src="https://content.jwplatform.com/libraries/ovBRFdgO.js"></script>
 </head>
 
-<body oncontextmenu="return false;">
-
+<body>
 <div class="main">
   <div class="watch">
     <% @article_detail.each do |article| %>

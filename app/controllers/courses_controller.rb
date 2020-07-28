@@ -1,9 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :update_archive]
 
-
-  # GET /courses
-  # GET /courses.json
   def index
     @course = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(5)
@@ -13,8 +10,8 @@ class CoursesController < ApplicationController
   end
 
   def add_course_to_archived
-    add_to_archived = Course.find(params[:slug])
-    CustomerCourse.create(customer_id: current_user.id, course_id: add_to_archived.id, is_save: true)
+    course = Course.find(params[:slug])
+    CustomerCourse.create(customer_id: current_user.id, course_id: course.id, is_save: true)
   end
 
   def enroll_courses
@@ -27,9 +24,8 @@ class CoursesController < ApplicationController
     @list_article = Article.joins(:courses).where('courses.id = ?', @course.id)
   end
 
-
   def customer_home
-    @my_courses = Course.select(:name, :id).where('customer_id = ?', current_user.id).limit(5)
+    @my_courses = Course.select(:name, :id).where(c).limit(5)
     @topic = Topic.all.limit(8)
   end
 
@@ -44,7 +40,7 @@ class CoursesController < ApplicationController
 
   def update_archive
     # @archived_course = CustomerCourse.find(params[:slug])
-    @archived_course = CustomerCourse.find(params[:slug])
+    @archived_course = CustomerCourse.find(params[:course_id])
 
     respond_to do |format|
       if @archived_course.update_attribute("is_save", !@archived_course.is_save)
@@ -53,9 +49,7 @@ class CoursesController < ApplicationController
         format.json { render json: @archived_course.errors, status: :unprocessable_entity }
       end
     end
-
   end
-
 
   def search
     if params[:q].present?
@@ -69,8 +63,6 @@ class CoursesController < ApplicationController
     current_user
   end
 
-  # DELETE /courses/
-  # DELETE /courses/1.json
   def destroy
     @course.destroy
     respond_to do |format|
@@ -79,13 +71,13 @@ class CoursesController < ApplicationController
     end
   end
 
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
     @course = Course.friendly.find(params[:slug])
   end
+
 
   # Only allow a list of trusted parameters through.
   def course_params

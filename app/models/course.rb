@@ -1,8 +1,7 @@
 class Course < ApplicationRecord
+
   include PgSearch::Model
   before_create :update_slug
-
-
 
   extend FriendlyId
   friendly_id :name, use: [:slugged]
