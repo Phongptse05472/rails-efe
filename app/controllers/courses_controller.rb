@@ -13,14 +13,12 @@ class CoursesController < ApplicationController
   end
 
   def add_course_to_archived
-    @add_archived = CustomerCourse.find(params[:slug])
-    @add_archived = CustomerCourse.create(customer_id: current_user.id, course_id: @course.id, is_save: true)
-
+    add_to_archived = Course.find(params[:slug])
+    CustomerCourse.create(customer_id: current_user.id, course_id: add_to_archived.id, is_save: true)
   end
 
-
   def show
-    @list_article = Article.joins(:courses).where('courses.id = ?', @course)
+    @list_article = Article.joins(:courses).where('courses.id = ?', @course.id)
   end
 
   def customer_home
@@ -38,6 +36,7 @@ class CoursesController < ApplicationController
 
 
   def update_archive
+    # @archived_course = CustomerCourse.find(params[:slug])
     @archived_course = CustomerCourse.find(params[:slug])
 
     respond_to do |format|
@@ -81,19 +80,9 @@ class CoursesController < ApplicationController
     @course = Course.friendly.find(params[:slug])
   end
 
-
   # Only allow a list of trusted parameters through.
   def course_params
     params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
   end
 
-  def course_archived_params
-    params.require(:customer_courses).permit(customer_id: current_user.id, course_id: @course.id, is_save: true)
-  end
-
-
-
-  # def set_slug
-  #   @transaction = Transaction.find_by slug: params[:slug]
-  # end
 end
