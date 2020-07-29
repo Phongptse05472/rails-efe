@@ -21,9 +21,12 @@
     </div>
     <p>Progress(80%)</p>
     <progress max="100" value="80"></progress>
-    <%= button_to enroll_to_course_path(@course.id), method: :post do %>
+
+    <%= button_to enroll_to_course_path(@course.id), method: :put do %>
       Start learn
     <% end %>
+
+
   </div>
 
   <div class="buttom">

@@ -14,7 +14,7 @@ class CustomersCoursesController < ApplicationController
 
   def add_course_to_archived
     course = Course.find(params[:slug])
-    CustomerCourse.create(customer_course_params)
+    CustomerCourse.create(customer_id: current_user.id, course_id: course.id, is_save: true)
   end
 
   def enroll_courses
@@ -26,9 +26,10 @@ class CustomersCoursesController < ApplicationController
     @archived_course = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true)
   end
 
-  def create
-    CustomerCourse.create(customer_course_params)
-  end
+  # def create
+  #   course = Course.find(params[:slug])
+  #   CustomerCourse.create(customer_id: current_user.id, course_id: course.id, is_save: true)
+  # end
 
   def update
     # @archived_course = CustomerCourse.find(params[:slug])
@@ -45,7 +46,7 @@ class CustomersCoursesController < ApplicationController
   private
   # Only allow a list of trusted parameters through.
   def customer_course_params
-    params.require(:customers_course).permit(:id, :is_save)
+    params.require(:customers_course).permit(customer_id: current_user.id, course_id: course.id, is_save: true)
   end
 
 end
