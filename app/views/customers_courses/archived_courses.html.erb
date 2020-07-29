@@ -11,13 +11,13 @@
   <div class="menu-course">
     <ul>
       <li>
-        <%= link_to "My courses", "/mycourses" %>
+        <%= link_to "My courses", "/customers_courses" %>
       </li>
       <li>
         <%= link_to "Archive course", "/archived-courses", style: "color: #F69B58" %>
       </li>
       <li>
-        <%= link_to "Favor article", "/favor-articles" %>
+        <%= link_to "Favor article", "/customers_articles" %>
       </li>
     </ul>
   </div>
@@ -29,14 +29,12 @@
         </div>
         <div class="c-right">
           <h2><%= link_to archived_course.name, course_path(archived_course.slug) %></h2>
-          <%= button_to update_archived_path(archived_course.id), method: :put, remote: true do %>
+          <%= button_to customers_course_path(archived_course.course_id), method: :put, remote: true do %>
             "Remove archive"
           <% end %>
           <p><%= archived_course.description %></p>
           <p class="name">Author: <%= archived_course.author %></p>
           Date Enrollment : <%= archived_course.enrollment_date.to_s %>
-
-
         </div>
       </div>
     <% end %>

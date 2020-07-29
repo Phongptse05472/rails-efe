@@ -23,7 +23,7 @@
                   <%= link_to course.name, course_path(course.slug) %>
                 </div>
                 <p><%= course.author %></p>
-                <%= button_to add_to_archived_path(course.id), method: :post do %>
+                <%= button_to customers_courses_path(course.id), method: :post do %>
                   "archive" <i class="fa"></i>
                 <% end %>
                 <script>
@@ -71,7 +71,7 @@
                   <%= link_to rate_course.name, rate_course %>
                 </div>
                 <p><%= rate_course.author %></p>
-                <%= button_to add_to_archived_path(rate_course.id), method: :put, remote: true do %>
+                <%= button_to customers_courses_path(rate_course.id), method: :put, remote: true do %>
                   "archive"
                 <% end %>
                 <script>
@@ -146,7 +146,7 @@
                   <%= link_to free_course.name, course_path(free_course.slug) %>
                 </div>
                 <p><%= free_course.author %></p>
-                <%= button_to add_to_archived_path(free_course.id), method: :put, remote: true do %>
+                <%= button_to customers_courses_path(free_course.id), method: :put, remote: true do %>
                   "archive"
                 <% end %>
                 <script>

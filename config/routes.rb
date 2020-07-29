@@ -12,25 +12,29 @@ Rails.application.routes.draw do
 
   #common routes
   get 'home', to: 'courses#index'
-  get 'mycourses', to: 'courses#mycourse'
-  get 'archived-courses', to: 'courses#archived_courses'
-  get 'favor-articles', to: 'articles#favor_articles'
+  get 'archived-courses', to: 'customers_courses#archived_courses'
   get 'search', to: 'courses#search'
   get 'profile', to: 'customers#show'
   get 'user-home', to: 'courses#customer_home'
   get 'search' ,to: 'courses#search', :as => :search_courses
 
-  put 'courses/:slug', to: 'courses#update_archive', :as => :update_archived
+  # put 'courses/:id', to: 'customers_#update', :as => :update_archived
 
-  post 'courses/:slug', to: 'courses#add_course_to_archived', :as => :add_to_archived
+  post 'courses/:slug', to: 'customer_course#add_course_to_archived', :as => :add_to_archived
 
   post 'courses/:slug', to: 'courses#enroll_courses', :as => :enroll_to_course
 
-  put 'articles/:id', to: 'articles#update_favor' , :as => :update_favor
+  put 'articles/:id', to: 'customers_articles#update' , :as => :update_favor
 
-    resources :courses, only: [:index, :show, :update], param: :slug do
-      resources :articles, only: [:index, :show]
-    end
+  resources :customers_courses do
+  end
+
+  resources :customers_articles do
+  end
+
+  resources :courses, only: [:index, :show, :update], param: :slug do
+    resources :articles, only: [:index, :show]
+  end
 
 
 
