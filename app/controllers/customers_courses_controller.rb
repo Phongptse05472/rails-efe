@@ -5,6 +5,12 @@ class CustomersCoursesController < ApplicationController
     @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
   end
 
+  #customer home page
+  def customer_home
+    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
+    @topic = Topic.all.limit(8)
+  end
+
 
   def add_course_to_archived
     course = Course.find(params[:slug])
@@ -20,9 +26,9 @@ class CustomersCoursesController < ApplicationController
     @archived_course = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true)
   end
 
-  # def create
-  #   CustomerCourse.create(customer_course_params)
-  # end
+  def create
+    CustomerCourse.create(customer_course_params)
+  end
 
   def update
     # @archived_course = CustomerCourse.find(params[:slug])

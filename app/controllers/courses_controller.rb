@@ -14,10 +14,7 @@ class CoursesController < ApplicationController
     @list_article = Article.joins(:courses).where('courses.id = ?', @course.id)
   end
 
-  def customer_home
-    @my_courses = Course.select(:name, :id).where(c).limit(5)
-    @topic = Topic.all.limit(8)
-  end
+
 
   def search
     if params[:q].present?

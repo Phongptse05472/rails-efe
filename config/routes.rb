@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'archived-courses', to: 'customers_courses#archived_courses'
   get 'search', to: 'courses#search'
   get 'profile', to: 'customers#show'
-  get 'user-home', to: 'courses#customer_home'
+  get 'user-home', to: 'customers_courses#customer_home'
   get 'search' ,to: 'courses#search', :as => :search_courses
 
   # put 'courses/:id', to: 'customers_#update', :as => :update_archived
