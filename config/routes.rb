@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   get 'user-home', to: 'customers_courses#customer_home'
   get 'search' ,to: 'courses#search', :as => :search_courses
 
-  # put 'courses/:id', to: 'customers_#update', :as => :update_archived
+  put 'courses/:id', to: 'customers_courses_#update', :as => :update_archived
 
-  post 'courses/:slug', to: 'customer_course#add_course_to_archived', :as => :add_to_archived
+  post 'courses/:id', to: 'customer_course#add_course_to_archived', :as => :add_to_archived
 
-  post 'courses/:slug', to: 'courses#enroll_courses', :as => :enroll_to_course
+  post 'courses/:id', to: 'customer_courses#enroll_courses', :as => :enroll_to_course
 
   put 'articles/:id', to: 'customers_articles#update' , :as => :update_favor
 
