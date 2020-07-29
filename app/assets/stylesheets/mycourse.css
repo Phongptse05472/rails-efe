@@ -37,7 +37,7 @@
 
 .per-course {
     display: flex;
-    height: 200px;
+    height: auto;
     margin-bottom: 25px;
 }
 
@@ -54,14 +54,19 @@
 .c-right {
     width: 60%;
 }
-.c-right a{
+
+.c-right a {
+    color: #273044;
     text-decoration: none;
-    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
-    color: #273044;
 }
-.c-right p{
-    font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
-    color: #273044;
+
+.c-right a i {
+    float: right;
+    color: #14bdee;
+    font-size: 25px;
+}
+
+.c-right p {
     overflow: hidden;
     width: 100%;
     display: -webkit-box;
