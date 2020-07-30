@@ -14,6 +14,12 @@ class CoursesController < ApplicationController
   def show
     # @course_index = select("courses.*, customer_courses.*").joins(:customer_courses).where()
     @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+
+    currennt_article_id = CustomerCourse.find_by(:customer_id => current_customer.id, :course_id => @course.id).current_article_id
+    @current_article = Article.find_by(:article_id => currennt_article_id)
+    if !@current_article.present? do
+        @current_article = @course.course_articles.first
+    end
   end
 
   def search
