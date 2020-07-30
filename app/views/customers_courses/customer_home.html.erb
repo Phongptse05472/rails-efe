@@ -1,0 +1,87 @@
+<%= content_for :page_title, 'User home' %>
+<div class="right">
+  <h1>Your Course</h1>
+  <div id="exampleSlider">
+    <div id="app1" class="MS-content">
+      <% @my_courses.each do |my_courses| %>
+        <div id="item" class="item">
+          <div class="thumbnai">
+            <a href="watch.html"><%= image_tag('java_script.jpg') %></a>
+          </div>
+          <div class="author">
+            <div class="icon">
+              <%= image_tag('2.jpg') %>
+            </div>
+            <div class="title">
+              <div class="name">
+                <%= link_to my_courses.name, course_path(my_courses.id) %>
+              </div>
+              <p class="status">Progress (<%= my_courses.progression %>%)</p>
+              <progress max="100" value="<%= my_courses.progression %>"></progress>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="MS-controls">
+      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <h1>Topic</h1>
+  <div id="topic" class="topic">
+    <% @topic.each do |topic| %>
+      <%= link_to topic.name, topic_path(topic.id) %>
+    <% end %>
+  </div>
+  <h1>Recommend for you</h1>
+  List course here
+  ...
+</div>
+<!--</div>-->
+<script>
+    window.addEventListener('click', function (e) {
+        if (!document.getElementById('myBtn').contains(e.target)) {
+            document.getElementById('notifications').style.display = "none"
+        }
+    });
+
+    function myfunction() {
+        if (document.getElementById('notifications').style.display == "none" ||
+            document.getElementById('notifications').style.display == '') {
+            document.getElementById('notifications').style.display = "block"
+        } else {
+            document.getElementById('notifications').style.display = "none"
+        }
+    }
+</script>
+
+
+<!--   Initialize element with Multislider-->
+<script>
+    $('#exampleSlider').multislider({
+        interval: 100000,
+        continuous: false
+    });
+    $('#exampleSlider1').multislider({
+        interval: 100000,
+        continuous: false
+
+    });
+    $('#exampleSlider2').multislider({
+        interval: 100000,
+        continuous: false
+
+    });
+    $('#exampleSlider3').multislider({
+        interval: 100000,
+        continuous: false
+
+    });
+    $('#exampleSlider4').multislider({
+        interval: 100000,
+        continuous: false
+
+    });
+
+</script>

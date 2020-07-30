@@ -8,7 +8,7 @@ class CreateCustomerArticles < ActiveRecord::Migration[6.0]
       t.boolean :is_owner
       t.time :time_point
       t.boolean :is_viewed
-      t.boolean :is_favor
+      t.boolean :is_favor , default :false
 
       t.timestamps
     end

@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<%= content_for :page_title, 'Course Detail' %>
 <head>
   <title>course of topic</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
-
 <div class="right">
   <div class="top">
     <h1>
@@ -22,9 +21,12 @@
     </div>
     <p>Progress(80%)</p>
     <progress max="100" value="80"></progress>
-    <button>Start learn</button>
-  </div>
 
+    <%= button_to enroll_to_course_path(@course.id), method: :post do %>
+      Start learn
+    <% end %>
+
+  </div>
   <div class="buttom">
     <h2>List Article in '<%= @course.name %>'</h2>
     <% @list_article.each do |a| %>
@@ -36,8 +38,8 @@
         </div>
         <div class="c-right">
           <h2>
-            <a href="#">
-             <%= link_to a.title, play_path(a.id) %>
+            <a>
+             <%= link_to a.title, click_on_article_path(@course, a.id) %>
             </a>
           </h2>
           <span>

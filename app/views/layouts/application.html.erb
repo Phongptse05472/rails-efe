@@ -4,10 +4,10 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%#= stylesheet_pack_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+  <%= javascript_include_tag 'application' "data-turbolinks-track" => true %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%#= javascript_include_tag 'application' "data-turbolinks-track" => true %>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <meta charset='utf-8'>
@@ -17,17 +17,20 @@
 
 </head>
 <body>
-  <div class="container-fluid">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
-  <%= render partial: "shared/header" %>
+<div class="container-fluid">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+<div class="container">
+  <%= render "shared/header" %>
   <div class="main">
-    <%= render partial: "shared/left_side", locals: {topics: @topics, my_courses: @my_courses} %>
-    <%= yield %>
+    <% if !@article_detail.present? %>
+    <%= render partial: "shared/left_side", locals: {data: @data, course: @my_courses}  %>
+      <% end %>
+  <%= yield %>
   </div>
-  <%#= render partial: "shared/left_side", locals: {data: @data}  %>
   <div id="footer">
   </div>
+</div>
 </body>
 </html>
