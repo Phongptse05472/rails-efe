@@ -20,15 +20,22 @@ class CustomersCoursesController < ApplicationController
   def enroll_courses
     enroll_course = Course.find(params[:slug])
     current_article = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
-    @check_customer_course = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id).any?
     @list_article = Article.joins(:courses).where('courses.id = ?', enroll_course.id)
-
-    if @check_customer_course == false
+    @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
+    if current_article.any? == false
       CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, current_article_id: @list_article.first.id, is_save: true, enrollment_date: Date.today)
       redirect_to course_article_path(enroll_course, @list_article.ids.first)
     else
       redirect_to course_article_path(enroll_course, current_article.first.current_article_id)
+      # @archived_course.update_attribute("current_article_id",current_article.first.current_article_id)
     end
+  end
+
+  def click_on_article
+    enroll_course = Course.find(params[:slug])
+    current_article = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
+    current_article.update_attribute(:current_article_id , current_article.first.current_article_id)
+    redirect_to click_on_article_path(enroll_course, current_article.first.current_article_id)
   end
 
   def archived_courses

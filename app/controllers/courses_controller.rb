@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
     @free_course = Course.where(is_free: true).limit(5)
     @topic = Topic.all
     @top_view_article = Article.order(view_number: :desc).limit(10)
+
+
   end
 
   def show

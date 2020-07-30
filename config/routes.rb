@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   post 'favor_articles/:id', to: 'customers_articles#add_to_favor' , :as => :add_to_favor
 
+  post 'courses/:slug/articles/:id', to: 'customers_courses#click_on_article' , :as => 'click_on_article'
+
   resources :customers_courses do
   end
 
