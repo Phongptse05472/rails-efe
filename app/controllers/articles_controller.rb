@@ -8,18 +8,9 @@ class ArticlesController < ApplicationController
     @show_leftside = false
     @article_detail = Article.all.where(id: params[:id])
     @course = Course.friendly.find(params[:course_slug])
-    #right side - List arrticle in course
-    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id)
+    #right side - List article in course
+    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
   end
-
-  # GET /articles/new
-  def new
-    @article = Article.new
-  end
-
-
-
-
 
   # GET /articles/1/edit
   def edit

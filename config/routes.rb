@@ -20,11 +20,13 @@ Rails.application.routes.draw do
 
   put 'courses/:id', to: 'customers_courses#update', :as => :update_archived
 
-  post 'courses/:slug', to: 'customers_courses#add_course_to_archived', :as => :add_to_archived
+  post 'archive_courses/:slug', to: 'customers_courses#add_course_to_archived', :as => :add_to_archived
 
-  put 'courses/:slug', to: 'customer_courses#enroll_courses', :as => :enroll_to_course
+  post 'enroll_courses/:slug', to: 'customers_courses#enroll_courses', :as => :enroll_to_course
 
   put 'articles/:id', to: 'customers_articles#update' , :as => :update_favor
+
+  post 'favor_articles/:id', to: 'customers_articles#add_to_favor' , :as => :add_to_favor
 
   resources :customers_courses do
   end

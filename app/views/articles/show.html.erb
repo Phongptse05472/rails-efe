@@ -22,6 +22,15 @@
         <p>
           <%= article.view_number %> View • <%= article.created_at.to_date %>
         </p>
+
+        <%#   if @show_favor_button  == false%>
+          <%= button_to add_to_favor_path(article.id), method: :post do %>
+            "Favor" <i class="fa"></i>
+          <% end %>
+        <%# else %>
+<!--        Liked video-->
+        <%# end %>
+
         <p><%= article.author %></p>
       </div>
       <div class="w-description">

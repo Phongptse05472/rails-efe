@@ -16,8 +16,8 @@
               <div class="name">
                 <%= link_to my_courses.name, course_path(my_courses.id) %>
               </div>
-              <p class="status">Progress (80%)</p>
-              <progress max="100" value="80"></progress>
+              <p class="status">Progress (<%= my_courses.progression %>%)</p>
+              <progress max="100" value="<%= my_courses.progression %>"></progress>
             </div>
           </div>
         </div>
@@ -35,7 +35,8 @@
     <% end %>
   </div>
   <h1>Recommend for you</h1>
-  <>
+  List course here
+  ...
 </div>
 <!--</div>-->
 <script>

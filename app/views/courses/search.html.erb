@@ -12,6 +12,14 @@
         </div>
         <div class="c-right">
           <h2><%= link_to course.name, course_path(course) %></h2>
+
+          <% if current_user.present? %>
+            <%= button_to add_to_archived_path(course.id), method: :post do %>
+              "archive" <i class="fa"></i>
+            <% end %>
+          <% else %>
+          <% end %>
+
           <p><%= course.description %></p>
           <p class="name"> Author: course.author</p>
           <span class="fa fa-star checked"></span>

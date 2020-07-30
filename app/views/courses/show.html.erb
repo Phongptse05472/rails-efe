@@ -22,13 +22,11 @@
     <p>Progress(80%)</p>
     <progress max="100" value="80"></progress>
 
-    <%= button_to enroll_to_course_path(@course.id), method: :put do %>
+    <%= button_to enroll_to_course_path(@course.id), method: :post do %>
       Start learn
     <% end %>
 
-
   </div>
-
   <div class="buttom">
     <h2>List Article in '<%= @course.name %>'</h2>
     <% @list_article.each do |a| %>
@@ -40,7 +38,7 @@
         </div>
         <div class="c-right">
           <h2>
-            <a href="#">
+            <a>
              <%= link_to a.title, course_article_path(@course, a.id) %>
             </a>
           </h2>

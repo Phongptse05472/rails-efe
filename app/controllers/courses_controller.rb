@@ -11,10 +11,8 @@ class CoursesController < ApplicationController
 
   def show
     # @course_index = select("courses.*, customer_courses.*").joins(:customer_courses).where()
-    @list_article = Article.joins(:courses).where('courses.id = ?', @course.id)
+    @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
   end
-
-
 
   def search
     if params[:q].present?
