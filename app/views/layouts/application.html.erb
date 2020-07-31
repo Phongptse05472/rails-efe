@@ -24,6 +24,7 @@
 <div class="container">
   <%= render "shared/header" %>
   <div class="main">
+    <%#= render 'shared/messages' %>
     <% if !@article_detail.present? %>
     <%= render partial: "shared/left_side", locals: {data: @data, course: @my_courses}  %>
       <% end %>

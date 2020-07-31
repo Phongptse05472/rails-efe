@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.boolean "is_owner"
     t.time "time_point"
     t.boolean "is_viewed"
-    t.boolean "is_favor" ,default: false
+    t.boolean "is_favor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -119,9 +119,9 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.integer "customer_id"
     t.integer "course_id"
     t.boolean "is_owner"
-    t.boolean "is_save" , default: false
+    t.boolean "is_save"
     t.integer "current_article_id"
-    t.float "progression"
+    t.float "progression", default: 0
     t.date "enrollment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
