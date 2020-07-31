@@ -12,8 +12,22 @@ class CoursesController < ApplicationController
   end
 
   def show
-    # @course_index = select("courses.*, customer_courses.*").joins(:customer_courses).where()
+    calculate_progression
+    @course_detail =  Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
     @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+
+  end
+
+  def calculate_progression
+
+    number_article_in_course = CourseArticle.where(course_id: @course.id).count #=> number articles in course by course_id
+    number_article_viewed = CustomerArticle.where(customer_id: current_user.id, is_viewed: true).count # => article viewed with customer_id
+    #=> mapping user, course, number article
+
+    progress = number_article_viewed.to_f / number_article_in_course.to_f * 100
+
+
+    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id).update_all(progression: progress) # => progression
   end
 
   def search
@@ -22,10 +36,6 @@ class CoursesController < ApplicationController
     else
       @search_result = []
     end
-  end
-
-  def enroll_course
-    current_user
   end
 
   def destroy
