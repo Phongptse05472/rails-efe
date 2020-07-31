@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.boolean "is_owner"
     t.boolean "is_save"
     t.integer "current_article_id"
-    t.float "progression"
+    t.float "progression", default: 0
     t.date "enrollment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

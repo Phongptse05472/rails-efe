@@ -12,22 +12,24 @@ class CoursesController < ApplicationController
   end
 
   def show
-    calculate_progression
-    @course_detail =  Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
-    @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+    @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
+    if !@check_archived_course.exists?
+      @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
+      @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+    else
+      calculate_progression
+    end
+
 
   end
 
   def calculate_progression
-
-    number_article_in_course = CourseArticle.where(course_id: @course.id).count #=> number articles in course by course_id
-    number_article_viewed = CustomerArticle.where(customer_id: current_user.id, is_viewed: true).count # => article viewed with customer_id
-    #=> mapping user, course, number article
-
-    progress = number_article_viewed.to_f / number_article_in_course.to_f * 100
+    total_article = Article.joins(:course_articles).where('course_id = ?', @course.id).count
+    viewed_article = Article.joins(:course_articles).joins(:customer_articles).where('course_id = ? AND is_viewed = true', @course.id).count
+    progress = viewed_article.to_f / total_article.to_f * 100
 
 
-    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id).update_all(progression: progress) # => progression
+    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id).update_all(progression: progress.round) # => progression
   end
 
   def search

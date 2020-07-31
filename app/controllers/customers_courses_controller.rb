@@ -26,7 +26,6 @@ class CustomersCoursesController < ApplicationController
   def enroll_courses
     enroll_course = Course.find(params[:slug])
     current_article = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
-
     @list_article = Article.joins(:courses).where('courses.id = ?', enroll_course.id)
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
     if current_article.exists? == false
@@ -34,19 +33,7 @@ class CustomersCoursesController < ApplicationController
       redirect_to course_article_path(enroll_course, @list_article.ids.first)
     else
       redirect_to course_article_path(enroll_course, current_article.first.current_article_id.to_s)
-      # @archived_course.update_attribute("current_article_id",current_article.first.current_article_id)
     end
-  end
-
-  def calculate_progression
-
-    enroll_course = Course.find(params[:slug])
-    number_article_in_course = CourseArticle.where(course_id: enroll_course.id).count #=> number articles in course by course_id
-    number_article_viewed = CustomerArticle.where(customer_id: current_user.id, is_viewed: true).count # => article viewed with customer_id
-    progress = number_article_viewed / number_article_in_course
-    customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: enroll_course) # => progression
-    customers_courses_progression.update_attribute("progression", progress)
-
   end
 
   def click_on_article
