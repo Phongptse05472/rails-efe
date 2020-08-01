@@ -11,11 +11,12 @@ class CustomersArticlesController < ApplicationController
     @favor_article_update = CustomerArticle.find_by(article_id: params[:id], customer_id: current_user.id)
     favor_article = Article.find_by(id: params[:id])
     check_favor = CustomerArticle.where('customer_id = ? AND article_id = ?', current_user.id, favor_article.id).any?
+    check_favor_boolean = CustomerArticle.where('customer_id = ? AND article_id = ? AND is_favor = true ', current_user.id, favor_article.id)
     if check_favor == false
       CustomerArticle.create(customer_id: current_user.id, article_id: favor_article.id, is_favor: true)
-      @favor_article_update.update_attribute("is_favor", true)
-    else
 
+    else
+      #nothing
     end
   end
 
