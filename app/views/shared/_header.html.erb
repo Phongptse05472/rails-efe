@@ -13,10 +13,12 @@
         <%= image_tag("search.png") %>
       </button>
     <% end %>
+
     <% if !current_user.present? %>
       <div class="user">
         <a class="login" href="/users/sign_in">Sign in</a>
         <a class="signup" href="/users/sign_up">Sign up</a>
+        <a class="signup" href="#">Forgot pass</a>
       </div>
     <% else %>
       <div class="user">
