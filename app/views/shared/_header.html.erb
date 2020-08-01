@@ -15,8 +15,8 @@
     <% end %>
     <% if !current_user.present? %>
       <div class="user">
-        <a class="login" href="/login">Sign in</a>
-        <a class="signup" href="/register/sign_up">Sign up</a>
+        <a class="login" href="/users/sign_in">Sign in</a>
+        <a class="signup" href="/users/sign_up">Sign up</a>
       </div>
     <% else %>
       <div class="user">

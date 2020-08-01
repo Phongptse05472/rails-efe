@@ -18,28 +18,38 @@ class CustomersCoursesController < ApplicationController
     if @check_archived_course.exists?
       flash.alert = "List archive already have"
     else
-      CustomerCourse.create(customer_id: current_user.id, course_id: course.id,  is_save: true)
+      CustomerCourse.create(customer_id: current_user.id, course_id: course.id, is_save: true)
       flash.alert = "Added to list archived course"
     end
   end
 
   def enroll_courses
     enroll_course = Course.find(params[:slug])
-    current_article = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
+    @current_article = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
     @list_article = Article.joins(:courses).where('courses.id = ?', enroll_course.id)
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
-    if current_article.exists? == false
-      CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, current_article_id: @list_article.first.id, is_save: true, enrollment_date: Date.today)
-      redirect_to course_article_path(enroll_course, @list_article.ids.first)
+
+    if @current_article.exists? == false
+      if @list_article.first.nil?
+        CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, is_save: true, enrollment_date: Date.today)
+        redirect_to course_path
+      else
+        CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, current_article_id: @list_article.first.id, is_save: true, enrollment_date: Date.today)
+        redirect_to course_article_path(enroll_course, @list_article.ids.first)
+      end
     else
-      redirect_to course_article_path(enroll_course, current_article.first.current_article_id.to_s)
+      if @list_article.first.nil?
+        redirect_to course_path
+      else
+        redirect_to course_article_path(enroll_course, @current_article.first.current_article_id.to_s)
+      end
     end
   end
 
   def click_on_article
     enroll_course = Course.find(params[:slug])
     current_article = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
-    current_article.update_attribute(:current_article_id , current_article.first.current_article_id)
+    current_article.update_attribute(:current_article_id, current_article.first.current_article_id)
     redirect_to click_on_article_path(enroll_course, current_article.first.current_article_id)
   end
 
