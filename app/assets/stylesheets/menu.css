@@ -55,6 +55,7 @@
     border-right: 1px solid lightgrey;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    outline-color: #14bdee;
 }
 
 .search button {
@@ -64,6 +65,7 @@
     border: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    outline: none;
 }
 
 .search button:hover {
@@ -154,7 +156,7 @@
     width: 330px;
     position: absolute;
     top: 30px;
-    right: 86%;
+    right: 77%;
     background: #FFF;
     border: solid 1px rgba(100, 100, 100, .20);
     box-shadow: 0 3px 8px rgba(0, 0, 0, .20);

@@ -37,8 +37,8 @@
 
 .per-course {
     display: flex;
-    height: 200px;
-    margin-bottom: 25px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 .list-course {
@@ -55,10 +55,31 @@
     width: 60%;
 }
 
-.name {
-    font-weight: normal;
+.c-right a {
+    color: #273044;
+    text-decoration: none;
+}
+
+.c-right a i {
+    float: right;
+    color: #14bdee;
+    font-size: 25px;
+}
+
+.c-right p {
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.my-name {
+    font-weight: bold;
     font-size: 12px;
     margin: 0;
+    line-height: 1.4em;
+    height: 2.8em;
 }
 
 .video_course {

@@ -13,6 +13,9 @@
             <% else %>
               <%= image_tag('course_1.jpg') %>
             <% end %>
+            <a href="#">
+              <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </a>
           </div>
           <div class="author">
             <div class="icon">
@@ -24,9 +27,9 @@
               </div>
               <p><%= course.author %></p>
 
-              <%= button_to add_to_archived_path(course.id), method: :post do %>
-                "archive"
-              <% end %>
+              <%#= button_to add_to_archived_path(course.id), method: :post do %>
+<!--                "archive"-->
+              <%# end %>
 
               <script>
                   $(function () {
@@ -41,7 +44,7 @@
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star-half-o checked"></span>
               <span class="fa fa-star-o checked"></span>
-              <span>(<%= course.number_enrollment %>)</span>
+              <span>(<%= course.number_enrollment %> enroll)</span>
             </div>
           </div>
         </div>
@@ -63,6 +66,12 @@
             <% else %>
               <%= image_tag('khoa_hoc_2.jpg') %>
             <% end %>
+            <%= link_to customers_courses_path(rate_course.id), method: :put, remote: true do %>
+              <i class="fa fa-bookmark" aria-hidden="true"></i>
+            <% end %>
+<!--            <a href="#">-->
+<!--              <i class="fa fa-bookmark" aria-hidden="true"></i>-->
+<!--            </a>-->
           </div>
           <div class="author">
             <div class="icon">
@@ -73,9 +82,9 @@
                 <%= link_to rate_course.name, rate_course %>
               </div>
               <p><%= rate_course.author %></p>
-              <%= button_to customers_courses_path(rate_course.id), method: :put, remote: true do %>
-                "archive"
-              <% end %>
+              <%#= button_to customers_courses_path(rate_course.id), method: :put, remote: true do %>
+<!--                "archive"-->
+              <%# end %>
               <script>
                   $(function () {
                       $('.stars').stars();
@@ -88,7 +97,7 @@
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star checked"></span>
-              <span>  <%= rate_course.number_enrollment %></span>
+              <span>  (<%= rate_course.number_enrollment %> enroll)</span>
             </div>
           </div>
         </div>
@@ -114,9 +123,11 @@
             <div class="title">
               <div class="name">
                 <%= article.title %>
+                <%= article.title %>
+                <%= article.title %>
               </div>
               <p><%= article.author %></p>
-              <span><%= article.view_number %> view</span>
+              <span><%= article.view_number %> views - 2 months ago</span>
             </div>
           </div>
         </div>
@@ -138,6 +149,9 @@
             <% else %>
               <%= image_tag('khoa_hoc_2.jpg') %>
             <% end %>
+            <a href="#">
+              <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </a>
           </div>
           <div class="author">
             <div class="icon">
@@ -148,9 +162,9 @@
                 <%= link_to free_course.name, course_path(free_course.slug) %>
               </div>
               <p><%= free_course.author %></p>
-              <%= button_to customers_courses_path(free_course.id), method: :put, remote: true do %>
-                "archive"
-              <% end %>
+              <%#= button_to customers_courses_path(free_course.id), method: :put, remote: true do %>
+<!--                "archive"-->
+              <%# end %>
               <script>
                   $(function () {
                       $('.stars').stars();
@@ -174,10 +188,6 @@
 </div>
 
 
-<!-- Include Multislider -->
-<!--<script src="../js/multislider.min.js"></script>-->
-
-<!-- Initialize element with Multislider -->
 <script>
     $('#exampleSlider').multislider({
         interval: 100000,
@@ -199,11 +209,6 @@
         interval: 10000,
         continuous: false
     });
-    // {
-    //     interval: 8000,
-    //     slideAll: true,
-    //     duration: 1500
-    // });
 </script>
 </body>
 
