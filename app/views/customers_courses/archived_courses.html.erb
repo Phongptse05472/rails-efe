@@ -14,7 +14,7 @@
         <%= link_to "My courses", "/customers_courses" %>
       </li>
       <li>
-        <%= link_to "Archive course", "/archived-courses", style: "color: #F69B58" %>
+        <%= link_to "Archive course", "/archived-courses",class:'active' %>
       </li>
       <li>
         <%= link_to "Favor article", "/customers_articles" %>
@@ -28,16 +28,22 @@
           <%= image_tag('course_6.jpg') %>
         </div>
         <div class="c-right">
-          <h2><%= link_to archived_course.name, course_path(archived_course.slug) %></h2>
-          <%= button_to customers_course_path(archived_course.course_id), method: :put, remote: true do %>
-            "Remove archive"
+          <%= link_to customers_course_path(archived_course.course_id), method: :put, remote: true do %>
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
           <% end %>
+          <h2><%= link_to archived_course.name, course_path(archived_course.slug) %></h2>
           <p><%= archived_course.description %></p>
-          <p class="name">Author: <%= archived_course.author %></p>
-          Date Enrollment : <%= archived_course.enrollment_date.to_s %>
+          <p class="my-name">Author: <%= archived_course.author %></p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="enroll_date">Enroll date: <%= archived_course.enrollment_date%></span>
         </div>
       </div>
     <% end %>
+
   </div>
   <div class="paging">
     <a href="#">1</a>

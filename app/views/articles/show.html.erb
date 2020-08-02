@@ -1,64 +1,85 @@
 <head>
   <%= content_for :page_title, 'Play article' %>
   <%= stylesheet_link_tag 'watch', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_pack_tag 'watch', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%#= stylesheet_pack_tag 'watch', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-<div class="main">
+<div class="main-watch">
   <div class="watch">
     <% @article_detail.each do |article| %>
       <div class="video">
         <div id="media_player">
-          <iframe class="embed-responsive-item" src="https://content.jwplatform.com/videos/nYLOnbr9-nelUuFNS.mp4;autoplay=1"
+          <iframe style="display: inline-block" class="embed-responsive-item" src="https://content.jwplatform.com/videos/nYLOnbr9-nelUuFNS.mp4;autoplay=1"
                   width="100%" height="500" frameborder="2" allowfullscreen="">
           </iframe>
         </div>
       </div>
       <div class="w-title">
         <h2>
+          MUỐN ĐÁNH BẠI THỊ TRƯỜNG CHỨNG KHOÁN | ĐẦU TƯ CHỨNG KHOÁN MUỐN ĐÁNH BẠI THỊ TRƯỜNG CHỨNG KHOÁN | ĐẦU TƯ CHỨNG KHOÁN MUỐN ĐÁNH BẠI THỊ TRƯỜNG CHỨNG KHOÁN | ĐẦU TƯ CHỨNG KHOÁN
           <%= article.title %>
         </h2>
         <p>
-          <%= article.view_number %> View • <%= article.created_at.to_date %>
+          <%= article.view_number %> view • <%= article.created_at.to_date %>
         </p>
 
         <%#   if @show_favor_button  == false%>
-          <%= button_to add_to_favor_path(article.id), method: :post do %>
-            "Favor" <i class="fa"></i>
-          <% end %>
+        <%#= button_to add_to_favor_path(article.id), method: :post do %>
+        <!--            "Favor" <i class="fa"></i>-->
+        <%# end %>
         <%# else %>
-<!--        Liked video-->
+        <!--        Liked video-->
         <%# end %>
 
-        <p><%= article.author %></p>
+
       </div>
       <div class="w-description">
         <div class="w-icon">
           <%= image_tag('2.jpg') %>
         </div>
         <div class="w-author">
-          <h2> course.name </h2>
+          <h2>Khóa học lập trình Java</h2>
+          <!--          <p><%#= article.author %></p>-->
           <a href="../file/arrayList.docx" download><%= article.link_file_attach %></a>
-          <p><%= article.description %></p>
+          <p>
+            Đat được một tỷ suất sinh lời cao hơn thị trường chung. ĐÓ LÀ ĐÁNH BẠI THỊ TRƯỜNG.
+            Vậy làm sao đánh bại được thị trường Chứng Khoán.
+            Hy vọng qua các video chia sẽ, sẽ giúp anh chị NHÀ ĐẦU TƯ CHỨNG KHOÁN.
+            =======================================================
+            Tham gia Groups Trao Đổi Facebook: https://bit.ly/2z3jsqV
+            Fanpage Facebook: https://bit.ly/2VqTG7s
+            =======================================================
+            Để mở TK tại Chứng Khoán FPT:http://bit.ly/2lUC7hS
+            Để tham gia các khoá học đầu tư của DŨNG: http://bit.ly/2kmQOKs
+            Để nhận Quản Lý Tài Sản:http://bit.ly/2lRSzQ3
+            Liên hệ với QUANG DŨNG qua: 0933.687.436
+            Website: Quangdungstock.com
+            <%= article.description %>
+          </p>
           <p><%= article.tag_name %></p>
         </div>
       </div>
       <div class="w-information">
+      </div>
     <% end %>
-    </div>
     <div class="comment">
-      <div class="input">
+      <div class="account-input">
         <div class="user-icon">
-          <img src="../image/1.jpg">
+          <%= image_tag('course_9.jpg') %>
         </div>
         <div class="user-input">
-          <input type="text" placeholder="Viết bình luận">
+          <form id="inputForm" action="" method="post">
+            <input class="input_comment" type="text" placeholder="Viết bình luận">
+            <input type="submit" value="Comment">
+            <input type="button" onclick="resetForm()" value="Cancel">
+          </form>
         </div>
       </div>
+
       <div class="user-comment">
         <div class="user-icon">
-          <img src="../image/1.jpg">
+          <%= image_tag('course_9.jpg') %>
         </div>
         <div class="user-right">
           <div class="user-name">
@@ -68,10 +89,13 @@
             Em chưa hiểu đoạn 5.5 ạ, anh có thể giải thích lại đoạn đó được không ạ
           </div>
         </div>
+        <div class="comment_pin">
+          <i class="fa fa-check"></i>
+        </div>
       </div>
       <div class="user-comment">
         <div class="user-icon">
-          <img src="../image/2.jpg">
+          <%= image_tag('course_9.jpg') %>
         </div>
         <div class="user-right">
           <div class="user-name">
@@ -81,10 +105,13 @@
             Oke rồi anh ạ
           </div>
         </div>
+        <div class="comment_pin">
+          <i class="fa fa-check"></i>
+        </div>
       </div>
       <div class="user-comment">
         <div class="user-icon">
-          <img src="../image/2.jpg">
+          <%= image_tag('course_9.jpg') %>
         </div>
         <div class="user-right">
           <div class="user-name">
@@ -94,21 +121,25 @@
             Anh ơi anh giải thích lại chỗ 1.3 được không ạ
           </div>
         </div>
+        <div class="comment_pin">
+          <i class="fa fa-check"></i>
+        </div>
       </div>
       <div class="user-comment">
         <div class="user-icon">
-          <img src="../image/2.jpg">
+          <%= image_tag('course_9.jpg') %>
         </div>
         <div class="user-right">
           <div class="user-name">
             Fu hòa lạc
           </div>
           <div class="u-comment">
-            Anh ơi có video bài tập nào sâu hơn về arraylist không ạ, em muốn tìm hiểu thêm ạ. NGoài arraylist ra thì
-            còn cách gì lưu trữ dữ object nữa không ạ Anh ơi có video bài tập nào sâu hơn về arraylist không ạ, em muốn
-            tìm hiểu thêm ạ. NGoài arraylist ra thì
+            Anh ơi có video bài tập nào sâu hơn về arraylist không ạ, em muốn tìm hiểu thêm ạ. NGoài arraylist ra thì còn cách gì lưu trữ dữ object nữa không ạ Anh ơi có video bài tập nào sâu hơn về arraylist không ạ, em muốn tìm hiểu thêm ạ. NGoài arraylist ra thì
             còn cách gì lưu trữ dữ object nữa không ạ
           </div>
+        </div>
+        <div class="comment_pin">
+          <i class="fa fa-check"></i>
         </div>
       </div>
     </div>
@@ -125,6 +156,7 @@
             <div class="l-right">
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
+                tại vì sao bạn nên đầu tư chứng khoán tại vì sao bạn nên đầu tư chứng khoán
               </div>
               <div class="l-author">
                 <%= a.author %>
@@ -135,6 +167,60 @@
             </div>
           </li>
         <% end %>
+        <li>
+          <div class="l-left">
+            <%= image_tag('course_8.jpg') %>
+          </div>
+          <div class="l-right">
+            <div class="l-title">
+              <a href="#">
+                Đầu tư chứng khoán cùng FPT, tại vì sao bạn nên đầu tư chứng khoán con đường ngắn nhất để nghèo
+              </a>
+            </div>
+            <div class="l-author">
+              Đại học FPT
+            </div>
+            <div class="l-view">
+              6,7N views
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="l-left">
+            <%= image_tag('course_7.jpg') %>
+          </div>
+          <div class="l-right">
+            <div class="l-title">
+              <a href="#">
+                Đầu tư chứng khoán cùng FPT, tại vì sao bạn nên đầu tư chứng khoán con đường ngắn nhất để nghèo
+              </a>
+            </div>
+            <div class="l-author">
+              Đại học FPT
+            </div>
+            <div class="l-view">
+              6,7N views
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="l-left">
+            <%= image_tag('course_6.jpg') %>
+          </div>
+          <div class="l-right">
+            <div class="l-title">
+              <a href="#">
+                Đầu tư chứng khoán cùng FPT, tại vì sao bạn nên đầu tư chứng khoán con đường ngắn nhất để nghèo
+              </a>
+            </div>
+            <div class="l-author">
+              Đại học FPT
+            </div>
+            <div class="l-view">
+              6,7N views
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
     <h1>Recommend for you</h1>
@@ -142,7 +228,7 @@
       <ul>
         <li>
           <div class="l-left">
-            <img src="../images/khoa_Hoc4.png">
+            <%= image_tag('course_5.jpg') %>
           </div>
           <div class="l-right">
             <div class="l-title">
@@ -158,7 +244,7 @@
         </li>
         <li>
           <div class="l-left">
-            <img src="../images/code_c.PNG">
+            <%= image_tag('course_4.jpg') %>
           </div>
           <div class="l-right">
             <div class="l-title">
@@ -174,7 +260,7 @@
         </li>
         <li>
           <div class="l-left">
-            <img src="../images/japanese.png">
+            <%= image_tag('course_3.jpg') %>
           </div>
           <div class="l-right">
             <div class="l-title">
@@ -190,7 +276,7 @@
         </li>
         <li>
           <div class="l-left">
-            <img src="../images/java_script.jpg">
+            <%= image_tag('course_2.jpg') %>
           </div>
           <div class="l-right">
             <div class="l-title">
@@ -206,7 +292,7 @@
         </li>
         <li>
           <div class="l-left">
-            <img src="../images/java.png">
+            <%= image_tag('course_1.jpg') %>
           </div>
           <div class="l-right">
             <div class="l-title">
@@ -308,7 +394,11 @@
 <div class="footer">
 
 </div>
-
+<script>
+    function resetForm() {
+        document.getElementById("inputForm").reset();
+    }
+</script>
 <!--<script type="text/javascript">-->
 <!--    var playerInstance;-->
 

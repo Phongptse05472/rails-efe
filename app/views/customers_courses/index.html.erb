@@ -7,7 +7,7 @@
   <div class="menu-course">
     <ul>
       <li>
-        <%= link_to "My courses", "/customers_courses", style: "color: #F69B58" %>
+        <%= link_to "My courses", "/customers_courses",class:'active' %>
       </li>
       <li>
         <%= link_to "Archive course", "/archived-courses" %>
@@ -28,10 +28,13 @@
           <p>
             <%= my_course.description %>
           </p>
-          <p class="name">Author: <%= my_course.author %></p>
-          Date Enrollment : <%= my_course.enrollment_date.to_s %>
-          <p class="video_course">Course: <%= my_course.name %></p>
-
+          <p class="my-name">Author: <%= my_course.author %></p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="enroll_date">Enroll date: <%= my_course.enrollment_date%></span>
         </div>
       </div>
     <% end %>

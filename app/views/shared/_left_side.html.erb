@@ -3,45 +3,54 @@
   <ul class="top">
     <li>
       <a href="/home">
-        <i style="color: #2bc3cc;" class="fa fa-home"></i> Home Page
+        <i  class="fa fa-home"></i> Home Page
       </a>
     </li>
     <% if !current_user.present? %>
       <li>
         <%= link_to new_user_session_path do %>
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign in
+          <i class="fa fa-user-circle-o"></i> Sign in
         <% end %>
       </li>
       <li>
         <%= link_to new_user_registration_path do %>
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Sign up
+          <i class="fa fa-user-circle-o"></i> Sign up
         <% end %>
       </li>
     <% else %>
       <li>
         <a href="/customers_courses">
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My Course
+          <i  class="fa fa-user-circle-o"></i> My Course
         </a>
       </li>
       <li>
-        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Your Course
+        <i  class="fa fa-user-circle-o"></i> Your Course
       </li>
       <% course.each do |a| %>
         <li>
-          <%= link_to a.name, course_path(a.slug) %>
+          <%= link_to course_path(a.slug) do%>
+            <i  class="fa fa-graduation-cap"></i>
+            <%=a.name %>
+          <% end %>
         </li>
       <% end %>
-    <% end %>
 
+    <% end %>
   </ul>
   <h2>Topics</h2>
   <ul class="top">
     <% data.each do |c| %>
       <li>
-        <div>
-          <%= link_to c.name, topic_path(c.slug) %>
-        </div>
+          <%= link_to topic_path(c.slug)  do %>
+            <i  class="fa fa-graduation-cap"></i>
+            <%=c.name %>
+          <% end %>
       </li>
     <% end %>
+    <li class="show">
+      <a href="mycourse.html">
+        <i class="fa fa-sort-down"></i>Show all
+      </a>
+    </li>
   </ul>
 </div>
