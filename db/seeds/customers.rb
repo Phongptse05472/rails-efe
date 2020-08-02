@@ -51,9 +51,9 @@ puts "\n...Seeding Mentors & Students...\n"
 
 end
 
-puts "\n ...Seeding Topic...\n"
+puts "\n ...Seeding Group...\n"
 (1...5).each do |x3|
-  @c3 = Topic.find_or_initialize_by(id: x3)
+  @c3 = Group.find_or_initialize_by(id: x3)
   @c3.name = Faker::Name.first_name
   @c3.save!
 end

@@ -1,13 +1,12 @@
-class Topic < ApplicationRecord
+class Group < ApplicationRecord
   before_create :update_slug, :to_params
-
 
   extend FriendlyId
   friendly_id :name, use: [:slugged]
 
-  has_many :topic_courses
-  has_many :courses, through: :topic_courses
-
+  has_many :skills
+  has_many :careerpaths, :through => :path_groups
+  has_and_belongs_to_many :courses
 
   def update_slug
     self.slug = name.parameterize

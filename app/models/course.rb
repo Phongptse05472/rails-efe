@@ -25,9 +25,8 @@ class Course < ApplicationRecord
 
 
   has_one_attached :image
-  
-  has_many :topic_courses
-  has_many :topics, through: :topic_courses
+
+  has_and_belongs_to_many :groups
 
   has_many :course_articles
   has_many :articles, through: :course_articles
