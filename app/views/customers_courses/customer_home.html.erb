@@ -60,14 +60,6 @@
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
               <p><%= course.author %></p>
-              <%#= button_to add_to_archived_path(course.id), method: :post do %>
-<!--                "archive"-->
-              <%# end %>
-<!--              <script>-->
-<!--                  $(function () {-->
-<!--                      $('.stars').stars();-->
-<!--                  });-->
-<!--              </script>-->
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
@@ -109,11 +101,6 @@
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
               <p><%= course.author %></p>
-
-              <%#= button_to add_to_archived_path(course.id), method: :post do %>
-<!--                "archive"-->
-              <%# end %>
-
               <script>
                   $(function () {
                       $('.stars').stars();
@@ -160,11 +147,6 @@
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
               <p><%= course.author %></p>
-
-              <%#= button_to add_to_archived_path(course.id), method: :post do %>
-<!--                "archive"-->
-              <%# end %>
-
               <script>
                   $(function () {
                       $('.stars').stars();
@@ -257,7 +239,6 @@
         }
     }
 </script>
-
 
 <!--   Initialize element with Multislider-->
 <script>
