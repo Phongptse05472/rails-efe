@@ -13,9 +13,7 @@
             <% else %>
               <%= image_tag('course_1.jpg') %>
             <% end %>
-            <a href="#">
-              <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </a>
+              <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
           </div>
           <div class="author">
             <div class="icon">
@@ -66,9 +64,9 @@
             <% else %>
               <%= image_tag('khoa_hoc_2.jpg') %>
             <% end %>
-            <%= link_to customers_courses_path(rate_course.id), method: :put, remote: true do %>
-              <i class="fa fa-bookmark" aria-hidden="true"></i>
-            <% end %>
+            <%#= link_to customers_courses_path(rate_course.id), method: :put, remote: true do %>
+              <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+            <%# end %>
 <!--            fa fa-bookmark    :full-->
 <!--            fa fa-bookmark-o   :rong-->
 <!--            <a href="#">-->
@@ -151,9 +149,7 @@
             <% else %>
               <%= image_tag('khoa_hoc_2.jpg') %>
             <% end %>
-            <a href="#">
-              <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </a>
+              <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
           </div>
           <div class="author">
             <div class="icon">
@@ -188,7 +184,33 @@
   <div class="end">
   </div>
 </div>
+<script>
+    function bookmark(bookmark,courseID){
+        var x = bookmark;
+        var check = 0;
+        if(x.className === "fa fa-bookmark"){
+            x.className = "fa fa-bookmark-o";
+            check = 0;
 
+        }else{
+            x.className = "fa fa-bookmark";
+            check = 1;
+        }
+        // var app1 = new Vue({
+        //     el: '#app1',
+        //     mounted: function () {
+        //         axios.get('/TestJson/ReturnJson', {
+        //             params: {
+        //                 value: check,
+        //                 num: courseID
+        //             }
+        //         }).catch(error => {
+        //             console.log(error);
+        //         });
+        //     }
+        // });
+    }
+</script>
 
 <script>
     $('#exampleSlider').multislider({

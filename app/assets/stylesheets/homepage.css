@@ -177,7 +177,7 @@ body::-webkit-scrollbar {
     overflow: hidden;
 }
 
-.thumbnai a i {
+.thumbnai i {
     position: absolute;
     color: black;
     top: 0;
