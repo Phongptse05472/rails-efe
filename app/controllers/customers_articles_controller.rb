@@ -13,9 +13,8 @@ class CustomersArticlesController < ApplicationController
     check_favor = CustomerArticle.where('customer_id = ? AND article_id = ?', current_user.id, favor_article.id).any?
     if check_favor == false
       CustomerArticle.create(customer_id: current_user.id, article_id: favor_article.id, is_favor: true)
-      @favor_article_update.update_attribute("is_favor", true)
     else
-
+      #nothing
     end
   end
 
