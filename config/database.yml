@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
+  host: <%= ENV.fetch("DATABASE") { 'db' } %>
   database: capstone
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
@@ -9,7 +9,7 @@ default: &default
 
 development:
   <<: *default
-  database: capstone_develop
+  database: capstone_develope
 
 test:
   <<: *default
