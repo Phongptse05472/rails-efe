@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_course, only: [:show]
 
   def index
@@ -48,6 +49,17 @@ class CoursesController < ApplicationController
     end
   end
 
+  protected
+  def authenticate_user!
+    if user_signed_in?
+      # super
+    else
+      redirect_to user_home_path
+      ## if you want render 404 page
+      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -60,5 +72,7 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
   end
+
+
 
 end

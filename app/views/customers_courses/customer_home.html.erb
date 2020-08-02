@@ -34,9 +34,160 @@
       <%= link_to topic.name, topic_path(topic.id) %>
     <% end %>
   </div>
+
   <h1>Recommend for you</h1>
   List course here
-  ...
+
+  <h1>Hot course</h1>
+  <div id="exampleSlider1">
+    <div class="MS-content">
+      <% @hot_course.each do |course| %>
+        <div id="item" class="item">
+          <div class="thumbnai">
+            <% if course.image.attached? %>
+              <%= image_tag(course.image) %>
+            <% else %>
+              <%= image_tag('course_1.jpg') %>
+            <% end %>
+          </div>
+          <div class="author">
+            <div class="icon">
+              <%= image_tag("2.jpg", alt: "") %>
+            </div>
+            <div class="title">
+              <div class="name">
+                <%= link_to course.name, course_path(course.slug) %>
+              </div>
+              <p><%= course.author %></p>
+
+              <%= button_to add_to_archived_path(course.id), method: :post do %>
+                "archive"
+              <% end %>
+
+              <script>
+                  $(function () {
+                      $('.stars').stars();
+                  });
+              </script>
+              <div class="star">
+                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
+              </div>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star-half-o checked"></span>
+              <span class="fa fa-star-o checked"></span>
+              <span>(<%= course.number_enrollment %>)</span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="MS-controls">
+      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <h1>Top course</h1>
+  <div id="exampleSlider1">
+    <div class="MS-content">
+      <% @rate_course.each do |course| %>
+        <div id="item" class="item">
+          <div class="thumbnai">
+            <% if course.image.attached? %>
+              <%= image_tag(course.image) %>
+            <% else %>
+              <%= image_tag('course_1.jpg') %>
+            <% end %>
+          </div>
+          <div class="author">
+            <div class="icon">
+              <%= image_tag("2.jpg", alt: "") %>
+            </div>
+            <div class="title">
+              <div class="name">
+                <%= link_to course.name, course_path(course.slug) %>
+              </div>
+              <p><%= course.author %></p>
+
+              <%= button_to add_to_archived_path(course.id), method: :post do %>
+                "archive"
+              <% end %>
+
+              <script>
+                  $(function () {
+                      $('.stars').stars();
+                  });
+              </script>
+              <div class="star">
+                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
+              </div>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star-half-o checked"></span>
+              <span class="fa fa-star-o checked"></span>
+              <span>(<%= course.number_enrollment %>)</span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="MS-controls">
+      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <h1>New course</h1>
+  <div id="exampleSlider1">
+    <div class="MS-content">
+      <% @new_course.each do |course| %>
+        <div id="item" class="item">
+          <div class="thumbnai">
+            <% if course.image.attached? %>
+              <%= image_ta  g(course.image) %>
+            <% else %>
+              <%= image_tag('course_1.jpg') %>
+            <% end %>
+          </div>
+          <div class="author">
+            <div class="icon">
+              <%= image_tag("2.jpg", alt: "") %>
+            </div>
+            <div class="title">
+              <div class="name">
+                <%= link_to course.name, course_path(course.slug) %>
+              </div>
+              <p><%= course.author %></p>
+
+              <%= button_to add_to_archived_path(course.id), method: :post do %>
+                "archive"
+              <% end %>
+
+              <script>
+                  $(function () {
+                      $('.stars').stars();
+                  });
+              </script>
+              <div class="star">
+                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
+              </div>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star-half-o checked"></span>
+              <span class="fa fa-star-o checked"></span>
+              <span>(<%= course.number_enrollment %>)</span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="MS-controls">
+      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
 </div>
 <!--</div>-->
 <script>

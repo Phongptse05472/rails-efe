@@ -2,9 +2,15 @@
   <h2>Menu</h2>
   <ul class="top">
     <li>
+      <% if !current_user.present? %>
       <a href="/home">
         <i style="color: #2bc3cc;" class="fa fa-home"></i> Home Page
       </a>
+        <% else %>
+        <a href="/user-home">
+          <i style="color: #2bc3cc;" class="fa fa-home"></i> Home Page
+        </a>
+      <% end %>
     </li>
     <% if !current_user.present? %>
       <li>
@@ -34,6 +40,8 @@
     <% end %>
 
   </ul>
+
+  <% if !current_user.present? %>
   <h2>Topics</h2>
   <ul class="top">
     <% data.each do |c| %>
@@ -44,4 +52,6 @@
       </li>
     <% end %>
   </ul>
+    <% else %>
+  <% end %>
 </div>
