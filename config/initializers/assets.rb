@@ -15,4 +15,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( mailers.js )
 
 Rails.application.config.assets.precompile += %w(application.js)
-Rails.application.config.assets.precompile += %w(index.js)
+Rails.application.config.assets.configure do |env|
+  env.cache = Sprockets::Cache::FileStore.new(
+      ENV.fetch("SPROCKETS_CACHE", "#{env.root}/tmp/cache/assets"),
+      Rails.application.config.assets.cache_limit,
+      env.logger
+  )
+end
