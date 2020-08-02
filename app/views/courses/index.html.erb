@@ -1,6 +1,6 @@
 <%= content_for :page_title, 'Home' %>
 <body>
-<div class="right">
+<div #app1 class="right">
   <!--    No login-->
   <h1>Hot Course</h1>
   <div id="exampleSlider1">
@@ -24,11 +24,11 @@
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
               <p><%= course.author %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
+<!--              <script>-->
+<!--                  $(function () {-->
+<!--                      $('.stars').stars();-->
+<!--                  });-->
+<!--              </script>-->
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
@@ -70,11 +70,11 @@
                 <%= link_to rate_course.name, rate_course %>
               </div>
               <p><%= rate_course.author %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
+<!--              <script>-->
+<!--                  $(function () {-->
+<!--                      $('.stars').stars();-->
+<!--                  });-->
+<!--              </script>-->
               <span class="stars " data-rating="<%= rate_course.rate %>" data-num-stars="5"></span>
 
               <span class="fa fa-star checked"></span>
@@ -143,11 +143,11 @@
                 <%= link_to free_course.name, course_path(free_course.slug) %>
               </div>
               <p><%= free_course.author %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
+<!--              <script>-->
+<!--                  $(function () {-->
+<!--                      $('.stars').stars();-->
+<!--                  });-->
+<!--              </script>-->
               <span class="stars " data-rating="<%= free_course.rate %>" data-num-stars="5"></span>
 
               <span>(<%= free_course.number_enrollment %>)</span>
