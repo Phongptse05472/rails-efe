@@ -24,11 +24,6 @@
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
               <p><%= course.author %></p>
-
-              <%#= button_to add_to_archived_path(course.id), method: :post do %>
-<!--                "archive"-->
-              <%# end %>
-
               <script>
                   $(function () {
                       $('.stars').stars();
@@ -64,14 +59,7 @@
             <% else %>
               <%= image_tag('khoa_hoc_2.jpg') %>
             <% end %>
-            <%#= link_to customers_courses_path(rate_course.id), method: :put, remote: true do %>
-              <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
-            <%# end %>
-<!--            fa fa-bookmark    :full-->
-<!--            fa fa-bookmark-o   :rong-->
-<!--            <a href="#">-->
-<!--              <i class="fa fa-bookmark" aria-hidden="true"></i>-->
-<!--            </a>-->
+              <i onclick="bookmark(this,rate_course.id)" class="fa fa-bookmark-o" aria-hidden="true"></i>
           </div>
           <div class="author">
             <div class="icon">
@@ -82,9 +70,6 @@
                 <%= link_to rate_course.name, rate_course %>
               </div>
               <p><%= rate_course.author %></p>
-              <%#= button_to customers_courses_path(rate_course.id), method: :put, remote: true do %>
-<!--                "archive"-->
-              <%# end %>
               <script>
                   $(function () {
                       $('.stars').stars();
@@ -123,8 +108,6 @@
             <div class="title">
               <div class="name">
                 <%= article.title %>
-                <%= article.title %>
-                <%= article.title %>
               </div>
               <p><%= article.author %></p>
               <span><%= article.view_number %> views - 2 months ago</span>
@@ -160,9 +143,6 @@
                 <%= link_to free_course.name, course_path(free_course.slug) %>
               </div>
               <p><%= free_course.author %></p>
-              <%#= button_to customers_courses_path(free_course.id), method: :put, remote: true do %>
-<!--                "archive"-->
-              <%# end %>
               <script>
                   $(function () {
                       $('.stars').stars();
@@ -187,28 +167,23 @@
 <script>
     function bookmark(bookmark,courseID){
         var x = bookmark;
-        var check = 0;
         if(x.className === "fa fa-bookmark"){
             x.className = "fa fa-bookmark-o";
-            check = 0;
-
         }else{
             x.className = "fa fa-bookmark";
-            check = 1;
         }
-        // var app1 = new Vue({
-        //     el: '#app1',
-        //     mounted: function () {
-        //         axios.get('/TestJson/ReturnJson', {
-        //             params: {
-        //                 value: check,
-        //                 num: courseID
-        //             }
-        //         }).catch(error => {
-        //             console.log(error);
-        //         });
-        //     }
-        // });
+        var app1 = new Vue({
+            el: '#app1',
+            mounted: function () {
+                axios.get('/archive_courses/', {
+                    params: {
+                        num: courseID
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
+        });
     }
 </script>
 

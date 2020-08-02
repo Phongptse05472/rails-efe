@@ -54,7 +54,9 @@
 .c-right {
     width: 60%;
 }
-
+.enroll_date{
+    font-size: small;
+}
 .c-right a {
     color: #273044;
     text-decoration: none;

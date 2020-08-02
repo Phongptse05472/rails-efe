@@ -28,192 +28,21 @@
           <%= image_tag('course_6.jpg') %>
         </div>
         <div class="c-right">
-          <h2><%= link_to archived_course.name, course_path(archived_course.slug) %></h2>
-          <%= button_to customers_course_path(archived_course.course_id), method: :put, remote: true do %>
-            "Remove archive"
+          <%= link_to customers_course_path(archived_course.course_id), method: :put, remote: true do %>
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
           <% end %>
+          <h2><%= link_to archived_course.name, course_path(archived_course.slug) %></h2>
           <p><%= archived_course.description %></p>
-          <p class="name">Author: <%= archived_course.author %></p>
-          Date Enrollment : <%= archived_course.enrollment_date.to_s %>
+          <p class="my-name">Author: <%= archived_course.author %></p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="enroll_date">Enroll date: <%= archived_course.enrollment_date%></span>
         </div>
       </div>
     <% end %>
-    <div class="per-course">
-      <div class="c-left">
-        <a href="#">
-          <%= image_tag('khoa_hoc_2.jpg') %>
-        </a>
-      </div>
-      <div class="c-right">
-        <a href="#">
-          <i class="fa fa-bookmark" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <h2>Lập trình java cơ bản</h2>
-        </a>
-        <p>
-          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-
-        </p>
-        <p class="my-name">Author: Alias</p>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-      </div>
-    </div>
-    <div class="per-course">
-      <div class="c-left">
-        <a href="#">
-          <%= image_tag('khoa_hoc_2.jpg') %>
-        </a>
-      </div>
-      <div class="c-right">
-        <a href="#">
-          <i class="fa fa-bookmark" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <h2>Lập trình java cơ bản</h2>
-        </a>
-        <p>
-          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-
-        </p>
-        <p class="my-name">Author: Alias</p>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-      </div>
-    </div>
-    <div class="per-course">
-      <div class="c-left">
-        <a href="#">
-          <%= image_tag('khoa_hoc_2.jpg') %>
-        </a>
-      </div>
-      <div class="c-right">
-        <a href="#">
-          <i class="fa fa-bookmark" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <h2>Lập trình java cơ bản</h2>
-        </a>
-        <p>
-          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-
-        </p>
-        <p class="my-name">Author: Alias</p>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-      </div>
-    </div>
-    <div class="per-course">
-      <div class="c-left">
-        <a href="#">
-          <%= image_tag('khoa_hoc_2.jpg') %>
-        </a>
-      </div>
-      <div class="c-right">
-        <a href="#">
-          <i class="fa fa-bookmark" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <h2>Lập trình java cơ bản</h2>
-        </a>
-        <p>
-          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-
-        </p>
-        <p class="my-name">Author: Alias</p>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-      </div>
-    </div>
-    <div class="per-course">
-      <div class="c-left">
-        <a href="#">
-          <%= image_tag('khoa_hoc_2.jpg') %>
-        </a>
-      </div>
-      <div class="c-right">
-        <a href="#">
-          <i class="fa fa-bookmark" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <h2>Lập trình java cơ bản</h2>
-        </a>
-        <p>
-          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-
-        </p>
-        <p class="my-name">Author: Alias</p>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-      </div>
-    </div>
-    <div class="per-course">
-      <div class="c-left">
-        <a href="#">
-          <%= image_tag('khoa_hoc_2.jpg') %>
-        </a>
-      </div>
-      <div class="c-right">
-        <a href="#">
-          <i class="fa fa-bookmark" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <h2>Lập trình java cơ bản</h2>
-        </a>
-        <p>
-          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-
-        </p>
-        <p class="my-name">Author: Alias</p>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-      </div>
-    </div>
-    <div class="per-course">
-      <div class="c-left">
-        <a href="#">
-          <%= image_tag('khoa_hoc_2.jpg') %>
-        </a>
-      </div>
-      <div class="c-right">
-        <a href="#">
-          <i class="fa fa-bookmark" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <h2>Lập trình java cơ bản</h2>
-        </a>
-        <p>
-          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-
-        </p>
-        <p class="my-name">Author: Alias</p>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-      </div>
-    </div>
-
 
   </div>
   <div class="paging">
