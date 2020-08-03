@@ -60,14 +60,12 @@
 .c-right a {
     color: #273044;
     text-decoration: none;
-    width: 10px;
 }
 
 .c-right a i {
     float: right;
     color: #14bdee;
     font-size: 25px;
-    float: right;
 }
 
 .c-right p {
@@ -76,23 +74,14 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    /*margin-bottom: 5px;*/
 }
-.c-right h2 {
-    margin: 0;
-    width: 95%;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    font-size: 20px;
-}
+
 .my-name {
     font-weight: bold;
     font-size: 12px;
     margin: 0;
-    line-height: 1.2em;
-    height: 2.4em;
+    line-height: 1.4em;
+    height: 2.8em;
 }
 
 .video_course {
@@ -105,7 +94,9 @@
     margin: 0;
 }
 
-
+.c-right h2 {
+    margin: 0;
+}
 
 .paging {
     height: 100px;
