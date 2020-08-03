@@ -132,7 +132,7 @@
         <div id="item" class="item">
           <div class="thumbnai">
             <% if course.image.attached? %>
-              <%= image_ta  g(course.image) %>
+              <%= image_tag(course.image) %>
             <% else %>
               <%= image_tag('course_1.jpg') %>
             <% end %>
@@ -185,7 +185,7 @@
             </div>
             <div class="title">
               <div class="name">
-                <%= article.title %>
+                <%=link_to article.title  %>
               </div>
               <p><%= article.author %></p>
               <span><%= article.view_number %> view</span>
