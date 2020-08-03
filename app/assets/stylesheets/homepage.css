@@ -15,9 +15,6 @@ body {
     width: 100%;
     height: auto;
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    position: center;
 }
 
 .right {
@@ -65,7 +62,7 @@ body::-webkit-scrollbar {
 .left ul li {
     height: 50px;
     line-height: 50px;
-    padding-left: 6%;
+    padding-left: 10%;
     font-size: 15px;
     font-weight: bold;
     color: #273044;
@@ -212,17 +209,19 @@ body::-webkit-scrollbar {
 }
 
 .name {
-    width: 95%;
+    width: 100%;
     font-weight: bold;
     margin: 0;
     line-height: 1.4em;
     height: 2.8em;
     overflow: hidden;
-     white-space: initial;
+    /* white-space: initial; */
     text-overflow: ellipsis;
+    /* overflow: hidden;
+    width: 100%;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: vertical; */
 }
 
 .item {
