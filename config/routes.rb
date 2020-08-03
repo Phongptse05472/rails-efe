@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'user-home', to: 'customers_courses#customer_home', :as  => :user_home
   get 'search' ,to: 'courses#search', :as => :search_courses
 
-  put 'courses/:id', to: 'customers_courses#update', :as => :update_archived
+  post 'courses/:id', to: 'customers_courses#update', :as => :update_archived
 
   post 'archive_courses/:slug', to: 'customers_courses#add_course_to_archived', :as => :add_to_archived
 
