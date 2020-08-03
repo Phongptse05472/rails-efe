@@ -154,6 +154,7 @@
               <%= image_tag('course_9.jpg') %>
             </div>
             <div class="l-right">
+              <i style="" onclick="bookmark(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
                 tại vì sao bạn nên đầu tư chứng khoán tại vì sao bạn nên đầu tư chứng khoán
@@ -167,60 +168,6 @@
             </div>
           </li>
         <% end %>
-        <li>
-          <div class="l-left">
-            <%= image_tag('course_8.jpg') %>
-          </div>
-          <div class="l-right">
-            <div class="l-title">
-              <a href="#">
-                Đầu tư chứng khoán cùng FPT, tại vì sao bạn nên đầu tư chứng khoán con đường ngắn nhất để nghèo
-              </a>
-            </div>
-            <div class="l-author">
-              Đại học FPT
-            </div>
-            <div class="l-view">
-              6,7N views
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="l-left">
-            <%= image_tag('course_7.jpg') %>
-          </div>
-          <div class="l-right">
-            <div class="l-title">
-              <a href="#">
-                Đầu tư chứng khoán cùng FPT, tại vì sao bạn nên đầu tư chứng khoán con đường ngắn nhất để nghèo
-              </a>
-            </div>
-            <div class="l-author">
-              Đại học FPT
-            </div>
-            <div class="l-view">
-              6,7N views
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="l-left">
-            <%= image_tag('course_6.jpg') %>
-          </div>
-          <div class="l-right">
-            <div class="l-title">
-              <a href="#">
-                Đầu tư chứng khoán cùng FPT, tại vì sao bạn nên đầu tư chứng khoán con đường ngắn nhất để nghèo
-              </a>
-            </div>
-            <div class="l-author">
-              Đại học FPT
-            </div>
-            <div class="l-view">
-              6,7N views
-            </div>
-          </div>
-        </li>
       </ul>
     </div>
     <h1>Recommend for you</h1>
@@ -441,7 +388,28 @@
 <!--    });-->
 <!--</script>-->
 </body>
-
+<script>
+    function bookmark(heart,courseID){
+        var x = heart;
+        if(x.className === "fa fa-heart"){
+            x.className = "fa fa-heart-o";
+        }else{
+            x.className = "fa fa-heart";
+        }
+        var app1 = new Vue({
+            el: '#app1',
+            mounted: function () {
+                axios.get('/archive_courses/', {
+                    params: {
+                        num: courseID
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
+        });
+    }
+</script>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
         $('#videoElementID').bind('contextmenu', function () {

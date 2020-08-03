@@ -257,6 +257,10 @@ body::-webkit-scrollbar {
 
 .title p {
     font-size: 14px;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title i {
