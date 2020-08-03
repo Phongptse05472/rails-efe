@@ -3,12 +3,12 @@
   <ul class="top">
     <li>
       <% if !current_user.present? %>
-        <a href="/home">
-          <i class="fa fa-home"></i> Home Page
-        </a>
-      <% else %>
+      <a href="/home">
+        <i  class="fa fa-home"></i> Home Page
+      </a>
+        <% else %>
         <a href="/user-home">
-          <i class="fa fa-home"></i> Home Page
+          <i style="color: #2bc3cc;" class="fa fa-home"></i> Home Page
         </a>
       <% end %>
     </li>
@@ -26,46 +26,41 @@
     <% else %>
       <li>
         <a href="/customers_courses">
-          <i class="fa fa-user-circle-o"></i> My Course
+          <i  class="fa fa-user-circle-o"></i> My Course
         </a>
       </li>
-    <% end %>
-  </ul>
-  <% if current_user.present? %>
-    <h2>Follow</h2>
-    <ul class="top">
+      <li>
+        <i  class="fa fa-user-circle-o"></i> Your Course
+      </li>
       <% course.each do |a| %>
         <li>
-          <%= link_to course_path(a.slug) do %>
-            <i class="fa fa-graduation-cap"></i>
-            <%= a.name %>
+          <%= link_to course_path(a.slug) do%>
+            <i  class="fa fa-graduation-cap"></i>
+            <%=a.name %>
           <% end %>
         </li>
       <% end %>
-      <li class="show">
-        <a href="mycourse.html">
-          <i class="fa fa-sort-down"></i>Show all
-        </a>
-      </li>
-    </ul>
-  <% end %>
+
+    <% end %>
+  </ul>
+
   <% if !current_user.present? %>
-    <h2>Topics</h2>
-    <ul class="top">
-      <% data.each do |c| %>
-        <li>
-          <%= link_to topic_path(c.slug) do %>
-            <i class="fa fa-graduation-cap"></i>
-            <%= c.name %>
+  <h2>Topics</h2>
+  <ul class="top">
+    <% data.each do |c| %>
+      <li>
+          <%= link_to topic_path(c.slug)  do %>
+            <i  class="fa fa-graduation-cap"></i>
+            <%=c.name %>
           <% end %>
-        </li>
-      <% end %>
-      <li class="show">
-        <a href="mycourse.html">
-          <i class="fa fa-sort-down"></i>Show all
-        </a>
       </li>
-    </ul>
-  <% else %>
+    <% end %>
+    <li class="show">
+      <a href="mycourse.html">
+        <i class="fa fa-sort-down"></i>Show all
+      </a>
+    </li>
+  </ul>
+    <% else %>
   <% end %>
 </div>
