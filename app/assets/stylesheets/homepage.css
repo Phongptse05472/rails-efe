@@ -282,8 +282,8 @@ body::-webkit-scrollbar {
 }
 
 .icon img {
-    width: 80%;
-    height: auto;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
 }
 
