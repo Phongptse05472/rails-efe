@@ -15,7 +15,7 @@
     position: relative;
     vertical-align: top;
     border-right: none;
-    width: 23%;
+    width: 23.3%;
     margin-left: 30px;
     border-radius: 5px;
     box-shadow: 0px 1px 10px rgba(29, 34, 47, 0.1);
@@ -142,7 +142,7 @@ button:hover {
         right: 52px;
     }
     .item {
-        width: 23.5%;
+        width: 23.4%;
     }
 }
 

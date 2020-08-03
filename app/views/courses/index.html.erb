@@ -3,7 +3,7 @@
 <div class="right">
   <!--    No login-->
   <h1>Hot Course</h1>
-  <div id="exampleSlider1">
+  <div id="exampleSlider">
     <div class="MS-content">
       <% @course.each do |course| %>
         <div id="item" class="item">
@@ -49,7 +49,7 @@
     </div>
   </div>
   <h1>Top Course</h1>
-  <div id="exampleSlider">
+  <div id="exampleSlider1">
     <div id="top" class="MS-content">
       <% @rate_course.each do |rate_course| %>
         <div id="item" class="item">
@@ -59,7 +59,7 @@
             <% else %>
               <%= image_tag('khoa_hoc_2.jpg') %>
             <% end %>
-              <i onclick="bookmark(this,rate_course.id)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+            <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
           </div>
           <div class="author">
             <div class="icon">
@@ -148,9 +148,12 @@
                       $('.stars').stars();
                   });
               </script>
-              <span class="stars " data-rating="<%= free_course.rate %>" data-num-stars="5"></span>
-
-              <span>(<%= free_course.number_enrollment %>)</span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span>(<%= free_course.number_enrollment %> enroll)</span>
             </div>
           </div>
         </div>
