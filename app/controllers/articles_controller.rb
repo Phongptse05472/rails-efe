@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :update_favor]
+  before_action :set_article, only: [:show]
 
   def index
   end
@@ -10,11 +10,20 @@ class ArticlesController < ApplicationController
     @course = Course.friendly.find(params[:course_slug])
     #right side - List article in course
     @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+
+    @comment = Comment.new
+
+    @comment_user = Comment.custom_display
   end
 
   # GET /articles/1/edit
   def edit
   end
+
+  # def comments
+  #   @comments = Comment.new
+  #   @comments = Comment.custom_display
+  # end
 
   private
 
