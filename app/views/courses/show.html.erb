@@ -1,30 +1,45 @@
 <p id="notice"><%= notice %></p>
-
+<%= content_for :page_title, 'Course Detail' %>
 <head>
-  <title>course of topic</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
-
 <div class="right">
   <div class="top">
 
-    <h1>
-      <%= @course.name %>
-    </h1>
-    <span>by</span>
-    <span><%= @course.author %></span>
-    <div class="intro">
-      <%= image_tag('java_script.jpg') %>
-      <span><%= @course.description %> <br> <br></span>
-      <br>
-      <br>
-    </div>
-    <p>Progress(80%)</p>
-    <progress max="100" value="80"></progress>
-  </div>
+    <% if !@check_archived_course.exists? %>
+      <!--    user not enroll this course-->
+      <h1><%= @course.name %></h1>
+      <span>by</span>
+      <span><%= @course.author %></span>
+      <div class="intro">
+        <%= image_tag('java_script.jpg') %>
+        <span><%= @course.description %><br></span>
+        <br>
+      </div>
+      <p>Progress(0%)</p>
+      <progress max="100" value="0"></progress>
+    <% else %>
+      <!-- user enrolled in course-->
+      <%= @course_detail.each do |course_detail| %>
+        <h1><%= course_detail.name %></h1>
+        <span>by</span>
+        <span><%= course_detail.author %></span>
+        <div class="intro">
+          <%= image_tag('java_script.jpg') %>
+          <span><%= course_detail.description %><br></span>
+          <br>
+        </div>
+        <p>Progress(<%= course_detail.progression %>%)</p>
+        <progress max="100" value="<%= course_detail.progression %>"></progress>
+      <% end %>
+    <% end %>
 
+    <%= button_to enroll_to_course_path(@course.id), method: :post do %>
+      Start learn
+    <% end %>
+
+  </div>
   <div class="buttom">
     <h2>List Article in '<%= @course.name %>'</h2>
     <% @list_article.each do |a| %>
@@ -36,8 +51,8 @@
         </div>
         <div class="c-right">
           <h2>
-            <a href="#">
-             <%= link_to a.title, play_path(a.id) %>
+            <a>
+              <%= link_to a.title, click_on_article_path(@course, a.id) %>
             </a>
           </h2>
           <span>

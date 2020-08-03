@@ -1,49 +1,35 @@
 class CoursesController < ApplicationController
-  before_action  :set_course, only: [:show]
-  # before_save :to_slug
+  before_action :set_course, only: [:show]
 
-
-  # GET /courses
-  # GET /courses.json
   def index
-
-    #hot course
     @course = Course.order(number_enrollment: :desc).limit(20)
-
     @rate_course = Course.order(rate: :desc).limit(5)
-
     @free_course = Course.where(is_free: true).limit(5)
-
     @topic = Topic.all
-
-    @top_view_article =Article.order(view_number: :desc).limit(10)
+    @top_view_article = Article.order(view_number: :desc).limit(10)
 
 
   end
 
-
-  # GET /courses/1
-  # GET /courses/1.json
   def show
-    @course = Course.friendly.find(params[:id])
-    # @free_course = Course.friendly.find(params[:id])
-    # @rate_course = Course.friendly.find(params[:id])
+    @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
+    if !@check_archived_course.exists?
+      @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
+      @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+    else
+      calculate_progression
+    end
 
-    @list_article = Article.joins(:courses).where('courses.id = ?', @course)
 
   end
 
-  def customer_home
+  def calculate_progression
+    total_article = Article.joins(:course_articles).where('course_id = ?', @course.id).count
+    viewed_article = Article.joins(:course_articles).joins(:customer_articles).where('course_id = ? AND is_viewed = true', @course.id).count
+    progress = viewed_article.to_f / total_article.to_f * 100
 
-  end
 
-  def mycourse
-  end
-
-  def archived_courses
-  end
-
-  def favor_articles
+    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id).update_all(progression: progress.round) # => progression
   end
 
   def search
@@ -54,52 +40,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  # GET /courses/new
-  def new
-    @course = Course.new
-  end
-
-  # GET /courses/1/edit
-  def edit
-
-    # @course.attachment_changes['image'].attachable
-
-  end
-
-
-
-  # POST /courses
-  # POST /courses.json
-  def create
-    @course = Course.new(course_params)
-
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
-  def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /courses/
-  # DELETE /courses/1.json
   def destroy
     @course.destroy
     respond_to do |format|
@@ -108,12 +48,11 @@ class CoursesController < ApplicationController
     end
   end
 
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.friendly.find(params[:id])
+    @course = Course.friendly.find(params[:slug])
   end
 
 
@@ -122,7 +61,4 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
   end
 
-  # def set_slug
-  #   @transaction = Transaction.find_by slug: params[:slug]
-  # end
 end

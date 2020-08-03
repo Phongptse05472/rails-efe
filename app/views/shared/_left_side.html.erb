@@ -19,28 +19,29 @@
       </li>
     <% else %>
       <li>
-          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My courses
+        <a href="/customers_courses">
+          <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> My Course
+        </a>
+      </li>
+      <li>
+        <i style="color: #2bc3cc;" class="fa fa-user-circle-o"></i> Your Course
+      </li>
+      <% course.each do |a| %>
+        <li>
+          <%= link_to a.name, course_path(a.slug) %>
+        </li>
+      <% end %>
+    <% end %>
+
+  </ul>
+  <h2>Topics</h2>
+  <ul class="top">
+    <% data.each do |c| %>
+      <li>
+        <div>
+          <%= link_to c.name, topic_path(c.slug) %>
+        </div>
       </li>
     <% end %>
   </ul>
-  <% if !current_user.present? %>
-    <h2>Topic</h2>
-    <ul class="top">
-      <% data.each do |topic| %>
-        <li>
-          <i class="fa fa-graduation-cap"></i>
-            <%= link_to  topic.name, show_topic_path(topic.id) %>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <h2>My Courses</h2>
-    <ul class="top">
-      <% topic.each do |topic| %>
-        <li>
-            <%= link_to topic.name, show_topic_path(topic.id) %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
 </div>

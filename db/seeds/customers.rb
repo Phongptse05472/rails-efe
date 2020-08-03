@@ -30,7 +30,7 @@ c.is_active = Faker::Boolean.boolean
 # c.avatar = Faker::Internet.url
 c.save!
 #
-puts "\n...Seeing Mentors & Students...\n"
+puts "\n...Seeding Mentors & Students...\n"
 #mentors & customer accounts
 (100101..100105).each do |x|
   u = User.find_or_initialize_by(id: x)
@@ -39,51 +39,50 @@ puts "\n...Seeing Mentors & Students...\n"
   u.encrypted_password = '#$taawktljasktlw4aaglj'
   u.save!
 
-  c = Customer.find_or_initialize_by(id: x)
-  c.role_id = rand(2..3)
-  c.user_id = u.id
-  c.name = Faker::Name.name
-  c.phone_number = Faker::PhoneNumber.phone_number
-  c.roll_number = Faker::IDNumber.valid
-  c.is_active = Faker::Boolean.boolean
-  c.avatar = Faker::Avatar.image
-  c.save!
+  # c = Customer.find_or_initialize_by(id: x)
+  # c.role_id = rand(2..3)
+  # c.user_id = u.id
+  # c.name = Faker::Name.name
+  # c.phone_number = Faker::PhoneNumber.phone_number
+  # c.roll_number = Faker::IDNumber.valid
+  # c.is_active = Faker::Boolean.boolean
+  # c.avatar = Faker::Avatar.image
+  # c.save!
 end
 
-puts "\n...Seeing Courses...\n"
-(1..20).each do |x1|
+puts "\n...Seeding Courses...\n"
+(1..5).each do |x1|
   course = Course.find_or_initialize_by(id: x1)
   course.name = Faker::Name.name
   course.author = Faker::Name.name
   # c1.image = Faker::Internet.url
-  course.customer_id = c.id_in_database
+  # course.customer_id = c.id_in_database
   course.description = Faker::Lorem.paragraphs
   course.rate = Faker::Number.within(range: 1..5)
   course.is_free = Faker::Boolean.boolean
-  course.is_save = Faker::Boolean.boolean
-  course.is_owner = Faker::Boolean.boolean
+  # course.level = Faker::Level.
   course.number_enrollment = Faker::Number.within(range: 1..10)
   course.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
   course.save!
 
-  puts "\n ...seeing Customer_course..."
+  puts "\n ...Seeding Customer_course..."
     c4 = CustomerCourse.find_or_initialize_by(id: x1)
     c4.customer_id = c.id
     c4.course_id = course.id
     c4.is_owner = Faker::Boolean.boolean
+    c4.is_save = Faker::Boolean.boolean
     c4.progression = Faker::Number.within(range: 0...100)
     c4.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
     c4.save!
 end
-
-puts "\n ...seeing Article...\n"
-(1...30).each do |x2|
+#
+puts "\n ...Seeding Article...\n"
+(1...10).each do |x2|
   c2 = Article.find_or_initialize_by(id: x2)
   c2.title = Faker::Educator.course_name
   c2.author = Faker::Name.name
   c2.description = Faker::Lorem.paragraphs
   c2.link_article = Faker::Internet.url
-  # c2.tag_name.push("#java")
   c2.duration = Faker::Time.backward(days: 5, period: :morning, format: :short)
   c2.view_number = Faker::Number.within(range: 1..100)
   c2.is_free = Faker::Boolean.boolean
@@ -99,8 +98,8 @@ puts "\n ...seeing Article...\n"
   c5.is_favor = Faker::Boolean.boolean
   c5.save!
 end
-
-puts "\n ...seeing Topic...\n"
+#
+puts "\n ...Seeding Topic...\n"
 (1...5).each do |x3|
   c3 = Topic.find_or_initialize_by(id: x3)
   c3.name = Faker::Name.first_name

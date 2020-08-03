@@ -6,8 +6,9 @@ class CreateCustomerCourses < ActiveRecord::Migration[6.0]
       t.integer :customer_id
       t.integer :course_id
       t.boolean :is_owner
-      t.boolean :is_save
-      t.float :progression
+      t.boolean :is_save , default: false
+      t.integer :current_article_id
+      t.float :progression, default: 0
       t.date :enrollment_date
 
       t.timestamps

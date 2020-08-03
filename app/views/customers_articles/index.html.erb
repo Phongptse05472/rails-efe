@@ -1,0 +1,47 @@
+<%= content_for :page_title, 'Favor article' %>
+<body>
+<div class="right">
+  <h1>
+    My course
+  </h1>
+  <div class="menu-course">
+    <ul>
+      <li>
+        <%= link_to "My courses", "/customers_courses" %>
+      </li>
+      <li>
+        <%= link_to "Archive course", "/archived-courses" %>
+      </li>
+      <li>
+        <%= link_to "Favor article", "/customers_articles", style: "color: #F69B58" %>
+      </li>
+    </ul>
+  </div>
+  <div class="list-course">
+    <% @favor_article.each do |favor_article| %>
+      <div class="per-course">
+        <div class="c-left">
+          <%= image_tag('course_3.jpg') %>
+        </div>
+        <div class="c-right">
+          <h2><%= link_to favor_article.title, course_article_path(favor_article, favor_article.id) %></h2>
+          <%= button_to "remove favor", update_favor_path(favor_article.article_id), method: :put, remote: true %>
+          <p><%= favor_article.description %></p>
+          <p class="name">Author: <%= favor_article.author %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="paging">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+  </div>
+
+  <div class="end">
+  </div>
+</div>
+
+</body>
