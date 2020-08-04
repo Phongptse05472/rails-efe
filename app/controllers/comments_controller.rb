@@ -2,8 +2,15 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
+    respond_to do |format|
       if comment.save
-        ActionCable.server.broadcast "comment_channel"
+        format.html { redirect_to comment.post, notice: 'Comment được tạo thành công' }
+        format.js { render js: 'window.top.location.reload(true);' }
+        format.json { render :show, status: :created, location: @comment }
+      else
+        format.html { render :new }
+        format.json { render json: comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 
