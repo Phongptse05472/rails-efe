@@ -230,6 +230,7 @@
         <div id="item" class="item">
           <div class="thumbnai">
             <%= image_tag('java.png') %>
+            <i style="color: red" onclick="heart(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
           </div>
           <div class="author">
             <div class="icon">
@@ -259,6 +260,26 @@
             x.className = "fa fa-bookmark-o";
         } else {
             x.className = "fa fa-bookmark";
+        }
+        var app1 = new Vue({
+            el: '#app1',
+            mounted: function () {
+                axios.get('/archive_courses/', {
+                    params: {
+                        num: courseID
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
+        });
+    }
+    function heart(heart, courseID) {
+        var x = heart;
+        if (x.className === "fa fa-heart") {
+            x.className = "fa fa-heart-o";
+        } else {
+            x.className = "fa fa-heart";
         }
         var app1 = new Vue({
             el: '#app1',
