@@ -14,7 +14,7 @@
             </div>
             <div class="title">
               <div class="name">
-                <%= link_to my_courses.name, course_path(my_courses.id) %>
+                <%= link_to my_courses.name, course_path(my_courses.course_id) %>
               </div>
               <p class="status">Progress (<%= my_courses.progression %>%)</p>
               <progress max="100" value="<%= my_courses.progression %>"></progress>

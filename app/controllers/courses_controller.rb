@@ -76,6 +76,7 @@ class CoursesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_course
     @course = Course.friendly.find(params[:slug])
+    # @customer_course = CustomerCourse.find_by(course_id: params[:id])
   end
 
 

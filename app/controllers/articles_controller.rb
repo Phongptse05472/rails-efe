@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
 
     @comment = Comment.new
 
-    @comment_user = Comment.custom_display
+    @comment_user = Comment.where(:article_id => @article.id).custom_display
   end
 
   # GET /articles/1/edit
