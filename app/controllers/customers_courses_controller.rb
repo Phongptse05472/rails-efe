@@ -32,25 +32,43 @@ class CustomersCoursesController < ApplicationController
 
   def enroll_courses
     enroll_course = Course.find(params[:slug])
-    @current_article = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
-    @list_article = Article.joins(:courses).where('courses.id = ?', enroll_course.id)
+    course = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
+    course_is_archive = CustomerCourse.where('customer_id = ? AND course_id = ? AND is_save = true', current_user.id, enroll_course.id)
+
+
+    @article = Article.joins(:courses).where('courses.id = ?', enroll_course.id)
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
 
-    if @current_article.exists? == false
-      if @list_article.first.nil?
+    if course_is_archive.exists?
+      if @article.first.nil?
+        course_is_archive.update(enrollment_date: Date.today)
+        redirect_to course_path
+      else
+        course_is_archive.update(enrollment_date: Date.today, current_article_id:  @article.first.id)
+        redirect_to course_article_path(enroll_course, @article.ids.first)
+      end
+    end
+
+    if course.exists? == false
+
+      if @article.first.nil?
         CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, is_save: true, enrollment_date: Date.today)
         redirect_to course_path
       else
-        CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, current_article_id: @list_article.first.id, is_save: true, enrollment_date: Date.today)
-        redirect_to course_article_path(enroll_course, @list_article.ids.first)
+        CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, current_article_id: @article.first.id, is_save: true, enrollment_date: Date.today)
+        redirect_to course_article_path(enroll_course, @article.ids.first)
       end
-    else
-      if @list_article.first.nil?
-        redirect_to course_path
-      else
-        redirect_to course_article_path(enroll_course, @current_article.first.current_article_id.to_s)
-      end
+
+      # if @article.first.nil?
+      #   redirect_to course_path
+      # else
+      #   redirect_to course_article_path(enroll_course, @article.first.current_article_id)
+      # end
+
+
+
     end
+
   end
 
   def click_on_article

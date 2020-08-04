@@ -24,10 +24,10 @@ class CoursesController < ApplicationController
     @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
     if !@check_archived_course.exists?
       @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
-      @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     else
       calculate_progression
     end
+    @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
 
 
   end
