@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   post 'courses/:slug/articles/:id', to: 'customers_courses#click_on_article' , :as => 'click_on_article'
 
-  resources :customers_courses do
+  resources :customers_courses, param: :slug do
   end
 
   resources :customers_articles do

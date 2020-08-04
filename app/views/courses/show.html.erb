@@ -16,19 +16,19 @@
       <br>
     </div>
 
-    <% check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id) %>
-    <% if check_archived_course.exists? %>
+    <%# check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id) %>
+    <%# if check_archived_course.exists? %>
       <!--    user not enroll this course-->
       <p>Progress(0%)</p>
       <progress max="100" value="0"></progress>
-    <% else %>
+    <%# else %>
       <!-- user enrolled in course-->
-      <%= @course_detail.each do |course_detail| %>
-        <p>Progress(<%= course_detail.progression %>%)</p>
-        <progress max="100" value="<%= course_detail.progression %>"></progress>
-      <% end %>
+      <%#= @course_detail.each do |course_detail| %>
+<!--        <p>Progress(<%#= course_detail.progression %>%)</p>-->
+<!--        <progress max="100" value="<%#= course_detail.progression %>"></progress>-->
+      <%# end %>
 
-    <% end %>
+    <%# end %>
 
     <%= button_to enroll_to_course_path(@course.id), method: :post do %>
       Start learn
