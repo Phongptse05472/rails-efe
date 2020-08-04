@@ -1,0 +1,4 @@
+<% if @favor_article.is_favor %>
+ document.getElementById('article_id<%= @favor_article.article_id %>').classList.add("fa-heart")
+ document.getElementById('article_id<%= @favor_article.article_id %>').classList.remove("fa-heart-o")
+<% end %>

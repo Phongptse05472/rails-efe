@@ -1,7 +1,6 @@
 <head>
   <%= content_for :page_title, 'Play article' %>
   <%= stylesheet_link_tag 'watch', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%#= stylesheet_pack_tag 'watch', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
@@ -48,19 +47,12 @@
       </div>
       <div class="w-information">
       </div>
-
       <div class="comment">
         <div class="account-input">
           <div class="user-icon">
             <%= image_tag('course_9.jpg') %>
           </div>
           <div class="user-input">
-
-            <!--            <input class="input_comment" type="text" placeholder="Viết bình luận">-->
-            <!--            <input type="submit" value="Comment">-->
-            <!--            <input type="button" onclick="resetForm()" value="Cancel">-->
-            <!--          </form>-->
-
             <%= form_for(@comment, html: {class: "input_comment", role: "form", :id => "form_comment"}, url: comment_path, method: :post, remote: true) do |f| %>
               <div class="input_comment">
                 <%= f.hidden_field :customer_id, value: current_user.id %>
@@ -71,26 +63,15 @@
             <% end %>
           </div>
         </div>
+        <div class="article_comments">
+          <%= @comment_user.each do |comment| %>
+            <%= render "comments/comment", comment: comment %>
+          <% end %>
+        </div>
 
-        <%= @comment_user.each do |comment| %>
-          <div class="user-comment">
-            <div class="user-icon">
-              <%= image_tag('course_9.jpg') %>
-            </div>
-            <div class="user-right">
-              <div class="user-name">
-                <%= comment.customer.name %>
-              </div>
-              <div class="u-comment">
-                <%= comment.content %>
-              </div>
-            </div>
-            <div class="comment_pin">
-              <i class="fa fa-check"></i>
-            </div>
-          </div>
-        <% end %>
     <% end %>
+
+
     </div>
   </div>
   <div class="list">
@@ -106,7 +87,7 @@
               <% article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, a.id) %>
               <% if article.exists? %>
                 <% if article.first.is_favor == true %>
-                    <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
+                  <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
                     <i style="" onclick="bookmark(this,123)" class="fa fa-heart" aria-hidden="true"></i>
                   <% end %>
                 <% else %>
