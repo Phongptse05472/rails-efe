@@ -48,12 +48,16 @@
 .l-right {
     width: 60%;
 }
+.l-right i{
+    color: red;
+    float: right;
+}
 
 .l-title {
     font-weight: bold;
     font-family: sans-serif;
     overflow: hidden;
-    width: 100%;
+    width: 92%;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -62,6 +66,9 @@
 .l-title a{
     color: #2E2F30;
     text-decoration: none;
+}
+l-title i{
+    float: right;
 }
 
 .l-author {

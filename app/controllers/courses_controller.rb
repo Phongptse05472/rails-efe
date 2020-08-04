@@ -27,9 +27,12 @@ class CoursesController < ApplicationController
   def calculate_progression
     total_article = Article.joins(:course_articles).where('course_id = ?', @course.id).count
     viewed_article = Article.joins(:course_articles).joins(:customer_articles).where('course_id = ? AND is_viewed = true', @course.id).count
-    progress = viewed_article.to_f / total_article.to_f * 100
-
-
+    #fix exception FloatDomainError
+    if total_article == 0
+      progress = 0
+    else
+      progress = viewed_article.to_f / total_article.to_f * 100
+    end
     @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id).update_all(progression: progress.round) # => progression
   end
 

@@ -8,7 +8,7 @@ class CustomersCoursesController < ApplicationController
 
   #customer home page
   def customer_home
-    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
+    @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
     @topic = Topic.all.limit(8)
 
     @hot_course = Course.order(number_enrollment: :desc).limit(20)
@@ -17,6 +17,8 @@ class CustomersCoursesController < ApplicationController
     @topic = Topic.all
     @top_view_article = Article.order(view_number: :desc).limit(10)
   end
+
+
 
 
   def add_course_to_archived
@@ -65,7 +67,6 @@ class CustomersCoursesController < ApplicationController
   end
 
   def update
-    # @archived_course = CustomerCourse.find(params[:slug])
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
     respond_to do |format|
       if @archived_course.update_attribute("is_save", !@archived_course.is_save)

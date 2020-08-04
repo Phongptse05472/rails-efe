@@ -3,7 +3,7 @@
   <h1>Your Course</h1>
   <div id="exampleSlider">
     <div id="app1" class="MS-content">
-      <% @my_courses.each do |my_courses| %>
+      <% @my_courses_home.each do |my_courses| %>
         <div id="item" class="item">
           <div class="thumbnai">
             <a href="watch.html"><%= image_tag('java_script.jpg') %></a>
@@ -28,6 +28,7 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
+
   <h1>Topic</h1>
   <div id="topic" class="topic">
     <% @topic.each do |topic| %>
@@ -49,7 +50,25 @@
             <% else %>
               <%= image_tag('course_1.jpg') %>
             <% end %>
-            <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+
+            <% @customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
+            <% if @customer_course.exists? %>
+              <% if @customer_course.first.is_save == true %>
+                <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
+                  <i onclick="bookmark(this,123)" class="fa fa-bookmark" aria-hidden="true"></i>
+                <% end %>
+              <% else %>
+                <%= link_to update_archived_path(course.id), method: :post , remote: true do %>
+                  <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to add_to_archived_path(course.id), method: :post  do %>
+                <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+
+
           </div>
           <div class="author">
             <div class="icon">
@@ -90,7 +109,23 @@
             <% else %>
               <%= image_tag('course_1.jpg') %>
             <% end %>
-            <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+            <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
+            <% if customer_course.exists? %>
+              <% if customer_course.first.is_save == true %>
+                <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
+                  <i onclick="bookmark(this,123)" class="fa fa-bookmark" aria-hidden="true"></i>
+                <% end %>
+              <% else %>
+                <%= link_to update_archived_path(course.id), method: :post , remote: true do %>
+                  <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to add_to_archived_path(course.id), method: :post  do %>
+                <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+
           </div>
           <div class="author">
             <div class="icon">
@@ -132,11 +167,28 @@
         <div id="item" class="item">
           <div class="thumbnai">
             <% if course.image.attached? %>
-              <%= image_tag(course.image) %>
+              <%= image_ta g(course.image) %>
             <% else %>
               <%= image_tag('course_1.jpg') %>
             <% end %>
-            <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+
+            <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
+            <% if customer_course.exists? %>
+              <% if customer_course.first.is_save == true %>
+                <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
+                  <i onclick="bookmark(this,123)" class="fa fa-bookmark" aria-hidden="true"></i>
+                <% end %>
+              <% else %>
+                <%= link_to update_archived_path(course.id), method: :post , remote: true do %>
+                  <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to add_to_archived_path(course.id), method: :post  do %>
+                <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+
           </div>
           <div class="author">
             <div class="icon">
@@ -185,7 +237,7 @@
             </div>
             <div class="title">
               <div class="name">
-                <%=link_to article.title  %>
+                <%= article.title %>
               </div>
               <p><%= article.author %></p>
               <span><%= article.view_number %> view</span>
@@ -199,14 +251,13 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-
 </div>
 <script>
-    function bookmark(bookmark,courseID){
+    function bookmark(bookmark, courseID) {
         var x = bookmark;
-        if(x.className === "fa fa-bookmark"){
+        if (x.className === "fa fa-bookmark") {
             x.className = "fa fa-bookmark-o";
-        }else{
+        } else {
             x.className = "fa fa-bookmark";
         }
         var app1 = new Vue({
@@ -223,6 +274,7 @@
         });
     }
 </script>
+
 <script>
     window.addEventListener('click', function (e) {
         if (!document.getElementById('myBtn').contains(e.target)) {

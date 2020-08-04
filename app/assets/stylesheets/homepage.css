@@ -257,6 +257,10 @@ body::-webkit-scrollbar {
 
 .title p {
     font-size: 14px;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title i {
@@ -278,8 +282,8 @@ body::-webkit-scrollbar {
 }
 
 .icon img {
-    width: 80%;
-    height: auto;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
 }
 
