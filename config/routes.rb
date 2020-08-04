@@ -24,12 +24,11 @@ Rails.application.routes.draw do
   put 'courses/:id', to: 'customers_courses#update', :as => :update_archived
   post 'archive_courses/:slug', to: 'customers_courses#add_course_to_archived', :as => :add_to_archived
   post 'enroll_courses/:slug', to: 'customers_courses#enroll_courses', :as => :enroll_to_course
-  put 'articles/:id', to: 'customers_articles#update', :as => :update_favor
+  post 'articles/:id', to: 'customers_articles#update', :as => :update_favor
   post 'favor_articles/:id', to: 'customers_articles#add_to_favor', :as => :add_to_favor
   post 'courses/:slug/articles/:id', to: 'customers_courses#click_on_article', :as => :click_on_article
 
   mount ActionCable.server, at: '/cable'
-
 
 
   resources :customers_courses do

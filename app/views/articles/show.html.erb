@@ -102,7 +102,28 @@
               <%= image_tag('course_9.jpg') %>
             </div>
             <div class="l-right">
-              <i style="" onclick="bookmark(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
+
+              <% article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, a.id) %>
+              <% if article.exists? %>
+                <% if article.first.is_favor == true %>
+                    <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
+                    <i style="" onclick="bookmark(this,123)" class="fa fa-heart" aria-hidden="true"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
+                    <i style="" onclick="bookmark(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= link_to add_to_favor_path(a.id), method: :post do %>
+                  <i style="" onclick="bookmark(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
+                <% end %>
+
+              <% end %>
+
+
+
+
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
               </div>
@@ -178,11 +199,11 @@
 <!--</script>-->
 </body>
 <script>
-    function bookmark(heart,courseID){
+    function bookmark(heart, courseID) {
         var x = heart;
-        if(x.className === "fa fa-heart"){
+        if (x.className === "fa fa-heart") {
             x.className = "fa fa-heart-o";
-        }else{
+        } else {
             x.className = "fa fa-heart";
         }
         var app1 = new Vue({

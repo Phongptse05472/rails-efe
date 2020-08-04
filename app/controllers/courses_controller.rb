@@ -7,7 +7,15 @@ class CoursesController < ApplicationController
     @rate_course = Course.order(rate: :desc).limit(5)
     @free_course = Course.where(is_free: true).limit(5)
     @topic = Topic.all
+
     @top_view_article = Article.order(view_number: :desc).limit(10)
+
+    # article_in_course = Article.select("articles.*, course_articles.*").joins(:course_articles).where('article_id = ?', @top_view_article.id)
+    # if article_in_course.exists?
+    #
+    # end
+
+
 
 
   end
