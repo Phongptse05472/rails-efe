@@ -8,7 +8,7 @@ class CustomersArticlesController < ApplicationController
 
 
   def add_to_favor
-    @favor_article_update = CustomerArticle.find_by(article_id: params[:id], customer_id: current_user.id)
+    # @favor_article_update = CustomerArticle.find_by(article_id: params[:id], customer_id: current_user.id)
     favor_article = Article.find_by(id: params[:id])
     check_favor = CustomerArticle.where('customer_id = ? AND article_id = ?', current_user.id, favor_article.id).any?
     if check_favor == false

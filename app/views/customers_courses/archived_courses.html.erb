@@ -22,14 +22,14 @@
     </ul>
   </div>
   <div class="list-course">
-    <% @archived_course.each do |archived_course| %>
+    <% @archived_courses.each do |archived_course| %>
       <div class="per-course">
         <div class="c-left">
           <%= image_tag('course_6.jpg') %>
         </div>
         <div class="c-right">
           <%= link_to customers_course_path(archived_course.course_id), method: :put, remote: true do %>
-            <i class="fa fa-bookmark" aria-hidden="true"></i>
+            <i class="fa fa-bookmark" id="course_archived<%= archived_course.course_id %>" aria-hidden="true"></i>
           <% end %>
           <h2><%= link_to archived_course.name, course_path(archived_course.slug) %></h2>
           <p><%= archived_course.description %></p>

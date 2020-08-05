@@ -73,35 +73,8 @@ puts "\n...Seeding Courses...\n"
   @course.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
   @course.save!
 
-  puts "\n ...Seeding Customer_course..."
-  c4 = CustomerCourse.find_or_initialize_by(id: x1)
-  c4.customer_id = @cus.id
-  c4.course_id = @course.id
-  c4.is_owner = Faker::Boolean.boolean
-  c4.is_save = Faker::Boolean.boolean
-  c4.progression = Faker::Number.within(range: 0...100)
-  c4.enrollment_date = Faker::Date.between(from: '2020-05-23', to: '2021-09-25')
-  c4.save!
-
-  puts "\n... Seeding Topic_course..."
-  (1...15).each do |x4|
-    c4 = TopicCourse.find_or_initialize_by(id: x4)
-    c4.course_id = @course.id.rand(1..10)
-    c4.topic_id = @c3.id
-    c4.save!
   end
 
-  puts "\n ...Seeding Customer_course..."
-  (1..20).each do |x5|
-    c5 = CustomerCourse.find_or_initialize_by(id: x5)
-    c5.customer_id = @cus.id
-    c5.course_id =  @course.id
-    c5.is_owner = Faker::Boolean.boolean
-    c5.is_save = Faker::Boolean.boolean
-    c5.progression = Faker::Number.within(range: 0..0)
-    c5.save!
-  end
-end
 
 
 puts "\n ...Seeding Article...\n"
@@ -117,21 +90,14 @@ puts "\n ...Seeding Article...\n"
   @article.link_file_attach = Faker::Internet.url
   @article.save!
 
-  c5 = CustomerArticle.find_or_initialize_by(id: x2)
-  c5.customer_id = @cus.id
-  c5.article_id = @article.id.rand(1..20)
-  c5.is_owner = Faker::Boolean.boolean
-  c5.time_point = Faker::Time.backward(days: 5, period: :morning, format: :short)
-  c5.is_viewed = Faker::Boolean.boolean
-  c5.is_favor = Faker::Boolean.boolean
-  c5.save!
+
 end
 
 puts "\n... Seeding Courses_article..."
 (1..30).each do |x3|
   c8 = CourseArticle.find_or_initialize_by(id: x3)
-  c8.course_id = @course.id.rand(1..10)
-  c8.article_id = @article.id.rand(1..20)
+  c8.course_id = @course.id
+  c8.article_id = @article.id
   c8.save!
 end
 

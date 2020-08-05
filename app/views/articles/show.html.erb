@@ -88,7 +88,7 @@
               <% if article.exists? %>
                 <% if article.first.is_favor == true %>
                   <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
-                    <i style="" onclick="bookmark(this,123)" class="fa fa-heart" aria-hidden="true"></i>
+                    <i style="" onclick="bookmark(this,123)" class="fa fa-heart" id= "article_id<%= a.id %>" aria-hidden="true"></i>
                   <% end %>
                 <% else %>
                   <%= link_to update_favor_path(a.id), method: :post, remote: true do %>

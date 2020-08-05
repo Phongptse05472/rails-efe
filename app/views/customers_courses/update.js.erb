@@ -1,0 +1,4 @@
+<% if @archived_courses.is_save %>
+document.getElementById('course_archived<%= @archived_courses.course_id %>').classList.add("fa-bookmark")
+document.getElementById('course_archived<%= @archived_courses.course_id %>').classList.remove("fa-bookmark-o")
+<% end %>
