@@ -1,28 +1,73 @@
-.created {
-    padding: 20px 80px;
-    background-color: #F69B58;
-    border-radius: 5px;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
+.article-left img {
+    height: 100%;
+    width: 100%;
 }
 
-.add_video {
+.article-left {
+    overflow: hidden;
+    margin-right: 15px;
+    width: 40%;
+    float: left;
+}
+
+.article-right {
+    width: 50%;
+    line-height: 1.4em;
+    height: 2.8em;
+    overflow: hidden;
+    white-space: initial;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-weight: bold;
+    margin-top: 10px;
+    float: left;
+}
+
+.MS-content {
     height: auto;
-    display: inline-block;
+    clear: both;
 }
 
-.add_video a {
-    padding: 20px 30px;
-    background-color: #F69B58;
-    border-radius: 5px;
+.right a.upload {
+    float: right;
     font-weight: bold;
-    color: white;
-    text-decoration: none;
-    vertical-align: middle;
-    display: inline-block;
+    font-size: 20px;
+    color: black;
 }
 
-.c-right {
-    width: 50% !important;
+.right span {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.per_article {
+    width: 48.8% !important;
+}
+
+.per_article_below {
+    width: 31% !important;
+    margin-top: 10px;
+    height: 135px;
+}
+
+.per_article_below:nth-child(4) {
+    margin-left: 0px;
+}
+
+.list-article {
+    height: auto;
+}
+
+.paging_upload {
+    margin-left: 40%;
+}
+
+.per_article i {
+    font-size: 30px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    color: black;
 }
