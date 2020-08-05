@@ -19,13 +19,13 @@
   </div>
   <div class="list-course">
     <% @favor_article.each do |favor_article| %>
-      <div class="per-course">
+      <div class="per-course" id="article_id<%= favor_article.article_id %>">
         <div class="c-left">
           <%= image_tag('course_3.jpg') %>
         </div>
         <div class="c-right">
-          <%= link_to  update_favor_path(favor_article.article_id), method: :post, remote: true do %>
-            <i  class="fa fa-heart" id="article_id<%= favor_article.article_id %>" aria-hidden="true"></i>
+          <%= link_to  update_favor_path(favor_article.article_id, article_like: true), method: :post, remote: true do %>
+            <i  class="fa fa-heart"  aria-hidden="true"></i>
           <% end %>
           <h2><%= link_to favor_article.title, course_article_path(favor_article, favor_article.id) %></h2>
           <p><%= favor_article.description %></p>

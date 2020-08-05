@@ -1,4 +1,8 @@
-<% if @favor_article.is_favor %>
- document.getElementById('article_id<%= @favor_article.article_id %>').classList.add("fa-heart")
- document.getElementById('article_id<%= @favor_article.article_id %>').classList.remove("fa-heart-o")
+var $articleId = $('#article_id<%= @favor_article.article_id %>')
+//debugger
+<% if params[:article_like] %>
+$articleId.remove()
+<% else %>
+    $articleId.addClass("fa-heart")
+    $articleId.removeClass("fa-heart-o")
 <% end %>

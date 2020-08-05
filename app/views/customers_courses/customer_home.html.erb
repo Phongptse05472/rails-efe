@@ -55,16 +55,16 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o"onclick="bookmark(this,123)"  aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
               <% end %>
             <% end %>
 
@@ -113,16 +113,16 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
               <% end %>
             <% end %>
 
@@ -176,16 +176,16 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o"  onclick="bookmark(this,123)"  aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
               <% end %>
             <% end %>
 
