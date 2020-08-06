@@ -182,9 +182,8 @@ body::-webkit-scrollbar {
 
 .thumbnai i {
     position: absolute;
-    color: black;
     top: 0;
-    left: 310px;
+    left: 90%;
     z-index: 2;
     font-size: 30px;
     color: #14bdee;
@@ -257,18 +256,22 @@ body::-webkit-scrollbar {
 
 .title p {
     font-size: 14px;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title i {
     font-size: 25px;
-    color: red;
+    color: #14bdee;
     float: right;
     padding-right: 5px;
 }
 
 .title i:hover {
     font-size: 25px;
-    color: red;
+    color: #14bdee;
     float: right;
     padding-right: 5px;
 }
@@ -278,8 +281,8 @@ body::-webkit-scrollbar {
 }
 
 .icon img {
-    width: 80%;
-    height: auto;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
 }
 

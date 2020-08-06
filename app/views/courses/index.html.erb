@@ -13,11 +13,10 @@
             <% else %>
               <%= image_tag('course_1.jpg') %>
             <% end %>
-              <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag("2.jpg", alt: "") %>
+              <%= image_tag("course_1.jpg", alt: "") %>
             </div>
             <div class="title">
               <div class="name">
@@ -59,7 +58,6 @@
             <% else %>
               <%= image_tag('khoa_hoc_2.jpg') %>
             <% end %>
-            <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
           </div>
           <div class="author">
             <div class="icon">
@@ -75,7 +73,6 @@
                       $('.stars').stars();
                   });
               </script>
-              <span class="stars " data-rating="<%= rate_course.rate %>" data-num-stars="5"></span>
 
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star checked"></span>
@@ -132,7 +129,6 @@
             <% else %>
               <%= image_tag('khoa_hoc_2.jpg') %>
             <% end %>
-              <i onclick="bookmark(this,123)" class="fa fa-bookmark-o" aria-hidden="true"></i>
           </div>
           <div class="author">
             <div class="icon">
@@ -174,6 +170,26 @@
             x.className = "fa fa-bookmark-o";
         }else{
             x.className = "fa fa-bookmark";
+        }
+        var app1 = new Vue({
+            el: '#app1',
+            mounted: function () {
+                axios.get('/archive_courses/', {
+                    params: {
+                        num: courseID
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
+        });
+    }
+    function heart(heart, courseID) {
+        var x = heart;
+        if (x.className === "fa fa-heart") {
+            x.className = "fa fa-heart-o";
+        } else {
+            x.className = "fa fa-heart";
         }
         var app1 = new Vue({
             el: '#app1',
