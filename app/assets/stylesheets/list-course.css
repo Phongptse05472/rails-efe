@@ -71,3 +71,17 @@
     margin-top: 5px;
     color: black;
 }
+.paging_upload_article {
+    margin-left: 40%;
+    margin-top: 40px;
+}
+
+.paging_upload_article a {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 20px 50px;
+    background-color: white;
+    box-shadow: 0px 1px 10px rgba(29, 34, 47, 0.1);
+    color: #14bdee;
+    border-radius: 30px;
+}
