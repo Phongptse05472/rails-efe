@@ -182,7 +182,6 @@ body::-webkit-scrollbar {
 
 .thumbnai i {
     position: absolute;
-    color: black;
     top: 0;
     left: 90%;
     z-index: 2;
@@ -265,14 +264,14 @@ body::-webkit-scrollbar {
 
 .title i {
     font-size: 25px;
-    color: red;
+    color: #14bdee;
     float: right;
     padding-right: 5px;
 }
 
 .title i:hover {
     font-size: 25px;
-    color: red;
+    color: #14bdee;
     float: right;
     padding-right: 5px;
 }
