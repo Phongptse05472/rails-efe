@@ -41,6 +41,7 @@
 .right .top {
     border-bottom: 1px solid lightgray;
     padding-bottom: 40px;
+    display: inline-block;
 }
 
 .top h1 {

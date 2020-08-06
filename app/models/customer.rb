@@ -14,4 +14,6 @@ class Customer < ApplicationRecord
 
 #active storage
   has_one_attached :avatar
+
+  has_many :comments
 end

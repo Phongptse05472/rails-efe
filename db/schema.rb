@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 202190801103200) do
+ActiveRecord::Schema.define(version: 2020_07_26_140826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,22 @@ ActiveRecord::Schema.define(version: 202190801103200) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
-    t.string "author"
     t.text "description"
-    t.text "link_article"
-    t.string "tag_name", default: [], array: true
     t.time "duration"
     t.integer "view_number"
     t.boolean "is_free"
     t.text "link_file_attach"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "skill_id"
+    t.bigint "level_id"
+    t.index ["level_id"], name: "index_articles_on_level_id"
+    t.index ["skill_id"], name: "index_articles_on_skill_id"
+  end
+
+  create_table "careerpaths", force: :cascade do |t|
+    t.string "name"
+    t.string "rank"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -71,6 +79,15 @@ ActiveRecord::Schema.define(version: 202190801103200) do
     t.index ["course_id"], name: "index_course_articles_on_course_id"
   end
 
+  create_table "course_groups", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_course_groups_on_course_id"
+    t.index ["group_id"], name: "index_course_groups_on_group_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "author"
@@ -87,30 +104,26 @@ ActiveRecord::Schema.define(version: 202190801103200) do
   end
 
   create_table "customer_articles", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.bigint "article_id"
+    t.integer "customer_id"
+    t.integer "article_id"
     t.boolean "is_owner"
     t.time "time_point"
     t.boolean "is_viewed"
     t.boolean "is_favor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["article_id"], name: "index_customer_articles_on_article_id"
-    t.index ["customer_id"], name: "index_customer_articles_on_customer_id"
   end
 
   create_table "customer_courses", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.bigint "course_id"
+    t.integer "customer_id"
+    t.integer "course_id"
     t.boolean "is_owner"
-    t.boolean "is_save", default: false
+    t.boolean "is_save"
     t.integer "current_article_id"
-    t.float "progression", default: 0.0
+    t.float "progression", default: 0
     t.date "enrollment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_customer_courses_on_course_id"
-    t.index ["customer_id"], name: "index_customer_courses_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -127,17 +140,6 @@ ActiveRecord::Schema.define(version: 202190801103200) do
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string "slug", null: false
-    t.integer "sluggable_id", null: false
-    t.string "sluggable_type", limit: 50
-    t.string "scope"
-    t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.bigint "customer_id"
     t.bigint "role_id"
@@ -146,12 +148,6 @@ ActiveRecord::Schema.define(version: 202190801103200) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_roles_on_customer_id"
     t.index ["role_id"], name: "index_roles_on_role_id"
-  end
-
-  create_table "skills", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "topic_courses", force: :cascade do |t|

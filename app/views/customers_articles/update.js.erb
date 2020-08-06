@@ -1,0 +1,8 @@
+var $articleId = $('#article_id<%= @favor_article.article_id %>')
+//debugger
+<% if params[:article_like] %>
+$articleId.remove()
+<% else %>
+    $articleId.addClass("fa-heart")
+    $articleId.removeClass("fa-heart-o")
+<% end %>
