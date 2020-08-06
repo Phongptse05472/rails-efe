@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_course, only: [:show]
 
   def index
@@ -16,19 +16,22 @@ class CoursesController < ApplicationController
     # end
 
 
-
-
   end
 
   def show
-    @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
-    if !@check_archived_course.exists?
-      @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
-    else
-      calculate_progression
-    end
-    @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+    if current_user.present?
+      @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
+      if !@check_archived_course.exists?
+        @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
+      else
+        calculate_progression
+      end
+      @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
 
+    else
+      @course_detail = Course.where('course_id = ?', @course.id)
+      @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+    end
 
   end
 
@@ -61,6 +64,7 @@ class CoursesController < ApplicationController
   end
 
   protected
+
   def authenticate_user!
     if user_signed_in?
       # super
@@ -84,7 +88,6 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
   end
-
 
 
 end
