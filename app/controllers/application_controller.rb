@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def left_side_data
     #mentor
     #admin
-    @data = Topic.select(:name, :slug).limit(5)
+    @data = Group.select(:name, :slug).limit(5)
     if logged_in?
       @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? ', current_user.id).limit(5)
     else

@@ -10,12 +10,12 @@ class CustomersCoursesController < ApplicationController
   def customer_home
     @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
 
-    @topic = Topic.all.limit(8)
+    @topic = Group.all.limit(8)
 
     @hot_course = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(5)
     @new_course = Course.joins(:customer_courses).order(created_at: :desc).limit(5)
-    @topic = Topic.all
+    @topic = Group.all
     @top_view_article = Article.order(view_number: :desc).limit(10)
   end
 

@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :description
       t.time :duration
-      t.integer :view_number
+      t.bigint :view_number
       t.boolean :is_free
       t.text :link_file_attach
       t.timestamps
