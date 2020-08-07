@@ -14,25 +14,25 @@
   </h1>
 
 
-<!--  <div class="list-course">-->
-    <%# @courses.each do |c| %>
-<!--      <div class="per-course">-->
-<!--        <div class="c-left">-->
-          <%#= image_tag('java.png') %>
-<!--        </div>-->
-<!--        <div class="c-right">-->
-<!--          <h2><%#= link_to c.name, course_path(c.id) %></h2>-->
-<!--          <p><%#= c.description %></p>-->
-<!--          <p class="name"> Author: <%#= c.author %></p>-->
-<!--          <span class="fa fa-star checked"></span>-->
-<!--          <span class="fa fa-star checked"></span>-->
-<!--          <span class="fa fa-star checked"></span>-->
-<!--          <span class="fa fa-star checked"></span>-->
-<!--          <span class="fa fa-star checked"></span>-->
-<!--        </div>-->
-<!--      </div>-->
-    <%# end %>
-<!--  </div>-->
+  <div class="list-course">
+    <% @courses.each do |c| %>
+      <div class="per-course">
+        <div class="c-left">
+          <%= image_tag('java.png') %>
+        </div>
+        <div class="c-right">
+          <h2><%= link_to c.name, course_path(c.id) %></h2>
+          <p><%= c.description %></p>
+          <p class="name"> Author: <%= c.author %></p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <div class="paging">
     <a href="#">1</a>
     <a href="#">2</a>
