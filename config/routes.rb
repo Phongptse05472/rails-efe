@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :show], param: :slug
 
   #common routes
-
-
   get 'home', to: 'courses#index'
   get 'archived-courses', to: 'customers_courses#archived_courses'
   get 'search', to: 'courses#search'
