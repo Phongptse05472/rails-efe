@@ -34,7 +34,7 @@
           <p>
             <%= article.description %>
           </p>
-          <p><%= article.tag_name %></p>
+<!--          <p><%#= article.tag_name %></p>-->
         </div>
       </div>
       <div class="w-information">
@@ -98,7 +98,7 @@
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
               </div>
               <div class="l-author">
-                <%= a.author %>
+                <%#= a.author %>
               </div>
               <div class="l-view">
                 <%= a.view_number %> views

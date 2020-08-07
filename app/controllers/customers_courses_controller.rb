@@ -1,5 +1,4 @@
 class CustomersCoursesController < ApplicationController
-  # before_action :authenticate_user!, except: [:index]
 
   #my course page
   def index

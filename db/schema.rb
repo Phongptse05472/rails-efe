@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.text "author"
     t.time "duration"
     t.bigint "view_number"
     t.boolean "is_free"
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.string "name"
     t.text "image"
     t.text "description"
+    t.string "author"
     t.boolean "is_free"
     t.float "rate"
     t.bigint "number_enrollment"

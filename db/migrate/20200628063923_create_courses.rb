@@ -4,6 +4,7 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :image
       t.text :description
+      t.string :author
       t.boolean :is_free
       t.float :rate
       t.bigint :number_enrollment

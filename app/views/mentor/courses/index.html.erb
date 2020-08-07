@@ -20,7 +20,7 @@
               <%= image_tag('course_2.jpg') %>
             </div>
             <div class="article-right">
-              <%= article.title %>
+              <%= link_to article.title, click_on_article_path(mentor_course.slug, article.id) %>
               <p><%= article.description %></p>
             </div>
             <a href="#">
@@ -34,10 +34,7 @@
         <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
       </div>
     </div>
-
   <% end %>
-
-
 
 
   <div class="paging paging_upload">
