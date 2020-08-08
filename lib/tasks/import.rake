@@ -87,17 +87,17 @@ namespace :import do |import_namespace|
     Article.import! data
   end
 
-  desc "Import all course-article"
-  task :course-artilces => :environment do
-    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/course-articles.xlsx")
-    header = spreadsheet.row(1)
-    data = []
-    (2..spreadsheet.last_row).each do |i|
-      row = [header, spreadsheet.row(i)].transpose.to_h
-      data << row
-    end
-    CourseArticle.import! data
-  end
+  # desc "Import all course-article"
+  # task :course-artilces => :environment do
+  #   spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/course-articles.xlsx")
+  #   header = spreadsheet.row(1)
+  #   data = []
+  #   (2..spreadsheet.last_row).each do |i|
+  #     row = [header, spreadsheet.row(i)].transpose.to_h
+  #     data << row
+  #   end
+  #   CourseArticle.import! data
+  # end
 
   desc "Run all task"
   task :all do
