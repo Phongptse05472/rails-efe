@@ -7,34 +7,33 @@
 <div class="right">
   <div class="top">
 
-    <% if !@check_archived_course.exists? %>
-      <!--    user not enroll this course-->
-      <h1><%= @course.name %></h1>
-      <span>by</span>
-      <span><%= @course.author %></span>
-      <div class="intro">
-        <%= image_tag('java_script.jpg') %>
-        <span><%= @course.description %><br></span>
-        <br>
-      </div>
+    <h1><%= @course.name %></h1>
+    <span>by</span>
+    <span><%= @course.author %></span>
+    <div class="intro">
+      <%= image_tag('java_script.jpg') %>
+      <span><%= @course.description %><br></span>
+      <br>
+    </div>
+    <% if current_user.present? %>
+      <% check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND enrollment_date IS NOT null', current_user.id, @course.id) %>
+      <% if check_archived_course.blank? %>
+        <!--          user not enroll this course-->
+        <p>Progress(0%)</p>
+        <progress max="100" value="0"></progress>
+      <% else %>
+        <!--       user enrolled in course-->
+        <% check_archived_course.each do |course_detail| %>
+          <p>Progress(<%= course_detail.progression %>%)</p>
+          <progress max="100" value="<%= course_detail.progression %>"></progress>
+        <% end %>
+
+      <% end %>
+
+    <% else %>
       <p>Progress(0%)</p>
       <progress max="100" value="0"></progress>
-    <% else %>
-      <!-- user enrolled in course-->
-      <%= @course_detail.each do |course_detail| %>
-        <h1><%= course_detail.name %></h1>
-        <span>by</span>
-        <span><%= course_detail.author %></span>
-        <div class="intro">
-          <%= image_tag('java_script.jpg') %>
-          <span><%= course_detail.description %><br></span>
-          <br>
-        </div>
-        <p>Progress(<%= course_detail.progression %>%)</p>
-        <progress max="100" value="<%= course_detail.progression %>"></progress>
-      <% end %>
     <% end %>
-
     <%= button_to enroll_to_course_path(@course.id), method: :post do %>
       Start learn
     <% end %>
@@ -92,6 +91,7 @@
   </div>
   <div class="buttom">
     <h2>List Article in '<%= @course.name %>'</h2>
+
     <% @list_article.each do |a| %>
       <div class="per-course">
         <div class="c-left">

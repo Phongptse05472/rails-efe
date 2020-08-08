@@ -1,0 +1,8 @@
+var $courseId = $('#course_archived<%= @archived_courses.course_id %>')
+<% if params[:course_like] %>
+$courseId.remove()
+<% else %>
+$courseId.addClass("fa-bookmark")
+$courseId.removeClass("fa-bookmark-o")
+<% end %>
+
