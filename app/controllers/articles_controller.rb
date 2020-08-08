@@ -14,7 +14,12 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
 
     @comment_user = Comment.where(:article_id => @article.id).custom_display
+
+    @comment_print = @comment_user.where("is_print = true").custom_display
+
   end
+
+
 
   # GET /articles/1/edit
   def edit

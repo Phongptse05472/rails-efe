@@ -15,7 +15,7 @@ class Users::SessionsController < Devise::SessionsController
     @current_user_id = current_user.id
     @customer = Customer.where(user_id: @current_user_id, role_id: 3)
     if !@customer.exists?
-      @customer = Customer.create(user_id: @current_user_id, role_id: 3)
+      @customer = Customer.create(id: @current_user_id ,user_id: @current_user_id, role_id: 3)
     else
 
     end

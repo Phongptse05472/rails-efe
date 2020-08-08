@@ -14,12 +14,13 @@
   <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
   <% if !current_role.blank? %>
     <div class="comment_pin">
-      <i class="fa fa-check" id="is_print" aria-hidden="true"></i>
+      <%= link_to update_comment_print_path(comment.id), method: :post, remote: true do %>
+        <%# binding.pry %>
+        <i class="fa fa-check" onclick="bookmark(this)"  aria-hidden="true"></i>
+      <% end %>
     </div>
   <% else %>
 
   <% end %>
-
-
 
 </div>

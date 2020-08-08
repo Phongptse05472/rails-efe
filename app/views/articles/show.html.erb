@@ -52,8 +52,26 @@
             <% end %>
           </div>
         </div>
-
         <div class="article_comments">
+          <% if !@comment_print.blank? %>
+            <div class="article_comments">
+              <% @comment_print.each do |comment| %>
+                <div class="user-icon">
+                  <%= image_tag('course_9.jpg') %>
+                </div>
+                <div class="user-right">
+                  <div class="user-name">
+                    <%= comment.customer.name %>
+                  </div>
+                  <div class="u-comment">
+                    <%= comment.content %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+          <% end %>
+
           <% @comment_user.each do |comment| %>
             <%= render "comments/comment", comment: comment %>
           <% end %>
@@ -78,7 +96,7 @@
               <% if article.exists? %>
                 <% if article.first.is_favor == true %>
                   <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
-                    <i style="" onclick="bookmark(this,123)" class="fa fa-heart" id= "article_id<%= a.id %>" aria-hidden="true"></i>
+                    <i style="" onclick="bookmark(this,123)" class="fa fa-heart" id="article_id<%= a.id %>" aria-hidden="true"></i>
                   <% end %>
                 <% else %>
                   <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
