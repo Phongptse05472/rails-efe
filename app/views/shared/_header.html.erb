@@ -28,11 +28,15 @@
       </div>
     <% else %>
       <div class="user">
-        <a href="/profile">
+        <a href="#">
           <i class="fa fa-bell"></i>
         </a>
-        <a href="profile.html" class="profile"><%= image_tag('1.jpg') %></a>
-        <%= link_to "Logout" , destroy_user_session_path, method: :delete %>
+        <%= link_to profile_path do %>
+          <%= image_tag('1.jpg') %>
+          <a href="" class="profile"></a>
+        <% end %>
+
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       </div>
     <% end %>
   </div>

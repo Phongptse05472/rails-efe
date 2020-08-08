@@ -31,10 +31,7 @@
           <h2>Khóa học lập trình Java</h2>
           <p><%= article.author %></p>
           Link attach:  <%= article.link_file_attach %>
-          <p>
-            <%= article.description %>
-          </p>
-<!--          <p><%#= article.tag_name %></p>-->
+          <p><%= article.description %></p>
         </div>
       </div>
       <div class="w-information">
@@ -55,13 +52,15 @@
             <% end %>
           </div>
         </div>
+
         <div class="article_comments">
           <% @comment_user.each do |comment| %>
             <%= render "comments/comment", comment: comment %>
           <% end %>
         </div>
-
     <% end %>
+
+
 
 
     </div>
@@ -75,7 +74,6 @@
               <%= image_tag('course_9.jpg') %>
             </div>
             <div class="l-right">
-
               <% article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, a.id) %>
               <% if article.exists? %>
                 <% if article.first.is_favor == true %>
@@ -93,12 +91,11 @@
                 <% end %>
               <% end %>
 
-
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
               </div>
               <div class="l-author">
-                <%#= a.author %>
+                <%= a.author %>
               </div>
               <div class="l-view">
                 <%= a.view_number %> views

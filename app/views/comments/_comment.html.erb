@@ -10,7 +10,16 @@
       <%= comment.content %>
     </div>
   </div>
-  <div class="comment_pin">
-    <i class="fa fa-check"></i>
-  </div>
+
+  <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
+  <% if !current_role.blank? %>
+    <div class="comment_pin">
+      <i class="fa fa-check" id="is_print" aria-hidden="true"></i>
+    </div>
+  <% else %>
+
+  <% end %>
+
+
+
 </div>
