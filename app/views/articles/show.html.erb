@@ -7,13 +7,9 @@
 <div class="main-watch">
   <div class="watch">
     <% @article_detail.each do |article| %>
-      <div class="video">
-        <div id="media_player">
-          <iframe style="display: inline-block" class="embed-responsive-item" src="https://content.jwplatform.com/videos/nYLOnbr9-nelUuFNS.mp4;autoplay=1"
-                  width="100%" height="500" frameborder="2" allowfullscreen="">
-          </iframe>
-        </div>
-      </div>
+      <video id="video" width="320" height="240" controls>
+        <source src="https://res.cloudinary.com/dolv9j3dz/video/upload/v1595955605/video/What_is_REST_API_-_Web_Service_jlkasv.mp4" type="video/mp4">
+      </video>
       <div class="w-title">
         <h2>
           <%= article.title %>
@@ -119,55 +115,15 @@
 <div class="footer">
 
 </div>
-<!--<script>-->
-<!--    function resetForm() {-->
-<!--        document.getElementById("inputForm").reset();-->
-<!--    }-->
-
-<!--</script>-->
-
-<!--<script type="text/javascript">-->
-<!--    var playerInstance;-->
-
-<!--    $(document).ready(function() {-->
-<!--        playerInstance = jwplayer("media_player").setup({-->
-<!--            "playlist": [{-->
-<!--                image: "../images/code_c.PNG",-->
-<!--                label: "720p HD",-->
-<!--                "sources": [{-->
-<!--                    file: "https://content.jwplatform.com/videos/z0WY5urx-tks6q73h.mp4",-->
-<!--                    label: "1080P",-->
-<!--                }, {-->
-<!--                    file: "https://content.jwplatform.com/videos/z0WY5urx-tks6q73h.mp4",-->
-<!--                    label: "760p",-->
-<!--                }, {-->
-<!--                    file: "https://content.jwplatform.com/videos/z0WY5urx-tks6q73h.mp4",-->
-<!--                    label: "360p"-->
-<!--                }],-->
-<!--                "tracks": [{-->
-<!--                    // "file": "https://content.jwplatform.com/tracks/YFoEjMQx.vtt",-->
-<!--                    "label": "English",-->
-<!--                    "kind": "captions"-->
-<!--                }]-->
-<!--            }],-->
-<!--            "captions": {-->
-<!--                "color": "FE94AB",-->
-<!--                "backgroundColor": "000000",-->
-<!--                "backgroundOpacity": 100,-->
-<!--                "fontSize": 8-->
-<!--            },-->
-<!--            "autostart": true,-->
-<!--            "controls": true,-->
-<!--            "primary": "flash",-->
-<!--            // "aspectratio": "16:9"-->
-<!--        });-->
-<!--        playerInstance.on('captionsList', function(t) {-->
-<!--            console.log(t)-->
-<!--        });-->
-<!--        playerInstance.resize(96 + "%", 600);-->
-<!--    });-->
-<!--</script>-->
-</body>
+<!--begin of get currentTime and total duration-->
+<script>
+    document.getElementById('video').currentTime = 50;
+    document.getElementById('video').onpause = function () {
+       var currentTime  = this.currentTime;
+       var total  = this.duration;
+    };
+</script>
+<!--end of get currentTime and total duration-->
 <script>
     function bookmark(heart, courseID) {
         var x = heart;
@@ -199,3 +155,4 @@
 
 
 </script>
+</body>

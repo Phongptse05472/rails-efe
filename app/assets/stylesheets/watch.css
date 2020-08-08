@@ -5,7 +5,7 @@
     display: flex;
 }
 
-.watch .video {
+.watch video {
     width: 96%;
     height: auto;
 }
