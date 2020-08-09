@@ -24,6 +24,8 @@ gem 'pg_search'
 gem "roo"
 gem "activerecord-import"
 gem 'jquery-rails'
+gem 'carrierwave'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
