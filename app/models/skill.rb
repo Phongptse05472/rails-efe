@@ -1,4 +1,4 @@
 class Skill < ApplicationRecord
-  has_many :articles
+  has_many :article_skills
 end
 
