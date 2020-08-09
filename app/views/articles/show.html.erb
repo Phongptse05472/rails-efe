@@ -28,7 +28,11 @@
           <%= image_tag('2.jpg') %>
         </div>
         <div class="w-author">
-          <p>Author: <%= @author.first.name %></p>
+          <% if !@author.blank? %>
+            <p> Author: <%= @author.first.name %></p>
+          <% else %>
+
+          <% end %>
           Link attach:  <%= article.link_file_attach %>
           <p>Description: <%= article.description %></p>
         </div>
@@ -111,12 +115,8 @@
                   <i style="" onclick="bookmark(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
                 <% end %>
               <% end %>
-
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
-              </div>
-              <div class="l-author">
-                <%= @author.first.name %>
               </div>
               <div class="l-view">
                 <%= a.view_number %> views

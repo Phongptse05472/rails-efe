@@ -7,7 +7,10 @@ class ArticlesController < ApplicationController
   def show
     @show_leftside = false
     @article_detail = Article.all.where(id: params[:id])
+
     @author = Customer.joins(:customer_articles).where("article_id = ? AND is_owner = true",  @article.id)
+
+
     @course = Course.friendly.find(params[:course_slug])
     #right side - List article in course
     @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
