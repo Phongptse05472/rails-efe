@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
 
   def update
     @update_comment = Comment.find_by(id: params[:id], customer_id: current_user.id)
-    @update_comment.update(is_print: true)
+    @update_comment.update_attribute("is_pin", !@update_comment.is_pin)
+
 
   end
   private

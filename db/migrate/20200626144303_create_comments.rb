@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration[6.0]
       t.belongs_to :article, :customer
       t.text :content
       t.integer :parent_id
-      t.boolean :is_print
+      t.boolean :is_pin
       t.timestamps
     end
   end

@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.text "author"
     t.time "duration"
     t.bigint "view_number"
     t.boolean "is_free"
@@ -64,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.bigint "customer_id"
     t.text "content"
     t.integer "parent_id"
-    t.datetime "time_comment"
+    t.boolean "is_pin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
