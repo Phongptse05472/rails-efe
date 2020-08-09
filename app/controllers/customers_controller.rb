@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-#   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update]
 
   # GET /customers
   # GET /customers.json
@@ -20,10 +20,6 @@ class CustomersController < ApplicationController
   def archive
 
   end
-
-#   def mycourse
-#
-#   end
 
   def favor
   end
@@ -48,6 +44,7 @@ class CustomersController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
@@ -62,24 +59,15 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.json
-  # def destroy
-  #   @customer.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
-
   private
     # Use callbacks to share common setup or constraints between actions.
-#     def set_customer
-#       @customer = Customer.find(params[:id])
-#     end
+    def set_customer
+      @customer = Customer.find_by(params[:current_user_id])
+    end
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.require(:customer).permit(:user_id, :role_id, :name, :phone_number, :roll_number, :is_active, :image)
+#       params.require(:customer).permit(:user_id, :role_id, :name, :phone_number, :roll_number, :is_active, :image)
+      params.require(:customer).permit(:user_id, :role_id,  :name)
     end
 end

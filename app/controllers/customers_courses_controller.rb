@@ -1,5 +1,4 @@
 class CustomersCoursesController < ApplicationController
-  # before_action :authenticate_user!, except: [:index]
 
   #my course page
   def index
@@ -10,15 +9,22 @@ class CustomersCoursesController < ApplicationController
   def customer_home
     @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
 
-    @topic = Topic.all.limit(8)
 
-    @hot_course = Course.order(number_enrollment: :desc).limit(20)
-    @rate_course = Course.order(rate: :desc).limit(5)
-    @new_course = Course.joins(:customer_courses).order(created_at: :desc).limit(5)
-    @topic = Topic.all
-    @top_view_article = Article.order(view_number: :desc).limit(10)
+    @topic = Group.all.limit(8)
+
+    #check user enrolled course?
+    @course_ids = CustomerCourse.where("enrollment_date IS NOT NULL").pluck('course_id')
+
+    #all course which user not enrolled
+    @hot_course = Course.where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
+    @rate_course = Course.where.not(id: @course_ids).order(rate: :desc).limit(5)
+    @new_course = Course.where.not(id: @course_ids).joins(:customer_courses).order(created_at: :desc).limit(5)
+
+    #check user viewed article?
+    @article_ids = CustomerArticle.where("is_viewed = true").pluck("article_id")
+
+    @top_view_article = Article.where.not(id: @article_ids).order(view_number: :desc).limit(10)
   end
-
 
 
   def enroll_courses
@@ -37,10 +43,10 @@ class CustomersCoursesController < ApplicationController
       end
     else
       if @article.first.nil?
-        course.update_all( is_save: true, enrollment_date: Date.today)
+        course.update_all(is_save: true, enrollment_date: Date.today)
         redirect_to course_path
       else
-        course.update_all( current_article_id: @article.first.id, is_save: true, enrollment_date: Date.today)
+        course.update_all(current_article_id: @article.first.id, is_save: true, enrollment_date: Date.today)
         redirect_to course_article_path(enroll_course, @article.ids.first)
       end
 

@@ -21,6 +21,8 @@ gem 'jquery-ui-rails'
 gem 'friendly_id', '~> 5.2.4'
 gem 'wicked'
 gem 'pg_search'
+gem "roo"
+gem "activerecord-import"
 gem 'jquery-rails'
 
 group :development, :test do

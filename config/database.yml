@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
+  host: <%= ENV.fetch("DATABASE") { 'localhost' } %>
   database: capstone
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
@@ -9,7 +9,7 @@ default: &default
 
 development:
   <<: *default
-  database: capstone_develop
+  database: capstone_develope
 
 test:
   <<: *default
@@ -20,3 +20,26 @@ production:
   database: rails-efe_production
   username: rails-ede
   password: <%= ENV['EDF_PROJECT_DATABASE_PASSWORD'] %>
+
+#default: &default
+#  adapter: postgresql
+#  encoding: unicode
+#  host: <%#= ENV.fetch("DATABASE") { 'db' } %>
+#  database: capstone
+#  pool: <%#= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#  username: postgres
+#  password: 12345678
+
+#development:
+#  <<: *default
+#  database: capstone_develope
+
+#test:
+#  <<: *default
+#  database: capstone_test
+
+#production:
+#  <<: *default
+#  database: rails-efe_production
+#  username: rails-ede
+#  password: <%#= ENV['EDF_PROJECT_DATABASE_PASSWORD'] %>

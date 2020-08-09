@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <h1>Topic</h1>
+  <h1>Group</h1>
   <div id="topic" class="topic">
     <% @topic.each do |topic| %>
       <%= link_to topic.name, topic_path(topic.id) %>
@@ -60,7 +60,7 @@
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o"onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
@@ -259,7 +259,7 @@
               <div class="name">
                 <%= link_to article.title %>
               </div>
-              <p><%= article.author %></p>
+<!--              <p><%#= article.author %></p>-->
               <span><%= article.view_number %> view</span>
             </div>
           </div>

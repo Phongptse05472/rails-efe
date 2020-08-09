@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :show], param: :slug
 
   #common routes
-
-
   get 'home', to: 'courses#index'
   get 'archived-courses', to: 'customers_courses#archived_courses'
   get 'search', to: 'courses#search'
@@ -24,6 +22,8 @@ Rails.application.routes.draw do
   post 'enroll_courses/:slug', to: 'customers_courses#enroll_courses', :as => :enroll_to_course
   post 'courses/:id', to: 'customers_courses#update', :as => :update_archived
   post 'articles/:id', to: 'customers_articles#update', :as => :update_favor
+  post 'comments/:id', to: 'comments#update', :as => :update_comment_pin
+
   post 'archive_courses/:slug', to: 'customers_courses#add_course_to_archived', :as => :add_to_archived
   post 'favor_articles/:id', to: 'customers_articles#add_to_favor', :as => :add_to_favor
 
