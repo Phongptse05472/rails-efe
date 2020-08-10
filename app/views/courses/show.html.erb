@@ -11,7 +11,13 @@
     <span>by</span>
     <span><%= @course.author %></span>
     <div class="intro">
-      <%= image_tag('java_script.jpg') %>
+      <% if !@course.image.nil? %>
+        <%= cl_image_tag(@course.image) %>
+      <% else %>
+        <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+      <% end %>
+
+
       <span><%= @course.description %><br></span>
       <br>
     </div>
@@ -40,58 +46,17 @@
     <div class="skill_set">
       <h2>Skill set</h2>
       <ul>
-        <li>
-          <span>Java</span>
-        </li>
-        <li>
-          <span>Java Script</span>
-        </li>
-        <li>
-          <span>CSS</span>
-        </li>
-        <li>
-          <span>Programming Principles</span>
-        </li>
-        <li>
-          <span>Java</span>
-        </li>
-        <li>
-          <span>Java Script</span>
-        </li>
-        <li>
-          <span>CSS</span>
-        </li>
-        <li>
-          <span>Programming Principles</span>
-        </li>
-        <li>
-          <span>Java</span>
-        </li>
-        <li>
-          <span>Java Script</span>
-        </li>
-        <li>
-          <span>CSS</span>
-        </li>
-        <li>
-          <span>Programming Principles</span>
-        </li>
-        <li>
-          <span>Java Script</span>
-        </li>
-        <li>
-          <span>CSS</span>
-        </li>
-        <li>
-          <span>Programming Principles</span>
-        </li>
+        <% @skill.each do |skill| %>
+          <li>
+            <span><%= skill.name %></span>
+          </li>
+        <% end %>
       </ul>
     </div>
 
   </div>
   <div class="buttom">
     <h2>List Article in '<%= @course.name %>'</h2>
-
     <% @list_article.each do |a| %>
       <div class="per-course">
         <div class="c-left">
@@ -100,7 +65,7 @@
           </a>
         </div>
         <div class="c-right">
-              <%= link_to a.title, click_on_article_path(@course, a.id) %>
+          <%= link_to a.title, click_on_article_path(@course, a.id) %>
           <span>
           <%= a.description %>
         </span>

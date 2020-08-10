@@ -24,7 +24,7 @@ class Course < ApplicationRecord
   STEPS = %i(over_view create_content comfirmed)
 
 
-  has_one_attached :image
+  # has_one_attached :image
 
   has_and_belongs_to_many :groups
 
