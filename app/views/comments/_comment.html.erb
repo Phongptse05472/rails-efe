@@ -1,5 +1,4 @@
-<div class="user-comment">
-
+<div class="user-comment" id="is_pin<%= comment.id %>">
   <div class="user-icon">
     <%= image_tag('course_9.jpg') %>
   </div>
@@ -11,10 +10,9 @@
       <%= comment.content %>
     </div>
   </div>
-
   <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
   <% if !current_role.blank? %>
-    <%= link_to update_comment_pin_path(comment.id), method: :post, remote: true do %>
+    <%= link_to update_comment_pin_path(comment.id , pin_cmt: true), method: :post, remote: true do %>
       <i class="fa fa-check" onclick="check(this)" aria-hidden="true"></i>
     <% end %>
   <% else %>

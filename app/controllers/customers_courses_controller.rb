@@ -61,7 +61,7 @@ class CustomersCoursesController < ApplicationController
   end
 
   def archived_courses
-    @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true)
+    @archived_course = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true)
   end
 
 

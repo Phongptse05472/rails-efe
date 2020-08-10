@@ -1,0 +1,10 @@
+
+var $is_pinId = $('#is_pin<%= @update_comment.id %>')
+<%# binding.pry %>
+
+<% if params[:pin_cmt] %>
+$is_pinId.addClass("user-comment")
+<% else %>
+
+<% end %>
+

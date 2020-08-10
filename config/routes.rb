@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post 'enroll_courses/:slug', to: 'customers_courses#enroll_courses', :as => :enroll_to_course
   post 'courses/:id', to: 'customers_courses#update', :as => :update_archived
   post 'articles/:id', to: 'customers_articles#update', :as => :update_favor
-  post 'comments/:id', to: 'comments#update', :as => :update_comment_pin
+  post 'comments/:id', to: 'articles#update', :as => :update_comment_pin
 
   post 'archive_courses/:slug', to: 'customers_courses#add_course_to_archived', :as => :add_to_archived
   post 'favor_articles/:id', to: 'customers_articles#add_to_favor', :as => :add_to_favor
