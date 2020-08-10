@@ -5,8 +5,8 @@ class Group < ApplicationRecord
   friendly_id :name, use: [:slugged]
 
   has_many :skills
-  has_many :careerpaths, :through => :path_groups
-  has_and_belongs_to_many :courses
+  has_many :careerpaths, through: :path_groups
+  has_many :courses, through: :course_groups
 
   def update_slug
     self.slug = name.parameterize

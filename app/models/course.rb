@@ -34,6 +34,7 @@ class Course < ApplicationRecord
   has_many :customer_courses
   has_many :customers, through: :customer_courses
 
+  has_many :groups, through: :course_groups
 
   def update_slug
     self.slug = name.parameterize

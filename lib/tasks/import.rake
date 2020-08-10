@@ -2,102 +2,50 @@ require 'roo'
 require 'activerecord-import'
 
 namespace :import do |import_namespace|
-  desc "Import all groups"
-  task :groups => :environment do
-    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/group.xlsx")
-    header = spreadsheet.row(1)
-    data = []
-    (2..spreadsheet.last_row).each do |i|
-      row = [header, spreadsheet.row(i)].transpose.to_h
-      data << row
+  desc "Import all db"
+  task :data => :environment do
+    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/db.xlsx")
+    spreadsheet.each_with_pagename do |name, sheet|
+      header = sheet.row(1)
+      data = []
+      (2..sheet.last_row).each do |i|
+        row = [header, spreadsheet.row(i)].transpose.to_h
+        data << row
+      end
+      case name
+      when "Careerpaths"
+        puts 'creating careerpaths...'
+        Careerpath.import! data
+      when "Groups"
+        puts 'creating groups...'
+        Group.import! data
+      when "Levels"
+        puts 'creating levels...'
+        Level.import! data
+      when "Skills"
+        puts 'creating skills...'
+        Skill.import! data
+      when "Path_groups"
+        puts 'creating pathgroups...'
+        PathGroup.import! data
+      when "Courses"
+        puts 'creating courses...'
+        Course.import! data
+      when "Articles"
+        puts 'creating articles...'
+        Article.import! data
+      when "Course_groups"
+        puts 'creating coursegroups...'
+        CourseGroup.import! data
+      when "Coures_articles"
+        puts 'creating coursearticles...'
+        CourseArticle.import! data
+      when "Article_skills"
+        puts 'creating articleskills...'
+        ArticleSkill.import! data
+      end
     end
-    Group.import! data
   end
-
-  desc "Import all careerpaths"
-  task :careerpaths => :environment do
-    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/careerpath.xlsx")
-    header = spreadsheet.row(1)
-    data = []
-    (2..spreadsheet.last_row).each do |i|
-      row = [header, spreadsheet.row(i)].transpose.to_h
-      data << row
-    end
-    Careerpath.import! data
-  end
-
-  desc "Import all levels"
-  task :levels => :environment do
-    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/level.xlsx")
-    header = spreadsheet.row(1)
-    data = []
-    (2..spreadsheet.last_row).each do |i|
-      row = [header, spreadsheet.row(i)].transpose.to_h
-      data << row
-    end
-    Level.import! data
-  end
-
-  desc "Import all skills"
-  task :skills => :environment do
-    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/skill.xlsx")
-    header = spreadsheet.row(1)
-    data = []
-    (2..spreadsheet.last_row).each do |i|
-      row = [header, spreadsheet.row(i)].transpose.to_h
-      data << row
-    end
-    Skill.import! data
-  end
-
-  desc "Import all path_groups"
-  task :path_groups => :environment do
-    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/path_group.xlsx")
-    header = spreadsheet.row(1)
-    data = []
-    (2..spreadsheet.last_row).each do |i|
-      row = [header, spreadsheet.row(i)].transpose.to_h
-      data << row
-    end
-    PathGroup.import! data
-  end
-
-  desc "Import all courses"
-  task :courses => :environment do
-    Course.delete_all
-    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/course.xlsx")
-    header = spreadsheet.row(1)
-    data = []
-    (2..spreadsheet.last_row).each do |i|
-      row = [header, spreadsheet.row(i)].transpose.to_h
-      data << row
-    end
-    Course.import! data
-  end
-
-  desc "Import all articles"
-  task :articles => :environment do
-    spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/article.xlsx")
-    header = spreadsheet.row(1)
-    data = []
-    (2..spreadsheet.last_row).each do |i|
-      row = [header, spreadsheet.row(i)].transpose.to_h
-      data << row
-    end
-    Article.import! data
-  end
-
-  # desc "Import all course-article"
-  # task :course-artilces => :environment do
-  #   spreadsheet = Roo::Spreadsheet.open("#{Rails.root.to_s}/db/data_import_from_csv/course-articles.xlsx")
-  #   header = spreadsheet.row(1)
-  #   data = []
-  #   (2..spreadsheet.last_row).each do |i|
-  #     row = [header, spreadsheet.row(i)].transpose.to_h
-  #     data << row
-  #   end
-  #   CourseArticle.import! data
-  # end
 
   desc "Run all task"
   task :all do
