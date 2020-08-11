@@ -8,5 +8,7 @@ class Mentor::CoursesController < Mentor::MentorController
     @ref_article =  Article.left_outer_joins(:course_articles).where('course_id is null').order(:created_at).limit(6)
 
   end
+  def new
+  end
 
 end
