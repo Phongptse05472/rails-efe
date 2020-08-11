@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
 
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
 
+    # @skill = Skill.joins(:article_skill).where("article_id IN (?) " , article.ids).group(:id)
     @skill = Skill.joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
 
     if current_user.present?

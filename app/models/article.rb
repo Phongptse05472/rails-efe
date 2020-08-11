@@ -7,7 +7,8 @@ class Article < ApplicationRecord
   has_many :customer_articles
   has_many :customers, through: :customer_articles
 
-  has_many :article_skills, through: :article_skills
+  has_many :article_skills
+  has_many :skills, through: :article_skills
 
   # has_one_attached :image
 
