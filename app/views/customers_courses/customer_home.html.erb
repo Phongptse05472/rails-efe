@@ -6,8 +6,11 @@
       <% @my_courses_home.each do |my_courses| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <a href="watch.html"><%= image_tag('java_script.jpg') %></a>
-            <%#= cl_image_tag(my_courses.image.to_s) %>
+            <% if !my_courses.image.nil? %>
+              <%= cl_image_tag(my_courses.image) %>
+            <% else %>
+              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+            <% end %>
           </div>
           <div class="author">
             <div class="icon">
@@ -46,10 +49,10 @@
       <% @hot_course.each do |course| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <% if course.image.attached? %>
-              <%= image_tag(course.image) %>
+            <% if !course.image.nil? %>
+              <%= cl_image_tag(course.image) %>
             <% else %>
-              <%= image_tag('course_1.jpg') %>
+              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
             <% end %>
 
             <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
@@ -105,10 +108,10 @@
       <% @rate_course.each do |course| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <% if course.image.attached? %>
-              <%= image_tag(course.image) %>
+            <% if !course.image.nil? %>
+              <%= cl_image_tag(course.image) %>
             <% else %>
-              <%= image_tag('course_1.jpg') %>
+              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
             <% end %>
             <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
             <% if customer_course.exists? %>
@@ -167,10 +170,10 @@
       <% @new_course.each do |course| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <% if course.image.attached? %>
-              <%= image_ta g(course.image) %>
+            <% if !course.image.nil? %>
+              <%= cl_image_tag(course.image) %>
             <% else %>
-              <%= image_tag('course_1.jpg') %>
+              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
             <% end %>
 
             <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
@@ -231,7 +234,8 @@
       <% @top_view_article.each do |article| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <%= image_tag('java.png') %>
+
+              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
 
             <% customer_article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, article.id) %>
             <% if customer_article.exists? %>

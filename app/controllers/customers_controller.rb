@@ -17,12 +17,6 @@ class CustomersController < ApplicationController
     @customer = Customer.new
   end
 
-  def archive
-
-  end
-
-  def favor
-  end
 
   # GET /customers/1/edit
   def edit

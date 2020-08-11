@@ -18,6 +18,26 @@ class CustomersArticlesController < ApplicationController
     end
   end
 
+
+
+  def time
+    current_time = params[:currentTime]
+    time_point = current_time.to_f
+
+
+    is_viewed = params[:isViewed]
+    article_id = params[:id]
+
+    @article = CustomerArticle.where("customer_id = ? AND article_id = ?" , current_user.id, article_id)
+    if !@article.exists?
+      @article =  CustomerArticle.create(customer_id: current_user.id, article_id: article_id, time_point: time_point, is_viewed: is_viewed)
+    else
+      @article.update(article_id: article_id, time_point: time_point, is_viewed: is_viewed)
+    end
+
+  end
+
+
   def update
     @favor_article = CustomerArticle.find_by(article_id: params[:id], customer_id: current_user.id)
     @favor_article.update_attribute("is_favor", !@favor_article.is_favor)

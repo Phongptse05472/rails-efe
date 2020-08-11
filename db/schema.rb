@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_090913) do
     t.bigint "customer_id"
     t.bigint "article_id"
     t.boolean "is_owner"
-    t.time "time_point"
+    t.float "time_point"
     t.boolean "is_viewed"
     t.boolean "is_favor"
     t.datetime "created_at", precision: 6, null: false

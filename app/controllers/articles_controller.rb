@@ -21,6 +21,9 @@ class ArticlesController < ApplicationController
 
     @comment_pin = @comment_user.where("is_pin = true").custom_display.limit(1)
 
+    @cus_article = CustomerArticle.where("customer_id = ? AND article_id = ?" , current_user.id, @article.id)
+
+
   end
 
 
