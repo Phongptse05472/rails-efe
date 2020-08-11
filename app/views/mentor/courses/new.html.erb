@@ -1,0 +1,80 @@
+<head>
+  <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="right">
+  <div class="process">
+    <div class="process">
+      <a href="#">
+        <i class="fa fa-check-circle active" aria-hidden="true"></i>
+      </a>
+      <a href="#">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+      </a>
+      <a href="#">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <form action="#" method="post">
+    <div class="create_course">
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Avatar</h2>
+        </div>
+        <div class="row-right">
+          <div class="thum">
+            <i class="fa fa-camera" aria-hidden="true"></i>
+            <p id="selectedFileName">Upload avatar</p>
+            <input type="button" id="input-file" onchange="changeText()">
+          </div>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Course title</h2>
+        </div>
+        <div class="row-right">
+          <textarea onkeyup="countChar(this)" wrap="hard" rows="2" maxlength="300" class="title_article" name="title"></textarea>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Description</h2>
+        </div>
+        <div class="row-right">
+          <textarea class="desc_course" name="description"></textarea>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Group</h2>
+        </div>
+        <div class="row-right">
+          <select>
+            <option>Programming languages</option>
+            <option>Client Scripts</option>
+            <option>Source Controls</option>
+            <option>Relational databases</option>
+            <option>Web Apps Development</option>
+            <option>Web Layout Desing and Implementation</option>
+            <option>Data Encryption and Decryption</option>
+            <option>Web Services Deployment</option>
+            <option>Web Token Programming</option>
+          </select>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Is free</h2>
+        </div>
+        <label class="container_input">isFree
+          <input type="checkbox" name="isfree" checked="checked">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <br>
+      <button type="submit">Create course</button>
+  </form>
+  <div class="end">
+  </div>
+</div>
