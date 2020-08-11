@@ -7,9 +7,8 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.bigint :view_number
       t.boolean :is_free
       t.text :link_file_attach
+      t.text :video
       t.timestamps
-      t.belongs_to :skill
-      t.belongs_to :level
     end
   end
 end

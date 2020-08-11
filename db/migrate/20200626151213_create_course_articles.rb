@@ -1,4 +1,4 @@
-class CreateCourseArticle < ActiveRecord::Migration[6.0]
+class CreateCourseArticles < ActiveRecord::Migration[6.0]
   def change
     create_table :course_articles do |t|
       t.belongs_to :course, index: true, foreign_keys: true
