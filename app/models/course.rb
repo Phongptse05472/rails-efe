@@ -26,7 +26,11 @@ class Course < ApplicationRecord
 
   # has_one_attached :image
 
-  has_and_belongs_to_many :groups
+  # has_and_belongs_to_many :groups
+
+
+  has_many :course_groups
+  has_many :groups, through: :course_groups
 
   has_many :course_articles
   has_many :articles, through: :course_articles
@@ -34,7 +38,7 @@ class Course < ApplicationRecord
   has_many :customer_courses
   has_many :customers, through: :customer_courses
 
-  has_many :groups, through: :course_groups
+
 
   def update_slug
     self.slug = name.parameterize

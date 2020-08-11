@@ -80,14 +80,11 @@ class CoursesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_course
     @course = Course.friendly.find(params[:slug])
-    # @customer_course = CustomerCourse.find_by(course_id: params[:id])
   end
-
 
   # Only allow a list of trusted parameters through.
   def course_params
     params.require(:course).permit(:name, :image, :description, :is_free, :is_save, :is_owner, :rate, :number_enrollment, :enrollment_date)
   end
-
 
 end

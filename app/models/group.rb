@@ -8,6 +8,10 @@ class Group < ApplicationRecord
   has_many :careerpaths, through: :path_groups
   has_many :courses, through: :course_groups
 
+
+  has_many :course_groups
+  has_many :courses , through: :course_groups
+
   def update_slug
     self.slug = name.parameterize
   end

@@ -8,8 +8,7 @@ class ArticlesController < ApplicationController
     @show_leftside = false
     @article_detail = Article.all.where(id: params[:id])
 
-    @author = Customer.joins(:customer_articles).where("article_id = ? AND is_owner = true",  @article.id)
-
+    @author = Customer.joins(:customer_articles).where("article_id = ? AND is_owner = true", @article.id)
 
     @course = Course.friendly.find(params[:course_slug])
     #right side - List article in course
@@ -21,11 +20,15 @@ class ArticlesController < ApplicationController
 
     @comment_pin = @comment_user.where("is_pin = true").custom_display.limit(1)
 
-    @cus_article = CustomerArticle.where("customer_id = ? AND article_id = ?" , current_user.id, @article.id)
+    cus_article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, @article.id)
 
+    if !cus_article.exists?
+      cus_article = CustomerArticle.create(customer_id: current_user.id, article_id: @article.id, time_point: 0.0)
+    else
+    end
+    @cus_article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, @article.id)
 
   end
-
 
 
   # GET /articles/1/edit
