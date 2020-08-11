@@ -135,10 +135,30 @@
 </div>
 <!--begin of get currentTime and total duration-->
 <script>
-    document.getElementById('video').currentTime = 50;
+    document.getElementById('video').currentTime = <%= @cus_article.first.time_point %>;
+    <%# binding.pry %>
     document.getElementById('video').onpause = function () {
-       var currentTime  = this.currentTime;
-       var total  = this.duration;
+
+        // var currentTime = this.currentTime;
+
+        var currentTime = this.currentTime;
+        var total = this.duration;
+        var calculate = (currentTime / total) * 100
+        var isViewed = false
+        if (calculate >= 90)
+            isViewed = true
+        else
+            isViewed = false
+
+        $.ajax({
+            url: "/time",
+            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %> },
+            type: "PUT",
+            success: function (data) {
+                console.log(data);
+            }
+
+        });
     };
 </script>
 <!--end of get currentTime and total duration-->

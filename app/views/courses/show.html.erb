@@ -6,7 +6,6 @@
 </head>
 <div class="right">
   <div class="top">
-
     <h1><%= @course.name %></h1>
     <span>by</span>
     <span><%= @course.author %></span>
@@ -33,9 +32,7 @@
           <p>Progress(<%= course_detail.progression %>%)</p>
           <progress max="100" value="<%= course_detail.progression %>"></progress>
         <% end %>
-
       <% end %>
-
     <% else %>
       <p>Progress(0%)</p>
       <progress max="100" value="0"></progress>

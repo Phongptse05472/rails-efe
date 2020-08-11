@@ -6,8 +6,11 @@
       <% @my_courses_home.each do |my_courses| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <a href="watch.html"><%= image_tag('java_script.jpg') %></a>
-            <%#= cl_image_tag(my_courses.image.to_s) %>
+            <% if !my_courses.image.nil? %>
+              <%= cl_image_tag(my_courses.image) %>
+            <% else %>
+              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+            <% end %>
           </div>
           <div class="author">
             <div class="icon">

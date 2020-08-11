@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_140826) do
+ActiveRecord::Schema.define(version: 2020_08_06_090913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "article_skills", force: :cascade do |t|
+    t.bigint "article_id"
+    t.bigint "skill_id"
+    t.bigint "level_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_article_skills_on_article_id"
+    t.index ["level_id"], name: "index_article_skills_on_level_id"
+    t.index ["skill_id"], name: "index_article_skills_on_skill_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -106,7 +117,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_140826) do
     t.bigint "customer_id"
     t.bigint "article_id"
     t.boolean "is_owner"
-    t.time "time_point"
+    t.float "time_point"
     t.boolean "is_viewed"
     t.boolean "is_favor"
     t.datetime "created_at", precision: 6, null: false
