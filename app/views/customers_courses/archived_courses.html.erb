@@ -25,7 +25,11 @@
     <% @archived_courses.each do |archived_course| %>
       <div class="per-course" id="course_archived<%= archived_course.course_id %>">
         <div class="c-left">
-          <%= image_tag('course_6.jpg') %>
+          <% if !archived_course.image.nil? %>
+            <%= cl_image_tag(archived_course.image) %>
+          <% else %>
+            <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+          <% end %>
         </div>
         <div class="c-right">
           <%= link_to customers_course_path(archived_course.course_id, course_like: true), method: :put, remote: true do %>
@@ -46,11 +50,7 @@
 
   </div>
   <div class="paging">
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
+    <%== pagy_nav(@pagy) %>
   </div>
   <div class="end">
   </div>

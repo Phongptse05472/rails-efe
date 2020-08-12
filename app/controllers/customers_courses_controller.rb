@@ -2,7 +2,7 @@ class CustomersCoursesController < ApplicationController
 
   #my course page
   def index
-    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
+    @pagy,  @my_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id), items: 5)
   end
 
   #customer home page
@@ -61,7 +61,7 @@ class CustomersCoursesController < ApplicationController
   end
 
   def archived_courses
-    @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true)
+    @pagy, @archived_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true),items: 5)
   end
 
 

@@ -1,7 +1,7 @@
 class CustomersArticlesController < ApplicationController
   #favor article page
   def index
-    @favor_article = Article.select("articles.*, customer_articles.*").joins(:customer_articles).where('customer_id = ? AND is_favor = ?', current_user.id, true)
+    @pagy, @favor_article = pagy(Article.select("articles.*, customer_articles.*").joins(:customer_articles).where('customer_id = ? AND is_favor = ?', current_user.id, true), items: 5)
   end
 
   def add_to_favor

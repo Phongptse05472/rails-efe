@@ -37,12 +37,12 @@ namespace :import do |import_namespace|
       when "Course_groups"
         puts 'creating coursegroups...'
         CourseGroup.import! data
-      when "Coures_articles"
-        puts 'creating coursearticles...'
-        CourseArticle.import! data
       when "Article_skills"
         puts 'creating articleskills...'
         ArticleSkill.import! data
+      when "Course_articles"
+        puts 'creating courseArticle...'
+        CourseArticle.import! data
       end
     end
   end
