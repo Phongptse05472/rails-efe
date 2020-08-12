@@ -21,7 +21,11 @@
     <% @my_courses.each do |my_course| %>
       <div class="per-course">
         <div class="c-left">
-          <%= image_tag('course_2.jpg') %>
+          <% if !my_course.image.nil? %>
+            <%= cl_image_tag(my_course.image) %>
+          <% else %>
+            <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+          <% end %>
         </div>
         <div class="c-right">
           <h2><%= link_to my_course.name, course_path(my_course.slug) %></h2>
