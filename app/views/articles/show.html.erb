@@ -8,10 +8,7 @@
   <div class="watch">
     <% @article_detail.each do |article| %>
 
-  <%= cl_video_tag(article.video) %>
-
-
-
+  <%= cl_video_tag(article.video, :controls => true) %>
 
       <div class="w-title">
         <h2>

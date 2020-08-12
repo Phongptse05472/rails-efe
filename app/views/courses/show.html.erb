@@ -58,7 +58,11 @@
       <div class="per-course">
         <div class="c-left">
           <a href="#">
-            <%= image_tag('japanese.png') %>
+            <% if !a.video.nil? %>
+              <%= cl_video_tag(a.video, :effect => "preview", :resource_type => "video") %>
+            <% else %>
+              <%= image_tag('japanese.png') %>
+            <% end %>
           </a>
         </div>
         <div class="c-right">
