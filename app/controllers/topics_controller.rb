@@ -7,9 +7,9 @@ class TopicsController < ApplicationController
   end
 
   def show
-    # @courses = Course.joins(:groups).where('groups.id = ?' , @topic)
 
-    @courses= Group.find_by(:slug => param[:slug]).courses
+    @courses = Course.joins(:groups).where('groups.slug = ?' , @topic.slug)
+
   end
 
   private

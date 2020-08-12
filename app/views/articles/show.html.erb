@@ -136,11 +136,7 @@
 <!--begin of get currentTime and total duration-->
 <script>
     document.getElementById('video').currentTime = <%= @cus_article.first.time_point %>;
-    <%# binding.pry %>
     document.getElementById('video').onpause = function () {
-
-        // var currentTime = this.currentTime;
-
         var currentTime = this.currentTime;
         var total = this.duration;
         var calculate = (currentTime / total) * 100
@@ -157,7 +153,6 @@
             success: function (data) {
                 console.log(data);
             }
-
         });
     };
 </script>
@@ -213,7 +208,5 @@
             return false;
         });
     });
-
-
 </script>
 </body>
