@@ -10,6 +10,8 @@ class CoursesController < ApplicationController
 
     @top_view_article = Article.order(view_number: :desc).limit(10)
 
+    # binding.pry
+
   end
 
   def show
