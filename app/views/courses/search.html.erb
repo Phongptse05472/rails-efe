@@ -108,15 +108,15 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
-              <%= link_to add_to_archived_path(course.id), method: :post do %>
+              <%= link_to add_to_archived_path(course.id), method: :post, remote: true do %>
                 <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
               <% end %>
             <% end %>
@@ -146,6 +146,30 @@
   <div class="end">
   </div>
 </div>
+
+<script>
+    function bookmark(bookmark, courseID) {
+        var x = bookmark;
+        if (x.className === "fa fa-bookmark") {
+            x.className = "fa fa-bookmark-o";
+        } else {
+            x.className = "fa fa-bookmark";
+        }
+        var app1 = new Vue({
+            el: '#app1',
+            mounted: function () {
+                axios.get('/archive_courses/', {
+                    params: {
+                        num: courseID
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
+        });
+    }
+</script>
+
 <script>
     function filter() {
         var x = document.getElementById('rating');
@@ -286,24 +310,5 @@
 
     }
 
-    function bookmark(bookmark, courseID) {
-        var x = bookmark;
-        if (x.className === "fa fa-bookmark") {
-            x.className = "fa fa-bookmark-o";
-        } else {
-            x.className = "fa fa-bookmark";
-        }
-        var app1 = new Vue({
-            el: '#app1',
-            mounted: function () {
-                axios.get('/archive_courses/', {
-                    params: {
-                        num: courseID
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-        });
-    }
+
 </script>
