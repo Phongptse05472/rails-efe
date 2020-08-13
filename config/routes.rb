@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # root "pages#rootpage"
+  root "pages#rootpage"
 
 
   devise_for :users, controllers: {
