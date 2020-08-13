@@ -1,4 +1,5 @@
-class PagesController < ApplicationController
+class PagesController < ActionController::Base
+
   def rootpage
   end
 
