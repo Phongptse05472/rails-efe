@@ -21,21 +21,21 @@ class CoursesController < ApplicationController
 
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
-      if !@check_archived_course.exists?
-        @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
+      # binding.pry
+      if !@check_archived_course.blank?
+        # @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
       else
         calculate_progression
       end
-      @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
-
     else
       @course_detail = Course.where('course_id = ?', @course.id)
       @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     end
-
+    @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
   end
 
   def calculate_progression
+
     total_article = Article.joins(:course_articles).where('course_id = ?', @course.id).count
     viewed_article = Article.joins(:course_articles).joins(:customer_articles).where('course_id = ? AND is_viewed = true', @course.id).count
     #fix exception FloatDomainError
@@ -44,7 +44,9 @@ class CoursesController < ApplicationController
     else
       progress = viewed_article.to_f / total_article.to_f * 100
     end
-    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id).update_all(progression: progress.round) # => progression
+
+    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id)
+    @customers_courses_progression.update(progression: progress.round) # => progression
   end
 
   def search

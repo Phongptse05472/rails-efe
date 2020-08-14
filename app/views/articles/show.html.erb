@@ -149,7 +149,7 @@
         $.ajax({
             url: "/time",
             data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %> },
-            type: "PUT",
+            type: "POST",
             success: function (data) {
                 console.log(data);
             }

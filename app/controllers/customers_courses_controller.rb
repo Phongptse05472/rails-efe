@@ -30,14 +30,17 @@ class CustomersCoursesController < ApplicationController
   def enroll_courses
     enroll_course = Course.find(params[:slug])
     course = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
-    # course_is_archive = CustomerCourse.where('customer_id = ? AND course_id = ? AND is_save IS NOT NULL', current_user.id, enroll_course.id)
     @article = Article.joins(:courses).where('courses.id = ?', enroll_course.id)
+
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
+
     if course.blank?
+      # when this course don't have any article
       if @article.first.nil?
         CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, is_save: true, enrollment_date: Date.today)
         redirect_to course_path
       else
+        # when this course have list article => play first article in course
         CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, current_article_id: @article.first.id, is_save: true, enrollment_date: Date.today)
         redirect_to course_article_path(enroll_course, @article.ids.first)
       end
@@ -46,7 +49,7 @@ class CustomersCoursesController < ApplicationController
         course.update_all(is_save: true, enrollment_date: Date.today)
         redirect_to course_path
       else
-        course.update_all(current_article_id: @article.first.id, is_save: true, enrollment_date: Date.today)
+        course.update(current_article_id: @article.first.id, is_save: true, enrollment_date: Date.today)
         redirect_to course_article_path(enroll_course, @article.ids.first)
       end
 
