@@ -2,13 +2,12 @@ class CustomersCoursesController < ApplicationController
 
   #my course page
   def index
-    @pagy,  @my_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id), items: 5)
+    @pagy, @my_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id), items: 5)
   end
 
   #customer home page
   def customer_home
     @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
-
 
     @topic = Group.all.limit(8)
 
@@ -31,28 +30,25 @@ class CustomersCoursesController < ApplicationController
     enroll_course = Course.find(params[:slug])
     course = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
     @article = Article.joins(:courses).where('courses.id = ?', enroll_course.id)
-
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
-
+    # when record don't have in customer_course
     if course.blank?
-      # when this course don't have any article
-      if @article.first.nil?
-        CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, is_save: true, enrollment_date: Date.today)
-        redirect_to course_path
-      else
-        # when this course have list article => play first article in course
-        CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, current_article_id: @article.first.id, is_save: true, enrollment_date: Date.today)
+      CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, is_save: true, enrollment_date: Date.today)
+      # chech when this course have list article or not
+      if !@article.ids.first.nil?
+        # if have redirect to first article in list article
         redirect_to course_article_path(enroll_course, @article.ids.first)
+      else
+        # if haven't reload page course detail
+        redirect_to course_path
       end
     else
-      if @article.first.nil?
-        course.update_all(is_save: true, enrollment_date: Date.today)
-        redirect_to course_path
-      else
-        course.update(current_article_id: @article.first.id, is_save: true, enrollment_date: Date.today)
+      current_article = course.first.current_article_id
+      if current_article.nil?
         redirect_to course_article_path(enroll_course, @article.ids.first)
+      else
+        redirect_to course_article_path(enroll_course, course.first.current_article_id)
       end
-
     end
   end
 
@@ -64,7 +60,7 @@ class CustomersCoursesController < ApplicationController
   end
 
   def archived_courses
-    @pagy, @archived_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true),items: 5)
+    @pagy, @archived_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true), items: 5)
   end
 
 
