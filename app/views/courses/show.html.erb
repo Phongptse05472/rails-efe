@@ -14,8 +14,7 @@
         <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
       <% end %>
 
-
-      <span><%= @course.description %><br></span>
+      <span id="des" onclick="showmore()"><%= @course.description %><br></span>
       <br>
     </div>
     <% if current_user.present? %>
@@ -41,12 +40,95 @@
     <div class="skill_set">
       <h2>Skill set</h2>
       <ul>
-        <% @skill.each do |skill| %>
-          <li>
-            <span><%= skill.name %></span>
-          </li>
-        <% end %>
+        <li>
+                                <span class="out_side_level">
+                                    Java
+                                    <span class="level_skill">
+                                      <%= image_tag("sign_1.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Java Script
+                                    <span class="level_skill">
+                                        <%= image_tag("sign_2.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Css
+                                    <span class="level_skill">
+                                        <%= image_tag("sign_3.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Programming Principles
+                                    <span class="level_skill">
+                                       <%= image_tag("sign_4.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Java
+                                    <span class="level_skill">
+                                        <%= image_tag("sign_3.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Java Script
+                                    <span class="level_skill">
+                                        <%= image_tag("sign_1.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Css
+                                    <span class="level_skill">
+                                        <%= image_tag("sign_1.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Java
+                                    <span class="level_skill">
+                                        <%= image_tag("sign_1.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Java Script
+                                    <span class="level_skill">
+                                        <%= image_tag("sign_1.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+        <li>
+                                <span class="out_side_level">
+                                    Css
+                                    <span class="level_skill">
+                                        <%= image_tag("sign_1.PNG", alt: "") %>
+                                    </span>
+                                </span>
+        </li>
+
       </ul>
+<!--      <ul>-->
+        <%# @skill.each do |skill| %>
+<!--          <li>-->
+<!--            <span><%#= skill.name %></span>-->
+<!--          </li>-->
+        <%# end %>
+<!--      </ul>-->
     </div>
 
   </div>
@@ -74,6 +156,16 @@
   <div class="end">
   </div>
 </div>
+<script>
+    function showmore() {
+        if (document.getElementById('des').style.webkitLineClamp == "inherit") {
+            document.getElementById('des').style.webkitLineClamp = "12";
+        } else {
+            document.getElementById('des').style.webkitLineClamp = "inherit";
+        }
+
+    }
+</script>
 
 
 
