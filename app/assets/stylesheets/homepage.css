@@ -137,7 +137,13 @@ body::-webkit-scrollbar {
     color: #F69B58;
     width: 28px;
 }
-
+.top li a:hover {
+    min-width: fit-content;
+    /*padding-right: 30px;*/
+    position: fixed;
+    z-index: 2;
+    background-color: lightgray;
+}
 .show {
     text-align: left;
     padding-left: 0px !important;
