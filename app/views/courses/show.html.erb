@@ -39,96 +39,37 @@
     <% end %>
     <div class="skill_set">
       <h2>Skill set</h2>
-      <ul>
-        <li>
-                                <span class="out_side_level">
-                                    Java
-                                    <span class="level_skill">
-                                      <%= image_tag("sign_1.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Java Script
-                                    <span class="level_skill">
-                                        <%= image_tag("sign_2.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Css
-                                    <span class="level_skill">
-                                        <%= image_tag("sign_3.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Programming Principles
-                                    <span class="level_skill">
-                                       <%= image_tag("sign_4.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Java
-                                    <span class="level_skill">
-                                        <%= image_tag("sign_3.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Java Script
-                                    <span class="level_skill">
-                                        <%= image_tag("sign_1.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Css
-                                    <span class="level_skill">
-                                        <%= image_tag("sign_1.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Java
-                                    <span class="level_skill">
-                                        <%= image_tag("sign_1.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Java Script
-                                    <span class="level_skill">
-                                        <%= image_tag("sign_1.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
-        <li>
-                                <span class="out_side_level">
-                                    Css
-                                    <span class="level_skill">
-                                        <%= image_tag("sign_1.PNG", alt: "") %>
-                                    </span>
-                                </span>
-        </li>
 
+      <ul>
+        <% @skill.each do |skill| %>
+          <li>
+            <span class="out_side_level">
+            <%= skill.name %>
+              <%# @skill_level.each do |f| %>
+              <%# case f.level_id.to_int %>
+              <%# when 1 %>
+<!--               <span class="level_skill">-->
+                <%#= image_tag("sign_1.PNG", alt: "") %>
+<!--              </span>-->
+                <%# when 2 %>
+<!--                   <span class="level_skill">-->
+                <%#= image_tag("sign_2.PNG", alt: "") %>
+<!--              </span>-->
+                  <%# when 3 %>
+<!-- <span class="level_skill">-->
+                <%#= image_tag("sign_3.PNG", alt: "") %>
+<!--              </span>-->
+                  <%# else %>
+<!-- <span class="level_skill">-->
+                <%#= image_tag("sign_4.PNG", alt: "") %>
+<!--              </span>-->
+                  <%# end %>
+
+                <%# end %>
+            </span>
+          </li>
+        <% end %>
       </ul>
-<!--      <ul>-->
-        <%# @skill.each do |skill| %>
-<!--          <li>-->
-<!--            <span><%#= skill.name %></span>-->
-<!--          </li>-->
-        <%# end %>
-<!--      </ul>-->
     </div>
 
   </div>

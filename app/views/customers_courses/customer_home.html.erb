@@ -321,7 +321,8 @@
 </script>
 
 <script>
-    var amount = 3;
+
+    var amount = <%= @number_enroll.count.to_int %>;
     if(amount<=4){
         document.getElementById('MS-controls').style.display = "none";
         document.getElementById('your_course').style.display = "none";

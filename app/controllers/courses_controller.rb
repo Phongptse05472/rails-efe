@@ -13,12 +13,9 @@ class CoursesController < ApplicationController
   end
 
   def show
-
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
-
-    # @skill = Skill.joins(:article_skill).where("article_id IN (?) " , article.ids).group(:id)
-    @skill = Skill.joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
-
+    @skill = Skill.select(:name).joins(:article_skills).where("article_id IN (?) ", article.ids).group(:id)
+    @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) ", article.ids).group(:level_id)
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
       if !@check_archived_course.exists?
@@ -26,13 +23,12 @@ class CoursesController < ApplicationController
       else
         calculate_progression
       end
-      @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
+      @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at), items: 5)
 
     else
       @course_detail = Course.where('course_id = ?', @course.id)
       @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     end
-
   end
 
   def calculate_progression
