@@ -164,19 +164,19 @@
 }
 
 
-/*.skill_set h2 {*/
-/*    margin: 0;*/
-/*    display: inline-block;*/
-/*    margin-left: 14px;*/
-/*}*/
-
-.skill_set span {
-    background-color: #EBECED;
-    padding: 10px 25px;
-    color: black;
-    border-radius: 18px;
-    font-weight: normal !important;
+.skill_set h2 {
+    margin: 0;
+    display: inline-block;
+    margin-left: 14px;
 }
+
+/*.skill_set span {*/
+/*    background-color: #EBECED;*/
+/*    padding: 10px 25px;*/
+/*    color: black;*/
+/*    border-radius: 18px;*/
+/*    font-weight: normal !important;*/
+/*}*/
 
 .skill_set ul {
     list-style: none;
