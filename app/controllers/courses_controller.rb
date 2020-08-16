@@ -15,11 +15,7 @@ class CoursesController < ApplicationController
   def show
 
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
-    # @skill = Skill.joins(:article_skill).where("article_id IN (?) " , article.ids).group(:id)
-    # @skill = Skill.select("skills.*,article_skills.*").joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
     @skill = Skill.select(:name).joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
-
-    # @skill = Skill.select("article_skills.*").joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
     @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) " , article.ids).group(:level_id)
 
     if current_user.present?
