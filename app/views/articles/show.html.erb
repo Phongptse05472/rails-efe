@@ -129,6 +129,16 @@
   </div>
 </div>
 
+</div>
+<script>
+    var arr = document.getElementsByTagName('li');
+    var index = <%= @index_list_article.to_int %>; //8 is index of video in list
+    var size = <%=  @list_article_right.count.to_int %>;
+    arr[index].style.border = "1px solid #14bdee";
+    arr[index].style.borderRadius = "5px";
+    arr[index].style.backgroundColor = "#f2f2f0";
+    document.getElementsByClassName('list-video')[0].scrollTop = index * 85;
+</script>
 <!--begin of get currentTime and total duration-->
 <script>
     document.getElementById('video').currentTime = <%= @cus_article.first.time_point %>;
@@ -141,11 +151,10 @@
             isViewed = true
         else
             isViewed = false
-
         $.ajax({
             url: "/time",
-            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %>},
-            type: "PUT",
+            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %> },
+            type: "POST",
             success: function (data) {
                 console.log(data);
             }
