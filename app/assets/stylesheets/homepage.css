@@ -2,6 +2,9 @@ body {
     background-color: white;
     font-family: "Sinkin Sans 500 Medium", Arial, Helvetica, sans-serif;
     color: #273044;
+    width: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -18,6 +21,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     position: center;
+    border-bottom: 1px solid lightgray;
 }
 
 .right {
@@ -97,8 +101,7 @@ body::-webkit-scrollbar {
 }
 
 .right {
-    height: 1000px;
-    overflow-y: scroll;
+    height: auto;
     overflow-x: hidden;
 }
 
@@ -327,4 +330,97 @@ progress {
     background-color: white;
     color: #14bdee;
     border: 1px solid #14bdee;
+}
+.footer {
+    width: 100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-image: url('team_background.jpg');
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    color: #1e2434;
+    position: absolute;
+    left: 0;
+}
+
+.per_col {
+    width: 20%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer_logo_text {
+    font-family: 'Roboto Slab', serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 0.75;
+    color: #1e2434;
+    margin-bottom: 20px;
+}
+
+.footer_logo_container a {
+    text-decoration: none;
+}
+
+.footer_logo_container a span {
+    color: #14bdee;
+}
+
+.footer_about_text {
+    color: #1e2434;
+}
+
+.footer_social ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
+
+.footer_social ul a {
+    color: #1e2434;
+}
+
+.footer_social {
+    color: #1e2434;
+}
+
+.footer_title {
+    color: #1e2434;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer_contact_info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer_contact_info ul li {
+    margin-bottom: 20px;
+}
+
+.footer_links_container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer_links_container ul li {
+    float: left;
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+.footer_links_container ul li a {
+    color: #1e2434;
+    text-decoration: none;
 }

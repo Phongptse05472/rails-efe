@@ -7,9 +7,9 @@
 <div class="main-watch">
   <div class="watch">
     <% @article_detail.each do |article| %>
-      <video id="video" width="320" height="240" controls>
-        <source src="https://res.cloudinary.com/dolv9j3dz/video/upload/v1595955605/video/What_is_REST_API_-_Web_Service_jlkasv.mp4" type="video/mp4">
-      </video>
+
+  <%= cl_video_tag(article.video, :controls => true) %>
+
       <div class="w-title">
         <h2>
           <%= article.title %>
