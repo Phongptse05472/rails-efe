@@ -11,14 +11,10 @@ class CoursesController < ApplicationController
     @free_course = Course.where(is_free: true).limit(5)
     @topic = Group.all
     @top_view_article = Article.order(view_number: :desc).limit(10)
-
   end
 
   def show
-
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
-
-    # @skill = Skill.joins(:article_skill).where("article_id IN (?) " , article.ids).group(:id)
     @skill = Skill.joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
 
     if current_user.present?
@@ -28,12 +24,10 @@ class CoursesController < ApplicationController
       else
         calculate_progression
       end
-      @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
-
     else
       @course_detail = Course.where('course_id = ?', @course.id)
-      @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     end
+    @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
 
   end
 
