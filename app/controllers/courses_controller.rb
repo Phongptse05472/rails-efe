@@ -18,6 +18,9 @@ class CoursesController < ApplicationController
     @skill = Skill.select(:name).joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
     @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) " , article.ids).group(:level_id)
 
+    # @skill_level = ArticleSkill.where("article_id IN (?) " , article.ids)
+    # @skill_level.distinct.pluck(:level_id)
+
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
       if !@check_archived_course.exists?
