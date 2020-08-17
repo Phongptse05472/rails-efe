@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -8,17 +7,16 @@ class Users::SessionsController < Devise::SessionsController
     super
 
   end
-
   # POST /resource/sign_in
   def create
     super
-    # @current_user_id = current_user.id
-    # @customer = Customer.where(user_id: @current_user_id, role_id: 3)
-    # if !@customer.exists?
-    # else
-    #   @customer = Customer.create(id: @current_user_id ,user_id: @current_user_id, role_id: 3)
-    #
-    # end
+    @current_user_id = current_user.id
+    user = User.where(id: @current_user_id )
+    @customer = Customer.where(user_id: @current_user_id)
+    if !@customer.exists?
+      @customer = Customer.create(user_id: @current_user_id, role_id: 3, name: user.first.email )
+    else
+    end
   end
 
   # DELETE /resource/sign_out
