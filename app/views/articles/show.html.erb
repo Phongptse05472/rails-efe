@@ -82,8 +82,6 @@
     <% end %>
 
 
-
-
     </div>
   </div>
   <div class="list">
@@ -92,7 +90,7 @@
         <% @list_article_right.each do |a| %>
           <li>
             <div class="l-left">
-              <%= image_tag('course_9.jpg') %>
+              <%= cl_video_tag(a.video) %>
             </div>
             <div class="l-right">
               <% article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, a.id) %>
