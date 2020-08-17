@@ -137,7 +137,7 @@
     var arr = document.getElementsByTagName('li');
     var index = <%= @index_list_article.to_int %>; //8 is index of video in list
     var size = <%=  @list_article_right.count.to_int %>;
-    arr[index].style.border = "1px solid red";
+    arr[index].style.border = "1px solid #14bdee";
     arr[index].style.borderRadius = "5px";
     arr[index].style.backgroundColor = "#f2f2f0";
     document.getElementsByClassName('list-video')[0].scrollTop = index * 85;
