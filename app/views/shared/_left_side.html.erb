@@ -52,7 +52,8 @@
   <% if current_user.present? %>
     <h2>Follow</h2>
     <ul class="top">
-      <% course.each do |a| %>
+      <% course.order(updated_at: :desc).each do |a| %>
+
         <li>
           <%= link_to course_path(a.slug) do %>
             <i class="fa fa-graduation-cap"></i>

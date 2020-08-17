@@ -36,7 +36,10 @@
     <% end %>
   </div>
   <div class="paging">
-    <%== pagy_nav(@pagy) %>
+    <% if @favor_article.ids.count.to_int >= 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
   </div>
 
   <div class="end">

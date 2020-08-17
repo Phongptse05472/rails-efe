@@ -20,11 +20,17 @@ class CustomersArticlesController < ApplicationController
     time_point = current_time.to_f
     is_viewed = params[:isViewed]
     article_id = params[:id]
+
     @article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, article_id)
     if !@article.exists?
       @article = CustomerArticle.create(customer_id: current_user.id, article_id: article_id)
     else
-      @article.update(time_point: time_point, is_viewed: is_viewed)
+      if @article.first.is_viewed == true
+        @article.update(time_point: time_point)
+      else
+        @article.update(time_point: time_point, is_viewed: is_viewed)
+      end
+
     end
     @course_id = Course.select('id').joins(:course_articles).where("article_id IN (?) ", article_id)
     @course_id.each do |course_id|

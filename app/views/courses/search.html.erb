@@ -100,7 +100,11 @@
     <% @search_result.each do |course| %>
       <div class="per-course">
         <div class="c-left">
-          <%= image_tag('java.png') %>
+          <% if !course.image.nil? %>
+            <%= cl_image_tag(course.image) %>
+          <% else %>
+            <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+          <% end %>
         </div>
         <div class="c-right">
           <% if current_user.present? %>
@@ -136,11 +140,10 @@
     <% end %>
   </div>
   <div class="paging">
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
+    <% if @search_result.ids.count >= 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
   </div>
 
   <div class="end">

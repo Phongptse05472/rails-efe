@@ -16,13 +16,13 @@ class CustomersCoursesController < ApplicationController
 
     #all course which user not enrolled
     @hot_course = Course.where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
-    @rate_course = Course.where.not(id: @course_ids).order(rate: :desc).limit(5)
-    @new_course = Course.where.not(id: @course_ids).order(created_at: :desc).limit(5)
+    @rate_course = Course.where.not(id: @course_ids).order(rate: :desc).limit(20)
+    @new_course = Course.where.not(id: @course_ids).order(created_at: :desc).limit(20)
 
     #check user viewed article?
     @article_ids = CustomerArticle.where("is_viewed = true").pluck("article_id")
 
-    @top_view_article = Article.where.not(id: @article_ids).order(view_number: :desc).limit(10)
+    @top_view_article = Article.where.not(id: @article_ids).order(view_number: :desc).limit(20)
   end
 
 

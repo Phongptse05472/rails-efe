@@ -7,9 +7,7 @@
 <div class="main-watch">
   <div class="watch">
     <% @article_detail.each do |article| %>
-
-  <%= cl_video_tag(article.video, :controls => true) %>
-
+      <%= cl_video_tag(article.video, :controls => true) %>
       <div class="w-title">
         <h2>
           <%= article.title %>
@@ -82,6 +80,8 @@
     <% end %>
 
 
+
+
     </div>
   </div>
   <div class="list">
@@ -123,30 +123,15 @@
     <h1>Recommend for you</h1>
     <div class="list-video">
       <ul>
-
       </ul>
     </div>
   </div>
 </div>
-<div class="footer">
-
-</div>
-<script>
-    var arr = document.getElementsByTagName('li');
-    var index = <%= @index_list_article.to_int %>; //8 is index of video in list
-    var size = <%=  @list_article_right.count.to_int %>;
-    var heightPerElement = parseInt(1048 / (size - 1)); //14 = size - 1
-    console.log(heightPerElement);
-    arr[index].style.border = "1px solid green";
-    arr[index].style.borderRadius = "5px";
-    arr[index].style.backgroundColor = "lightgrey";
-    $('.list-video').scrollTop(index * heightPerElement);
-</script>
 
 <!--begin of get currentTime and total duration-->
 <script>
-    document.getElementById('video').currentTime = <%= @cus_article.first.time_point %>;
-    document.getElementById('video').onpause = function () {
+    document.getElementsByTagName('video')[0].currentTime = <%= @cus_article.first.time_point %>;
+    document.getElementsByTagName('video')[0].onpause = function () {
         var currentTime = this.currentTime;
         var total = this.duration;
         var calculate = (currentTime / total) * 100
@@ -158,7 +143,7 @@
 
         $.ajax({
             url: "/time",
-            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %> },
+            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %>},
             type: "POST",
             success: function (data) {
                 console.log(data);
@@ -166,7 +151,19 @@
         });
     };
 </script>
-<!--end of get currentTime and total duration-->
+
+
+<script>
+    var arr = document.getElementsByTagName('li');
+    var index = <%= @index_list_article.to_int %>; //8 is index of video in list
+    var size = <%=  @list_article_right.count.to_int %>;
+    arr[index].style.border = "1px solid red";
+    arr[index].style.borderRadius = "5px";
+    arr[index].style.backgroundColor = "#f2f2f0";
+    document.getElementsByClassName('list-video')[0].scrollTop = index * 85;
+</script>
+
+
 <script>
     function bookmark(heart, courseID) {
         var x = heart;

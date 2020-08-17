@@ -50,7 +50,10 @@
 
   </div>
   <div class="paging">
-    <%== pagy_nav(@pagy) %>
+    <% if @archived_courses.ids.count >= 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
   </div>
   <div class="end">
   </div>
