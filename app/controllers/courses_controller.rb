@@ -3,20 +3,18 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show]
 
   def index
+    if current_user.present?
+      redirect_to user_home_path
+    end
     @course = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(5)
     @free_course = Course.where(is_free: true).limit(5)
     @topic = Group.all
-
     @top_view_article = Article.order(view_number: :desc).limit(10)
-
   end
 
   def show
-
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
-
-    # @skill = Skill.joins(:article_skill).where("article_id IN (?) " , article.ids).group(:id)
     @skill = Skill.joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
 
     if current_user.present?
@@ -29,7 +27,6 @@ class CoursesController < ApplicationController
       end
     else
       @course_detail = Course.where('course_id = ?', @course.id)
-      @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     end
     @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
   end

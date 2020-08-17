@@ -3,18 +3,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :left_side_data
 
-  # def current_user
-  #   @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  # end
-
-  def  logged_in?
+  def logged_in?
     !!current_user.present?
   end
 
   def require_user
     if !logged_in?
       flash[:error] = "You must be logged in to perform that action"
-      redirect_to login_path
+      redirect_to user_home_path
+    else
+      redirect_to home_path
     end
   end
 
