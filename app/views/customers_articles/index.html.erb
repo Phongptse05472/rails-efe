@@ -7,13 +7,13 @@
   <div class="menu-course">
     <ul>
       <li>
-        <%= link_to "My courses", "/customers_courses"%>
+        <%= link_to "My courses", "/customers_courses" %>
       </li>
       <li>
         <%= link_to "Archive course", "/archived-courses" %>
       </li>
       <li>
-        <%= link_to "Favor article", "/customers_articles",class:'active' %>
+        <%= link_to "Favor article", "/customers_articles", class: 'active' %>
       </li>
     </ul>
   </div>
@@ -24,12 +24,15 @@
           <%= image_tag('course_3.jpg') %>
         </div>
         <div class="c-right">
-          <%= link_to  update_favor_path(favor_article.article_id, article_like: true), method: :post, remote: true do %>
-            <i  class="fa fa-heart"  aria-hidden="true"></i>
+          <%= link_to update_favor_path(favor_article.article_id, article_like: true), method: :post, remote: true do %>
+            <i class="fa fa-heart" aria-hidden="true"></i>
           <% end %>
           <h2><%= link_to favor_article.title, course_article_path(favor_article, favor_article.id) %></h2>
           <p><%= favor_article.description %></p>
-          <p class="my-name">Author: <%= favor_article.author %></p>
+          <% if !@author.blank? %>
+            <p class="my-name"> Author: <%= @author.first.name %></p>
+          <% else %>
+          <% end %>
           <p class="video_course">Course: Lập trình Java cơ bản</p>
         </div>
       </div>
