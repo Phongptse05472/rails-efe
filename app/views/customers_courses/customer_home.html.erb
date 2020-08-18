@@ -323,6 +323,8 @@
     var amount = <%= @number_enroll.count.to_int %>;
     if(amount<=4){
         document.getElementById('MS-controls').style.display = "none";
+    }
+    if(amount<=0){
         document.getElementById('your_course').style.display = "none";
     }
     var amountLeftSide = 6;
