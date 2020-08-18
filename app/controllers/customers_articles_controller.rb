@@ -2,7 +2,8 @@ class CustomersArticlesController < ApplicationController
   skip_before_action :verify_authenticity_token
   #favor article page
   def index
-    @pagy, @favor_article = pagy(Article.select("articles.*, customer_articles.*").joins(:customer_articles).where('customer_id = ? AND is_favor = ?', current_user.id, true), items: 5)
+    @favor_articles = Article.select("articles.*, customer_articles.*").joins(:customer_articles).where('customer_id = ? AND is_favor = ?', current_user.id, true)
+    @pagy, @favor_article = pagy(@favor_articles, items: 5)
     @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , @favor_article.ids)
   end
 
@@ -21,7 +22,6 @@ class CustomersArticlesController < ApplicationController
     time_point = current_time.to_f
     is_viewed = params[:isViewed]
     article_id = params[:id]
-
     @article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, article_id)
     if !@article.exists?
       @article = CustomerArticle.create(customer_id: current_user.id, article_id: article_id)
@@ -34,9 +34,7 @@ class CustomersArticlesController < ApplicationController
           view  = Article.where("id = ?",  article_id)
           view.update(view_number: view.first.view_number += 1)
         end
-
       end
-
     end
     @course_id = Course.select('id').joins(:course_articles).where("article_id IN (?) ", article_id)
     @course_id.each do |course_id|

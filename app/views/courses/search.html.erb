@@ -97,7 +97,7 @@
     <span onclick="clearAll()" id="clear"> Clear All <i class="fa fa-window-close"></i></span>
   </div>
   <div class="list-course">
-    <% @search_result.each do |course| %>
+    <% @search_result_paging.each do |course| %>
       <div class="per-course">
         <div class="c-left">
           <% if !course.image.nil? %>

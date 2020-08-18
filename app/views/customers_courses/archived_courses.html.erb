@@ -22,7 +22,7 @@
     </ul>
   </div>
   <div class="list-course">
-    <% @archived_courses.each do |archived_course| %>
+    <% @archived_courses_paging.each do |archived_course| %>
       <div class="per-course" id="course_archived<%= archived_course.course_id %>">
         <div class="c-left">
           <% if !archived_course.image.nil? %>

@@ -177,6 +177,26 @@
 /*    border-radius: 18px;*/
 /*    font-weight: normal !important;*/
 /*}*/
+.disabled{
+    padding: 5px 25px;
+    cursor: none;
+    background-color: #2bc3cc !important;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #2bc3cc;
+    line-height: 76px;
+}
+.active{
+    padding: 5px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: white;
+    font-weight: bold;
+    color: #2bc3cc;
+    border: 1px solid #2bc3cc;
+    line-height: 76px;
+}
 
 .skill_set ul {
     list-style: none;

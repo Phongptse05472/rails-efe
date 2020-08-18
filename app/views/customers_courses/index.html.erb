@@ -18,7 +18,7 @@
     </ul>
   </div>
   <div class="list-course">
-    <% @my_courses.each do |my_course| %>
+    <% @my_course_paging.each do |my_course| %>
       <div class="per-course">
         <div class="c-left">
           <% if !my_course.image.nil? %>
@@ -44,7 +44,10 @@
     <% end %>
   </div>
   <div class="paging">
-    <%== pagy_nav(@pagy) %>
+    <% if @my_courses.ids.count > 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
   </div>
 
   <div class="end">

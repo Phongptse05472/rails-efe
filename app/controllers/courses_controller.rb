@@ -15,8 +15,8 @@ class CoursesController < ApplicationController
 
   def show
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
-    @skill = Skill.joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
-    @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) " , article.ids).group(:level_id)
+    @skill = Skill.joins(:article_skills).where("article_id IN (?) ", article.ids).group(:id)
+    @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) ", article.ids).group(:level_id)
 
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
@@ -27,9 +27,9 @@ class CoursesController < ApplicationController
       end
     else
       @course_detail = Course.where('course_id = ?', @course.id)
-      @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     end
-    @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id),items: 5)
+    @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id)
+    @pagy, @list_article_paging = pagy(@list_articles, items: 5)
   end
 
   def calculate_progression
@@ -49,7 +49,8 @@ class CoursesController < ApplicationController
 
   def search
     if params[:q].present?
-      @pagy, @search_result = pagy(Course.search(params[:q]), items:5)
+      @search_result = Course.search(params[:q])
+      @pagy, @search_result_paging = pagy(@search_result, items: 5)
     else
       @search_result = []
     end
