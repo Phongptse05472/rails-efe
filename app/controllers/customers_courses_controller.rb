@@ -3,9 +3,10 @@ class CustomersCoursesController < ApplicationController
   #my course page
   def index
     @pagy, @my_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id), items: 5)
-  end
 
-  #customer home page
+
+    end
+    #customer home page
   def customer_home
     @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
 
@@ -23,6 +24,10 @@ class CustomersCoursesController < ApplicationController
     @article_ids = CustomerArticle.where("is_viewed = true").pluck("article_id")
 
     @top_view_article = Article.where.not(id: @article_ids).order(view_number: :desc).limit(20)
+
+    @course_article = Course.joins(:course_articles).where("article_id IN (?) " , @top_view_article.ids)
+
+      # @top_view_article.ids
   end
 
 
@@ -45,7 +50,13 @@ class CustomersCoursesController < ApplicationController
     else
       current_article = course.first.current_article_id
       if current_article.nil?
-        redirect_to course_article_path(enroll_course, @article.ids.first)
+        if !@article.ids.first
+          redirect_to course_path
+        else
+          redirect_to course_article_path(enroll_course, @article.ids.first)
+        end
+
+
       else
         redirect_to course_article_path(enroll_course, course.first.current_article_id)
       end

@@ -52,7 +52,7 @@
   <% if current_user.present? %>
     <h2>Follow</h2>
     <ul class="top">
-      <% course.order(updated_at: :desc).each do |a| %>
+      <% course.each do |a| %>
 
         <li>
           <%= link_to course_path(a.slug) do %>

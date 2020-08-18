@@ -259,7 +259,7 @@
             </div>
             <div class="title">
               <div class="name">
-                <%= link_to article.title %>
+                <%= link_to article.title , course_path(@course_article.first.slug)  %>
               </div>
 <!--              <p><%#= article.author %></p>-->
               <span><%= article.view_number %> view</span>

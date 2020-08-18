@@ -3,6 +3,7 @@ class CustomersArticlesController < ApplicationController
   #favor article page
   def index
     @pagy, @favor_article = pagy(Article.select("articles.*, customer_articles.*").joins(:customer_articles).where('customer_id = ? AND is_favor = ?', current_user.id, true), items: 5)
+    @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , @favor_article.ids)
   end
 
   def add_to_favor
@@ -29,6 +30,11 @@ class CustomersArticlesController < ApplicationController
         @article.update(time_point: time_point)
       else
         @article.update(time_point: time_point, is_viewed: is_viewed)
+        if is_viewed == "true"
+          view  = Article.where("id = ?",  article_id)
+          view.update(view_number: view.first.view_number += 1)
+        end
+
       end
 
     end
