@@ -1,18 +1,20 @@
 .right table {
-    width: 60%;
-    color: white;
-    background-color: #454d55;
-    /* border-bottom: 1px solid lightslategray; */
+    min-width: 90%;
+    color: #454d55;
+    background-color: white;
+    border-collapse: collapse;
 }
 
-.right table tr {
-    border-bottom: 1px solid springgreen;
-    border: 1px solid springgreen;
+.right table tr th {
+    color: white;
+    background-color: #454d55;
 }
 
 .right td {
     /* border-bottom: 1px solid white; */
     padding: 0;
+    border-bottom: 1px solid lightslategray;
+
 }
 
 .right tr td:first-child {
