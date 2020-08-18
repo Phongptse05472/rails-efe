@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
       @course_detail = Course.where('course_id = ?', @course.id)
       @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     end
-    @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
+    @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id),items: 5)
   end
 
   def calculate_progression
