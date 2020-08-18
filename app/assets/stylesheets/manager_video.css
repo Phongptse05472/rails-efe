@@ -1,7 +1,11 @@
 .right table {
-    width: 90%;
+    width: 80%;
     color: white;
     background-color: #454d55;
+}
+.right{
+    padding-left: 5%;
+
 }
 
 .right table tr {

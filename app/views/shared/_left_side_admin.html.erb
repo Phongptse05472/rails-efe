@@ -2,24 +2,30 @@
   <h2>Menu</h2>
   <ul class="top">
     <li>
-        <a href="/home">
-          <i class="fa fa-home"></i> Home Page
-        </a>
-    </li>
-    <li>
       <a href="/admin/customers">
-        <i class="fa fa-home"></i> Manager account
+         Manager account
       </a>
     </li>
     <li>
       <a href="/admin/courses">
-        <i class="fa fa-home"></i> Manager Course
+         Manager Course
       </a>
     </li>
     <li>
       <a href="/admin/articles">
-        <i class="fa fa-home"></i> Manager Article
+         Manager Article
       </a>
     </li>
   </ul>
 </div>
+<script>
+    var url = "courses";
+    var li = document.getElementsByTagName('li');
+    if(url.endsWith("accounts")){
+        li[0].style.border = "2px solid #14bdee";
+    }else if(url.endsWith("courses")){
+        li[1].style.border = "2px solid #14bdee";
+    }else if(url.endsWith("articles")){
+        li[2].style.border = "2px solid #14bdee";
+    }
+</script>

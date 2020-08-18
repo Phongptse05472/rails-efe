@@ -4,7 +4,10 @@
     background-color: white;
     border-collapse: collapse;
 }
+.right{
+    padding-left: 5%;
 
+}
 .right table tr th {
     color: white;
     background-color: #454d55;
