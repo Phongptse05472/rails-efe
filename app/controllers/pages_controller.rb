@@ -1,6 +1,9 @@
 class PagesController < ActionController::Base
 
   def rootpage
+    if current_user.present?
+      redirect_to user_home_path
+    end
   end
 
   # def home

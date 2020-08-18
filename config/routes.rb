@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   post 'courses/:slug/articles/:id', to: 'customers_courses#click_on_article', :as => :click_on_article
 
-  put 'time', to: 'customers_articles#time', :as => :update_time
+  post 'time', to: 'customers_articles#time', :as => :update_time
 
   mount ActionCable.server, at: '/cable'
 

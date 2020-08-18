@@ -7,9 +7,9 @@
 <div class="main-watch">
   <div class="watch">
     <% @article_detail.each do |article| %>
-      <video id="video" width="320" height="240" controls>
-        <source src="https://res.cloudinary.com/dolv9j3dz/video/upload/v1595955605/video/What_is_REST_API_-_Web_Service_jlkasv.mp4" type="video/mp4">
-      </video>
+
+  <%= cl_video_tag(article.video, :controls => true) %>
+
       <div class="w-title">
         <h2>
           <%= article.title %>
@@ -82,8 +82,6 @@
     <% end %>
 
 
-
-
     </div>
   </div>
   <div class="list">
@@ -92,7 +90,7 @@
         <% @list_article_right.each do |a| %>
           <li>
             <div class="l-left">
-              <%= image_tag('course_9.jpg') %>
+              <%= cl_video_tag(a.video) %>
             </div>
             <div class="l-right">
               <% article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, a.id) %>
@@ -130,9 +128,17 @@
     </div>
   </div>
 </div>
-<div class="footer">
 
 </div>
+<script>
+    var arr = document.getElementsByTagName('li');
+    var index = <%= @index_list_article.to_int %>; //8 is index of video in list
+    var size = <%=  @list_article_right.count.to_int %>;
+    arr[index].style.border = "1px solid #14bdee";
+    arr[index].style.borderRadius = "5px";
+    arr[index].style.backgroundColor = "#f2f2f0";
+    document.getElementsByClassName('list-video')[0].scrollTop = index * 85;
+</script>
 <!--begin of get currentTime and total duration-->
 <script>
     document.getElementById('video').currentTime = <%= @cus_article.first.time_point %>;
@@ -145,11 +151,10 @@
             isViewed = true
         else
             isViewed = false
-
         $.ajax({
             url: "/time",
             data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %> },
-            type: "PUT",
+            type: "POST",
             success: function (data) {
                 console.log(data);
             }

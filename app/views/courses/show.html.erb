@@ -1,4 +1,5 @@
 <head>
+
   <%= stylesheet_link_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -138,7 +139,11 @@
       <div class="per-course">
         <div class="c-left">
           <a href="#">
-            <%= image_tag('japanese.png') %>
+            <% if !a.video.nil? %>
+              <%= cl_video_tag(a.video, :effect => "preview", :resource_type => "video") %>
+            <% else %>
+              <%= image_tag('japanese.png') %>
+            <% end %>
           </a>
         </div>
         <div class="c-right">
@@ -164,6 +169,14 @@
             document.getElementById('des').style.webkitLineClamp = "inherit";
         }
 
+    }
+</script>
+
+<script>
+    var perfEntries = performance.getEntriesByType("navigation");
+
+    if (perfEntries[0].type === "back_forward") {
+        location.reload(true);
     }
 </script>
 
