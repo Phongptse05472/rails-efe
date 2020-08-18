@@ -28,11 +28,13 @@
 
 .list-video ul li {
     display: flex;
+    margin-bottom: 5px;
 }
 
 .l-left {
     width: 35%;
     margin-right: 10px;
+    height: 90px;
 }
 
 .l-left video {
