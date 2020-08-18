@@ -259,7 +259,7 @@
             </div>
             <div class="title">
               <div class="name">
-                <%= link_to article.title %>
+                <%= link_to article.title , course_path(@course_article.first.slug)  %>
               </div>
 <!--              <p><%#= article.author %></p>-->
               <span><%= article.view_number %> view</span>
@@ -381,4 +381,12 @@
     if (perfEntries[0].type === "back_forward") {
         location.reload(true);
     }
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        $('#videoElementID').bind('contextmenu', function () {
+            return false;
+        });
+    });
 </script>

@@ -91,10 +91,6 @@
           <% end %>
         </div>
     <% end %>
-
-
-
-
     </div>
   </div>
   <div class="list">
@@ -103,7 +99,7 @@
         <% @list_article_right.each do |a| %>
           <li>
             <div class="l-left">
-              <%= image_tag('course_9.jpg') %>
+              <%= cl_video_tag(a.video) %>
             </div>
             <div class="l-right">
               <% article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, a.id) %>
@@ -142,10 +138,20 @@
   </div>
 </div>
 
+
+<script>
+    var arr = document.getElementsByTagName('li');
+    var index = <%= @index_list_article.to_int %>; //8 is index of video in list
+    var size = <%=  @list_article_right.count.to_int %>;
+    arr[index].style.border = "1px solid #14bdee";
+    arr[index].style.borderRadius = "5px";
+    arr[index].style.backgroundColor = "#f2f2f0";
+    document.getElementsByClassName('list-video')[0].scrollTop = index * 85;
+</script>
 <!--begin of get currentTime and total duration-->
 <script>
-    document.getElementById('video').currentTime = <%= @cus_article.first.time_point %>;
-    document.getElementById('video').onpause = function () {
+    document.getElementsByTagName('video')[0].currentTime = <%= @cus_article.first.time_point %>;
+    document.getElementsByTagName('video')[0].onpause = function () {
         var currentTime = this.currentTime;
         var total = this.duration;
         var calculate = (currentTime / total) * 100
@@ -156,7 +162,7 @@
             isViewed = false
         $.ajax({
             url: "/time",
-            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %> },
+            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %>},
             type: "POST",
             success: function (data) {
                 console.log(data);

@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   get 'profile', to: 'customers#show'
   get 'user-home', to: 'customers_courses#customer_home', :as => :user_home
   get 'search', to: 'courses#search', :as => :search_courses
-
   post 'comment', to: 'comments#create'
 
   post 'enroll_courses/:slug', to: 'customers_courses#enroll_courses', :as => :enroll_to_course

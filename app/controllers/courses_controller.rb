@@ -7,23 +7,20 @@ class CoursesController < ApplicationController
       redirect_to user_home_path
     end
     @course = Course.order(number_enrollment: :desc).limit(20)
-    @rate_course = Course.order(rate: :desc).limit(5)
-    @free_course = Course.where(is_free: true).limit(5)
+    @rate_course = Course.order(rate: :desc).limit(20)
+    @free_course = Course.where(is_free: true).limit(20)
     @topic = Group.all
-
-    @top_view_article = Article.order(view_number: :desc).limit(10)
-
+    @top_view_article = Article.order(view_number: :desc).limit(20)
   end
 
   def show
-
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
     @skill = Skill.joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
     @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) " , article.ids).group(:level_id)
 
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
-      if !@check_archived_course.exists?
+      if !@check_archived_course.blank?
         @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
       else
         calculate_progression
@@ -32,10 +29,11 @@ class CoursesController < ApplicationController
       @course_detail = Course.where('course_id = ?', @course.id)
       @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     end
-    @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
+    @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id),items: 5)
   end
 
   def calculate_progression
+
     total_article = Article.joins(:course_articles).where('course_id = ?', @course.id).count
     viewed_article = Article.joins(:course_articles).joins(:customer_articles).where('course_id = ? AND is_viewed = true', @course.id).count
     #fix exception FloatDomainError
@@ -44,13 +42,14 @@ class CoursesController < ApplicationController
     else
       progress = viewed_article.to_f / total_article.to_f * 100
     end
+
     @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id)
     @customers_courses_progression.update(progression: progress.round) # => progression
   end
 
   def search
     if params[:q].present?
-      @search_result = Course.search(params[:q])
+      @pagy, @search_result = pagy(Course.search(params[:q]), items:5)
     else
       @search_result = []
     end

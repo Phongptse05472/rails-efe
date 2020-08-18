@@ -51,6 +51,12 @@
     margin-right: 10px;
 }
 
+.c-left video {
+    width: 300px;
+    height: 160px;
+    margin-right: 10px;
+}
+
 .c-right {
     width: 60%;
 }

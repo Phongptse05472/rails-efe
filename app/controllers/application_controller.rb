@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
     #admin
     @data = Group.select(:name, :slug).limit(5)
     if logged_in?
-      @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? ', current_user.id).limit(5)
+      @left_course = CustomerCourse.select("courses.*, customer_courses.*").joins(:course).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id).order(updated_at: :desc).limit(5)
     else
-      @my_courses = nil
+      @left_course = nil
     end
 
   end

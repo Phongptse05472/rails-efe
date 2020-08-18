@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 
     @course = Course.friendly.find(params[:course_slug])
     #right side - List article in course
-    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
+    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id)
 
     @index_list_article = @list_article_right.pluck(:id).index(@article_detail.ids.first)
 
@@ -21,22 +21,16 @@ class ArticlesController < ApplicationController
     cus_article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, @article.id)
 
     if !cus_article.exists?
-      cus_article = CustomerArticle.create(customer_id: current_user.id, article_id: @article.id, time_point: 0.0)
+      CustomerArticle.create(customer_id: current_user.id, article_id: @article.id, time_point: 0.0)
     else
     end
     @cus_article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, @article.id)
-
   end
 
-
-  # GET /articles/1/edit
-  def edit
+  def get_link_article
+    @course_article = Course.joins(:course_articles).where("article_id IN (?) " , @top_view_article.id)
+    redirect_to course_path(@course_article)
   end
-
-  # def comments
-  #   @comments = Comment.new
-  #   @comments = Comment.custom_display
-  # end
 
   private
 
