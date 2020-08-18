@@ -57,6 +57,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 12;
     -webkit-box-orient: vertical;
+    cursor: pointer;
 }
 .right progress {
     width: 300px;
@@ -154,12 +155,14 @@
 
 .skill_set {
     width: 1000px;
-    height: 200px;
+    height: auto;
+    display: flow-root;
     border: 1px solid lightgray;
     border-radius: 5px;
     padding: 15px;
-    clear: both;
+    padding-bottom: 35px;
 }
+
 
 .skill_set h2 {
     margin: 0;
@@ -167,13 +170,13 @@
     margin-left: 14px;
 }
 
-.skill_set span {
-    background-color: #EBECED;
-    padding: 10px 25px;
-    color: black;
-    border-radius: 18px;
-    font-weight: normal !important;
-}
+/*.skill_set span {*/
+/*    background-color: #EBECED;*/
+/*    padding: 10px 25px;*/
+/*    color: black;*/
+/*    border-radius: 18px;*/
+/*    font-weight: normal !important;*/
+/*}*/
 
 .skill_set ul {
     list-style: none;
@@ -186,4 +189,25 @@
     float: left;
     margin-top: 30px;
     margin-left: 10px;
+}
+
+.out_side_level {
+    background-color: #EBECED;
+    padding: 10px 10px 10px 25px;
+    color: black;
+    border-radius: 18px;
+    font-weight: normal !important;
+}
+
+.level_skill {
+    padding: 3px 5px;
+    border-radius: 50%;
+    background-color: white;
+    margin-left: 5px;
+}
+
+.level_skill img {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
 }
