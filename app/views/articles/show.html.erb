@@ -31,6 +31,17 @@
           <% end %>
           Link attach:  <%= article.link_file_attach %>
           <p>Description: <%= article.description %></p>
+          <p>Level:
+            <% if article.level_id.to_int == 1 %>
+              beginner
+            <% elsif article.level_id.to_int == 2 %>
+              intermediate
+            <% elsif article.level_id.to_int == 3 %>
+              advanced
+            <% else %>
+              mixed
+            <% end %>
+          </p>
         </div>
       </div>
       <div class="w-information">
@@ -127,6 +138,7 @@
   </div>
 </div>
 
+
 <script>
     var arr = document.getElementsByTagName('li');
     var index = <%= @index_list_article.to_int %>; //8 is index of video in list
@@ -148,7 +160,6 @@
             isViewed = true
         else
             isViewed = false
-
         $.ajax({
             url: "/time",
             data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %>},

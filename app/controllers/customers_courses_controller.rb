@@ -9,6 +9,7 @@ class CustomersCoursesController < ApplicationController
     #customer home page
   def customer_home
     @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
+    @number_enroll = CustomerCourse.where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
 
     @topic = Group.all.limit(8)
 

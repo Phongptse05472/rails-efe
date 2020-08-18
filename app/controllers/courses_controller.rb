@@ -3,9 +3,9 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show]
 
   def index
-    # if current_user.present?
-    #   redirect_to user_home_path
-    # end
+    if current_user.present?
+      redirect_to user_home_path
+    end
     @course = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(20)
     @free_course = Course.where(is_free: true).limit(20)
@@ -14,15 +14,12 @@ class CoursesController < ApplicationController
   end
 
   def show
-
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
-
-    # @skill = Skill.joins(:article_skill).where("article_id IN (?) " , article.ids).group(:id)
     @skill = Skill.joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
+    @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) " , article.ids).group(:level_id)
 
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
-      # binding.pry
       if !@check_archived_course.blank?
         @course_detail = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND course_id = ?', current_user.id, @course.id)
       else

@@ -1,6 +1,6 @@
 <%= content_for :page_title, 'User home' %>
 <div #app1 class="right">
-  <h1>Your Course</h1>
+  <h1 id="your_course">Your Course</h1>
   <div id="exampleSlider">
     <div id="app1" class="MS-content">
       <% @my_courses_home.each do |my_courses| %>
@@ -27,7 +27,7 @@
         </div>
       <% end %>
     </div>
-    <div class="MS-controls">
+    <div id="MS-controls" class="MS-controls">
       <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
@@ -319,6 +319,18 @@
 </script>
 
 <script>
+
+    var amount = <%= @number_enroll.count.to_int %>;
+    if(amount<=4){
+        document.getElementById('MS-controls').style.display = "none";
+    }
+    if(amount<=0){
+        document.getElementById('your_course').style.display = "none";
+    }
+    var amountLeftSide = 6;
+    if(amountLeftSide <= 5){
+        document.getElementsByClassName('show')[0].style.display = "none";
+    }
     window.addEventListener('click', function (e) {
         if (!document.getElementById('myBtn').contains(e.target)) {
             document.getElementById('notifications').style.display = "none"
