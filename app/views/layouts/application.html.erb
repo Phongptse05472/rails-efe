@@ -22,7 +22,7 @@
   <div class="main">
     <%#= render 'shared/messages' %>
     <% if !@article_detail.present? %>
-    <%= render partial: "shared/left_side", locals: {data: @data, course: @my_courses}  %>
+    <%= render partial: "shared/left_side", locals: {data: @data, course: @left_course}  %>
       <% end %>
   <%= yield %>
   </div>

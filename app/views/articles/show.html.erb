@@ -80,8 +80,6 @@
           <% end %>
         </div>
     <% end %>
-
-
     </div>
   </div>
   <div class="list">
@@ -129,7 +127,6 @@
   </div>
 </div>
 
-</div>
 <script>
     var arr = document.getElementsByTagName('li');
     var index = <%= @index_list_article.to_int %>; //8 is index of video in list
@@ -141,8 +138,8 @@
 </script>
 <!--begin of get currentTime and total duration-->
 <script>
-    document.getElementById('video').currentTime = <%= @cus_article.first.time_point %>;
-    document.getElementById('video').onpause = function () {
+    document.getElementsByTagName('video')[0].currentTime = <%= @cus_article.first.time_point %>;
+    document.getElementsByTagName('video')[0].onpause = function () {
         var currentTime = this.currentTime;
         var total = this.duration;
         var calculate = (currentTime / total) * 100
@@ -151,9 +148,10 @@
             isViewed = true
         else
             isViewed = false
+
         $.ajax({
             url: "/time",
-            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %> },
+            data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %>},
             type: "POST",
             success: function (data) {
                 console.log(data);

@@ -18,7 +18,11 @@
     <% @courses.each do |c| %>
       <div class="per-course">
         <div class="c-left">
-          <%= image_tag('java.png') %>
+          <% if !c.image.nil? %>
+            <%= cl_image_tag(c.image) %>
+          <% else %>
+            <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+          <% end %>
         </div>
         <div class="c-right">
           <h2><%= link_to c.name, course_path(c.id) %></h2>
@@ -34,11 +38,7 @@
     <% end %>
   </div>
   <div class="paging">
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
+    <%== pagy_nav(@pagy) %>
   </div>
   <div class="end">
   </div>
