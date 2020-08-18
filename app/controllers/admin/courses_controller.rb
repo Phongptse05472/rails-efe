@@ -4,8 +4,8 @@ class Admin::CoursesController < Admin::AdminController
     # if @admin.blank?
     #   redirect_to home_path
     # end
-    
-
+    @course = Course.all.order(created_at: :desc)
+    @pagy, @course_paging = pagy(@course, items: 10)
   end
 
   def show

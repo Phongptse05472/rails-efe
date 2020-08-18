@@ -51,7 +51,8 @@ Rails.application.routes.draw do
 
   #admin routes
   namespace :admin do
-    resources :users, except: :destroy
+    resources :customers, except: :destroy
+    resources :users
     resources :courses
     resources :articles, except: [:create, :destroy]
   end
