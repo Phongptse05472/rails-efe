@@ -3,8 +3,7 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'root', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', "data-turbolinks-track" => 'reload' %>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Rootpage | Effective Future Education</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
@@ -44,27 +43,19 @@
                 <div class="logo_container">
                   <a href="#">
                     <div class="logo_text">
-                      <%= image_tag("logo_1.PNG", style: "height: 50px" ) %> Edfective
-                      <span>ly</span>
+                      <a style="color: #384158" href="/home">
+                          <%= image_tag('logo_1.PNG') %>Edfective
+                          <span>ly</span>
+                      </a>
                     </div>
                   </a>
                 </div>
                 <nav class="main_nav_contaner ml-auto">
                   <ul class="main_nav">
-                    <li class="active"><a href="/">Rootpage</a></li>
                     <li><%= link_to 'Sign in', new_user_session_path %></li>
-                    <li><%= link_to 'Sign in', new_user_registration_path %></li>
+                    <li><%= link_to 'Sign up', new_user_registration_path %></li>
                   </ul>
-                  <div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
-
-                  <!-- Hamburger -->
-
-                  <div class="shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
-                  <div class="hamburger menu_mm">
-                    <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
-                  </div>
                 </nav>
-
               </div>
             </div>
           </div>
@@ -99,14 +90,7 @@
           <div></div>
         </div>
       </div>
-      <div class="search">
-        <form action="#" class="header_search_form menu_mm">
-          <input type="search" class="search_input menu_mm" placeholder="Search" required="required">
-          <button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
-            <i class="fa fa-search menu_mm" aria-hidden="true"></i>
-          </button>
-        </form>
-      </div>
+
       <nav class="menu_nav">
         <ul class="menu_mm">
           <li class="menu_mm"><a href="index.html">Home</a></li>
@@ -126,28 +110,7 @@
 
           <!-- Home Slider Item -->
           <div class="owl-item">
-            <div class="home_slider_background" style="background-image:url(../images/home_slider_1.jpg)"></div>
-            <div class="home_slider_content">
-              <div class="container">
-                <div class="row">
-                  <div class="col text-center">
-                    <div class="home_slider_title">For every student, every classroom, real results</div>
-                    <div class="home_slider_subtitle">Effectively Future Education System
-                    </div>
-                    <div style="display: flex; justify-content: space-between;
-                        width: 400px;" class="home_slider_form_container">
-                      <a href="/home" type="text" class="home_search_button">Student</a>
-                      <a href="/mentor/home" class="home_search_button">Mentor</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Home Slider Item -->
-          <div class="owl-item">
-            <div class="home_slider_background" style="background-image:url(../images/home_slider_1.jpg)"></div>
+            <div class="home_slider_background"></div>
             <div class="home_slider_content">
               <div class="container">
                 <div class="row">
@@ -157,10 +120,14 @@
                     <div style="display: flex; justify-content: space-between;
                         width: 400px;" class="home_slider_form_container">
                       <form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
-                        <button type="submit" class="home_search_button">Student</button>
+                        <%= link_to home_path do %>
+                         <button type="button" class="home_search_button">Student</button>
+                        <% end %>
                       </form>
                       <form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
-                        <button type="submit" class="home_search_button">Mentor</button>
+                        <%= link_to mentor_courses_path do %>
+                          <button type="button" class="home_search_button">Mentor</button>
+                        <% end %>
                       </form>
                     </div>
                   </div>
@@ -171,7 +138,7 @@
 
           <!-- Home Slider Item -->
           <div class="owl-item">
-            <div class="home_slider_background" style="background-image:url(../images/home_slider_1.jpg)"></div>
+            <div class="home_slider_background"></div>
             <div class="home_slider_content">
               <div class="container">
                 <div class="row">
@@ -181,10 +148,42 @@
                     <div style="display: flex; justify-content: space-between;
                         width: 400px;" class="home_slider_form_container">
                       <form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
-                        <button type="submit" class="home_search_button">Student</button>
+                        <%= link_to home_path do %>
+                          <button type="button" class="home_search_button">Student</button>
+                        <% end %>
                       </form>
                       <form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
-                        <button type="submit" class="home_search_button">Mentor</button>
+                        <%= link_to mentor_courses_path do %>
+                          <button type="button" class="home_search_button">Mentor</button>
+                        <% end %>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Home Slider Item -->
+          <div class="owl-item">
+            <div class="home_slider_background"></div>
+            <div class="home_slider_content">
+              <div class="container">
+                <div class="row">
+                  <div class="col text-center">
+                    <div class="home_slider_title">For every student, every classroom, real results</div>
+                    <div class="home_slider_subtitle">Future Of Education Technology</div>
+                    <div style="display: flex; justify-content: space-between;
+                        width: 400px;" class="home_slider_form_container">
+                      <form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
+                        <%= link_to home_path do %>
+                          <button type="button" class="home_search_button">Student</button>
+                        <% end %>
+                      </form>
+                      <form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
+                        <%= link_to mentor_courses_path do %>
+                          <button type="button" class="home_search_button">Mentor</button>
+                        <% end %>
                       </form>
                     </div>
                   </div>
@@ -270,7 +269,7 @@
     <!-- Counter -->
 
     <div class="counter">
-      <div class="counter_background" style="background-image:url(../images/counter_background.jpg)"></div>
+      <div class="counter_background"></div>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -410,7 +409,7 @@
     <!-- Team -->
 
     <div class="team">
-      <div class="team_background parallax-window" data-parallax="scroll" data-image-src="../images/team_background.jpg" data-speed="0.8"></div>
+      <div class="team_background parallax-window" data-parallax="scroll" data-image-src="team_background.jpg" data-speed="0.8"></div>
       <div class="container">
         <div class="row">
           <div class="col">
@@ -588,11 +587,11 @@
                     <div class="footer_title">Contact Us</div>
                     <div class="footer_links_container">
                       <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
                         <li><a href="#">Features</a></li>
-                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="#">Courses</a></li>
                         <li><a href="#">Events</a></li>
                         <li><a href="#">Gallery</a></li>
                         <li><a href="#">FAQs</a></li>

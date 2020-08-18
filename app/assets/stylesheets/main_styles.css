@@ -414,7 +414,10 @@ section {
     -o-transition: all 200ms ease;
     transition: all 200ms ease;
 }
-
+.logo_text img {
+    height: 50px;
+    margin-right: 10px;
+}
 .logo_text span {
     color: #14bdee;
     margin-left: -6px;
@@ -803,6 +806,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    background-image: url('home_slider_1.jpg');
 }
 
 .home_slider_content {
@@ -1148,6 +1152,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    background-image: url('counter_background.jpg');
 }
 
 .counter_content {
@@ -1476,6 +1481,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url('team_background.jpg');
+
 }
 
 .team_row {
@@ -1746,6 +1753,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url('newsletter.jpg');
 }
 
 .newsletter_container {
@@ -1858,6 +1866,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    background-image: url('footer_background.png');
 }
 
 .footer_content {

@@ -3,6 +3,9 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show]
 
   def index
+    if current_user.present?
+      redirect_to user_home_path
+    end
     @course = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(5)
     @free_course = Course.where(is_free: true).limit(5)
@@ -15,11 +18,8 @@ class CoursesController < ApplicationController
   def show
 
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
-    @skill = Skill.select(:name).joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
+    @skill = Skill.joins(:article_skills).where("article_id IN (?) " , article.ids).group(:id)
     @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) " , article.ids).group(:level_id)
-
-    # @skill_level = ArticleSkill.where("article_id IN (?) " , article.ids)
-    # @skill_level.distinct.pluck(:level_id)
 
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
@@ -28,13 +28,11 @@ class CoursesController < ApplicationController
       else
         calculate_progression
       end
-      @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
-
     else
       @course_detail = Course.where('course_id = ?', @course.id)
       @list_article = Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at)
     end
-
+    @pagy, @list_article = pagy(Article.joins(:courses).where('courses.id = ?', @course.id).order(:created_at),items: 5)
   end
 
   def calculate_progression
@@ -46,7 +44,8 @@ class CoursesController < ApplicationController
     else
       progress = viewed_article.to_f / total_article.to_f * 100
     end
-    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id).update_all(progression: progress.round) # => progression
+    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id)
+    @customers_courses_progression.update(progression: progress.round) # => progression
   end
 
   def search
