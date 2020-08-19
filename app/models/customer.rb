@@ -16,5 +16,7 @@ class Customer < ApplicationRecord
 #   has_one_attached :avatar
 
   mount_uploader :avatar , ImageUploader
+
   has_many :comments
+
 end
