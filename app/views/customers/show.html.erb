@@ -1,29 +1,35 @@
+<head>
+  <%= content_for :page_title, 'My profile' %>
+  <%= stylesheet_link_tag 'profile', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= cloudinary_js_config %>
+</head>
 <div class="right">
   <div class="profile-page">
     <% @customer.each do |customer| %>
       <div class="avatar">
         <% if !customer.avatar.nil? %>
-          <%= cl_image_tag(customer.avatar) %>
+          <%#= cl_image_tag(customer.avatar) %>
+          <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
         <% else %>
           <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
         <% end %>
       </div>
       <table>
         <tr>
-          <th>Email</th>
-          <td><%= customer.email %></td>
+          <th>Lmail</th>
+          <td><input type="text" value="<%= customer.email %>" disabled></td>
         </tr>
         <tr>
           <th>Name</th>
-          <td><input type="text" value="Tuan Anh"></td>
+          <td><input type="text" value="Tuan Anh" disabled></td>
         </tr>
         <tr>
           <th>Email</th>
-          <td><%= customer.name %></td>
+          <td><input type="text" value="<%= customer.name %>" disabled></td>
         </tr>
         <tr>
           <th>Phone Number</th>
-          <td><%= customer.phone_number %></td>
+          <td><input type="text" value="<%= customer.phone_number %>" disabled></td>
         </tr>
         <tr>
           <th>Status</th>
@@ -32,11 +38,12 @@
             <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
           </td>
         </tr>
-        <p><%= link_to "update", edit_customer_path(customer)  %></p>
-    <% end %>
-    </table>
-    <a class="logout" href="homepage.html">Log out</a>
 
+
+    </table>
+    <%=  link_to "update", edit_customer_path(customer) ,class: "logout" %>
+    <a class="logout" href="homepage.html">Log out</a>
+    <% end %>
 
   </div>
 

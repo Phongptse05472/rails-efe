@@ -1,34 +1,39 @@
-/*.profile {*/
-/*    width: 60%;*/
-/*    height: 700px;*/
-/*    border: 1px dashed black;*/
-/*    margin-top: 40px;*/
-/*    margin-left: 40px;*/
-/*    padding: 30px;*/
-/*}*/
+
 .profile-page{
     width: 60%;
     height: 700px;
     border: 1px dashed black;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 5%;
 }
 .avatar {
     display: flex;
+    padding: 50px;
 }
 
 .avatar img {
-    width: 20%;
+    /*width: 25%;*/
+    height:200px;
+    width: 200px;
     border: 1px solid gray;
-    border-radius: 5px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .avatar button {
     border-radius: 5px;
-    height: 30px;
+    height: 50px;
     border: none;
-    background-color: #F69B58;
+    background-color: #14bdee;
     color: white;
-    margin-top: 163px;
-    margin-left: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .profile-page table tr td {
@@ -40,6 +45,8 @@
 .profile-page table {
     width: 40%;
     margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .profile-page table tr td input {
@@ -56,10 +63,11 @@
 
 .logout {
     padding: 15px 30px;
-    background-color: #F69B58;
-    border-radius: 5px;
+    background-color: #14bdee;
     color: white;
     text-decoration: none;
     font-weight: bold;
     margin-left: 20px;
+    border-radius: 5px;
+    font-size: 20px;
 }

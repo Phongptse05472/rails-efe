@@ -6,9 +6,11 @@
 
 <div class="right">
   <div class="profile-page">
-    <% @customer.each do |customer| %>
+    <%# @customer.each do |customer| %>
       <div class="avatar">
         <button id="upload_widget" class="cloudinary-button">Upload files</button>
+        <%#= link_to "update", edit_customer_path(customer) do %>
+          <%# end %>
         <% form_for(:customer) do |post_form| %>
           <% post_form.hidden_field(:avatar_cache) %>
           <% post_form.file_field(:avatar) %>
@@ -40,7 +42,7 @@
             <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
           </td>
         </tr>
-    <% end %>
+    <%# end %>
     </table>
     <a class="logout" href="homepage.html">Log out</a>
 
