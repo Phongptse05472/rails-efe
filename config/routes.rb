@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
 
+  resources :customers do
+
+  end
+
   resources :customers_courses do
   end
 

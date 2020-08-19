@@ -10,44 +10,13 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
-  end
-
+   @customer =  Customer.select("customers.*, users.*").joins(:user).where("user_id = ?", current_user.id)
+   end
 
 
 
   # GET /customers/1/edit
   def edit
-  end
-
-  # POST /customers
-  # POST /customers.json
-  def create
-    @customer = Customer.new(customer_params)
-
-    respond_to do |format|
-      if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
-  def update
-    respond_to do |format|
-      if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @customer }
-      else
-        format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   private
@@ -56,9 +25,4 @@ class CustomersController < ApplicationController
       @customer = Customer.find_by(params[:current_user_id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def customer_params
-#       params.require(:customer).permit(:user_id, :role_id, :name, :phone_number, :roll_number, :is_active, :image)
-      params.require(:customer).permit(:user_id, :role_id,  :name)
-    end
 end
