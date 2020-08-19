@@ -6,26 +6,18 @@
 
 <div class="right">
   <div class="profile-page">
-    <%# @customer.each do |customer| %>
+    <% form_for @customer do |f| %>
       <div class="avatar">
         <button id="upload_widget" class="cloudinary-button">Upload avatar</button>
       </div>
       <table>
         <tr>
-          <th>Email</th>
-          <td><input type="text" value="TuanAnh123" disabled></td>
+          <th><%= f.label :name,  'Name: ' %></th>
+          <td><%= f.text_field :name %></td>
         </tr>
         <tr>
-          <th>Name</th>
-          <td><input type="text" value="Tuan Anh"></td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td><input type="text" value="Tuananh8989@gmail.com"></td>
-        </tr>
-        <tr>
-          <th>Phone Number</th>
-          <td><input type="text" value="0345666656"></td>
+          <th><%= f.label :phone_number,  'Phone Number: ' %></th>
+          <td><%= f.text_field :phone_number %></td>
         </tr>
         <tr>
           <th>Status</th>
@@ -34,10 +26,9 @@
             <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
           </td>
         </tr>
-    <%# end %>
+    <% end %>
     </table>
     <a class="logout" href="homepage.html">Log out</a>
-
 
   </div>
 
@@ -50,14 +41,14 @@
 </script>
 <script type="text/javascript">
     var myWidget = cloudinary.createUploadWidget({
-            cloudName: 'dolv9j3dz', apiKey: '233187518769819' ,
+            cloudName: 'dolv9j3dz', apiKey: '233187518769819',
             uploadPreset: 'yfd3tn0d'
         }, (error, result) => {
             if (!error && result && result.event === "success") {
                 // console.log('Done! Here is the image info: ', result.info.url);
-                var url_link =  result.info.url;
+                var url_link = result.info.url;
                 var lastIndex = url_link.lastIndexOf('/');
-                var link_image = url_link.substring(lastIndex+1);
+                var link_image = url_link.substring(lastIndex + 1);
                 console.log(link_image)
             }
         }
@@ -66,6 +57,13 @@
         myWidget.open();
     }, false);
 
+</script>
+<script type="text/javascript">
+    $('#upload_widget_opener').cloudinary_upload_widget({
+        cloudName: cloudName, apiKey: api_key,
+        cropping: true, uploadSignature: generateSignature
+    }, (error, result) => {
+    });
 </script>
 
 

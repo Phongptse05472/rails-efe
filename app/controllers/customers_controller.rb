@@ -17,6 +17,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+     @customer =  Customer.where("user_id = ?", current_user.id)
   end
 
   private
