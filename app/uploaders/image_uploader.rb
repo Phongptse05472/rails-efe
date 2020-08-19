@@ -3,25 +3,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     # include CarrierWave::RMagick
     # include CarrierWave::MiniMagick
     include Cloudinary::CarrierWave
-
-    process :convert => 'png'
-    process :tags => ['post_picture']
-
-    version :standard do
-      process :resize_to_fill => [100, 150, :north]
-    end
-
-    version :thumbnail do
-      resize_to_fit(50, 50)
-    end
-
-    def public_id
-      return model.short_name
-    end
-
-
+  
     # Choose what kind of storage to use for this uploader:
-    storage :file
+    # storage :file
     # storage :fog
   
     # Override the directory where uploaded files will be stored.
@@ -37,9 +21,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     #
     #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
     # end
-
-
-
+  
     # Process files as they are uploaded:
     # process scale: [200, 300]
     #
@@ -48,9 +30,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     # end
   
     #Create different versions of your uploaded files:
-    # version :thumb do
-    #   process resize_to_fit: [50, 50]
-    # end
+    version :thumb do
+      process resize_to_fit: [50, 50]
+    end
   
     # Add a white list of extensions which are allowed to be uploaded.
     # For images you might use something like this:
