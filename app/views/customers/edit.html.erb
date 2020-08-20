@@ -1,0 +1,74 @@
+<head>
+  <%= content_for :page_title, 'My profile' %>
+  <%= stylesheet_link_tag 'profile', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= cloudinary_js_config %>
+</head>
+
+<div class="right">
+  <div class="profile-page">
+    <div class="avatar">
+      <button id="upload_widget" class="cloudinary-button">Upload avatar</button>
+    </div>
+    <table>
+      <%= form_tag update_customer_path, method: :put do %>
+        <%= hidden_field :customer_id, value: current_user.id %>
+        <tr>
+          <th>Name</th>
+          <%= text_field_tag :name %>
+        </tr>
+        <br>
+        <tr>
+          <th>Phone number</th>
+          <%= text_field_tag :phone_number %>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td>
+            Active
+            <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
+          </td>
+        </tr>
+        <%= submit_tag 'Update' %>
+      <% end %>
+
+    </table>
+    <a class="logout" href="homepage.html">Log out</a>
+  </div>
+
+  <div class="end">
+  </div>
+</div>
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+<script>
+    cloudinary.setCloudName("dolv9j3dz");
+</script>
+<script type="text/javascript">
+    var myWidget = cloudinary.createUploadWidget({
+            cloudName: 'dolv9j3dz', apiKey: '233187518769819',
+            uploadPreset: 'yfd3tn0d'
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+                // console.log('Done! Here is the image info: ', result.info.url);
+                var url_link = result.info.url;
+                var lastIndex = url_link.lastIndexOf('/');
+                var link_image = url_link.substring(lastIndex + 1);
+                console.log(link_image)
+                $.ajax({
+                    url: "/update_customer",
+                    data: {"img_link": link_image},
+                    type: "PUT",
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+        }
+    )
+    document.getElementById("upload_widget").addEventListener("click", function () {
+        myWidget.open();
+    }, false);
+</script>
+
+
+
+
