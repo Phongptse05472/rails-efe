@@ -239,7 +239,7 @@
             <% if customer_article.exists? %>
               <% if customer_article.first.is_favor == true %>
                 <%= link_to update_favor_path(article.id), method: :post, remote: true do %>
-                  <i style="color: #14bdee" onclick="heart(this,123)" class="fa fa-heart" id="article_id<%= article.id %>" aria-hidden="true"></i>
+                  <i style="color: #14bdee" onclick="heart(this,123)" class="fa fa-heart"  aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_favor_path(article.id), method: :post, remote: true do %>
