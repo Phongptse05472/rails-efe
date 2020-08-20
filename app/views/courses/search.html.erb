@@ -130,11 +130,18 @@
           <h2><%= link_to course.name, course_path(course) %></h2>
           <p><%= course.description %></p>
           <p class="my-name"> Author: <%= course.author %></p>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
+          <% rate = course.rate.to_f %>
+          <% (1..rate).each do |i| %>
+            <% if rate >= i.floor %>
+              <span class="fa fa-star checked"></span>
+            <% end %>
+          <% end %>
+          <% if rate != rate.floor %>
+            <span class="fa fa-star-half-o checked"></span>
+          <% end %>
+          <% (1..(5 - rate.ceil)).each do %>
+            <span class="fa fa-star-o checked"></span>
+          <% end %>
         </div>
       </div>
     <% end %>

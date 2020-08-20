@@ -71,8 +71,6 @@
                 <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
               <% end %>
             <% end %>
-
-
           </div>
           <div class="author">
             <div class="icon">
@@ -86,38 +84,24 @@
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
-              <!--              <span class="fa fa-star checked"></span>-->
-              <!--              <span class="fa fa-star checked"></span>-->
-              <!--              <span class="fa fa-star checked"></span>-->
-              <!--              <span class="fa fa-star-half-o checked"></span>-->
-              <!--              <span class="fa fa-star-o checked"></span>-->
+              <% rate = course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
               <span>(<%= course.number_enrollment %> enroll)</span>
-              <%#= rate = course.rate.to_f %>
-              <%# (1..rate).each do |i| %>
-                <%# if rate != i.floor %>
-<!--                  <span class="fa fa-star checked"></span>-->
-                <%# end %>
-              <%# end %>
             </div>
           </div>
         </div>
       <% end %>
     </div>
-
-    <!--    double x = 2.232323;-->
-    <!--    for (int i = 0; i < Math.floor(x); i++) {-->
-    <!--    System.out.println("x");-->
-    <!--    //-->
-    <!--    }-->
-    <!--    if (Math.floor(x) != x) {-->
-    <!--    System.out.println("*");-->
-    <!--    //  <span class="fa fa-star-half-o checked"></span>-->
-    <!--    }-->
-    <!--    for (int i = 0; i < (5 - Math.ceil(x)); i++) {-->
-    <!--    System.out.println("o");-->
-    <!--    //<span class="fa fa-star-o checked"></span>-->
-    <!--    }-->
-
 
     <div class="MS-controls">
       <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
@@ -170,11 +154,18 @@
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star-half-o checked"></span>
-              <span class="fa fa-star-o checked"></span>
+              <% rate = course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
               <span>(<%= course.number_enrollment %> enroll)</span>
             </div>
           </div>
@@ -234,12 +225,19 @@
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star-half-o checked"></span>
-              <span class="fa fa-star-o checked"></span>
-              <span>(<%= course.number_enrollment %> enroll)</span>
+              <% rate = course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked">
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
+              <span> (<%= course.number_enrollment %> enroll) </span>
             </div>
           </div>
         </div>
