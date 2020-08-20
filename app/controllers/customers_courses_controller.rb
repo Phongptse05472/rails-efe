@@ -73,7 +73,7 @@ class CustomersCoursesController < ApplicationController
   end
 
   def archived_courses
-    @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true)
+    @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true).order("customer_courses.updated_at DESC")
     @pagy, @archived_courses_paging = pagy(@archived_courses, items: 5)
   end
 
