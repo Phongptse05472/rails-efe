@@ -6,17 +6,17 @@
 
 <div class="right">
   <div class="profile-page">
-    <% form_for @customer do |f| %>
-      <div class="avatar">
-        <button id="upload_widget" class="cloudinary-button">Upload avatar</button>
-      </div>
-      <table>
+    <div class="avatar">
+      <button id="upload_widget" class="cloudinary-button">Upload avatar</button>
+    </div>
+    <table>
+      <%=form_with(@customer ,url: edit_customer_path ,method: :post, remote: true) do |f| %>
         <tr>
-          <th><%= f.label :name,  'Name: ' %></th>
+          <th>Name </th>
           <td><%= f.text_field :name %></td>
         </tr>
         <tr>
-          <th><%= f.label :phone_number,  'Phone Number: ' %></th>
+          <th>Phone number</th>
           <td><%= f.text_field :phone_number %></td>
         </tr>
         <tr>
@@ -26,10 +26,10 @@
             <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
           </td>
         </tr>
-    <% end %>
+        <%= f.submit %>
+      <% end %>
     </table>
     <a class="logout" href="homepage.html">Log out</a>
-
   </div>
 
   <div class="end">
@@ -56,15 +56,8 @@
     document.getElementById("upload_widget").addEventListener("click", function () {
         myWidget.open();
     }, false);
+</script>
 
-</script>
-<script type="text/javascript">
-    $('#upload_widget_opener').cloudinary_upload_widget({
-        cloudName: cloudName, apiKey: api_key,
-        cropping: true, uploadSignature: generateSignature
-    }, (error, result) => {
-    });
-</script>
 
 
 

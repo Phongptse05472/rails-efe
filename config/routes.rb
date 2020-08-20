@@ -34,7 +34,6 @@ Rails.application.routes.draw do
 
 
   resources :customers do
-
   end
 
   resources :customers_courses do

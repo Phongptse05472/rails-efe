@@ -13,9 +13,6 @@ class CustomersController < ApplicationController
    @customer =  Customer.select("customers.*, users.*").joins(:user).where("user_id = ?", current_user.id)
    end
 
-
-
-  # GET /customers/1/edit
   def edit
      @customer =  Customer.where("user_id = ?", current_user.id)
   end
