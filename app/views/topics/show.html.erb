@@ -15,7 +15,7 @@
 
 
   <div class="list-course">
-    <% @courses.each do |c| %>
+    <% @courses_paging.each do |c| %>
       <div class="per-course">
         <div class="c-left">
           <% if !c.image.nil? %>
@@ -38,7 +38,10 @@
     <% end %>
   </div>
   <div class="paging">
-    <%== pagy_nav(@pagy) %>
+    <% if @courses.ids.count > 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
   </div>
   <div class="end">
   </div>

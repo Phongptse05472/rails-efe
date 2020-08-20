@@ -8,7 +8,9 @@ class TopicsController < ApplicationController
 
   def show
 
-    @pagy , @courses = pagy(Course.joins(:groups).where('groups.slug = ?' , @topic.slug),item: 5)
+    @courses = Course.joins(:groups).where('groups.slug = ?' , @topic.slug)
+    @pagy , @courses_paging = pagy(@courses,item: 5)
+
 
   end
 
