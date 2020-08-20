@@ -57,8 +57,6 @@ class CustomersCoursesController < ApplicationController
         else
           redirect_to course_article_path(enroll_course, @article.ids.first)
         end
-
-
       else
         redirect_to course_article_path(enroll_course, course.first.current_article_id)
       end
