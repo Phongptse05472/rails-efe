@@ -15,6 +15,10 @@ class CustomersController < ApplicationController
 
   def edit
      @customer =  Customer.where("user_id = ?", current_user.id)
+  avatar_link = params[:img_link]
+  name = params[:name]
+  phone = params[:phone_number]
+  binding.pry
   end
 
   private
@@ -22,5 +26,9 @@ class CustomersController < ApplicationController
     def set_customer
       @customer = Customer.find_by(params[:current_user_id])
     end
+
+      def customer_params
+        params.require(:customer).permit(name, phone, avatar_link)
+      end
 
 end
