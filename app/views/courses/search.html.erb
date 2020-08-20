@@ -140,10 +140,7 @@
     <% end %>
   </div>
   <div class="paging">
-    <% if @search_result.ids.count >= 5 %>
-      <%== pagy_nav(@pagy) %>
-    <% else %>
-    <% end %>
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
   </div>
 
   <div class="end">
