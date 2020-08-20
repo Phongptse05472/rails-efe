@@ -14,9 +14,9 @@
       <% end %>
     </div>
 
-    <%= form_tag search_courses_path, class: "search", method: :get do %>
-      <%= text_field_tag 'q', params[:q], placeholder: "Search a Courses...", required: true, autocomplete: "off" %>
-      <button type="submit">
+    <%= form_tag search_courses_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
+      <%= text_field_tag 'q', params[:q], placeholder: "Search a Courses...", required: true,:id => 'input', autocomplete: "off" %>
+      <button onclick="removeSpace()" type="submit">
         <%= image_tag("search.png") %>
       </button>
     <% end %>
@@ -41,3 +41,16 @@
     <% end %>
   </div>
 </div>
+<script>
+    function removeSpace() {
+        document.getElementById('input').value =
+            document.getElementById('input').value.trim();
+    }
+
+    function checkInput() {
+        if (document.getElementById('input').value.trim() == "") {
+            return false;
+        }
+        return true;
+    }
+</script>
