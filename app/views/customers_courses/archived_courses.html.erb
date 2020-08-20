@@ -51,15 +51,17 @@
           <% (1..(5 - rate.ceil)).each do %>
             <span class="fa fa-star-o checked"></span>
           <% end %>
-
-          <span class="enroll_date">Enroll date: <%= archived_course.enrollment_date %></span>
+          <% if !archived_course.enrollment_date.nil? %>
+            <span class="enroll_date">Enroll date: <%= archived_course.enrollment_date %></span>
+          <% else %>
+          <% end %>
         </div>
       </div>
     <% end %>
 
   </div>
   <div class="paging">
-    <% if @archived_courses.ids.count >= 5 %>
+    <% if @archived_courses.ids.count > 5 %>
       <%== pagy_nav(@pagy) %>
     <% else %>
     <% end %>
