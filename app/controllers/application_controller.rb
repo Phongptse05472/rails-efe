@@ -12,7 +12,14 @@ class ApplicationController < ActionController::Base
       flash[:error] = "You must be logged in to perform that action"
       redirect_to user_home_path
     else
-      redirect_to home_path
+      @user = Customer.where("id = ?", current_user.id)
+      if @user.first.role_id == 3
+        redirect_to home_path
+      elsif @user.first.role_id == 2
+        redirect_to "mentor/course"
+      else
+        redirect_to "/admin/customers"
+      end
     end
   end
 

@@ -11,4 +11,12 @@ class Admin::ArticlesController < Admin::AdminController
 
   end
 
+  def deactivate_article
+    @article_disable = Article.find(params[:id])
+    @article_disable.update(is_active: !@article_disable.is_active)
+    respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end
+  end
+
 end

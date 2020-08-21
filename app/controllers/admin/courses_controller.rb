@@ -8,14 +8,14 @@ class Admin::CoursesController < Admin::AdminController
     @pagy, @course_paging = pagy(@course, items: 10)
   end
 
-  def show
-
+  def deactivate_course
+    @course_disable = Course.friendly.find(params[:slug])
+    @course_disable.update(is_active: !@course_disable.is_active)
+    respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end
   end
 
-  def update
 
-  end
-
-  private
 end
 

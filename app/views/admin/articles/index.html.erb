@@ -1,7 +1,5 @@
 <head>
-
   <%= stylesheet_link_tag 'manager_video', media: 'all', 'data-turbolinks-track': 'reload' %>
-
 </head>
 <div class="right">
   <h1>
@@ -18,6 +16,7 @@
   <table>
     <tr>
       <th>Video</th>
+      <th>is_Active</th>
       <th>Disable</th>
     </tr>
     <% @article_paging.each do |article| %>
@@ -44,21 +43,19 @@
             </div>
           </div>
         </td>
+        <td><%= article.is_active %></td>
         <td>
-          <a class="disable" href="#">Disable</a>
+          <%= link_to 'Disable/Enable', deactivate_article_path(id: article), method: :post, remote: true, class: "disable" %>
         </td>
       </tr>
     <% end %>
   </table>
-
   <div class="paging">
     <% if @article.ids.count > 5 %>
       <%== pagy_nav(@pagy) %>
     <% else %>
     <% end %>
-
   </div>
-
   <div class="end">
   </div>
 </div>

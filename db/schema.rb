@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_090913) do
     t.boolean "is_free"
     t.text "link_file_attach"
     t.text "video"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_090913) do
     t.string "author"
     t.boolean "is_free"
     t.float "rate"
+    t.boolean "is_active", default: true
     t.bigint "number_enrollment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -208,6 +210,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_090913) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "is_active", default: true
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

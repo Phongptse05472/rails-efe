@@ -15,6 +15,7 @@
       <th>Account ID</th>
       <th>Email</th>
       <th>Name</th>
+      <th>is_Active</th>
       <th>Created_at</th>
       <th>Disable</th>
     </tr>
@@ -23,9 +24,10 @@
         <td><%=customer.id%></td>
         <td><%= customer.email %></td>
         <td><%= customer.name %></td>
+        <td><%= customer.is_active %></td>
         <td><%= customer.created_at %></td>
         <td>
-          <a href="#">Disable</a>
+          <%= link_to "Disable/Active", deactivate_path(id: customer) ,method: :post,remote: true, class: "disable" %>
         </td>
       </tr>
     <% end %>
@@ -33,20 +35,12 @@
   </table>
 
   <div class="paging">
-    <a>
-      <i class="fa fa-caret-left"></i>
-    </a>
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
-    <a>
-      <i class="fa fa-caret-right"></i>
-    </a>
 
+    <% if @customer.ids.count > 10 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
   </div>
-
   <div class="end">
   </div>
 </div>

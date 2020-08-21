@@ -5,7 +5,7 @@
 </head>
 <div class="right">
   <h1>
-    Article management
+    Course management
   </h1>
   <div class="search managerAccount">
     <form action="#">
@@ -18,6 +18,7 @@
   <table>
     <tr>
       <th>Courses</th>
+      <th>is_active</th>
       <th>Disable</th>
     </tr>
     <tr>
@@ -39,11 +40,13 @@
                 <a href="#"><%= course.name %></a>
               </h2>
               <span><%= course.description %></span>
+              <%#= course.is_active %>
             </div>
           </div>
         </td>
+        <td><%= course.is_active %></td>
         <td>
-          <a class="disable" href="#">Disable</a>
+          <%= link_to 'Disable/Enable', deactivate_course_path(slug: course), method: :post, remote: true, class: "disable" %>
         </td>
         </tr>
       <% end %>
