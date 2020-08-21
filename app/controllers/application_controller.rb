@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user.present?
+    # redirect_to request.referrer
   end
 
   def require_user
@@ -13,13 +14,20 @@ class ApplicationController < ActionController::Base
       redirect_to user_home_path
     else
       @user = Customer.where("id = ?", current_user.id)
-      if @user.first.role_id == 3
-        redirect_to home_path
-      elsif @user.first.role_id == 2
-        redirect_to "mentor/course"
-      else
+      # if @user.first.role_id == 1
+      #   redirect_to home_path
+      # elsif @user.first.role_id == 2
+      #   redirect_to mentor_courses_path
+      # else
+      #   redirect_to admin_customers_path
+      binding.pry
+      if @user.first.role_id == 1
         redirect_to "/admin/customers"
+      else
+        redirect_to mentor_courses_path
       end
+
+      #
     end
   end
 

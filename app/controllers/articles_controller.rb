@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
     #right side - List article in course
     @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id)
 
+
     @index_list_article = @list_article_right.pluck(:id).index(@article_detail.ids.first)
 
     @comment = Comment.new
