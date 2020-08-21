@@ -1,1 +1,147 @@
-step 3
+
+<head>
+
+  <%= stylesheet_link_tag 'list-course', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="right">
+  <div class="process">
+    <a href="#">
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+    </a>
+    <a href="#">
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+    </a>
+    <a href="#">
+      <i class="fa fa-check-circle active" aria-hidden="true"></i>
+    </a>
+  </div>
+  <form action="#" method="post">
+    <div class="create_course">
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Thumbnail</h2>
+        </div>
+        <div class="row-right">
+          <div class="thum-image">
+            <%= image_tag('course_2.jpg') %>
+          </div>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>course's name</h2>
+        </div>
+        <div class="row-right">
+          <textarea disabled onkeyup="countChar(this)" wrap="hard" rows="2" maxlength="300" class="title_article" name="title">This is title of article</textarea>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Description</h2>
+        </div>
+        <div class="row-right">
+          <textarea disabled class="desc_course" name="description" maxlength="300">this is description of article</textarea>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Skill set</h2>
+        </div>
+        <div class="row-right">
+          <select>
+            <option>Programming languages</option>
+            <option>Client Scripts</option>
+            <option>Source Controls</option>
+            <option>Relational databases</option>
+            <option>Web Apps Development</option>
+            <option>Web Layout Desing and Implementation</option>
+            <option>Data Encryption and Decryption</option>
+            <option>Web Services Deployment</option>
+            <option>Web Token Programming</option>
+          </select>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Topic</h2>
+        </div>
+        <div class="row-right">
+          <select>
+            <option>Programming languages</option>
+            <option>Client Scripts</option>
+            <option>Source Controls</option>
+            <option>Relational databases</option>
+            <option>Web Apps Development</option>
+            <option>Web Layout Desing and Implementation</option>
+            <option>Data Encryption and Decryption</option>
+            <option>Web Services Deployment</option>
+            <option>Web Token Programming</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+  <h2>List article</h2>
+  <div id="exampleSlider1">
+    <div class="MS-content">
+      <div id="item" class="item per_article">
+        <div class="article-left">
+          <%= image_tag('course_2.jpg') %>
+        </div>
+        <div class="article-right">
+          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+        </div>
+        <a href="#">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div id="item" class="item per_article">
+        <div class="article-left">
+          <%= image_tag('course_2.jpg') %>
+        </div>
+        <div class="article-right">
+          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+        </div>
+        <a href="#">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div id="item" class="item per_article">
+        <div class="article-left">
+          <%= image_tag('course_2.jpg') %>
+        </div>
+        <div class="article-right">
+          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+        </div>
+        <a href="#">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div id="item" class="item per_article">
+        <div class="article-left">
+          <<%= image_tag('course_2.jpg') %>
+        </div>
+        <div class="article-right">
+          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+        </div>
+        <a href="#">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="MS-controls">
+      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <div class="end">
+  </div>
+</div>
+
+<script>
+    $('#exampleSlider1').multislider({
+        interval: 100000,
+        continuous: false
+    });
+</script>
