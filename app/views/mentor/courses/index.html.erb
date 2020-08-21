@@ -9,7 +9,7 @@
     Webcome back !adam
   </h1>
   <% @mentor_course.each do |mentor_course| %>
-    <span>Course name: <%= mentor_course.name %></span>
+    <span>Course name: <%= link_to mentor_course.name, mentor_course_path(mentor_course) %></span>
     <a class="upload" href="#">Upload video</a>
     <div id="exampleSlider1">
       <div class="MS-content">
