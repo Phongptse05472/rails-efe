@@ -11,4 +11,8 @@ class Mentor::CoursesController < Mentor::MentorController
   def new
   end
 
+  def show
+
+  end
+
 end
