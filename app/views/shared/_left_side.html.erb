@@ -61,8 +61,8 @@
           <% end %>
         </li>
       <% end %>
-      <li class="show" onclick="showMore()" >
-        <a href="#">
+      <li class="show" onclick="showMore()">
+        <a href="/customers_courses">
           <i class="fa fa-sort-down"></i>Show all
         </a>
       </li>
@@ -84,14 +84,18 @@
   <% end %>
 </div>
 <script>
-  <%#  @number_enroll = CustomerCourse.where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id) %>
-<!--    var amountLeftSide =  <%#=  @number_enroll.count.to_int %>;-->
-    var amountLeftSide =  6
+    <% if current_user.present? %>
+    <%  @number_enroll = CustomerCourse.where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id) %>
+    var amountLeftSide =  <%=  @number_enroll.count.to_int %>;
+    <% else %>
+    var amountLeftSide = 6
+    <% end %>
     var size = 1;
-    if(amountLeftSide <= 5 * size){
+    if (amountLeftSide <= 5 * size) {
         document.getElementsByClassName('show')[0].style.display = "none";
     }
-  function showMore(){
-      size++;
-  }
+
+    function showMore() {
+        size++;
+    }
 </script>

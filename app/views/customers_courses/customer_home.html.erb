@@ -59,20 +59,18 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
               <% end %>
             <% end %>
-
-
           </div>
           <div class="author">
             <div class="icon">
@@ -86,17 +84,25 @@
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star-half-o checked"></span>
-              <span class="fa fa-star-o checked"></span>
+              <% rate = course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
               <span>(<%= course.number_enrollment %> enroll)</span>
             </div>
           </div>
         </div>
       <% end %>
     </div>
+
     <div class="MS-controls">
       <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
@@ -117,16 +123,16 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
               <% end %>
             <% end %>
 
@@ -148,11 +154,18 @@
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star-half-o checked"></span>
-              <span class="fa fa-star-o checked"></span>
+              <% rate = course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
               <span>(<%= course.number_enrollment %> enroll)</span>
             </div>
           </div>
@@ -180,16 +193,16 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o"  onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
               <% end %>
             <% end %>
 
@@ -212,12 +225,19 @@
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star-half-o checked"></span>
-              <span class="fa fa-star-o checked"></span>
-              <span>(<%= course.number_enrollment %> enroll)</span>
+              <% rate = course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
+              <span> (<%= course.number_enrollment %> enroll) </span>
             </div>
           </div>
         </div>
@@ -239,7 +259,7 @@
             <% if customer_article.exists? %>
               <% if customer_article.first.is_favor == true %>
                 <%= link_to update_favor_path(article.id), method: :post, remote: true do %>
-                  <i style="color: #14bdee" onclick="heart(this,123)" class="fa fa-heart" id="article_id<%= article.id %>" aria-hidden="true"></i>
+                  <i style="color: #14bdee" onclick="heart(this,123)" class="fa fa-heart" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_favor_path(article.id), method: :post, remote: true do %>
@@ -259,9 +279,9 @@
             </div>
             <div class="title">
               <div class="name">
-                <%= link_to article.title , course_path(@course_article.first.slug)  %>
+                <%= link_to article.title, course_path(@course_article.first.slug) %>
               </div>
-<!--              <p><%#= article.author %></p>-->
+              <!--              <p><%#= article.author %></p>-->
               <span><%= article.view_number %> view</span>
             </div>
           </div>
@@ -321,14 +341,14 @@
 <script>
 
     var amount = <%= @number_enroll.count.to_int %>;
-    if(amount<=4){
+    if (amount <= 4) {
         document.getElementById('MS-controls').style.display = "none";
     }
-    if(amount<=0){
+    if (amount <= 0) {
         document.getElementById('your_course').style.display = "none";
     }
     var amountLeftSide = 6;
-    if(amountLeftSide <= 5){
+    if (amountLeftSide <= 5) {
         document.getElementsByClassName('show')[0].style.display = "none";
     }
     window.addEventListener('click', function (e) {

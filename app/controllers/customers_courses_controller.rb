@@ -2,11 +2,12 @@ class CustomersCoursesController < ApplicationController
 
   #my course page
   def index
-    @pagy, @my_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id), items: 5)
+    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
+    @pagy, @my_course_paging = pagy(@my_courses, items: 5)
 
+  end
 
-    end
-    #customer home page
+  #customer home page
   def customer_home
     @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
     @number_enroll = CustomerCourse.where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
@@ -26,9 +27,9 @@ class CustomersCoursesController < ApplicationController
 
     @top_view_article = Article.where.not(id: @article_ids).order(view_number: :desc).limit(20)
 
-    @course_article = Course.joins(:course_articles).where("article_id IN (?) " , @top_view_article.ids)
+    @course_article = Course.joins(:course_articles).where("article_id IN (?) ", @top_view_article.ids)
 
-      # @top_view_article.ids
+    # @top_view_article.ids
   end
 
 
@@ -56,8 +57,6 @@ class CustomersCoursesController < ApplicationController
         else
           redirect_to course_article_path(enroll_course, @article.ids.first)
         end
-
-
       else
         redirect_to course_article_path(enroll_course, course.first.current_article_id)
       end
@@ -72,7 +71,8 @@ class CustomersCoursesController < ApplicationController
   end
 
   def archived_courses
-    @pagy, @archived_courses = pagy(Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true), items: 5)
+    @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true).order("customer_courses.updated_at DESC")
+    @pagy, @archived_courses_paging = pagy(@archived_courses, items: 5)
   end
 
 

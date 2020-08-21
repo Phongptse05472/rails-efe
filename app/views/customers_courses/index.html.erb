@@ -18,7 +18,7 @@
     </ul>
   </div>
   <div class="list-course">
-    <% @my_courses.each do |my_course| %>
+    <% @my_course_paging.each do |my_course| %>
       <div class="per-course">
         <div class="c-left">
           <% if !my_course.image.nil? %>
@@ -33,18 +33,28 @@
             <%= my_course.description %>
           </p>
           <p class="my-name">Author: <%= my_course.author %></p>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
+          <% rate = my_course.rate.to_f %>
+          <% (1..rate).each do |i| %>
+            <% if rate >= i.floor %>
+              <span class="fa fa-star checked"></span>
+            <% end %>
+          <% end %>
+          <% if rate != rate.floor %>
+            <span class="fa fa-star-half-o checked"></span>
+          <% end %>
+          <% (1..(5 - rate.ceil)).each do %>
+            <span class="fa fa-star-o checked"></span>
+          <% end %>
           <span class="enroll_date">Enroll date: <%= my_course.enrollment_date%></span>
         </div>
       </div>
     <% end %>
   </div>
   <div class="paging">
-    <%== pagy_nav(@pagy) %>
+    <% if @my_courses.ids.count > 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
   </div>
 
   <div class="end">

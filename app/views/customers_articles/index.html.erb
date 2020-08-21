@@ -21,7 +21,6 @@
     <% @favor_article.each do |favor_article| %>
       <div class="per-course" id="article_id<%= favor_article.article_id %>">
         <div class="c-left">
-          <%#= image_tag('course_3.jpg') %>
           <% if !favor_article.video.nil? %>
             <%= cl_video_tag(favor_article.video, :effect => "preview", :resource_type => "video") %>
           <% else %>
@@ -44,7 +43,7 @@
     <% end %>
   </div>
   <div class="paging">
-    <% if @favor_article.ids.count.to_int >= 5 %>
+    <% if @favor_articles.ids.count > 5 %>
       <%== pagy_nav(@pagy) %>
     <% else %>
     <% end %>

@@ -147,7 +147,7 @@ body::-webkit-scrollbar {
 .top li a:hover {
     min-width: fit-content;
     /*padding-right: 30px;*/
-    position: fixed;
+    position: absolute;
     z-index: 2;
     background-color: lightgray;
 }
@@ -366,7 +366,6 @@ progress {
 }
 
 .footer_logo_text {
-    font-family: 'Roboto Slab', serif;
     font-size: 36px;
     font-weight: 700;
     line-height: 0.75;

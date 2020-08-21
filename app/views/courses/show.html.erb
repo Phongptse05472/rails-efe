@@ -74,7 +74,7 @@
   </div>
   <div class="buttom">
     <h2>List Article in '<%= @course.name %>'</h2>
-    <% @list_article.each do |a| %>
+    <% @list_article_paging.each do |a| %>
       <div class="per-course">
         <div class="c-left">
           <a href="#">
@@ -95,7 +95,7 @@
     <% end %>
   </div>
   <div class="paging">
-    <% if @list_article.count.to_int >= 5 %>
+    <% if @list_articles.ids.count > 5 %>
       <%== pagy_nav(@pagy) %>
     <% else %>
     <% end %>
