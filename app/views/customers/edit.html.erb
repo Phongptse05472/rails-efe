@@ -54,9 +54,9 @@
                 var link_image = url_link.substring(lastIndex + 1);
                 console.log(link_image)
                 $.ajax({
-                    url: "/update_customer",
+                    url: "/update_img",
                     data: {"img_link": link_image},
-                    type: "PUT",
+                    type: "POST",
                     success: function (data) {
                         console.log(data);
                     }
