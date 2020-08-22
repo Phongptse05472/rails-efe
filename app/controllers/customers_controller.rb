@@ -9,17 +9,25 @@ skip_before_action :verify_authenticity_token
    end
 
    def update_img
-   binding.pry
     @customer = Customer.where("user_id = ?", current_user.id)
     avatar = params[:avatar]
     @customer.update(avatar: avatar)
+      respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end
    end
 
   def edit
+ @customer =Customer.where("user_id = ?", current_user.id)
+  end
+
+  def update
   @customer =Customer.where("user_id = ?", current_user.id)
-  name = params[:name]
-  phone = params[:phone_number]
-  @customer.update(name: name, phone_number: phone)
+    name = params[:name]
+    phone = params[:phone_number]
+    @customer.update(name: name, phone_number: phone)
+    redirect_to "/profile"
+
   end
 
   private

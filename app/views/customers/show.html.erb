@@ -4,13 +4,13 @@
   <%= cloudinary_js_config %>
 </head>
 <div class="right">
-  <div class="profile-page">
+    <div class="profile-page">
     <% @customer.each do |customer| %>
       <div class="avatar">
         <% if !customer.avatar.nil? %>
           <%= cl_image_tag(customer.avatar) %>
         <% else %>
-          <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+          <%= cl_image_tag('evlxmyunwyf4wvqlz0zi.png') %>
         <% end %>
       </div>
       <table>
@@ -33,11 +33,9 @@
             <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
           </td>
         </tr>
-
-
     </table>
     <%=  link_to "update", edit_customer_path(customer) ,class: "logout" %>
-    <a class="logout" href="homepage.html">Log out</a>
+<!--    <a class="logout" href="homepage.html">Log out</a>-->
     <% end %>
 
   </div>

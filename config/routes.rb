@@ -28,9 +28,12 @@ Rails.application.routes.draw do
   post 'courses/:slug/articles/:id', to: 'customers_courses#click_on_article', :as => :click_on_article
   post 'time', to: 'customers_articles#time', :as => :update_time
 
-  post 'update_customer', to: 'customers#edit', :as => :update_customer
+  post 'update_customer', to: 'customers#update', :as => :update_customer
 
   post 'update_img', to: 'customers#update_img', :as => :update_img
+  # post 'update_customer_info/:id', to: 'customers#update_customer_info', :as => :update_customer_info
+
+
 
 
 
