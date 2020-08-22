@@ -10,7 +10,7 @@
       <button id="upload_widget" class="cloudinary-button">Upload avatar</button>
     </div>
     <table>
-      <%= form_tag update_customer_path, method: :put do %>
+      <%= form_tag update_customer_path, method: :post do %>
         <%= hidden_field :customer_id, value: current_user.id %>
         <tr>
           <th>Name</th>
@@ -48,14 +48,14 @@
             uploadPreset: 'yfd3tn0d'
         }, (error, result) => {
             if (!error && result && result.event === "success") {
-                // console.log('Done! Here is the image info: ', result.info.url);
-                var url_link = result.info.url;
+                // console.log('Done! Here is the image info: ', result);
+                var url_link = result.info.secure_url;
                 var lastIndex = url_link.lastIndexOf('/');
                 var link_image = url_link.substring(lastIndex + 1);
-                console.log(link_image)
+                // console.log(link_image)
                 $.ajax({
                     url: "/update_img",
-                    data: {"img_link": link_image},
+                    data: {"avatar": link_image},
                     type: "POST",
                     success: function (data) {
                         console.log(data);

@@ -8,23 +8,18 @@
     <% @customer.each do |customer| %>
       <div class="avatar">
         <% if !customer.avatar.nil? %>
-          <%#= cl_image_tag(customer.avatar) %>
-          <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+          <%= cl_image_tag(customer.avatar) %>
         <% else %>
           <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
         <% end %>
       </div>
       <table>
         <tr>
-          <th>Lmail</th>
+          <th>Email</th>
           <td><input type="text" value="<%= customer.email %>" disabled></td>
         </tr>
         <tr>
           <th>Name</th>
-          <td><input type="text" value="Tuan Anh" disabled></td>
-        </tr>
-        <tr>
-          <th>Email</th>
           <td><input type="text" value="<%= customer.name %>" disabled></td>
         </tr>
         <tr>
