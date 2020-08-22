@@ -43,7 +43,7 @@
             </div>
           </div>
         </td>
-        <td><%= article.is_active %></td>
+        <td style="color: black"><%= article.is_active %></td>
         <td>
           <%= link_to 'Disable/Enable', deactivate_article_path(id: article), method: :post, remote: true, class: "disable" %>
         </td>

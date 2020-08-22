@@ -18,7 +18,7 @@
   <table>
     <tr>
       <th>Courses</th>
-      <th>is_active</th>
+      <th>Active</th>
       <th>Disable</th>
     </tr>
     <tr>
@@ -40,11 +40,10 @@
                 <a href="#"><%= course.name %></a>
               </h2>
               <span><%= course.description %></span>
-              <%#= course.is_active %>
             </div>
           </div>
         </td>
-        <td><%= course.is_active %></td>
+        <td style="color: black" ><%= course.is_active %></td>
         <td>
           <%= link_to 'Disable/Enable', deactivate_course_path(slug: course), method: :post, remote: true, class: "disable" %>
         </td>

@@ -2,9 +2,10 @@ class Admin::CustomersController < Admin::AdminController
 
 
   def index
-    # if @admin.blank?
-    # redirect_to home_path
-    # end
+    if current_user.customer.role_id != 1
+    redirect_to home_path
+    end
+
     @customer = Customer.select("customers.*, users.* ").joins(:user).all
     @pagy, @customer_paging = pagy(@customer, items: 10)
   end

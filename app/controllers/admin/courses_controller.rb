@@ -1,9 +1,9 @@
 class Admin::CoursesController < Admin::AdminController
 
   def index
-    # if @admin.blank?
-    #   redirect_to home_path
-    # end
+    if current_user.customer.role_id != 1
+      redirect_to home_path
+    end
     @course = Course.all.order(created_at: :desc)
     @pagy, @course_paging = pagy(@course, items: 10)
   end
