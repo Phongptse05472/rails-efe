@@ -31,7 +31,12 @@
           <i class="fa fa-bell"></i>
         </a>
         <%= link_to profile_path do %>
-          <%= image_tag('profile.png') %>
+          <% customer = current_user.customer %>
+          <% if !customer.avatar.nil? %>
+            <%= cl_image_tag(customer.avatar) %>
+          <% else %>
+            <%= image_tag('profile.png') %>
+          <% end %>
           <a href="" class="profile"></a>
         <% end %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>

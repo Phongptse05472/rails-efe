@@ -10,7 +10,7 @@
         <% if !customer.avatar.nil? %>
           <%= cl_image_tag(customer.avatar) %>
         <% else %>
-          <%= cl_image_tag('evlxmyunwyf4wvqlz0zi.png') %>
+          <%= image_tag('profile.png') %>
         <% end %>
       </div>
       <table>
@@ -34,7 +34,7 @@
           </td>
         </tr>
     </table>
-    <%=  link_to "update", edit_customer_path(customer) ,class: "logout" %>
+    <%=  link_to "Update profile", edit_customer_path(customer) ,class: "logout" %>
 <!--    <a class="logout" href="homepage.html">Log out</a>-->
     <% end %>
 

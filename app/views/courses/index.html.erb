@@ -16,7 +16,7 @@
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag("course_1.jpg", alt: "") %>
+              <%= image_tag ("#{rand(17)}.png") %>
             </div>
             <div class="title">
               <div class="name">
@@ -68,7 +68,7 @@
               <div class="name">
                 <%= link_to rate_course.name, rate_course %>
               </div>
-              <p><%= rate_course.author %></p>
+              <p><%= image_tag ("#{rand(17)}.png") %></p>
               <script>
                   $(function () {
                       $('.stars').stars();
@@ -101,7 +101,7 @@
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag("2.jpg", alt: "") %>
+              <%= image_tag ("#{rand(17)}.png") %>
             </div>
             <div class="title">
               <div class="name">
@@ -132,7 +132,8 @@
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag("2.jpg", alt: "") %>
+              <%#= image_tag("profile.png", alt: "") %>
+              <%= image_tag ("#{rand(17)}.png") %>
             </div>
             <div class="title">
               <div class="name">
