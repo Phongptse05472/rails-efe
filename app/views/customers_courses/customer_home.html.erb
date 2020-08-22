@@ -1,6 +1,6 @@
 <%= content_for :page_title, 'User home' %>
 <div #app1 class="right">
-  <h1 id="your_course">Your Course</h1>
+  <h1 id="your_course">Your Courses</h1>
   <div id="exampleSlider">
     <div id="app1" class="MS-content">
       <% @my_courses_home.each do |my_courses| %>
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <h1>Group</h1>
+  <h1>Groups</h1>
   <div id="topic" class="topic">
     <% @topic.each do |topic| %>
       <%= link_to topic.name, topic_path(topic.id) %>
@@ -43,7 +43,7 @@
   <h1>Recommend for you</h1>
   List course here
 
-  <h1>Hot course</h1>
+  <h1>Hot courses</h1>
   <div id="exampleSlider1">
     <div class="MS-content">
       <% @hot_course.each do |course| %>
@@ -59,16 +59,16 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this)"  aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this)"  aria-hidden="true"></i>
               <% end %>
             <% end %>
           </div>
@@ -108,7 +108,7 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-  <h1>Top course</h1>
+  <h1>Top courses</h1>
   <div id="exampleSlider2">
     <div class="MS-content">
       <% @rate_course.each do |course| %>
@@ -123,16 +123,16 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this)"  aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this)"  aria-hidden="true"></i>
               <% end %>
             <% end %>
 
@@ -177,7 +177,7 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-  <h1>New course</h1>
+  <h1>New courses</h1>
   <div id="exampleSlider3">
     <div class="MS-content">
       <% @new_course.each do |course| %>
@@ -193,16 +193,16 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this)"  id="course_archived<%= course.id %>" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o"  onclick="bookmark(this)"  aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" onclick="bookmark(this)"  aria-hidden="true"></i>
               <% end %>
             <% end %>
 
@@ -248,7 +248,7 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-  <h1>Top view article</h1>
+  <h1>Top view articles</h1>
   <div id="exampleSlider4">
     <div id="topView" class="MS-content">
       <% @top_view_article.each do |article| %>
@@ -259,19 +259,18 @@
             <% if customer_article.exists? %>
               <% if customer_article.first.is_favor == true %>
                 <%= link_to update_favor_path(article.id), method: :post, remote: true do %>
-                  <i style="color: #14bdee" onclick="heart(this,123)" class="fa fa-heart" aria-hidden="true"></i>
+                  <i style="color: #14bdee" onclick="heart(this)" class="fa fa-heart" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_favor_path(article.id), method: :post, remote: true do %>
-                  <i style="color: #14bdee" onclick="heart(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
+                  <i style="color: #14bdee" onclick="heart(this)" class="fa fa-heart-o" aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to add_to_favor_path(article.id), method: :post do %>
-                <i style="color: #14bdee" onclick="heart(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
+                <i style="color: #14bdee" onclick="heart(this)" class="fa fa-heart-o" aria-hidden="true"></i>
               <% end %>
             <% end %>
-
           </div>
           <div class="author">
             <div class="icon">
@@ -295,46 +294,22 @@
   </div>
 </div>
 <script>
-    function bookmark(bookmark, courseID) {
+    function bookmark(bookmark) {
         var x = bookmark;
         if (x.className === "fa fa-bookmark") {
             x.className = "fa fa-bookmark-o";
         } else {
             x.className = "fa fa-bookmark";
         }
-        var app1 = new Vue({
-            el: '#app1',
-            mounted: function () {
-                axios.get('/archive_courses/', {
-                    params: {
-                        num: courseID
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-        });
     }
 
-    function heart(heart, courseID) {
+    function heart(heart) {
         var x = heart;
         if (x.className === "fa fa-heart") {
             x.className = "fa fa-heart-o";
         } else {
             x.className = "fa fa-heart";
         }
-        var app1 = new Vue({
-            el: '#app1',
-            mounted: function () {
-                axios.get('/archive_courses/', {
-                    params: {
-                        num: courseID
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-        });
     }
 </script>
 

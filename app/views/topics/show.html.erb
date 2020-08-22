@@ -1,13 +1,3 @@
-<head>
-  <meta charset='utf-8'>
-  <title>Course of topic</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- CSS -->
-  <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-</head>
-
-<body>
 <div class="right">
   <h1>
     Group: <%= @topic.name %>
@@ -73,7 +63,6 @@
   <div class="end">
   </div>
 </div>
-</body>
 
 <script>
     function bookmark(bookmark, courseID) {
@@ -83,17 +72,6 @@
         } else {
             x.className = "fa fa-bookmark";
         }
-        var app1 = new Vue({
-            el: '#app1',
-            mounted: function () {
-                axios.get('/archive_courses/', {
-                    params: {
-                        num: courseID
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-        });
     }
 </script>
+ 

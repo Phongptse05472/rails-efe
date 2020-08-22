@@ -106,16 +106,16 @@
               <% if article.exists? %>
                 <% if article.first.is_favor == true %>
                   <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
-                    <i style="" onclick="bookmark(this,123)" class="fa fa-heart" id="article_id<%= a.id %>" aria-hidden="true"></i>
+                    <i style="" onclick="bookmark(this)" class="fa fa-heart" id="article_id<%= a.id %>" aria-hidden="true"></i>
                   <% end %>
                 <% else %>
                   <%= link_to update_favor_path(a.id), method: :post, remote: true do %>
-                    <i style="" onclick="bookmark(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
+                    <i style="" onclick="bookmark(this)" class="fa fa-heart-o" aria-hidden="true"></i>
                   <% end %>
                 <% end %>
               <% else %>
                 <%= link_to add_to_favor_path(a.id), method: :post do %>
-                  <i style="" onclick="bookmark(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
+                  <i style="" onclick="bookmark(this)" class="fa fa-heart-o" aria-hidden="true"></i>
                 <% end %>
               <% end %>
               <div class="l-title">
@@ -179,18 +179,6 @@
         } else {
             x.className = "fa fa-heart";
         }
-        var app1 = new Vue({
-            el: '#app1',
-            mounted: function () {
-                axios.get('/archive_courses/', {
-                    params: {
-                        num: courseID
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-        });
     }
 </script>
 
@@ -202,18 +190,6 @@
         } else {
             x.className = "fa fa-check";
         }
-        var app1 = new Vue({
-            el: '#app1',
-            mounted: function () {
-                axios.get('/archive_courses/', {
-                    params: {
-                        num: courseID
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-        });
     }
 </script>
 <script type="text/javascript" charset="utf-8">
