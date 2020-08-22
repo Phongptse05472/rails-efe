@@ -23,19 +23,21 @@
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
               <p><%= course.author %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star-half-o checked"></span>
-              <span class="fa fa-star-o checked"></span>
+              <% rate = course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
               <span>(<%= course.number_enrollment %> enroll)</span>
             </div>
           </div>
@@ -74,12 +76,18 @@
                       $('.stars').stars();
                   });
               </script>
-
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
+              <% rate = rate_course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
               <span>  (<%= rate_course.number_enrollment %> enroll)</span>
             </div>
           </div>
@@ -140,16 +148,18 @@
                 <%= link_to free_course.name, course_path(free_course.slug) %>
               </div>
               <p><%= free_course.author %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
+              <% rate = free_course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
               <span>(<%= free_course.number_enrollment %> enroll)</span>
             </div>
           </div>

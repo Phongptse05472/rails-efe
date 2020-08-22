@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :left_side_data
+  rescue_from Pagy::OverflowError, with: :redirect_to_last_page
+
 
   def logged_in?
     !!current_user.present?
@@ -27,6 +29,9 @@ class ApplicationController < ActionController::Base
     else
       @left_course = nil
     end
-
   end
+
+  def redirect_to_last_page(exception)
+    redirect_to url_for(page: exception.pagy.last), notice: "Page ##{params[:page]} is overflowing. Showing page #{exception.pagy.last} instead."
+    end
 end

@@ -2,7 +2,7 @@ class CustomersArticlesController < ApplicationController
   skip_before_action :verify_authenticity_token
   #favor article page
   def index
-    @favor_articles = Article.select("articles.*, customer_articles.*").joins(:customer_articles).where('customer_id = ? AND is_favor = ?', current_user.id, true)
+    @favor_articles = Article.select("articles.*, customer_articles.*").joins(:customer_articles).where('customer_id = ? AND is_favor = ?', current_user.id, true).order("customer_articles.updated_at DESC")
     @pagy, @favor_article = pagy(@favor_articles, items: 5)
     @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , @favor_article.ids)
   end

@@ -57,8 +57,6 @@ class CustomersCoursesController < ApplicationController
         else
           redirect_to course_article_path(enroll_course, @article.ids.first)
         end
-
-
       else
         redirect_to course_article_path(enroll_course, course.first.current_article_id)
       end
@@ -73,7 +71,7 @@ class CustomersCoursesController < ApplicationController
   end
 
   def archived_courses
-    @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true)
+    @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true).order("customer_courses.updated_at DESC")
     @pagy, @archived_courses_paging = pagy(@archived_courses, items: 5)
   end
 
