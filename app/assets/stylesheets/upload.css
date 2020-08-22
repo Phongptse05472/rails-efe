@@ -17,7 +17,7 @@
     margin-right: 20px;
 }
 
-.right button {
+.right .submit {
     background-color: #14bdee;
     font-weight: bold;
     border-radius: 5px;
