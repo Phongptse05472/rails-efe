@@ -6,35 +6,43 @@
 
 <div class="right">
   <div class="profile-page">
-    <div class="avatar">
-      <button id="upload_widget" class="cloudinary-button">Upload avatar</button>
-    </div>
-    <table>
-      <%= form_tag update_customer_path, method: :put do %>
-        <%= hidden_field :customer_id, value: current_user.id %>
-        <tr>
-          <th>Name</th>
-          <%= text_field_tag :name %>
-        </tr>
-        <br>
-        <tr>
-          <th>Phone number</th>
-          <%= text_field_tag :phone_number %>
-        </tr>
-        <tr>
-          <th>Status</th>
-          <td>
-            Active
-            <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
-          </td>
-        </tr>
-        <%= submit_tag 'Update' %>
+    <div class="avatar avatar1">
+      <% @customer.each do |customer| %>
+        <% if !customer.avatar.nil? %>
+          <%= cl_image_tag(customer.avatar) %>
+        <% else %>
+          <%= image_tag('profile.png') %>
+        <% end %>
+        </div>
+        <a id="upload_widget" class="cloudinary-button change_button">Change image</a>
+        <%= form_tag update_customer_path, method: :post do %>
+          <table>
+            <tr>
+              <th>Name</th>
+              <td>
+                <%= text_field_tag :name, customer.name %>
+              </td>
+            </tr>
+            <br>
+            <tr>
+              <th>Phone number</th>
+              <td>
+                <%= text_field_tag :phone_number, customer.phone_number %>
+              </td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>
+                Active
+                <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
+              </td>
+            </tr>
+        <% end %>
+        </table>
+        <%= button_tag 'Update', class: "logout logout1" %>
       <% end %>
-
-    </table>
-    <a class="logout" href="homepage.html">Log out</a>
-  </div>
-
+      <button type="button" class="logout" onclick="window.history.back();">Cancel</button>
+      </div>
   <div class="end">
   </div>
 </div>
@@ -48,15 +56,13 @@
             uploadPreset: 'yfd3tn0d'
         }, (error, result) => {
             if (!error && result && result.event === "success") {
-                // console.log('Done! Here is the image info: ', result.info.url);
-                var url_link = result.info.url;
+                var url_link = result.info.secure_url;
                 var lastIndex = url_link.lastIndexOf('/');
                 var link_image = url_link.substring(lastIndex + 1);
-                console.log(link_image)
                 $.ajax({
-                    url: "/update_customer",
-                    data: {"img_link": link_image},
-                    type: "PUT",
+                    url: "/update_img",
+                    data: {"avatar": link_image},
+                    type: "POST",
                     success: function (data) {
                         console.log(data);
                     }

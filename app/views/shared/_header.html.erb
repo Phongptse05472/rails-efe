@@ -20,7 +20,6 @@
         <%= image_tag("search.png") %>
       </button>
     <% end %>
-
     <% if !current_user.present? %>
       <div class="user">
         <a class="login" href="/users/sign_in">Sign in</a>
@@ -32,10 +31,14 @@
           <i class="fa fa-bell"></i>
         </a>
         <%= link_to profile_path do %>
-          <%= image_tag('1.jpg') %>
+          <% customer = current_user.customer %>
+          <% if !customer.avatar.nil? %>
+            <%= cl_image_tag(customer.avatar, :height=>100, :width=>50, :crop=>"fill")  %>
+          <% else %>
+            <%= image_tag('profile.png') %>
+          <% end %>
           <a href="" class="profile"></a>
         <% end %>
-
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       </div>
     <% end %>

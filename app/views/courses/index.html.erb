@@ -16,7 +16,7 @@
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag("course_1.jpg", alt: "") %>
+              <%= image_tag ("#{rand(17)}.png") %>
             </div>
             <div class="title">
               <div class="name">
@@ -70,8 +70,12 @@
               <div class="name">
                 <%= link_to rate_course.name, rate_course %>
               </div>
-              <p><%= rate_course.author %></p>
-
+              <p><%= image_tag ("#{rand(17)}.png") %></p>
+              <script>
+                  $(function () {
+                      $('.stars').stars();
+                  });
+              </script>
               <% rate = rate_course.rate.to_f %>
               <% (1..rate).each do |i| %>
                 <% if rate >= i.floor %>
@@ -105,7 +109,7 @@
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag("2.jpg", alt: "") %>
+              <%= image_tag ("#{rand(17)}.png") %>
             </div>
             <div class="title">
               <div class="name">
@@ -129,14 +133,15 @@
         <div id="item" class="item">
           <div class="thumbnai">
             <% if ! free_course.image.nil? %>
-              <%= cl_image_tag(course.image) %>
+              <%= cl_image_tag(free_course.image) %>
             <% else %>
               <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
             <% end %>
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag("2.jpg", alt: "") %>
+              <%#= image_tag("profile.png", alt: "") %>
+              <%= image_tag ("#{rand(17)}.png") %>
             </div>
             <div class="title">
               <div class="name">

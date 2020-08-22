@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_course, only: [:show]
-
   def index
     if current_user.present?
       redirect_to user_home_path
     end
+
     @course = Course.order(number_enrollment: :desc).limit(20)
     @rate_course = Course.order(rate: :desc).limit(20)
     @free_course = Course.where(is_free: true).limit(20)
