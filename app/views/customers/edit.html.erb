@@ -6,20 +6,26 @@
 
 <div class="right">
   <div class="profile-page">
-    <div class="avatar">
-      <button id="upload_widget" class="cloudinary-button">Upload avatar</button>
+    <div class="avatar avatar1">
+      <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
     </div>
+    <a id="upload_widget" class="cloudinary-button change_button">Change image</a>
+<!--    <button id="upload_widget" class="cloudinary-button">Upload avatar</button>-->
+    <%= form_tag update_customer_path, method: :post do %>
     <table>
-      <%= form_tag update_customer_path, method: :post do %>
         <%= hidden_field :customer_id, value: current_user.id %>
         <tr>
           <th>Name</th>
-          <%= text_field_tag :name %>
+         <td>
+           <%= text_field_tag :name,id: 'name' %>
+         </td>
         </tr>
         <br>
         <tr>
           <th>Phone number</th>
-          <%= text_field_tag :phone_number %>
+          <td>
+            <%= text_field_tag :phone_number,id: 'phone' %>
+          </td>
         </tr>
         <tr>
           <th>Status</th>
@@ -28,11 +34,14 @@
             <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
           </td>
         </tr>
-        <%= submit_tag 'Update' %>
-      <% end %>
+
+
 
     </table>
-    <a class="logout" href="homepage.html">Log out</a>
+      <%= submit_tag 'Update',class:"logout logout1" %>
+
+  <% end %>
+<!--    <a class="logout" href="homepage.html">Log out</a>-->
   </div>
 
   <div class="end">
