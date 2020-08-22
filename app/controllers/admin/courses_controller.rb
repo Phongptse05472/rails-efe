@@ -15,7 +15,5 @@ class Admin::CoursesController < Admin::AdminController
       format.js { render inline: "location.reload();" }
     end
   end
-
-
 end
 
