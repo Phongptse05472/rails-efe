@@ -58,7 +58,7 @@
     padding: 5px 12px;
     border-radius: 5px;
     text-decoration: none;
-    background-color: #2bc3cc;
+    background-color: red;
     font-weight: bold;
     color: white;
     border: 1px solid #2bc3cc;
@@ -69,13 +69,14 @@
     display: none;
     padding: 5px 25px;
     cursor: none;
-    background-color: #2bc3cc !important;
+    background-color: red !important;
     border-radius: 5px;
     font-weight: bold;
     color: white;
     border: 1px solid #2bc3cc;
     line-height: 76px;
 }
+
 .paging .active{
     padding: 5px 25px;
     border-radius: 5px;
@@ -116,7 +117,22 @@
     outline: white;
     margin-bottom: 20px;
 }
-
+.enable{
+    padding: 3px 10px;
+    background-color: #2bc3cc !important;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 2px;
+    color: white;
+}
+.disable{
+    padding: 3px 10px;
+    background-color: red !important;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 2px;
+    color: white;
+}
 .right select option {
     padding-top: 10px;
     height: 20px;
