@@ -28,4 +28,5 @@ class Article < ApplicationRecord
   scope :by_id, -> (id) { where("id= ?", id)}
 
   mount_uploader :video, ImageUploader
+  accepts_nested_attributes_for :skills, allow_destroy: true
 end

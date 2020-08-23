@@ -50,9 +50,17 @@ class Course < ApplicationRecord
   has_many :customer_courses
   has_many :customers, through: :customer_courses
 
-  has_many :course_preskills
-  accepts_nested_attributes_for :articles
+  has_many :course_groups
+  has_many :groups, through: :course_groups
   
+  
+  has_many :course_preskills
+  has_many :skills, through: :course_preskills
+  
+  accepts_nested_attributes_for :articles
+  accepts_nested_attributes_for :course_groups
+  accepts_nested_attributes_for :course_preskills
+
   def update_slug
     self.slug = name.parameterize
   end

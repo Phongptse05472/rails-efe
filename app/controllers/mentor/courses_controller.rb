@@ -1,6 +1,7 @@
 class Mentor::CoursesController < Mentor::MentorController
   include Wicked::Wizard
-  before_action :load_course, execpt: :index
+  before_action :load_course, execpt: :new
+
   steps :over_view, :create_content, :comfirmed
   # before_action :set_course
   def index
@@ -13,6 +14,10 @@ class Mentor::CoursesController < Mentor::MentorController
   end
 
   def new; end
+
+  def show
+    render_wizard
+  end
 
   def update  
     @course.assign_attributes course_params    
@@ -32,8 +37,7 @@ class Mentor::CoursesController < Mentor::MentorController
 
   private
   def course_params
-    params.require(:course).permit :image, :name,
-      :description, articles_attributes: [:title, :description, :video]
+    params.require(:course).permit!
   end
 
   def load_course

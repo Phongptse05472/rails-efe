@@ -4,5 +4,10 @@ class Skill < ApplicationRecord
 
   has_many :course_preskills
 
+  class << self
+    def name_and_id
+      pluck :name, :id
+    end
+  end
 end
 
