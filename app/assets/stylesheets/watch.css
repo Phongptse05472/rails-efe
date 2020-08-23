@@ -30,7 +30,9 @@
     display: flex;
     margin-bottom: 5px;
 }
-
+.l-left{
+    position: relative;
+}
 .l-left {
     width: 35%;
     margin-right: 10px;
@@ -39,6 +41,8 @@
 
 .l-left video {
     width: 100%;
+    height: 90px;
+    border-radius: 5px;
 }
 
 .l-left img {
@@ -273,4 +277,11 @@ l-title i{
 
 .user-input form button {
     float: right;
+}
+.fa-check-circle{
+    position: absolute;
+    color: #2bc3cc;
+    left: 85%;
+    display: none;
+    font-size: 20px;
 }
