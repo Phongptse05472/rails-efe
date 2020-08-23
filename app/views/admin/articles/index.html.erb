@@ -16,8 +16,7 @@
   <table>
     <tr>
       <th>Video</th>
-      <th>is_Active</th>
-<!--      <th>Disable</th>-->
+      <th>Active</th>
     </tr>
     <% @article_paging.each do |article| %>
       <tr>
@@ -43,7 +42,6 @@
             </div>
           </div>
         </td>
-<!--        <td style="color: black"><%#= article.is_active %></td>-->
         <td>
           <%if article.is_active%>
             <%= link_to 'Disable', deactivate_article_path(id: article), method: :post, remote: true, class: "disable" %>
@@ -68,7 +66,6 @@
         document.getElementById('input').value =
             document.getElementById('input').value.trim();
     }
-
     function checkInput() {
         if (document.getElementById('input').value.trim() == "") {
             return false;
