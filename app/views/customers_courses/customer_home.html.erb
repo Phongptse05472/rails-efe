@@ -146,11 +146,6 @@
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
               <p><%= course.author %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>

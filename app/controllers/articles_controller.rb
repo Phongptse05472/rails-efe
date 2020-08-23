@@ -11,13 +11,11 @@ class ArticlesController < ApplicationController
 
     @course = Course.friendly.find(params[:course_slug])
     #right side - List article in course
-    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id)
+    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
     @list_article_viewed= CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_article_right.ids)
     @index_list_article = @list_article_right.pluck(:id).index(@article_detail.ids.first)
 
-    @list_article_viewed= CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_article_right.ids)
-
-    table2 = @list_article_right.where(id: @list_article_viewed.pluck(:article_id))
+    @list_article_viewed = CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_article_right.ids)
 
     @comment = Comment.new
     @comment_user = Comment.where(:article_id => @article.id).custom_display

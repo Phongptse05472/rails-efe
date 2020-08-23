@@ -7,9 +7,7 @@
 <div class="main-watch">
   <div class="watch">
     <% @article_detail.each do |article| %>
-
       <%= cl_video_tag(article.video, :controls => true) %>
-
       <div class="w-title">
         <h2>
           <%= article.title %>
@@ -17,7 +15,6 @@
         <p>
           <%= article.view_number %> view • <%= article.created_at.to_date %>
         </p>
-
       </div>
       <div class="w-description">
         <div class="w-icon">
