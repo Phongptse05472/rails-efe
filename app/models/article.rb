@@ -27,4 +27,5 @@ class Article < ApplicationRecord
 
   scope :by_id, -> (id) { where("id= ?", id)}
 
+  mount_uploader :video, ImageUploader
 end

@@ -1,19 +1,19 @@
 ---
 development:
-  cloud_name: dolv9j3dz
-  api_key: '233187518769819'
-  api_secret: sMBq-llWE6qtntahU0q-w3igQ2E
+  cloud_name: da84twcxv
+  api_key: '729392473934592'
+  api_secret: fxBROXJ698D0ipJ6VAgRhUAwPMQ
   enhance_image_tag: true
   static_file_support: false
 production:
-  cloud_name: dolv9j3dz
-  api_key: '233187518769819'
-  api_secret: sMBq-llWE6qtntahU0q-w3igQ2E
+  cloud_name: da84twcxv
+  api_key: '729392473934592'
+  api_secret: fxBROXJ698D0ipJ6VAgRhUAwPMQ
   enhance_image_tag: true
   static_file_support: true
 test:
-  cloud_name: dolv9j3dz
-  api_key: '233187518769819'
-  api_secret: sMBq-llWE6qtntahU0q-w3igQ2E
+  cloud_name: da84twcxv
+  api_key: '729392473934592'
+  api_secret: fxBROXJ698D0ipJ6VAgRhUAwPMQ
   enhance_image_tag: true
   static_file_support: false

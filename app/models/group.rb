@@ -24,5 +24,11 @@ class Group < ApplicationRecord
     name_changed? || super
   end
 
+  class << self
+    def name_and_id
+      pluck :name, :id
+    end
+  end
+
 end
 

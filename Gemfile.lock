@@ -267,11 +267,7 @@ GEM
       tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
-<<<<<<< HEAD
     unf_ext (0.0.7.7-x64-mingw32)
-=======
-    unf_ext (0.0.7.7)
->>>>>>> mentor create overviewcourse simple
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.3)
