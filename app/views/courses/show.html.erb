@@ -91,6 +91,7 @@
           <%= a.description %>
         </span>
         </div>
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
       </div>
     <% end %>
   </div>
@@ -104,6 +105,15 @@
   </div>
 </div>
 <script>
+    var count = -1;
+    <% @list_articles.each do | full | %>
+    count++;
+    <% @list_article_viewed.each do |view| %>
+    <% if view.article_id == full.id %>
+    document.querySelectorAll('.fa-check-circle')[count].style.display = 'inline-block';
+    <% end %>
+    <% end %>
+    <% end %>
     function showmore() {
         if (document.getElementById('des').style.webkitLineClamp == "inherit") {
             document.getElementById('des').style.webkitLineClamp = "12";
