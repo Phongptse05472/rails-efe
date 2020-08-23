@@ -6,7 +6,7 @@ class Admin::CustomersController < Admin::AdminController
     redirect_to home_path
     end
 
-    @customer = Customer.select("customers.*, users.* ").joins(:user).all
+    @customer = Customer.select("customers.*, users.* ").joins(:user).all.where("role_id = 1 OR role_id = 2")
     @pagy, @customer_paging = pagy(@customer, items: 10)
   end
 
