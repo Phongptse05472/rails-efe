@@ -8,7 +8,7 @@
   <div class="watch">
     <% @article_detail.each do |article| %>
 
-  <%= cl_video_tag(article.video, :controls => true) %>
+      <%= cl_video_tag(article.video, :controls => true) %>
 
       <div class="w-title">
         <h2>
@@ -153,23 +153,24 @@
 <script>
     var index = <%= @index_list_article.to_int %>;
     document.getElementsByTagName('video')[0].currentTime = <%= @cus_article.first.time_point %>;
-    // document.querySelectorAll('.fa-check-circle')[3].style.display = 'inline-block';
-    // document.querySelectorAll('.fa-check-circle')[4].style.display = 'inline-block';
-    // document.querySelectorAll('.fa-check-circle')[5].style.display = 'inline-block';
-    <% @list_article_viewed.each do |a,index| %>
-        <%if a.is_viewed%>
-              document.querySelectorAll('.fa-check-circle')[index].style.display = 'inline-block';
-        <% end %>
+    var count = -1;
+    <% @list_article_right.each do | full | %>
+    count++;
+    <% @list_article_viewed.each do |view| %>
+    <% if view.article_id == full.id %>
+    document.querySelectorAll('.fa-check-circle')[count].style.display = 'inline-block';
+    <% end %>
+    <% end %>
     <% end %>
     setInterval(function () {
         var currentTime = document.getElementsByTagName('video')[0].currentTime;
         var total = document.getElementsByTagName('video')[0].duration;
         var calculate = (currentTime / total) * 100;
         var isViewed = false;
-        if(calculate>=90){
+        if (calculate >= 90) {
             document.querySelectorAll('.fa-check-circle')[index].style.display = 'inline-block';
-          }
-        }, 1000);
+        }
+    }, 1000);
     document.getElementsByTagName('video')[0].onpause = function () {
         var currentTime = this.currentTime;
         var total = this.duration;
@@ -177,7 +178,7 @@
         var isViewed = false;
         if (calculate >= 90) {
             isViewed = true;
-        }else
+        } else
             isViewed = false
         $.ajax({
             url: "/time",
