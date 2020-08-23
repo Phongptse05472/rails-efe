@@ -54,7 +54,6 @@
             <% else %>
               <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
             <% end %>
-
             <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
@@ -146,11 +145,6 @@
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
               <p><%= course.author %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>

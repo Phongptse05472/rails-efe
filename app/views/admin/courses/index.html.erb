@@ -1,1 +1,62 @@
-admin-course
+<head>
+  <%= stylesheet_link_tag 'manager_video', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="right">
+  <h1>
+    Course management
+  </h1>
+  <div class="search managerAccount">
+    <form action="#">
+      <input type="text" placeholder="Search course">
+      <button type="submit">
+        <%= image_tag("search.png") %>
+      </button>
+    </form>
+  </div>
+  <table>
+    <tr>
+      <th>Courses</th>
+      <th>Active</th>
+      <th>Disable</th>
+    </tr>
+    <tr>
+
+      <% @course_paging.each do |course| %>
+        <td>
+          <div class="per-course">
+            <div class="c-left">
+              <a href="#">
+                <% if !course.image.nil? %>
+                  <%= cl_image_tag(course.image) %>
+                <% else %>
+                  <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+                <% end %>
+              </a>
+            </div>
+            <div class="c-right">
+              <h2>
+                <a href="#"><%= course.name %></a>
+              </h2>
+              <span><%= course.description %></span>
+            </div>
+          </div>
+        </td>
+        <td style="color: black" ><%= course.is_active %></td>
+        <td>
+          <%= link_to 'Disable/Enable', deactivate_course_path(slug: course), method: :post, remote: true, class: "disable" %>
+        </td>
+        </tr>
+      <% end %>
+
+      </table>
+
+  <div class="paging">
+    <% if @course.ids.count > 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
+  </div>
+
+  <div class="end">
+  </div>
+</div>

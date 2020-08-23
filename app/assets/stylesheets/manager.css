@@ -1,18 +1,23 @@
 .right table {
-    width: 60%;
+    min-width: 90%;
+    color: #454d55;
+    background-color: white;
+    border-collapse: collapse;
+}
+.right{
+    padding-left: 5%;
+
+}
+.right table tr th {
     color: white;
     background-color: #454d55;
-    /* border-bottom: 1px solid lightslategray; */
-}
-
-.right table tr {
-    border-bottom: 1px solid springgreen;
-    border: 1px solid springgreen;
 }
 
 .right td {
     /* border-bottom: 1px solid white; */
     padding: 0;
+    border-bottom: 1px solid lightslategray;
+
 }
 
 .right tr td:first-child {
@@ -43,6 +48,7 @@
     padding: 0;
 }
 
+
 .paging {
     height: 100px;
     display: block;
@@ -59,6 +65,28 @@
     line-height: 76px;
 }
 
+.disabled{
+    display: none;
+    padding: 5px 25px;
+    cursor: none;
+    background-color: #2bc3cc !important;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #2bc3cc;
+    line-height: 76px;
+}
+.paging .active{
+    padding: 5px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: white;
+    font-weight: bold;
+    color: #2bc3cc;
+    border: 1px solid #2bc3cc;
+    line-height: 76px;
+}
+
 .paging a:first-child {
     margin-right: 5px;
     padding: 5px 25px;
@@ -66,6 +94,15 @@
 
 .paging a:last-child {
     padding: 5px 25px;
+}
+.paging a:first-child:hover {
+    padding: 6px 25px;
+    background-color: #1f9da3;
+}
+
+.paging a:last-child:hover {
+    padding: 6px 25px;
+    background-color: #1f9da3;
 }
 
 .right select {

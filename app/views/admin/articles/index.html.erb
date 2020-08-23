@@ -1,1 +1,61 @@
-admin-article page
+<head>
+  <%= stylesheet_link_tag 'manager_video', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="right">
+  <h1>
+    Article management
+  </h1>
+  <div class="search managerAccount">
+    <form action="#">
+      <input type="text" placeholder="Search article">
+      <button type="submit">
+        <%= image_tag("search.png") %>
+      </button>
+    </form>
+  </div>
+  <table>
+    <tr>
+      <th>Video</th>
+      <th>is_Active</th>
+      <th>Disable</th>
+    </tr>
+    <% @article_paging.each do |article| %>
+      <tr>
+        <td>
+          <div class="per-course">
+            <div class="c-left">
+              <a href="#">
+                <% if !article.video.nil? %>
+                  <%= cl_video_tag(article.video, :effect => "preview", :resource_type => "video") %>
+                <% else %>
+                  <%= image_tag('japanese.png') %>
+                <% end %>
+              </a>
+            </div>
+            <div class="c-right">
+              <h2>
+                <a href="#">
+                  <%= article.title %>
+                </a>
+              </h2>
+              <span><%= article.description %></span>
+              <p><%= article.view_number %> view • Created at: <%= article.created_at.to_date %></p>
+            </div>
+          </div>
+        </td>
+        <td style="color: black"><%= article.is_active %></td>
+        <td>
+          <%= link_to 'Disable/Enable', deactivate_article_path(id: article), method: :post, remote: true, class: "disable" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="paging">
+    <% if @article.ids.count > 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
+  </div>
+  <div class="end">
+  </div>
+</div>

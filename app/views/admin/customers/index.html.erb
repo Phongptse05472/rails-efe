@@ -1,1 +1,58 @@
-admin-customer page
+<head>
+  <%= stylesheet_link_tag 'manager', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="right">
+  <h1>
+    Account management
+  </h1>
+  <div class="search managerAccount">
+    <form action="#">
+      <input type="text" placeholder="Search account">
+      <button type="submit">
+        <%= image_tag("search.png") %>
+      </button>
+    </form>
+  </div>
+  <table>
+    <tr>
+      <th>Account ID</th>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>is_Active</th>
+      <th>Created_at</th>
+      <th>Disable</th>
+    </tr>
+    <% @customer.each do |customer| %>
+      <tr>
+        <td><%=customer.id%></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.name %></td>
+        <%if customer.role_id == 1 %>
+          <td>Admin</td>
+          <% elsif customer.role_id == 2%>
+          <td>Mentor</td>
+          <% else  %>
+          <td>Student</td>
+          <% end %>
+        <td><%= customer.is_active %></td>
+        <td><%= customer.created_at %></td>
+        <td>
+          <%= link_to "Disable/Active", deactivate_path(id: customer) ,method: :post,remote: true, class: "disable" %>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
+
+  <div class="paging">
+
+    <% if @customer.ids.count > 10 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
+  </div>
+  <div class="end">
+  </div>
+</div>
+

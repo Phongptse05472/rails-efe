@@ -1,0 +1,40 @@
+<div id="header">
+  <div class="menu">
+    <div class="logo">
+      <% if !current_user.present? %>
+        <a href="/home">
+          <%= image_tag("logo_1.PNG") %>
+          <span>Edfective</span><span style="color: #14bdee;">ly</span>
+        </a>
+      <% else %>
+        <a href="/user-home">
+          <%= image_tag("logo_1.PNG") %>
+          <span>Edfective</span><span style="color: #14bdee;">ly</span>
+        </a>
+      <% end %>
+    </div>
+
+    <form>
+
+    </form>
+
+    <% if !current_user.present? %>
+      <div class="user">
+        <a class="login" href="/users/sign_in">Sign in</a>
+        <a class="signup" href="/users/sign_up">Sign up</a>
+      </div>
+    <% else %>
+      <div class="user">
+        <a href="#">
+          <i class="fa fa-bell"></i>
+        </a>
+        <%= link_to profile_path do %>
+          <%= image_tag('1.jpg') %>
+          <a href="" class="profile"></a>
+        <% end %>
+
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      </div>
+    <% end %>
+  </div>
+</div>
