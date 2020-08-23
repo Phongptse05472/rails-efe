@@ -4,7 +4,7 @@ class Admin::CoursesController < Admin::AdminController
     if current_user.customer.role_id != 1
       redirect_to home_path
     end
-    @course = Course.all.order(created_at: :desc)
+    @course = Course.all.order(created_at: :desc).order(id: :asc)
     @pagy, @course_paging = pagy(@course, items: 10)
   end
 
