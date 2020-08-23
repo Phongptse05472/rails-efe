@@ -106,7 +106,7 @@
 </div>
 <script>
     var count = -1;
-    <% @list_articles.each do | full | %>
+    <% @list_article_paging.each do | full | %>
     count++;
     <% @list_article_viewed.each do |view| %>
     <% if view.article_id == full.id %>

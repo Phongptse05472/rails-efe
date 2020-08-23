@@ -166,6 +166,15 @@
         var isViewed = false;
         if (calculate >= 90) {
             document.querySelectorAll('.fa-check-circle')[index].style.display = 'inline-block';
+            isViewed = true;
+            $.ajax({
+                url: "/time",
+                data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %>},
+                type: "POST",
+                success: function (data) {
+                    console.log(data);
+                }
+            });
         }
     }, 1000);
     document.getElementsByTagName('video')[0].onpause = function () {
