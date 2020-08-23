@@ -1,0 +1,80 @@
+<head>
+  <%= content_for :page_title, 'My profile' %>
+  <%= stylesheet_link_tag 'profile', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= cloudinary_js_config %>
+</head>
+
+<div class="right">
+  <div class="profile-page">
+    <div class="avatar avatar1">
+      <% @customer.each do |customer| %>
+        <% if !customer.avatar.nil? %>
+          <%= cl_image_tag(customer.avatar) %>
+        <% else %>
+          <%= image_tag('profile.png') %>
+        <% end %>
+        </div>
+        <a id="upload_widget" class="cloudinary-button change_button">Change image</a>
+        <%= form_tag update_customer_path, method: :post do %>
+          <table>
+            <tr>
+              <th>Name</th>
+              <td>
+                <%= text_field_tag :name, customer.name %>
+              </td>
+            </tr>
+            <br>
+            <tr>
+              <th>Phone number</th>
+              <td>
+                <%= text_field_tag :phone_number, customer.phone_number %>
+              </td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>
+                Active
+                <i class="fa fa-check-circle" style="color: deepskyblue;"></i>
+              </td>
+            </tr>
+        <% end %>
+        </table>
+        <%= button_tag 'Update', class: "logout logout1" %>
+      <% end %>
+      <button type="button" class="logout" onclick="window.history.back();">Cancel</button>
+      </div>
+  <div class="end">
+  </div>
+</div>
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+<script>
+    cloudinary.setCloudName("dolv9j3dz");
+</script>
+<script type="text/javascript">
+    var myWidget = cloudinary.createUploadWidget({
+            cloudName: 'dolv9j3dz', apiKey: '233187518769819',
+            uploadPreset: 'yfd3tn0d'
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+                var url_link = result.info.secure_url;
+                var lastIndex = url_link.lastIndexOf('/');
+                var link_image = url_link.substring(lastIndex + 1);
+                $.ajax({
+                    url: "/update_img",
+                    data: {"avatar": link_image},
+                    type: "POST",
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+        }
+    )
+    document.getElementById("upload_widget").addEventListener("click", function () {
+        myWidget.open();
+    }, false);
+</script>
+
+
+
+

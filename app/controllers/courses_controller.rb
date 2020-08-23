@@ -28,7 +28,8 @@ class CoursesController < ApplicationController
     else
       @course_detail = Course.where('course_id = ?', @course.id)
     end
-    @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id)
+    @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
+    @list_article_viewed = CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_articles.ids)
     @pagy, @list_article_paging = pagy(@list_articles, items: 5)
   end
 

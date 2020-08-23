@@ -25,17 +25,24 @@ Rails.application.routes.draw do
 
   post 'archive_courses/:slug', to: 'customers_courses#add_course_to_archived', :as => :add_to_archived
   post 'favor_articles/:id', to: 'customers_articles#add_to_favor', :as => :add_to_favor
-
   post 'courses/:slug/articles/:id', to: 'customers_courses#click_on_article', :as => :click_on_article
-
   post 'time', to: 'customers_articles#time', :as => :update_time
   post "/deactivate", to: "admin/customers#deactivate"
   post "/deactivate_course", to: "admin/courses#deactivate_course"
   post "/deactivate_article", to: "admin/articles#deactivate_article"
 
 
-  mount ActionCable.server, at: '/cable'
+  post 'update_customer', to: 'customers#update', :as => :update_customer
 
+  post 'update_img', to: 'customers#update_img', :as => :update_img
+  # post 'update_customer_info/:id', to: 'customers#update_customer_info', :as => :update_customer_info
+
+
+
+
+
+  resources :customers do
+  end
 
   resources :customers_courses do
   end

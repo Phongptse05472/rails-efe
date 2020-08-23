@@ -12,9 +12,7 @@ class Customer < ApplicationRecord
   has_many :customer_articles
   has_many :articles, through: :customer_articles
 
-#active storage
-#   has_one_attached :avatar
 
-  mount_uploader :avatar , ImageUploader
+  # mount_uploader :avatar , ImageUploader
   has_many :comments
 end

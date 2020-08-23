@@ -1,56 +1,38 @@
 class CustomersController < ApplicationController
+skip_before_action :verify_authenticity_token
   before_action :set_customer, only: [:show, :edit, :update]
-
-  # GET /customers
-  # GET /customers.json
-  def index
-    @customers = Customer.all
-  end
-
   # GET /customers/1
   # GET /customers/1.json
   def show
-  end
+   @customer =  Customer.select("customers.*, users.*").joins(:user).where("user_id = ?", current_user.id)
+   end
 
-  # GET /customers/new
-  def new
-    @customer = Customer.new
-  end
+   def update_img
+    @customer = Customer.where("user_id = ?", current_user.id)
+    avatar = params[:avatar]
+    @customer.update(avatar: avatar)
+      respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end
+   end
 
-
-  # GET /customers/1/edit
   def edit
-  end
-
-  # POST /customers
-  # POST /customers.json
-  def create
-    @customer = Customer.new(customer_params)
-
-    respond_to do |format|
-      if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
-    end
+ @customer =Customer.where("user_id = ?", current_user.id)
   end
 
 
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
   def update
-    respond_to do |format|
-      if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @customer }
-      else
-        format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+  @customer =Customer.where("user_id = ?", current_user.id)
+    name = params[:name]
+    phone = params[:phone_number]
+    if params[:commit] == "Cancel"
+        redirect_to "/profile"
+        else
+        @customer.update(name: name, phone_number: phone)
+        redirect_to "/profile"
       end
-    end
+
+
   end
 
   private
@@ -59,9 +41,4 @@ class CustomersController < ApplicationController
       @customer = Customer.find_by(params[:current_user_id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def customer_params
-#       params.require(:customer).permit(:user_id, :role_id, :name, :phone_number, :roll_number, :is_active, :image)
-      params.require(:customer).permit(:user_id, :role_id,  :name)
-    end
 end
