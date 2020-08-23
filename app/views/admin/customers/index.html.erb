@@ -3,15 +3,15 @@
 </head>
 <div class="right">
   <h1>
-    Account management
+     Management Account
   </h1>
   <div class="search managerAccount">
-    <form action="#">
-      <input type="text" placeholder="Search account">
-      <button type="submit">
+    <%= form_tag search_courses_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
+      <%= text_field_tag 'q', params[:q], placeholder: "Search a Courses...", required: true,:id => 'input', autocomplete: "off" %>
+      <button onclick="removeSpace()" type="submit">
         <%= image_tag("search.png") %>
       </button>
-    </form>
+    <% end %>
   </div>
   <table>
     <tr>
@@ -19,8 +19,7 @@
       <th>Email</th>
       <th>Name</th>
       <th>Role</th>
-      <th>is_Active</th>
-      <th>Created_at</th>
+      <th>Created At</th>
       <th>Disable</th>
     </tr>
     <% @customer.each do |customer| %>
@@ -35,10 +34,13 @@
           <% else  %>
           <td>Student</td>
           <% end %>
-        <td><%= customer.is_active %></td>
         <td><%= customer.created_at %></td>
         <td>
-          <%= link_to "Disable/Active", deactivate_path(id: customer) ,method: :post,remote: true, class: "disable" %>
+          <%if customer.is_active%>
+            <%= link_to "Disable", deactivate_path(id: customer) ,method: :post,remote: true, class: "disable" %>
+          <%else%>
+            <%= link_to "Enable", deactivate_path(id: customer) ,method: :post,remote: true, class: "enable" %>
+          <%end%>
         </td>
       </tr>
     <% end %>
@@ -55,4 +57,17 @@
   <div class="end">
   </div>
 </div>
+<script>
+    function removeSpace() {
+        document.getElementById('input').value =
+            document.getElementById('input').value.trim();
+    }
+
+    function checkInput() {
+        if (document.getElementById('input').value.trim() == "") {
+            return false;
+        }
+        return true;
+    }
+</script>
 

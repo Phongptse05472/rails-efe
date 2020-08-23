@@ -2,6 +2,7 @@
     width: 80%;
     color: white;
     background-color: #454d55;
+    border-collapse: collapse;
 }
 .right{
     padding-left: 5%;
@@ -9,8 +10,7 @@
 }
 
 .right table tr {
-    border-bottom: 1px solid springgreen;
-    border: 1px solid springgreen;
+    border-bottom: 1px solid #454d55;
 }
 
 .right td {
@@ -38,7 +38,7 @@
 }
 
 .right table tr {
-    border-bottom: 1px solid lightslategray;
+    /*border-bottom: 1px solid lightslategray;*/
     height: 40px;
 }
 
@@ -49,8 +49,15 @@
     padding-left: 5px;
 }
 
-.disable {
-    background-color: #2bc3cc;
+.disable{
+    background-color: red;
+    color: white !important;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+}
+.enable{
+    background-color: #2bc3cc !important;
     color: white !important;
     margin-left: 20px;
     margin-right: 20px;
