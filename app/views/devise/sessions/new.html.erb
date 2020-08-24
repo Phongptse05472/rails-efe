@@ -7,6 +7,13 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+    <%if !@status.present? %>
+    <div class="alert alert-danger alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+<!--      <strong>Login failed!</strong> Wrong username or password-->
+      Wrong username or password
+    </div>
+      <%end %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", id: "inputEmail", class: "form-control", placeholder: "Email address", required: "", autofocus: "" %>
     <%= f.password_field :password, autocomplete: "current-password", type: "password", id: "inputPassword", class: "form-control", placeholder: "Password", required: "" %>
     <% if devise_mapping.rememberable? %>
