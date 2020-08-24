@@ -14,11 +14,19 @@
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
+              <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", my_courses.course_id) %>
+              <% @author.each do |author| %>
+                <% if !author.avatar.nil? %>
+                  <%= cl_image_tag(author.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
+                <% end %>
+
             </div>
             <div class="title">
               <div class="name">
                 <%= link_to my_courses.name, course_path(my_courses.course_id) %>
+              <% end %>
               </div>
               <p class="status">Progress (<%= my_courses.progression %>%)</p>
               <progress max="100" value="<%= my_courses.progression %>"></progress>
@@ -72,14 +80,21 @@
             <% end %>
           </div>
           <div class="author">
-            <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
+            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
+            <% @author.each do |author| %>
+              <div class="icon">
+                <% if !author.avatar.nil? %>
+                  <%= cl_image_tag(author.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
+                <% end %>
+              </div>
             <div class="title">
               <div class="name">
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
-              <p><%= course.author %></p>
+              <p><%= author.name %></p>
+              <% end %>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
@@ -137,14 +152,21 @@
 
           </div>
           <div class="author">
-            <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
+            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
+            <% @author.each do |author| %>
+              <div class="icon">
+                <% if !author.avatar.nil? %>
+                  <%= cl_image_tag(author.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
+                <% end %>
+              </div>
             <div class="title">
               <div class="name">
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
-              <p><%= course.author %></p>
+              <p><%= author.name %></p>
+              <% end %>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
@@ -203,19 +225,21 @@
 
           </div>
           <div class="author">
-            <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
+            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
+            <% @author.each do |author| %>
+              <div class="icon">
+                <% if !author.avatar.nil? %>
+                  <%= cl_image_tag(author.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
+                <% end %>
+              </div>
             <div class="title">
               <div class="name">
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
-              <p><%= course.author %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
+              <p><%= author.name %></p>
+          <% end %>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
               </div>
@@ -242,6 +266,8 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
+
+
   <h1>Top view article</h1>
   <div id="exampleSlider4">
     <div id="topView" class="MS-content">

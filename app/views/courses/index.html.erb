@@ -15,30 +15,37 @@
             <% end %>
           </div>
           <div class="author">
-            <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to course.name, course_path(course.slug) %>
-              </div>
-              <p><%= course.author %></p>
-              <div class="star">
-                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
-              </div>
-              <% rate = course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
+            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
+            <% @author.each do |author| %>
+              <div class="icon">
+                <% if !author.avatar.nil? %>
+                  <%= cl_image_tag(author.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
                 <% end %>
+              </div>
+              <div class="title">
+                <div class="name">
+                  <%= link_to course.name, course_path(course.slug) %>
+                </div>
+                <p><%= author.name %></p>
+            <% end %>
+            <div class="star">
+              <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
+            </div>
+            <% rate = course.rate.to_f %>
+            <% (1..rate).each do |i| %>
+              <% if rate >= i.floor %>
+                <span class="fa fa-star checked"></span>
               <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span>(<%= course.number_enrollment %> enroll)</span>
+            <% end %>
+            <% if rate != rate.floor %>
+              <span class="fa fa-star-half-o checked"></span>
+            <% end %>
+            <% (1..(5 - rate.ceil)).each do %>
+              <span class="fa fa-star-o checked"></span>
+            <% end %>
+            <span>(<%= course.number_enrollment %> enroll)</span>
             </div>
           </div>
         </div>
@@ -60,35 +67,36 @@
             <% else %>
               <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
             <% end %>
-
           </div>
           <div class="author">
-            <div class="icon">
-              <%= image_tag("2.jpg", alt: "") %>
-            </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to rate_course.name, rate_course %>
-              </div>
-              <p><%= image_tag ("#{rand(17)}.png") %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
-                  });
-              </script>
-              <% rate = rate_course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
+            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", rate_course.id) %>
+            <% @author.each do |author| %>
+              <div class="icon">
+                <% if !author.avatar.nil? %>
+                  <%= cl_image_tag(author.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
                 <% end %>
+              </div>
+              <div class="title">
+                <div class="name">
+                  <%= link_to rate_course.name, rate_course %>
+                </div>
+                <p><%= author.name %></p>
+            <% end %>
+            <% rate = rate_course.rate.to_f %>
+            <% (1..rate).each do |i| %>
+              <% if rate >= i.floor %>
+                <span class="fa fa-star checked"></span>
               <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span>  (<%= rate_course.number_enrollment %> enroll)</span>
+            <% end %>
+            <% if rate != rate.floor %>
+              <span class="fa fa-star-half-o checked"></span>
+            <% end %>
+            <% (1..(5 - rate.ceil)).each do %>
+              <span class="fa fa-star-o checked"></span>
+            <% end %>
+            <span>  (<%= rate_course.number_enrollment %> enroll)</span>
             </div>
           </div>
         </div>
@@ -105,7 +113,7 @@
       <% @top_view_article.each do |article| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <%= cl_video_tag(article.video, :effect=>"preview", :resource_type=>"video") %>
+            <%= cl_video_tag(article.video, :effect => "preview", :resource_type => "video") %>
           </div>
           <div class="author">
             <div class="icon">
@@ -132,22 +140,28 @@
       <% @free_course.each do |free_course| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <% if ! free_course.image.nil? %>
+            <% if !free_course.image.nil? %>
               <%= cl_image_tag(free_course.image) %>
             <% else %>
               <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
             <% end %>
           </div>
           <div class="author">
-            <div class="icon">
-              <%#= image_tag("profile.png", alt: "") %>
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
+            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", free_course.id) %>
+            <% @author.each do |author| %>
+              <div class="icon">
+                <% if !author.avatar.nil? %>
+                  <%= cl_image_tag(author.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
+                <% end %>
+              </div>
             <div class="title">
               <div class="name">
                 <%= link_to free_course.name, course_path(free_course.slug) %>
               </div>
-              <p><%= free_course.author %></p>
+              <p><%= author.name %></p>
+              <% end %>
               <% rate = free_course.rate.to_f %>
               <% (1..rate).each do |i| %>
                 <% if rate >= i.floor %>
@@ -171,6 +185,7 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
+
   <div class="end">
   </div>
 </div>
