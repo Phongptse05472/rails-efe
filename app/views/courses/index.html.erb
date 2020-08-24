@@ -16,229 +16,239 @@
           </div>
           <div class="author">
             <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to course.name, course_path(course.slug) %>
+              <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
+
+              <% @author.each do |author| %>
+                <div class="icon">
+                  <% if !author.avatar.nil? %>
+                    <%= cl_image_tag(author.avatar) %>
+                  <% else %>
+                    <%= image_tag('profile.png') %>
+                  <% end %>
+              <% end %>
+
               </div>
-              <p><%= course.author %></p>
-              <div class="star">
-                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
-              </div>
-              <% rate = course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
+              <div class="title">
+                <div class="name">
+                  <%= link_to course.name, course_path(course.slug) %>
+                </div>
+                <p><%= course.author %></p>
+                <div class="star">
+                  <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
+                </div>
+                <% rate = course.rate.to_f %>
+                <% (1..rate).each do |i| %>
+                  <% if rate >= i.floor %>
+                    <span class="fa fa-star checked"></span>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span>(<%= course.number_enrollment %> enroll)</span>
+                <% if rate != rate.floor %>
+                  <span class="fa fa-star-half-o checked"></span>
+                <% end %>
+                <% (1..(5 - rate.ceil)).each do %>
+                  <span class="fa fa-star-o checked"></span>
+                <% end %>
+                <span>(<%= course.number_enrollment %> enroll)</span>
+              </div>
             </div>
           </div>
-        </div>
       <% end %>
+      </div>
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
     </div>
-    <div class="MS-controls">
-      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    <h1>Top Course</h1>
+    <div id="exampleSlider1">
+      <div id="top" class="MS-content">
+        <% @rate_course.each do |rate_course| %>
+          <div id="item" class="item">
+            <div class="thumbnai">
+              <% if !rate_course.image.nil? %>
+                <%= cl_image_tag(rate_course.image) %>
+              <% else %>
+                <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+              <% end %>
+
+            </div>
+            <div class="author">
+              <div class="icon">
+                <%= image_tag("2.jpg", alt: "") %>
+              </div>
+              <div class="title">
+                <div class="name">
+                  <%= link_to rate_course.name, rate_course %>
+                </div>
+                <p><%= image_tag ("#{rand(17)}.png") %></p>
+                <script>
+                    $(function () {
+                        $('.stars').stars();
+                    });
+                </script>
+                <% rate = rate_course.rate.to_f %>
+                <% (1..rate).each do |i| %>
+                  <% if rate >= i.floor %>
+                    <span class="fa fa-star checked"></span>
+                  <% end %>
+                <% end %>
+                <% if rate != rate.floor %>
+                  <span class="fa fa-star-half-o checked"></span>
+                <% end %>
+                <% (1..(5 - rate.ceil)).each do %>
+                  <span class="fa fa-star-o checked"></span>
+                <% end %>
+                <span>  (<%= rate_course.number_enrollment %> enroll)</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <h1>Top views article</h1>
+    <div id="exampleSlider2">
+      <div id="topView" class="MS-content">
+        <% @top_view_article.each do |article| %>
+          <div id="item" class="item">
+            <div class="thumbnai">
+              <%= cl_video_tag(article.video, :effect => "preview", :resource_type => "video") %>
+            </div>
+            <div class="author">
+              <div class="icon">
+                <%= image_tag ("#{rand(17)}.png") %>
+              </div>
+              <div class="title">
+                <div class="name">
+                  <%= article.title %>
+                </div>
+                <span><%= article.view_number %> views - 2 months ago</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <h1>Free Course</h1>
+    <div id="exampleSlider3">
+      <div id="free" class="MS-content">
+        <% @free_course.each do |free_course| %>
+          <div id="item" class="item">
+            <div class="thumbnai">
+              <% if !free_course.image.nil? %>
+                <%= cl_image_tag(free_course.image) %>
+              <% else %>
+                <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+              <% end %>
+            </div>
+            <div class="author">
+              <div class="icon">
+                <%#= image_tag("profile.png", alt: "") %>
+                <%= image_tag ("#{rand(17)}.png") %>
+              </div>
+              <div class="title">
+                <div class="name">
+                  <%= link_to free_course.name, course_path(free_course.slug) %>
+                </div>
+                <p><%= free_course.author %></p>
+                <% rate = free_course.rate.to_f %>
+                <% (1..rate).each do |i| %>
+                  <% if rate >= i.floor %>
+                    <span class="fa fa-star checked"></span>
+                  <% end %>
+                <% end %>
+                <% if rate != rate.floor %>
+                  <span class="fa fa-star-half-o checked"></span>
+                <% end %>
+                <% (1..(5 - rate.ceil)).each do %>
+                  <span class="fa fa-star-o checked"></span>
+                <% end %>
+                <span>(<%= free_course.number_enrollment %> enroll)</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="end">
     </div>
   </div>
-  <h1>Top Course</h1>
-  <div id="exampleSlider1">
-    <div id="top" class="MS-content">
-      <% @rate_course.each do |rate_course| %>
-        <div id="item" class="item">
-          <div class="thumbnai">
-            <% if !rate_course.image.nil? %>
-              <%= cl_image_tag(rate_course.image) %>
-            <% else %>
-              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
-            <% end %>
-
-          </div>
-          <div class="author">
-            <div class="icon">
-              <%= image_tag("2.jpg", alt: "") %>
-            </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to rate_course.name, rate_course %>
-              </div>
-              <p><%= image_tag ("#{rand(17)}.png") %></p>
-              <script>
-                  $(function () {
-                      $('.stars').stars();
+  <script>
+      function bookmark(bookmark, courseID) {
+          var x = bookmark;
+          if (x.className === "fa fa-bookmark") {
+              x.className = "fa fa-bookmark-o";
+          } else {
+              x.className = "fa fa-bookmark";
+          }
+          var app1 = new Vue({
+              el: '#app1',
+              mounted: function () {
+                  axios.get('/archive_courses/', {
+                      params: {
+                          num: courseID
+                      }
+                  }).catch(error => {
+                      console.log(error);
                   });
-              </script>
-              <% rate = rate_course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
-                <% end %>
-              <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span>  (<%= rate_course.number_enrollment %> enroll)</span>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="MS-controls">
-      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-    </div>
-  </div>
-  <h1>Top views article</h1>
-  <div id="exampleSlider2">
-    <div id="topView" class="MS-content">
-      <% @top_view_article.each do |article| %>
-        <div id="item" class="item">
-          <div class="thumbnai">
-            <%= cl_video_tag(article.video, :effect=>"preview", :resource_type=>"video") %>
-          </div>
-          <div class="author">
-            <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
-            <div class="title">
-              <div class="name">
-                <%= article.title %>
-              </div>
-              <span><%= article.view_number %> views - 2 months ago</span>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="MS-controls">
-      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-    </div>
-  </div>
-  <h1>Free Course</h1>
-  <div id="exampleSlider3">
-    <div id="free" class="MS-content">
-      <% @free_course.each do |free_course| %>
-        <div id="item" class="item">
-          <div class="thumbnai">
-            <% if ! free_course.image.nil? %>
-              <%= cl_image_tag(free_course.image) %>
-            <% else %>
-              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
-            <% end %>
-          </div>
-          <div class="author">
-            <div class="icon">
-              <%#= image_tag("profile.png", alt: "") %>
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to free_course.name, course_path(free_course.slug) %>
-              </div>
-              <p><%= free_course.author %></p>
-              <% rate = free_course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
-                <% end %>
-              <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span>(<%= free_course.number_enrollment %> enroll)</span>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="MS-controls">
-      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-    </div>
-  </div>
-  <div class="end">
-  </div>
-</div>
-<script>
-    function bookmark(bookmark, courseID) {
-        var x = bookmark;
-        if (x.className === "fa fa-bookmark") {
-            x.className = "fa fa-bookmark-o";
-        } else {
-            x.className = "fa fa-bookmark";
-        }
-        var app1 = new Vue({
-            el: '#app1',
-            mounted: function () {
-                axios.get('/archive_courses/', {
-                    params: {
-                        num: courseID
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-        });
-    }
+              }
+          });
+      }
 
-    function heart(heart, courseID) {
-        var x = heart;
-        if (x.className === "fa fa-heart") {
-            x.className = "fa fa-heart-o";
-        } else {
-            x.className = "fa fa-heart";
-        }
-        var app1 = new Vue({
-            el: '#app1',
-            mounted: function () {
-                axios.get('/archive_courses/', {
-                    params: {
-                        num: courseID
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-        });
-    }
-</script>
+      function heart(heart, courseID) {
+          var x = heart;
+          if (x.className === "fa fa-heart") {
+              x.className = "fa fa-heart-o";
+          } else {
+              x.className = "fa fa-heart";
+          }
+          var app1 = new Vue({
+              el: '#app1',
+              mounted: function () {
+                  axios.get('/archive_courses/', {
+                      params: {
+                          num: courseID
+                      }
+                  }).catch(error => {
+                      console.log(error);
+                  });
+              }
+          });
+      }
+  </script>
 
-<script>
-    $('#exampleSlider').multislider({
-        interval: 100000,
-        continuous: false
-    });
-    $('#exampleSlider1').multislider({
-        interval: 10000,
-        continuous: false
-    });
-    $('#exampleSlider2').multislider({
-        interval: 10000,
-        continuous: false
-    });
-    $('#exampleSlider3').multislider({
-        interval: 10000,
-        continuous: false
-    });
-    $('#exampleSlider4').multislider({
-        interval: 10000,
-        continuous: false
-    });
-</script>
+  <script>
+      $('#exampleSlider').multislider({
+          interval: 100000,
+          continuous: false
+      });
+      $('#exampleSlider1').multislider({
+          interval: 10000,
+          continuous: false
+      });
+      $('#exampleSlider2').multislider({
+          interval: 10000,
+          continuous: false
+      });
+      $('#exampleSlider3').multislider({
+          interval: 10000,
+          continuous: false
+      });
+      $('#exampleSlider4').multislider({
+          interval: 10000,
+          continuous: false
+      });
+  </script>
 </body>
 
