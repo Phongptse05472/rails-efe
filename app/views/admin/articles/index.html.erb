@@ -3,10 +3,10 @@
 </head>
 <div class="right">
   <h1>
-    Management Article
+    Manage Articles
   </h1>
   <div class="search managerAccount">
-    <%= form_tag search_courses_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
+    <%= form_tag admin_articles_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
       <%= text_field_tag 'q', params[:q], placeholder: "Search a Courses...", required: true,:id => 'input', autocomplete: "off" %>
       <button onclick="removeSpace()" type="submit">
         <%= image_tag("search.png") %>
@@ -15,11 +15,15 @@
   </div>
   <table>
     <tr>
+      <th>ID</th>
       <th>Video</th>
       <th>Active</th>
     </tr>
     <% @article_paging.each do |article| %>
       <tr>
+        <td>
+          <%= link_to article.id, admin_article_path(article.id) %>
+        </td>
         <td>
           <div class="per-course">
             <div class="c-left">

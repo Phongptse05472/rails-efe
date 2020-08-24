@@ -5,9 +5,12 @@ class Admin::CustomersController < Admin::AdminController
     if current_user.customer.role_id != 1
     redirect_to home_path
     end
-
-    @customer = Customer.select("customers.*, users.* ").joins(:user).all.where("role_id = 2 OR role_id = 3").order(id: :asc)
-    @pagy, @customer_paging = pagy(@customer, items: 10)
+    @account = if params[:q].present?
+                Customer.search_list(params[:q])
+              else
+                Customer.all
+              end.select("customers.*, users.* ").joins(:user).all.where("role_id = 2 OR role_id = 3")   
+    @pagy, @customer_paging = pagy(@account, items: 10)
   end
 
     def deactivate

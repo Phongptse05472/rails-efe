@@ -3,10 +3,10 @@
 </head>
 <div class="right">
   <h1>
-     Management Account
+     Manage Accounts
   </h1>
   <div class="search managerAccount">
-    <%= form_tag search_courses_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
+    <%= form_tag admin_customers_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
       <%= text_field_tag 'q', params[:q], placeholder: "Search a Courses...", required: true,:id => 'input', autocomplete: "off" %>
       <button onclick="removeSpace()" type="submit">
         <%= image_tag("search.png") %>
@@ -15,16 +15,16 @@
   </div>
   <table>
     <tr>
-      <th>Account ID</th>
+      <th>ID</th>
       <th>Email</th>
       <th>Name</th>
       <th>Role</th>
       <th>Created At</th>
       <th>Active</th>
     </tr>
-    <% @customer.each do |customer| %>
+    <% @customer_paging.each do |customer| %>
       <tr>
-        <td><%=customer.id%></td>
+        <td><%= customer.id%></td>
         <td><%= customer.email %></td>
         <td><%= customer.name %></td>
         <%if customer.role_id == 1 %>
@@ -49,7 +49,7 @@
 
   <div class="paging">
 
-    <% if @customer.ids.count > 10 %>
+    <% if @account.ids.count > 10 %>
       <%== pagy_nav(@pagy) %>
     <% else %>
     <% end %>

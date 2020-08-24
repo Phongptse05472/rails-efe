@@ -4,7 +4,11 @@ class Admin::ArticlesController < Admin::AdminController
     if current_user.customer.role_id != 1
       redirect_to home_path
     end
-    @article = Article.all.order(id: :asc)
+    @article = if params[:q].present?
+                  params[:q].to_i != 0 ? Article.by_id(params[:q]) : Article.search_list(params[:q])
+              else
+                Article.all.order(created_at: :desc)
+              end
     @pagy, @article_paging = pagy(@article, items: 10)
   end
 
