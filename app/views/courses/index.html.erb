@@ -116,14 +116,15 @@
             <%= cl_video_tag(article.video, :effect => "preview", :resource_type => "video") %>
           </div>
           <div class="author">
-            <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
+            <% @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , article.id) %>
             <div class="title">
               <div class="name">
                 <%= article.title %>
               </div>
-              <span><%= article.view_number %> views - 2 months ago</span>
+              <span>Course: <%= @course_article_favor.first.name %></span>
+              <br>
+              </br>
+              <span><%= article.view_number %> views • <%= article.created_at.strftime("%Y-%m-%d") %></span>
             </div>
           </div>
         </div>

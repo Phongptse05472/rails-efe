@@ -291,18 +291,17 @@
                 <i style="color: #14bdee" onclick="heart(this,123)" class="fa fa-heart-o" aria-hidden="true"></i>
               <% end %>
             <% end %>
-
           </div>
           <div class="author">
-            <div class="icon">
-              <%= image_tag ("#{rand(17)}.png") %>
-            </div>
+            <% @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , article.id) %>
             <div class="title">
               <div class="name">
                 <%= link_to article.title, course_path(@course_article.first.slug) %>
               </div>
-              <!--              <p><%#= article.author %></p>-->
-              <span><%= article.view_number %> view</span>
+              <span>Course: <%= @course_article_favor.first.name %></span>
+              <br>
+              </br>
+              <span><%= article.view_number %> view • <%= article.created_at.strftime("%Y-%m-%d") %></span>
             </div>
           </div>
         </div>
