@@ -1,0 +1,81 @@
+<div id="right" class="right">
+  <%= render "process" %>
+  <div id="form_upload" class="form-upload">
+    <%= form_with model: @course, url: wizard_path, method: :put, class: "form_upload" do |f| %>
+      <%= f.fields_for :articles, f.object.articles.build do |ff| %>
+        <div id="container_upload" class="container_upload">
+          <div class="upload-video">
+            <div class="thum">
+              <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+              <p>Upload video</p>
+              <%= ff.file_field :video %>
+            </div>
+            <h2>Attack file</h2>
+            <%= ff.file_field :link_file_attach %>
+          </div>
+          <div class="information-video">
+            <div class="per_row_article">
+              <div class="row-left">
+                <h2>Title video</h2>
+              </div>
+              <div class="row-right">
+                <%= ff.text_field :title, placeholder: "Title" %>
+              </div>
+            </div>
+            <div class="per_row_article">
+              <div class="row-left">
+                <h2>Description</h2>
+              </div>
+              <div class="row-right">
+                <%= ff.text_field :description, placeholder: "Description" %>
+              </div>
+            </div>
+            <div class="per_row_article">
+              <div class="row-left">
+                <h2>Is free</h2>
+              </div>
+              <div class="row-right">
+                <label class="container_input">isFree
+                  <%= ff.check_box :is_free, checked: true %>
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div class="per_row_article">
+              <div class="row-left">
+                <h2>Skill Set</h2>
+              </div>
+              <div class="row-right">
+                <div class="skill_level">
+                  <% Skill.name_and_id.each do |skill| %>
+                    <label class="container_input"><%= skill.first %>
+                      <%= ff.check_box :skill_ids, {multiple: true, class: "select_skill"}, skill.last, false %>
+                      <span class="checkmark"></span>
+                    </label>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="per_row_article">
+              <div class="row-left">
+
+              </div>
+              <div class="row-right">
+                <table id="table">
+                  <tr>
+
+                  </tr>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= hidden_field_tag :course_id, params[:course_id] %>
+      <%= f.submit "Save And Continue", class: "submit" %>
+    <% end %>
+  </div>
+  <div class="end">
+  </div>
+</div>

@@ -18,11 +18,11 @@
 <body>
 
 <div class="container">
-  <% if @login.present? %>
+  <% if @show_leftside.present? %>
     <%= render "shared/header" %>
   <% end %>
   <div class="main">
-    <% if @show_leftside.present? || @login.present?  %>
+    <% if @show_leftside.present? %>
       <%= render partial: "shared/left_side", locals: {data: @data, course: @left_course} %>
     <% end %>
     <%= yield %>
