@@ -43,6 +43,15 @@ namespace :import do |import_namespace|
       when "Course_articles"
         puts 'creating courseArticle...'
         CourseArticle.import! data
+      when "Customers"
+        puts 'creating customers...'
+        Customer.import! data
+      when "Customers_courses"
+        puts 'creating Customers_courses...'
+        CustomerCourse.import! data
+      # when "Users"
+      #   puts 'creating Users...'
+      #   User.import! data
       end
     end
   end
