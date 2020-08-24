@@ -6,14 +6,12 @@
   <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 </head>
-
+<% @show_leftside = true %>
 <body>
 <div class="right">
   <h1>
     Group: <%= @topic.name %>
   </h1>
-
-
   <div class="list-course">
     <% @courses_paging.each do |c| %>
       <div class="per-course">
@@ -30,11 +28,11 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(c.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(c.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
@@ -47,7 +45,7 @@
           <% end %>
           <h2><%= link_to c.name, course_path(c.id) %></h2>
           <p><%= c.description %></p>
-          <p class="name"> Author: <%= c.author %></p >
+          <p class="name"> Author: <%= c.author %></p>
           <% rate = c.rate.to_f %>
           <% (1..rate).each do |i| %>
             <% if rate >= i.floor %>
