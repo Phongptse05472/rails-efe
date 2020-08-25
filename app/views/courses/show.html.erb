@@ -7,7 +7,11 @@
   <div class="top">
     <h1><%= @course.name %></h1>
     <span>by</span>
-    <span><%= @course.author %></span>
+    <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id IN (?)  ", @course.id) %>
+    <% @author.each do |author| %>
+      <span><%= author.name %></span>
+    <% end %>
+
     <div class="intro">
       <% if !@course.image.nil? %>
         <%= cl_image_tag(@course.image) %>
