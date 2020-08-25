@@ -2,7 +2,7 @@
   <title>Edfective.vn - favorite video</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
+<% @show_leftside = true%>
 <body>
 <div class="right">
   <h1>
@@ -37,8 +37,10 @@
           <% end %>
           <h2><%= link_to archived_course.name, course_path(archived_course.slug) %></h2>
           <p><%= archived_course.description %></p>
-          <p class="my-name">Author: <%= archived_course.author %></p>
-
+          <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id IN (?)  ", archived_course.course_id) %>
+          <% @author.each do |author| %>
+            <p class="my-name">Author: <%= author.name %></p>
+          <% end %>
           <% rate = archived_course.rate.to_f %>
           <% (1..rate).each do |i| %>
             <% if rate >= i.floor %>

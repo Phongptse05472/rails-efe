@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
       redirect_to user_home_path
     end
     @course = Course.where(:is_active => true).order(number_enrollment: :desc).limit(20)
+
+
     @rate_course = Course.where(:is_active => true).order(rate: :desc).limit(20)
     @free_course = Course.where(:is_active => true).where(is_free: true).limit(20)
     @topic = Group.all
