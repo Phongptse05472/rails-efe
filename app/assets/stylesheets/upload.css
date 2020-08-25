@@ -228,6 +228,14 @@
     outline: white;
 }
 
+.row-right-group {
+    width: 80%;
+}
+
+.row-right-group span:first-child {
+    width: 93%;
+}
+
 select {
     color: #fff;
     background-color: #007bff;

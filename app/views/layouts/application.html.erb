@@ -5,31 +5,31 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', "data-turbolinks-track" => 'reload' %>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- VueJS -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title><%= yield(:page_title).presence || 'Edfectively | Effective Future Education' %></title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
-<body>
-
-<div class="container">
-  <% if @show_leftside.present? %>
-    <%= render "shared/header" %>
-  <% end %>
-  <div class="main">
-    <% if @show_leftside.present? %>
-      <%= render partial: "shared/left_side", locals: {data: @data, course: @left_course} %>
-    <% end %>
-    <%= yield %>
-  </div>
-  <% if @show_leftside.present? %>
-    <%= render "shared/footer" %>
-  <% end %>
-</div>
-</body>
+  <body>
+    <div class="container">
+      <% if @show_leftside.present? %>
+        <%= render "shared/header" %>
+      <% end %>
+      <div class="main">
+        <% if !@article_detail.present? %>
+          <%= render partial: "shared/left_side", locals: {data: @data, course: @left_course}  %>
+        <% end %>
+        <%= yield %>
+      </div>
+      <% if @show_leftside.present? %>
+        <%= render "shared/footer" %>
+      <% end %>
+    </div>
+  </body>
 </html>

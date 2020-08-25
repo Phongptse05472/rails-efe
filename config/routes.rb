@@ -58,7 +58,9 @@ Rails.application.routes.draw do
   #mentor routes
   namespace :mentor do
     resources :courses
+    resources :articles
   end
+
 
   #admin routes
   namespace :admin do
