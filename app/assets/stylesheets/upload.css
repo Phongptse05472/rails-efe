@@ -228,15 +228,12 @@
     outline: white;
 }
 
-.row-right select .select_skill {
-    color: #fff;
-    /* background-color: #007bff; */
-    /* border-color: #007bff; */
-    padding: 2px 10px !important;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 15px;
-    outline: white;
+.row-right-group {
+    width: 80%;
+}
+
+.row-right-group span:first-child {
+    width: 93%;
 }
 
 select {
