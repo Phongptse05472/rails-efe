@@ -49,6 +49,9 @@ namespace :import do |import_namespace|
       when "Customers_courses"
         puts 'creating Customers_courses...'
         CustomerCourse.import! data
+      when "Course_Preskills"
+        puts 'creating course_preskill...'
+        CoursePreskill.import! data
       when "Users"
         puts 'creating Users...'
         data.each do |user|
@@ -58,7 +61,7 @@ namespace :import do |import_namespace|
           is_active = user['is_active']
           confirmation_token = user['confirmation_token']
           confirmed_at = user['confirmed_at']
-          confirmation_sent_at = user['confirmation_sent_at'] 
+          confirmation_sent_at = user['confirmation_sent_at']
           u.update_attributes confirmation_token: confirmation_token, confirmed_at: confirmed_at, confirmation_sent_at: confirmation_sent_at
         end
       end
