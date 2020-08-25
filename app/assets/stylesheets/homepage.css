@@ -435,3 +435,7 @@ progress {
     color: white;
     text-decoration: none;
 }
+.btn-primary{
+    background-color: #14bdee !important;
+    border-color: #14bdee !important;
+}

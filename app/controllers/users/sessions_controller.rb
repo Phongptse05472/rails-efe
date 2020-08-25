@@ -16,6 +16,7 @@ class Users::SessionsController < Devise::SessionsController
     if !@customer.exists?
       @customer = Customer.create(user_id: @current_user_id, role_id: 3, name: user.first.email )
     else
+      @status = false
     end
   end
 

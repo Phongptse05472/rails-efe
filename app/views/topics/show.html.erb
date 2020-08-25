@@ -5,7 +5,7 @@
   <!-- CSS -->
   <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
-
+<% @show_leftside = true %>
 <body>
 <div class="right">
   <h1>
@@ -27,11 +27,11 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(c.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(c.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
