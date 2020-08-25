@@ -1,1 +1,83 @@
-admin-course
+<head>
+  <%= stylesheet_link_tag 'manager_video', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="right">
+  <h1>
+     Manage Courses
+  </h1>
+  <div class="search managerAccount">
+    <%= form_tag admin_courses_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
+      <%= text_field_tag 'q', params[:q], placeholder: "Search a Courses...", required: true,:id => 'input', autocomplete: "off" %>
+      <button onclick="removeSpace()" type="submit">
+        <%= image_tag("search.png") %>
+      </button>
+    <% end %>
+  </div>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Courses</th>
+      <th>Active</th>
+    </tr>
+    <tr>
+
+      <% @course_paging.each do |course| %>
+        <td>
+          <p><%= course.id %></p>
+        </td>
+        <td>
+          <div class="per-course">
+            <div class="c-left">
+              <a href="#">
+                <% if !course.image.nil? %>
+                  <%= cl_image_tag(course.image) %>
+                <% else %>
+                  <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+                <% end %>
+              </a>
+            </div>
+            <div class="c-right">
+              <h2>
+                <a href="#"><%= course.name %></a>
+              </h2>
+              <span><%= course.description %></span>
+            </div>
+          </div>
+        </td>
+<!--        <td style="color: black" ><%#= course.is_active %></td>-->
+
+        <td>
+          <%if course.is_active%>
+            <%= link_to 'Disable', deactivate_course_path(slug: course), method: :post, remote: true, class: "disable" %>
+          <%else%>
+            <%= link_to 'Enable', deactivate_course_path(slug: course), method: :post, remote: true, class: "enable" %>
+          <%end%>
+        </td>
+        </tr>
+      <% end %>
+
+      </table>
+
+  <div class="paging">
+    <% if @course.ids.count > 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
+  </div>
+
+  <div class="end">
+  </div>
+</div>
+<script>
+    function removeSpace() {
+        document.getElementById('input').value =
+            document.getElementById('input').value.trim();
+    }
+
+    function checkInput() {
+        if (document.getElementById('input').value.trim() == "") {
+            return false;
+        }
+        return true;
+    }
+</script>

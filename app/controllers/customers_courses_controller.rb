@@ -9,6 +9,9 @@ class CustomersCoursesController < ApplicationController
 
   #customer home page
   def customer_home
+    if current_user.customer.role_id == 1
+      redirect_to admin_customers_path
+    end
     @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
     @number_enroll = CustomerCourse.where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
 
@@ -18,14 +21,14 @@ class CustomersCoursesController < ApplicationController
     @course_ids = CustomerCourse.where("enrollment_date IS NOT NULL").pluck('course_id')
 
     #all course which user not enrolled
-    @hot_course = Course.where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
-    @rate_course = Course.where.not(id: @course_ids).order(rate: :desc).limit(20)
-    @new_course = Course.where.not(id: @course_ids).order(created_at: :desc).limit(20)
+    @hot_course = Course.where(:is_active => true).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
+    @rate_course = Course.where(:is_active => true).where.not(id: @course_ids).order(rate: :desc).limit(20)
+    @new_course = Course.where(:is_active => true).where.not(id: @course_ids).order(created_at: :desc).limit(20)
 
     #check user viewed article?
     @article_ids = CustomerArticle.where("is_viewed = true").pluck("article_id")
 
-    @top_view_article = Article.where.not(id: @article_ids).order(view_number: :desc).limit(20)
+    @top_view_article = Article.where(:is_active => true).where.not(id: @article_ids).order(view_number: :desc).limit(20)
 
     @course_article = Course.joins(:course_articles).where("article_id IN (?) ", @top_view_article.ids)
 
@@ -72,7 +75,7 @@ class CustomersCoursesController < ApplicationController
 
   def archived_courses
     @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true).order("customer_courses.updated_at DESC")
-    @pagy, @archived_courses_paging = pagy(@archived_courses, items: 5)
+        @pagy, @archived_courses_paging = pagy(@archived_courses, items: 5)
   end
 
 

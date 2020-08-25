@@ -4,7 +4,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- CSS -->
   <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
-
 </head>
 <% @show_leftside = true %>
 <body>
@@ -45,7 +44,10 @@
           <% end %>
           <h2><%= link_to c.name, course_path(c.id) %></h2>
           <p><%= c.description %></p>
-          <p class="name"> Author: <%= c.author %></p>
+          <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id IN (?)  ", c.id) %>
+          <% @author.each do |author| %>
+            <p class="name"> Author: <%= author.name %></p >
+            <% end %>
           <% rate = c.rate.to_f %>
           <% (1..rate).each do |i| %>
             <% if rate >= i.floor %>

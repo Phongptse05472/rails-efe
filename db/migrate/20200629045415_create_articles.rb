@@ -8,6 +8,7 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.boolean :is_free
       t.text :link_file_attach
       t.text :video
+      t.boolean :is_active
       t.timestamps
     end
   end

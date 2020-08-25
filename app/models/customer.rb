@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  include PgSearch::Model
   # 1 user have one User_info
   belongs_to :user
 # # 1 User can have many role
@@ -15,4 +16,19 @@ class Customer < ApplicationRecord
 
   # mount_uploader :avatar , ImageUploader
   has_many :comments
+
+  pg_search_scope :search_list, against:[
+    [:id, 'A'],
+    [:name, 'B'],
+    [:roll_number, 'C']
+  ], using: {
+    tsearch: {
+          prefix: true,
+          dictionary: 'english',
+          any_word: true,
+      },
+  }
+
+  scope :by_id, -> (id) { where("id= ?", id)}
+
 end

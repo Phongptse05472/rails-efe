@@ -1,16 +1,18 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_course, only: [:show]
+
   def index
     if current_user.present?
       redirect_to user_home_path
     end
+    @course = Course.where(:is_active => true).order(number_enrollment: :desc).limit(20)
 
-    @course = Course.order(number_enrollment: :desc).limit(20)
-    @rate_course = Course.order(rate: :desc).limit(20)
-    @free_course = Course.where(is_free: true).limit(20)
+
+    @rate_course = Course.where(:is_active => true).order(rate: :desc).limit(20)
+    @free_course = Course.where(:is_active => true).where(is_free: true).limit(20)
     @topic = Group.all
-    @top_view_article = Article.order(view_number: :desc).limit(20)
+    @top_view_article = Article.where(:is_active => true).order(view_number: :desc).limit(20)
   end
 
   def show
@@ -28,7 +30,8 @@ class CoursesController < ApplicationController
     else
       @course_detail = Course.where('course_id = ?', @course.id)
     end
-    @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id)
+    @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
+    @list_article_viewed = CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_articles.ids)
     @pagy, @list_article_paging = pagy(@list_articles, items: 5)
   end
 

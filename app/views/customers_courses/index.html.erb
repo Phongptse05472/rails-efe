@@ -8,7 +8,7 @@
   <div class="menu-course">
     <ul>
       <li>
-        <%= link_to "My courses", "/customers_courses",class:'active' %>
+        <%= link_to "My courses", "/customers_courses", class: 'active' %>
       </li>
       <li>
         <%= link_to "Archive course", "/archived-courses" %>
@@ -33,7 +33,10 @@
           <p>
             <%= my_course.description %>
           </p>
-          <p class="my-name">Author: <%= my_course.author %></p>
+          <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id IN (?)  ", my_course.course_id) %>
+          <% @author.each do |author| %>
+            <p class="my-name">Author: <%= author.name %></p>
+          <% end %>
           <% rate = my_course.rate.to_f %>
           <% (1..rate).each do |i| %>
             <% if rate >= i.floor %>
@@ -46,7 +49,7 @@
           <% (1..(5 - rate.ceil)).each do %>
             <span class="fa fa-star-o checked"></span>
           <% end %>
-          <span class="enroll_date">Enroll date: <%= my_course.enrollment_date%></span>
+          <span class="enroll_date">Enroll date: <%= my_course.enrollment_date %></span>
         </div>
       </div>
     <% end %>

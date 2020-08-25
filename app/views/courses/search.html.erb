@@ -113,11 +113,11 @@
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% else %>
                 <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)"  aria-hidden="true"></i>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
                 <% end %>
               <% end %>
             <% else %>
@@ -130,7 +130,10 @@
           <% end %>
           <h2><%= link_to course.name, course_path(course) %></h2>
           <p><%= course.description %></p>
-          <p class="my-name"> Author: <%= course.author %></p>
+          <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
+          <% @author.each do |author| %>
+            <p class="my-name"> Author: <%= author.name %></p>
+          <% end %>
           <% rate = course.rate.to_f %>
           <% (1..rate).each do |i| %>
             <% if rate >= i.floor %>

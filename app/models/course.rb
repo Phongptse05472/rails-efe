@@ -17,6 +17,17 @@ class Course < ApplicationRecord
       },
   }
 
+  pg_search_scope :search_list, against:[
+    [:name, 'A']
+  ], using: {
+    tsearch: {
+          prefix: true,
+          dictionary: 'english',
+          any_word: true,
+      },
+  }
+
+  scope :by_id, ->(id) { where("id= ?", id)}
   scope :by_rates, ->(rate) { where("rate = ?", rate)}
   scope :by_levels, ->(level) { where("level = ?", level)}
   scope :by_prices, ->(price) { where("price = ?", price)}

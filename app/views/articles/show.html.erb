@@ -7,9 +7,7 @@
 <div class="main-watch">
   <div class="watch">
     <% @article_detail.each do |article| %>
-
-  <%= cl_video_tag(article.video, :controls => true) %>
-
+      <%= cl_video_tag(article.video, :controls => true) %>
       <div class="w-title">
         <h2>
           <%= article.title %>
@@ -17,7 +15,6 @@
         <p>
           <%= article.view_number %> view • <%= article.created_at.to_date %>
         </p>
-
       </div>
       <div class="w-description">
         <div class="w-icon">
@@ -101,6 +98,7 @@
           <li>
             <div class="l-left">
               <%= cl_video_tag(a.video) %>
+              <i class="fa fa-check-circle" aria-hidden="true"></i>
             </div>
             <div class="l-right">
               <% article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, a.id) %>
@@ -151,15 +149,43 @@
 </script>
 <!--begin of get currentTime and total duration-->
 <script>
+    var index = <%= @index_list_article.to_int %>;
     document.getElementsByTagName('video')[0].currentTime = <%= @cus_article.first.time_point %>;
+    var count = -1;
+    <% @list_article_right.each do | full | %>
+    count++;
+    <% @list_article_viewed.each do |view| %>
+    <% if view.article_id == full.id %>
+    document.querySelectorAll('.fa-check-circle')[count].style.display = 'inline-block';
+    <% end %>
+    <% end %>
+    <% end %>
+    setInterval(function () {
+        var currentTime = document.getElementsByTagName('video')[0].currentTime;
+        var total = document.getElementsByTagName('video')[0].duration;
+        var calculate = (currentTime / total) * 100;
+        var isViewed = false;
+        if (calculate >= 90) {
+            document.querySelectorAll('.fa-check-circle')[index].style.display = 'inline-block';
+            isViewed = true;
+            $.ajax({
+                url: "/time",
+                data: {"currentTime": currentTime, "isViewed": isViewed, "id": <%= params[:id] %>},
+                type: "POST",
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    }, 1000);
     document.getElementsByTagName('video')[0].onpause = function () {
         var currentTime = this.currentTime;
         var total = this.duration;
-        var calculate = (currentTime / total) * 100
-        var isViewed = false
-        if (calculate >= 90)
-            isViewed = true
-        else
+        var calculate = (currentTime / total) * 100;
+        var isViewed = false;
+        if (calculate >= 90) {
+            isViewed = true;
+        } else
             isViewed = false
         $.ajax({
             url: "/time",

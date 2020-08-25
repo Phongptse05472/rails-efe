@@ -3,9 +3,14 @@
 <head>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <%= stylesheet_pack_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'homepage', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'menu', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', "data-turbolinks-track" => 'reload' %>
+  <!-- VueJS -->
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title><%= yield(:page_title).presence || 'Edfectively | Effective Future Education' %></title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -16,20 +21,14 @@
 
 </head>
 <body>
-  <div class="container-fluid">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<div class="container">
+  <%= render "shared/header_admin" %>
+  <div class="main">
+    <%#= render 'shared/messages' %>
+    <%= render "shared/left_side_admin" %>
+    <%= yield %>
   </div>
-  <div class="container">
-    <%= render "shared/header" %>
-    <div class="body-content">
-      <%= render "shared/admin_left_side" %>
-      <div class="right">
-        <%= yield %>
-      </div>
-      <div id="footer">
-    </div>
-    </div>
-  </div>
+  <%= render "shared/footer" %>
+</div>
 </body>
 </html>
