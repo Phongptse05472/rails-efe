@@ -35,6 +35,7 @@
 
 .right table tr td:first-child {
     color: #273044;
+    padding-right: 10px;
 }
 
 .right table tr {

@@ -3,10 +3,10 @@
 </head>
 <div class="right">
   <h1>
-     Management Course
+     Manage Courses
   </h1>
   <div class="search managerAccount">
-    <%= form_tag search_courses_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
+    <%= form_tag admin_courses_path, :html => { :onsubmit => "checkInput()" }, class: "search", method: :get do %>
       <%= text_field_tag 'q', params[:q], placeholder: "Search a Courses...", required: true,:id => 'input', autocomplete: "off" %>
       <button onclick="removeSpace()" type="submit">
         <%= image_tag("search.png") %>
@@ -15,12 +15,16 @@
   </div>
   <table>
     <tr>
+      <th>ID</th>
       <th>Courses</th>
       <th>Active</th>
     </tr>
     <tr>
 
       <% @course_paging.each do |course| %>
+        <td>
+          <p><%= course.id %></p>
+        </td>
         <td>
           <div class="per-course">
             <div class="c-left">

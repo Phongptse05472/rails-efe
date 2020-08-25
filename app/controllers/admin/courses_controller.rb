@@ -4,7 +4,11 @@ class Admin::CoursesController < Admin::AdminController
     if current_user.customer.role_id != 1
       redirect_to home_path
     end
-    @course = Course.all.order(created_at: :desc).order(id: :asc)
+    @course = if params[:q].present?
+                params[:q].to_i != 0 ? Course.by_id(params[:q]) : Course.search_list(params[:q])
+              else
+                Course.all
+              end
     @pagy, @course_paging = pagy(@course, items: 10)
   end
 
