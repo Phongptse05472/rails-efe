@@ -18,18 +18,14 @@
 </head>
   <body>
     <div class="container">
-      <% if @show_leftside.present? %>
-        <%= render "shared/header" %>
-      <% end %>
+      <%= render "shared/header" %>
       <div class="main">
         <% if !@article_detail.present? %>
           <%= render partial: "shared/left_side", locals: {data: @data, course: @left_course}  %>
         <% end %>
         <%= yield %>
       </div>
-      <% if @show_leftside.present? %>
-        <%= render "shared/footer" %>
-      <% end %>
+      <%= render "shared/footer" %>
     </div>
   </body>
 </html>
