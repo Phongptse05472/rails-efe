@@ -252,6 +252,10 @@ l-title i{
     display: block;
 }
 
+.pin {
+    color: red;
+}
+
 .comment_pin {
     width: 10px;
     color: black;

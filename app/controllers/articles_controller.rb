@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
-
+  skip_before_action :verify_authenticity_token
   def index
   end
 

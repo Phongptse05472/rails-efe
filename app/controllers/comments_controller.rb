@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
   def create
     @comment = Comment.new(comment_params)
     @comment.save
@@ -7,9 +7,11 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @update_comment = Comment.find_by(id: params[:id], customer_id: current_user.id)
+    @update_comment = Comment.find_by(id: params[:id])
     @update_comment.update_attribute("is_pin", !@update_comment.is_pin)
-
+    # respond_to do |format|
+    #   format.js { render inline: "location.reload();" }
+    # end
 
   end
   private

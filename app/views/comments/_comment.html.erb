@@ -1,7 +1,11 @@
 <div class="user-comment">
 
   <div class="user-icon">
-    <%= image_tag('course_9.jpg') %>
+    <% if !comment.customer.avatar.nil? %>
+      <%= cl_image_tag(comment.customer.avatar, :height => 100, :width => 50) %>
+    <% else %>
+      <%= image_tag('profile.png') %>
+    <% end %>
   </div>
   <div class="user-right">
     <div class="user-name">
@@ -14,11 +18,15 @@
 
   <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
   <% if !current_role.blank? %>
+
     <%= link_to update_comment_pin_path(comment.id), method: :post, remote: true do %>
-      <i class="fa fa-check" onclick="check(this)" aria-hidden="true"></i>
+      <% if !comment.is_pin %>
+        <i class="fa fa-check" onclick="check(this)" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
+      <% end %>
     <% end %>
   <% else %>
-
   <% end %>
 
 </div>
