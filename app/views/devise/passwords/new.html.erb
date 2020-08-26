@@ -1,5 +1,4 @@
 <!--<h2>Forgot your password?</h2>-->
-<%# @show_leftside = false%>
 <%#= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%#= render "devise/shared/error_messages", resource: resource %>
 
@@ -22,7 +21,6 @@
 </head>
 
   <div id="logreg-forms">
-    <% @show_leftside = false%>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "form-signin"}) do |f| %>
       <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Reset Password</h1>
       <%= f.email_field :email, autofocus: true, autocomplete: "email",type:"email", id:"inputEmail", class:"form-control", placeholder:"Email address", required:"", autofocus:"" %>

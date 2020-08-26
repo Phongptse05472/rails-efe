@@ -1,16 +1,20 @@
-<h2>Resend confirmation instructions</h2>
-<% @show_leftside = false%>
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= content_for :page_title, 'Confirmation' %>
+<div id="logreg-forms">
+  <h2>Resend confirmation instructions</h2>
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Resend confirmation instructions", class: "btn btn-primary btn-block" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= link_to new_session_path(resource_name) do %>
+    <i class="fas fa-angle-left"></i> Back
+  <% end %>
+</div>
