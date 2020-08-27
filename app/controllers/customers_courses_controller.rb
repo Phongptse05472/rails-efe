@@ -1,5 +1,4 @@
 class CustomersCoursesController < ApplicationController
-
   #my course page
   def index
     @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id).order("customer_courses.updated_at DESC")
@@ -32,7 +31,6 @@ class CustomersCoursesController < ApplicationController
 
     @course_article = Course.joins(:course_articles).where("article_id IN (?) ", @top_view_article.ids)
 
-    # @top_view_article.ids
   end
 
 

@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
     redirect_to course_path(@course_article)
   end
 
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
