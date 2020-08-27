@@ -253,7 +253,8 @@ l-title i{
 }
 
 .pin {
-    color: red;
+    color: dodgerblue;
+    font-family: "Big Caslon"
 }
 
 .comment_pin {

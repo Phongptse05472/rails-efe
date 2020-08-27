@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
 
     @comment = Comment.new
     @comment_user = Comment.where(:article_id => @article.id).custom_display
-    @comment_pin = @comment_user.where("is_pin = true").custom_display.limit(1)
+    @comment_pin = @comment_user.where("is_pin = true").custom_display.order(updated_at: :desc).limit(1)
     cus_article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, @article.id)
 
     if !cus_article.exists?

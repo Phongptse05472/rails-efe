@@ -18,7 +18,6 @@ class CoursesController < ApplicationController
   def show
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
     @skill = Skill.joins(:article_skills).where("article_id IN (?) ", article.ids).group(:id)
-    @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) ", article.ids).group(:level_id)
 
     @req_skill = Skill.select("skills.*, course_preskills.* ").joins(:course_preskills).where('course_id = ?', @course.id)
 

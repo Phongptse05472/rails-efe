@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
   def update
     @update_comment = Comment.find_by(id: params[:id])
     @update_comment.update_attribute("is_pin", !@update_comment.is_pin)
-    # respond_to do |format|
-    #   format.js { render inline: "location.reload();" }
-    # end
+    respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end
 
   end
   private
