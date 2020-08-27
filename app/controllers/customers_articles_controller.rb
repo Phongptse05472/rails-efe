@@ -41,7 +41,6 @@ class CustomersArticlesController < ApplicationController
       customer_course = CustomerCourse.where(course_id: course_id.id, customer_id: current_user.id)
       customer_course.update(current_article_id: article_id)
     end
-
   end
 
   def update

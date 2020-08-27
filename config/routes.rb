@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   post 'archive_courses/:slug', to: 'customers_courses#add_course_to_archived', :as => :add_to_archived
   post 'favor_articles/:id', to: 'customers_articles#add_to_favor', :as => :add_to_favor
   post 'courses/:slug/articles/:id', to: 'customers_courses#click_on_article', :as => :click_on_article
-  post 'time', to: 'customers_articles#time', :as => :update_time
+  # post 'time', to: 'customers_articles#time', :as => :update_time
   post "/deactivate", to: "admin/customers#deactivate"
   post "/deactivate_course", to: "admin/courses#deactivate_course"
   post "/deactivate_article", to: "admin/articles#deactivate_article"
