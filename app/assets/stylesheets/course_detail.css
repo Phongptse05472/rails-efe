@@ -103,6 +103,12 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+.per-course i{
+    color: #2bc3cc;
+    font-size: 20px;
+    margin-top: 5px;
+    display: none;
+}
 
 .c-right a {
     overflow: hidden;

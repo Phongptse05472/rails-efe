@@ -33,9 +33,9 @@
         <%= link_to profile_path do %>
           <% customer = current_user.customer %>
           <% if !customer.avatar.nil? %>
-            <%= cl_image_tag(customer.avatar, :height=>100, :width=>50, :crop=>"fill")  %>
+            <%= cl_image_tag(customer.avatar, :height=>100, :width=>50)  %>
           <% else %>
-            <%= image_tag('profile.png') %>
+            <%= cl_image_tag('gshyksf1iqjf7ianfp5t.png', :height=>100, :width=>50)%>
           <% end %>
           <a href="" class="profile"></a>
         <% end %>

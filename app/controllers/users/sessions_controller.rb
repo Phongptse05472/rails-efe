@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class Users::SessionsController < Devise::SessionsController
+  layout 'login'
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -16,6 +17,7 @@ class Users::SessionsController < Devise::SessionsController
     if !@customer.exists?
       @customer = Customer.create(user_id: @current_user_id, role_id: 3, name: user.first.email )
     else
+      @status = false
     end
   end
 

@@ -1,22 +1,26 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_course, only: [:show]
+
   def index
     if current_user.present?
       redirect_to user_home_path
     end
+    @course = Course.where(:is_active => true).order(number_enrollment: :desc).limit(20)
 
-    @course = Course.order(number_enrollment: :desc).limit(20)
-    @rate_course = Course.order(rate: :desc).limit(20)
-    @free_course = Course.where(is_free: true).limit(20)
+
+    @rate_course = Course.where(:is_active => true).order(rate: :desc).limit(20)
+    @free_course = Course.where(:is_active => true).where(is_free: true).limit(20)
     @topic = Group.all
-    @top_view_article = Article.order(view_number: :desc).limit(20)
+    @top_view_article = Article.where(:is_active => true).order(view_number: :desc).limit(20)
   end
 
   def show
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
     @skill = Skill.joins(:article_skills).where("article_id IN (?) ", article.ids).group(:id)
     @skill_level = ArticleSkill.select(:level_id).where("article_id IN (?) ", article.ids).group(:level_id)
+
+    @req_skill = Skill.select("skills.*, course_preskills.* ").joins(:course_preskills).where('course_id = ?', @course.id)
 
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
@@ -28,7 +32,8 @@ class CoursesController < ApplicationController
     else
       @course_detail = Course.where('course_id = ?', @course.id)
     end
-    @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id)
+    @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
+    @list_article_viewed = CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_articles.ids)
     @pagy, @list_article_paging = pagy(@list_articles, items: 5)
   end
 

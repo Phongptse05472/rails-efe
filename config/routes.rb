@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
 
   devise_for :users, controllers: {
-      sessions: 'users/sessions'
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      passwords: 'users/passwords',
+      confirmations: 'users/confirmations'
   }
 
 
@@ -27,6 +30,10 @@ Rails.application.routes.draw do
   post 'favor_articles/:id', to: 'customers_articles#add_to_favor', :as => :add_to_favor
   post 'courses/:slug/articles/:id', to: 'customers_courses#click_on_article', :as => :click_on_article
   post 'time', to: 'customers_articles#time', :as => :update_time
+  post "/deactivate", to: "admin/customers#deactivate"
+  post "/deactivate_course", to: "admin/courses#deactivate_course"
+  post "/deactivate_article", to: "admin/articles#deactivate_article"
+
 
   post 'update_customer', to: 'customers#update', :as => :update_customer
 
@@ -54,11 +61,14 @@ Rails.application.routes.draw do
   #mentor routes
   namespace :mentor do
     resources :courses
+    resources :articles
   end
+
 
   #admin routes
   namespace :admin do
-    resources :users, except: :destroy
+    resources :customers, except: :destroy
+    resources :users
     resources :courses
     resources :articles, except: [:create, :destroy]
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_090913) do
+ActiveRecord::Schema.define(version: 2020_08_25_074420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_090913) do
     t.boolean "is_free"
     t.text "link_file_attach"
     t.text "video"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -96,6 +97,16 @@ ActiveRecord::Schema.define(version: 2020_08_06_090913) do
     t.index ["group_id"], name: "index_course_groups_on_group_id"
   end
 
+  create_table "course_preskills", force: :cascade do |t|
+    t.bigint "course_id"
+    t.bigint "skill_id"
+    t.integer "level_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_course_preskills_on_course_id"
+    t.index ["skill_id"], name: "index_course_preskills_on_skill_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.text "image"
@@ -103,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_090913) do
     t.string "author"
     t.boolean "is_free"
     t.float "rate"
+    t.boolean "is_active", default: true
     t.bigint "number_enrollment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -208,6 +220,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_090913) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "is_active", default: true
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

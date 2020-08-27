@@ -5,14 +5,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @show_leftside = false
+
     @article_detail = Article.select("articles.*, article_skills.* ").joins(:article_skills).where(id: params[:id])
     @author = Customer.joins(:customer_articles).where("article_id = ? AND is_owner = true", @article.id)
 
     @course = Course.friendly.find(params[:course_slug])
     #right side - List article in course
-    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id)
-
+    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
+    @list_article_viewed= CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_article_right.ids)
     @index_list_article = @list_article_right.pluck(:id).index(@article_detail.ids.first)
 
     @comment = Comment.new

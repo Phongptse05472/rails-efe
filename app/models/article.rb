@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  include PgSearch::Model
   #course_article through: course_article
   has_many :course_articles
   has_many :courses, through: :course_articles
@@ -11,6 +12,16 @@ class Article < ApplicationRecord
   has_many :skills, through: :article_skills
 
   # has_one_attached :image
+  pg_search_scope :search_list, against:[
+    [:title, 'A']
+  ], using: {
+    tsearch: {
+          prefix: true,
+          dictionary: 'english',
+          any_word: true,
+      },
+  }
 
+  scope :by_id, -> (id) { where("id= ?", id)}
 
 end
