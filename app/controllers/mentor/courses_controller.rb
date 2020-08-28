@@ -1,9 +1,9 @@
 class Mentor::CoursesController < Mentor::MentorController
   include Wicked::Wizard
-  before_action :load_course, execpt: :new
+  before_action :load_course, except: :new
 
   steps :over_view, :create_content, :comfirmed
-  # before_action :set_course
+
   def index
     if current_user.customer.role_id != 2
       redirect_to home_path
@@ -16,23 +16,21 @@ class Mentor::CoursesController < Mentor::MentorController
   def new; end
 
   def show
+    @step = step
     render_wizard
   end
 
   def update  
+    @step = step.to_s
     @course.assign_attributes course_params    
-
-    if @course.save
-      jump_to(next_step, course_id: @course.id)
+    
+    unless step.to_sym == :create_content
+      render_wizard @course
     else
-      render_wizard
+      @course.save
     end
 
-    if step == :create_content
-      jump_to(step, course_id: @course.id)
-    end
-
-    render_wizard
+    session[:course_id] = @course.id
   end
 
   private
@@ -41,10 +39,10 @@ class Mentor::CoursesController < Mentor::MentorController
   end
 
   def load_course
-    if step == :over_view
+    if step.to_sym == :over_view
       @course = Course.new
     else
-      @course = Course.find_by id: params[:course_id]
+      @course = Course.find_by id: session[:course_id]
       @course.articles.build
     end
   end

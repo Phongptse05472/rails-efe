@@ -3,20 +3,20 @@
 </head>
 <div class="process">
   <div class="process">
-    <a href="#">
-      <i class="fa fa-step-backward" aria-hidden="true"></i>
-    </a>
-    <a href="#">
-      <i class="fa fa-check-circle active" aria-hidden="true"></i>
-    </a>
-    <a href="#">
-      <i class="fa fa-check-circle" aria-hidden="true"></i>
-    </a>
-    <a href="#">
-      <i class="fa fa-check-circle" aria-hidden="true"></i>
-    </a>
-    <a href="#">
+    <%= link_to previous_wizard_path do %>
       <i class="fa fa-step-forward" aria-hidden="true"></i>
+    <% end %>
+    <a href="#">
+      <i class="fa fa-check-circle <%= 'active' if step.to_s == 'over_view' %>" aria-hidden="true"></i>
     </a>
+    <a href="#">
+      <i class="fa fa-check-circle <%= 'active' if step.to_s == 'create_content' %>" aria-hidden="true"></i>
+    </a>
+    <a href="#">
+      <i class="fa fa-check-circle <%= 'active' if step.to_s == 'comfirmed' %>" aria-hidden="true"></i>
+    </a>
+    <%= link_to next_wizard_path do %>
+      <i class="fa fa-step-backward" aria-hidden="true"></i>
+    <% end %>
   </div>
 </div>

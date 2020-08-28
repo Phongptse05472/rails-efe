@@ -1,5 +1,5 @@
 <div id="right" class="right">
-  <%= render "process" %>
+  <%= render "process", step: @step %>
   <div id="form_upload" class="form-upload">
     <%= form_with model: @course, url: wizard_path, method: :put, class: "form_upload" do |f| %>
       <%= f.fields_for :articles, f.object.articles.build do |ff| %>
@@ -11,7 +11,7 @@
               <%= ff.file_field :video %>
             </div>
             <h2>Attack file</h2>
-            <%= ff.file_field :link_file_attach %>
+            <%= ff.text_field :link_file_attach %>
           </div>
           <div class="information-video">
             <div class="per_row_article">
@@ -56,6 +56,7 @@
                 </div>
               </div>
             </div>
+            <button type="submit" class="btn btn-default">Save</button>
             <div class="per_row_article">
               <div class="row-left">
 
@@ -73,7 +74,6 @@
         </div>
       <% end %>
       <%= hidden_field_tag :course_id, params[:course_id] %>
-      <%= f.submit "Save And Continue", class: "submit" %>
     <% end %>
   </div>
   <div class="end">

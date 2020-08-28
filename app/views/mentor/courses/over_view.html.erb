@@ -1,5 +1,5 @@
 <div class="right">
-  <%= render "process" %>
+  <%= render "process", step: @step %>
     <%= form_with model: @course, url: wizard_path, method: :put do |f| %>
     <div class="create_course">
       <div class="per_row">
@@ -39,6 +39,16 @@
           <span class="checkmark"></span>
         </label>
       </div>
+      <%= f.fields_for :course_groups, f.object.course_groups.build do |ff| %>
+        <div class="per_row">
+            <div class="row-left">
+              <h2>Group</h2>
+            </div>
+            <div class="row-right">
+              <%= ff.select :group_id, Group.name_and_id, {} %>
+            </div>
+          </div>
+      <% end %>
       <%= f.fields_for :course_preskills, f.object.course_preskills.build do |ff| %>
         <div class="per_row">
           <div class="row-left">
