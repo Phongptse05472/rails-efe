@@ -253,7 +253,9 @@ l-title i{
 }
 
 .pin {
-    color: dodgerblue;
+    color: blue;
+    font-style: oblique;
+    font-weight: bold;
     font-family: "Big Caslon"
 }
 
