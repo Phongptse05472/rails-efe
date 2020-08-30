@@ -225,13 +225,13 @@ ActiveRecord::Schema.define(version: 2020_08_30_084441) do
     t.index ["level_id"], name: "index_path_groups_on_level_id"
   end
 
-  create_table "paths_los", force: :cascade do |t|
+  create_table "path_los", force: :cascade do |t|
     t.bigint "careerpath_id"
     t.bigint "lo_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["careerpath_id"], name: "index_paths_los_on_careerpath_id"
-    t.index ["lo_id"], name: "index_paths_los_on_lo_id"
+    t.index ["careerpath_id"], name: "index_path_los_on_careerpath_id"
+    t.index ["lo_id"], name: "index_path_los_on_lo_id"
   end
 
   create_table "roles", force: :cascade do |t|
