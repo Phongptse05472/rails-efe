@@ -52,18 +52,30 @@ namespace :import do |import_namespace|
       when "Course_Preskills"
         puts 'creating course_preskill...'
         CoursePreskill.import! data
-      when "Users"
-        puts 'creating Users...'
-        data.each do |user|
-          email = user['email']
-          password = user['password']
-          u = User.create(:email => email, :password => password, :password_confirmation => password)
-          is_active = user['is_active']
-          confirmation_token = user['confirmation_token']
-          confirmed_at = user['confirmed_at']
-          confirmation_sent_at = user['confirmation_sent_at']
-          u.update_attributes confirmation_token: confirmation_token, confirmed_at: confirmed_at, confirmation_sent_at: confirmation_sent_at
-        end
+      when "Learning_outcomes"
+        puts 'creating learning out come'
+        Lo.import! data
+      when "Article_LOs"
+        puts 'creating article_los'
+        ArticleLo.import! data
+      when "LO_LOs"
+        puts 'creating lo_lo'
+        LoLo.import! data
+      when "Path_LOs"
+        puts 'creating Path_los'
+        PathsLo.import! data
+      # when "Users"
+      #   puts 'creating Users...'
+      #   data.each do |user|
+      #     email = user['email']
+      #     password = user['password']
+      #     u = User.create(:email => email, :password => password, :password_confirmation => password)
+      #     is_active = user['is_active']
+      #     confirmation_token = user['confirmation_token']
+      #     confirmed_at = user['confirmed_at']
+      #     confirmation_sent_at = user['confirmation_sent_at']
+      #     u.update_attributes confirmation_token: confirmation_token, confirmed_at: confirmed_at, confirmation_sent_at: confirmation_sent_at
+      #   end
       end
     end
   end

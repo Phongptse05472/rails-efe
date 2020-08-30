@@ -11,6 +11,9 @@ class Article < ApplicationRecord
   has_many :article_skills
   has_many :skills, through: :article_skills
 
+  has_many :article_los
+  has_many :los, through: :article_los
+
   # has_one_attached :image
   pg_search_scope :search_list, against:[
     [:title, 'A']

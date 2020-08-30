@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_074420) do
+ActiveRecord::Schema.define(version: 2020_08_30_084441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2020_08_25_074420) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "article_los", force: :cascade do |t|
+    t.bigint "article_id"
+    t.bigint "lo_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_article_los_on_article_id"
+    t.index ["lo_id"], name: "index_article_los_on_lo_id"
   end
 
   create_table "article_skills", force: :cascade do |t|
@@ -188,6 +197,23 @@ ActiveRecord::Schema.define(version: 2020_08_25_074420) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "lo_los", force: :cascade do |t|
+    t.bigint "lo_id"
+    t.bigint "lo_req_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lo_id"], name: "index_lo_los_on_lo_id"
+    t.index ["lo_req_id"], name: "index_lo_los_on_lo_req_id"
+  end
+
+  create_table "los", force: :cascade do |t|
+    t.string "name"
+    t.bigint "skill_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_los_on_skill_id"
+  end
+
   create_table "path_groups", force: :cascade do |t|
     t.bigint "careerpath_id"
     t.bigint "group_id"
@@ -197,6 +223,15 @@ ActiveRecord::Schema.define(version: 2020_08_25_074420) do
     t.index ["careerpath_id"], name: "index_path_groups_on_careerpath_id"
     t.index ["group_id"], name: "index_path_groups_on_group_id"
     t.index ["level_id"], name: "index_path_groups_on_level_id"
+  end
+
+  create_table "paths_los", force: :cascade do |t|
+    t.bigint "careerpath_id"
+    t.bigint "lo_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["careerpath_id"], name: "index_paths_los_on_careerpath_id"
+    t.index ["lo_id"], name: "index_paths_los_on_lo_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -235,4 +270,5 @@ ActiveRecord::Schema.define(version: 2020_08_25_074420) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "lo_los", "los", column: "lo_req_id"
 end
