@@ -12,4 +12,11 @@ class Lo < ApplicationRecord
   has_many :customers, through: :customer_los
 
   belongs_to :skill, optional: true
+  scope :by_skill_id, ->(skill_id) { where("skill_id= ?", skill_id)} 
+
+  class << self
+    def name_and_id
+      pluck :name, :id
+    end
+  end
 end
