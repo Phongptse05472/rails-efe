@@ -52,6 +52,18 @@ namespace :import do |import_namespace|
       when "Course_Preskills"
         puts 'creating course_preskill...'
         CoursePreskill.import! data
+      when "Learning_outcomes"
+        puts 'creating learning out come'
+        Lo.import! data
+      when "Article_LOs"
+        puts 'creating article_los'
+        ArticleLo.import! data
+      when "LO_LOs"
+        puts 'creating lo_lo'
+        LoLo.import! data
+      when "Path_LOs"
+        puts 'creating Path_los'
+        PathLo.import! data
       when "Users"
         puts 'creating Users...'
         data.each do |user|
