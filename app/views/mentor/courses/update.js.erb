@@ -1,1 +1,4 @@
-alert(1)
+<% if @step.to_s == "create_content" %>
+  $('.form_upload').append("<%=j render 'course' %>");
+  $('.per-course').show()
+<% end %> 

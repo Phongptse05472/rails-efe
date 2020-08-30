@@ -6,8 +6,6 @@ class Group < ApplicationRecord
 
   has_many :skills
   has_many :careerpaths, through: :path_groups
-  has_many :courses, through: :course_groups
-
 
   has_many :course_groups
   has_many :courses , through: :course_groups
@@ -22,6 +20,12 @@ class Group < ApplicationRecord
 
   def should_generate_new_friendly_id?
     name_changed? || super
+  end
+
+  class << self
+    def name_and_id
+      pluck :name, :id
+    end
   end
 
 end

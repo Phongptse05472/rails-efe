@@ -1,0 +1,122 @@
+<head>
+  <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="right">
+  <%= render "process", step: @step %>
+  <%= form_with model: @course, url: wizard_path, method: :put do |f| %>
+    <div class="create_course">
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Avatar</h2>
+        </div>
+        <div class="row-right">
+          <div class="thum">
+            <i class="fa fa-camera" aria-hidden="true"></i>
+            <p id="selectedFileName">Upload avatar</p>
+            <%= f.file_field :image %>
+          </div>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Course title</h2>
+        </div>
+        <div class="row-right">
+          <%= f.text_field :name, class: "title_article", value: @current_course.name %>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Description</h2>
+        </div>
+        <div class="row-right">
+          <%= f.text_area :description, class: "desc_course", value: @current_course.description %>
+        </div>
+      </div>
+      <%= f.fields_for :course_groups, f.object.course_groups.build do |ff| %>
+        <div class="per_row">
+          <div class="row-left">
+            <h2>Group</h2>
+          </div>
+          <div class="row-right">
+            <%= ff.select :group_id, Group.name_and_id, {} %>
+          </div>
+        </div>
+      <% end %>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Is free</h2>
+        </div>
+        <label class="container_input">isFree
+          <%= f.check_box :is_free, checked: true %>
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <br>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default">Create course</button>
+      </div>
+    </div>
+  <% end %>
+  <div class="end">
+  </div>
+</div>
+<script>
+  var arr=[];
+  function resetSkill(){
+      var levels = document.getElementsByName('level');
+      for (var i = 0; i < levels.length; i++) {
+          if (levels[i].checked) {
+              levels[i].checked=false;
+          }
+      }
+  }
+  function setSkill() {
+      var levels = document.getElementsByName('level');
+      var level;
+      for (var i = 0; i < levels.length; i++) {
+          if (levels[i].checked) {
+              level = levels[i].value;
+          }
+      }
+
+      if (level != undefined) {
+          var skill = document.getElementById('skill').value;
+          if(document.getElementById('skill').selectedIndex==0){
+              return;
+          }
+          var object = {s:skill,l:level};
+          for(var i=0; i<arr.length; i++){
+              if(skill==arr[i].s && level==arr[i].l){
+                  return;
+              }
+          }
+          arr.push(object);
+          var tr = document.createElement('tr');
+          tr.innerHTML = `
+                  <td> <p>${skill}</p></td>
+                  <td>
+                      <p>${level}</p>
+                      </td>
+                      <td>
+                          <i onclick="removeSkill(this,'${skill}','${level}')" class="fa fa-times" aria-hidden="true"></i>
+                      </td>
+                  `;
+          document.getElementById('table').tBodies[0].appendChild(tr);
+      }
+  }
+  function removeSkill(i,skill,level){
+
+      i.parentNode.parentNode.remove();
+      for(var i=0; i<arr.length; i++){
+          if(skill==arr[i].s && level==arr[i].l){
+              arr.splice(i, 1);
+              break;
+          }
+      }
+      resetSkill();
+  }
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+  });
+</script>
