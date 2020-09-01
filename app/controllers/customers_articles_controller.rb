@@ -52,21 +52,8 @@ class CustomersArticlesController < ApplicationController
       @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: course_id.id)
       @customers_courses_progression.update(progression: progress.round) # => progression
     end
-  end
 
-  def calculate_progression
-    total_article = Article.joins(:course_articles).where('course_id = ?', @course.id).count
-    viewed_article = Article.joins(:course_articles).joins(:customer_articles).where('course_id = ? AND is_viewed = true', @course.id).count
-    #fix exception FloatDomainError
-    if total_article == 0
-      progress = 0
-    else
-      progress = viewed_article.to_f / total_article.to_f * 100
-    end
-    @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id)
-    @customers_courses_progression.update(progression: progress.round) # => progression
   end
-
 
   def update
     @favor_article = CustomerArticle.find_by(article_id: params[:id], customer_id: current_user.id)

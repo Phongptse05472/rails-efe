@@ -42,18 +42,6 @@
     <%= button_to enroll_to_course_path(@course.id), method: :post do %>
       Start learn
     <% end %>
-    <% if !@req_skill.first.nil? %>
-      Skill require before you learn this course:
-        <ul class="skill_course">
-            <% @req_skill.each do |req_skill| %>
-          <li>
-              <%= req_skill.name %>
-          </li>
-            <% end %>
-      <% else %>
-      <% end %>
-      </ul>
-
     <div class="skill_set">
       <h2>Skill set</h2>
       <ul>
