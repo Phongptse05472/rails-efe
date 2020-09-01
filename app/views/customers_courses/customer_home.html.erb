@@ -21,7 +21,6 @@
                 <% else %>
                   <%= image_tag('profile.png') %>
                 <% end %>
-
             </div>
             <div class="title">
               <div class="name">
@@ -204,7 +203,6 @@
             <% else %>
               <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
             <% end %>
-
             <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
             <% if customer_course.exists? %>
               <% if customer_course.first.is_save == true %>
@@ -221,8 +219,6 @@
                 <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
               <% end %>
             <% end %>
-
-
           </div>
           <div class="author">
             <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
@@ -389,7 +385,7 @@
 <!--   Initialize element with Multislider-->
 <script>
     $('#exampleSlider').multislider({
-        interval: 100000,
+        interval: 0,
         continuous: false
     });
     $('#exampleSlider1').multislider({

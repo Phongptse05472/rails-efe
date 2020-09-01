@@ -4,7 +4,7 @@ class CustomersArticlesController < ApplicationController
   def index
     @favor_articles = Article.select("articles.*, customer_articles.*").joins(:customer_articles).where('customer_id = ? AND is_favor = ?', current_user.id, true).order("customer_articles.updated_at DESC")
     @pagy, @favor_article = pagy(@favor_articles, items: 5)
-    @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , @favor_article.ids)
+    @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) ", @favor_article.ids)
   end
 
   def add_to_favor
@@ -31,7 +31,7 @@ class CustomersArticlesController < ApplicationController
       else
         @article.update(time_point: time_point, is_viewed: is_viewed)
         if is_viewed == "true"
-          view  = Article.where("id = ?",  article_id)
+          view = Article.where("id = ?", article_id)
           view.update(view_number: view.first.view_number += 1)
         end
       end
@@ -40,7 +40,19 @@ class CustomersArticlesController < ApplicationController
     @course_id.each do |course_id|
       customer_course = CustomerCourse.where(course_id: course_id.id, customer_id: current_user.id)
       customer_course.update(current_article_id: article_id)
+
+      total_article = Article.joins(:course_articles).where('course_id = ?', course_id.id).count
+      viewed_article = Article.joins(:course_articles).joins(:customer_articles).where('course_id = ? AND is_viewed = true', course_id.id).count
+      #fix exception FloatDomainError
+      if total_article == 0
+        progress = 0
+      else
+        progress = viewed_article.to_f / total_article.to_f * 100
+      end
+      @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: course_id.id)
+      @customers_courses_progression.update(progression: progress.round) # => progression
     end
+
   end
 
   def update

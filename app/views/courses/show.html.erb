@@ -18,12 +18,16 @@
       <% else %>
         <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
       <% end %>
+
       <span id="des" onclick="showmore()"><%= @course.description %><br></span>
       <br>
     </div>
     <% if current_user.present? %>
       <% check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND enrollment_date IS NOT null', current_user.id, @course.id) %>
       <% if check_archived_course.blank? %>
+        <!--          user not enroll this course-->
+        <p>Progress(0%)</p>
+        <progress max="100" value="0"></progress>
       <% else %>
         <!--       user enrolled in course-->
         <% check_archived_course.each do |course_detail| %>
@@ -40,100 +44,94 @@
     <% end %>
     <% if !@req_skill.first.nil? %>
       Skill require before you learn this course:
-      <% @req_skill.each do |req_skill| %>
-        <p><%= req_skill.name %> •
-          <% if req_skill.level_id == 1 %>
-            level beginner
-          <% elsif req_skill.level_id == 2 %>
-            level intermediate
-          <% elsif req_skill.level_id == 3 %>
-            level advanced
-          <% else %>
-            level mixed
+        <ul class="skill_course">
+            <% @req_skill.each do |req_skill| %>
+          <li>
+              <%= req_skill.name %>
+          </li>
             <% end %>
-          </p>
-          <% end %>
-          <br>
       <% else %>
       <% end %>
-      <div class="skill_set">
-        <h2>Skill set</h2>
-        <ul>
-          <% @skill.each do |skill| %>
-            <li>
-            <span class="out_side_level">
-           <%= skill.name  %>
-                </span>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+      </ul>
 
-      </div>
-      <div class="buttom">
-        <h2>List Article in '<%= @course.name %>'</h2>
-        <% @list_article_paging.each do |a| %>
-          <div class="per-course">
-            <div class="c-left">
-              <a href="#">
-                <% if !a.video.nil? %>
-                  <%= cl_video_tag(a.video, :effect => "preview", :resource_type => "video") %>
-                <% else %>
-                  <%= image_tag('japanese.png') %>
-                <% end %>
-              </a>
-            </div>
-            <div class="c-right">
-              <%= link_to a.title, click_on_article_path(@course, a.id) %>
-              <span>
+    <div class="skill_set">
+      <h2>Skill set</h2>
+      <ul>
+        <% @skill.each do |skill| %>
+          <li>
+            <span class="out_side_level">
+              <%= skill.name %>
+                </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+  <div class="buttom">
+    <h2>List Article in '<%= @course.name %>'</h2>
+    <% @list_article_paging.each do |a| %>
+      <div class="per-course">
+        <div class="c-left">
+          <a href="#">
+            <% if !a.video.nil? %>
+              <%= cl_video_tag(a.video, :effect => "preview", :resource_type => "video") %>
+            <% else %>
+              <%= image_tag('japanese.png') %>
+            <% end %>
+          </a>
+        </div>
+        <div class="c-right">
+          <%= link_to a.title, click_on_article_path(@course, a.id) %>
+          <span>
           <%= a.description %>
         </span>
-            </div>
-            <i class="fa fa-check-circle" aria-hidden="true"></i>
-          </div>
-        <% end %>
+        </div>
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
       </div>
-      <div class="paging">
-        <% if @list_articles.ids.count > 5 %>
-          <%== pagy_nav(@pagy) %>
-        <% else %>
-        <% end %>
-      </div>
-      <div class="end">
-      </div>
-      </div>
-      <script>
-          var count = -1;
-          <% @list_article_paging.each do | full | %>
-          count++;
-          <% @list_article_viewed.each do |view| %>
-          <% if view.article_id == full.id %>
-          document.querySelectorAll('.fa-check-circle')[count].style.display = 'inline-block';
-          <% end %>
-          <% end %>
-          <% end %>
+    <% end %>
+  </div>
+  <div class="paging">
+    <% if @list_articles.ids.count > 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
+  </div>
+  <div class="end">
+  </div>
+</div>
+<script>
+    var count = -1;
+    <% @list_article_paging.each do | full | %>
+    count++;
+    <% @list_article_viewed.each do |view| %>
+    <% if view.article_id == full.id %>
+    document.querySelectorAll('.fa-check-circle')[count].style.display = 'inline-block';
+    <% end %>
+    <% end %>
+    <% end %>
 
-          function showmore() {
-              if (document.getElementById('des').style.webkitLineClamp == "inherit") {
-                  document.getElementById('des').style.webkitLineClamp = "12";
-              } else {
-                  document.getElementById('des').style.webkitLineClamp = "inherit";
-              }
+    function showmore() {
+        if (document.getElementById('des').style.webkitLineClamp == "inherit") {
+            document.getElementById('des').style.webkitLineClamp = "12";
+        } else {
+            document.getElementById('des').style.webkitLineClamp = "inherit";
+        }
 
-          }
-      </script>
+    }
+</script>
 
-      <script>
+<script>
 
-      </script>
+</script>
 
-      <script>
-          var perfEntries = performance.getEntriesByType("navigation");
+<script>
+    var perfEntries = performance.getEntriesByType("navigation");
 
-          if (perfEntries[0].type === "back_forward") {
-              location.reload(true);
-          }
-      </script>
+    if (perfEntries[0].type === "back_forward") {
+        location.reload(true);
+    }
+</script>
 
 
 

@@ -1,8 +1,7 @@
 class CustomersCoursesController < ApplicationController
-
   #my course page
   def index
-    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
+    @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id).order("customer_courses.updated_at DESC")
     @pagy, @my_course_paging = pagy(@my_courses, items: 5)
 
   end
@@ -12,7 +11,7 @@ class CustomersCoursesController < ApplicationController
     if current_user.customer.role_id == 1
       redirect_to admin_customers_path
     end
-    @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
+    @my_courses_home = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id).order("customer_courses.updated_at DESC")
     @number_enroll = CustomerCourse.where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id)
 
     @topic = Group.all.limit(8)
@@ -32,7 +31,6 @@ class CustomersCoursesController < ApplicationController
 
     @course_article = Course.joins(:course_articles).where("article_id IN (?) ", @top_view_article.ids)
 
-    # @top_view_article.ids
   end
 
 

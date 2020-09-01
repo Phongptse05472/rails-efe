@@ -8,26 +8,22 @@
     border: 1px solid #2bc3cc;
     line-height: 76px;
 }
-
 .paging a:first-child {
     margin-right: 5px;
     padding: 5px 25px;
 }
-
 .paging a:last-child {
     padding: 5px 25px;
 }
-
 .intro {
     width: 80%;
     margin-bottom: 10px;
     margin-top: 10px;
+    display: table;
 }
-
 .top span:last-of-type {
     font-weight: bold;
 }
-
 .top h1 {
     font-size: x-large;
     width: 80%;
@@ -46,7 +42,6 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 .intro img {
     width: 30%;
     float: left;
@@ -58,17 +53,16 @@
     -webkit-line-clamp: 12;
     -webkit-box-orient: vertical;
     cursor: pointer;
+    font-weight: normal !important;
 }
 .right progress {
     width: 300px;
 }
-
 .right .top {
     border-bottom: 1px solid lightgray;
     padding-bottom: 40px;
     display: inline-block;
 }
-
 .per-course {
     display: flex;
     height: auto;
@@ -78,23 +72,19 @@
     box-shadow: 0px 1px 10px rgba(29, 34, 47, 0.1);
     border-radius: 15px;
 }
-
 .list-course {
     height: auto;
 }
-
 .c-left video {
     width: 150px;
     margin-right: 10px;
     height: 100%;
     border-radius: 15px;
 }
-
 .c-left {
     height: 84px;
     border-radius: 15px;
 }
-
 .c-right {
     width: 80%;
     overflow: hidden;
@@ -109,7 +99,6 @@
     margin-top: 5px;
     display: none;
 }
-
 .c-right a {
     overflow: hidden;
     display: -webkit-box;
@@ -123,7 +112,6 @@
     margin-top: 5px;
     width: 70%;
 }
-
 .c-right span {
     overflow: hidden;
     display: -webkit-box;
@@ -131,25 +119,21 @@
     -webkit-box-orient: vertical;
     font-size: 16px;
 }
-
 .name {
     font-weight: normal;
     font-size: 12px;
     margin: 0;
 }
-
 .video_course {
     /* font-weight: bold; */
     font-size: 14px;
     margin: 0;
 }
-
 .top p {
     margin-bottom: 0;
     font-weight: bold;
     color: #2bc3cc;
 }
-
 .buttom h2 {
     width: 60%;
     overflow: hidden;
@@ -158,8 +142,8 @@
     -webkit-box-orient: vertical;
     font-size: 20px;
 }
-
 .skill_set {
+    clear: both;
     width: 1000px;
     height: auto;
     display: flow-root;
@@ -167,15 +151,14 @@
     border-radius: 5px;
     padding: 15px;
     padding-bottom: 35px;
+    margin-top: 40px;
 }
-
 
 .skill_set h2 {
     margin: 0;
     display: inline-block;
     margin-left: 14px;
 }
-
 /*.skill_set span {*/
 /*    background-color: #EBECED;*/
 /*    padding: 10px 25px;*/
@@ -203,37 +186,48 @@
     border: 1px solid #2bc3cc;
     line-height: 76px;
 }
-
 .skill_set ul {
     list-style: none;
     margin: 0;
     padding: 0;
     height: auto;
 }
-
 .skill_set ul li {
     float: left;
     margin-top: 30px;
     margin-left: 10px;
 }
-
 .out_side_level {
     background-color: #EBECED;
-    padding: 10px 10px 10px 25px;
+    padding: 10px 10px 10px 10px;
     color: black;
     border-radius: 18px;
     font-weight: normal !important;
 }
-
 .level_skill {
     padding: 3px 5px;
     border-radius: 50%;
     background-color: white;
     margin-left: 5px;
 }
-
 .level_skill img {
     width: 16px;
     height: 16px;
     display: inline-block;
+}
+.skill_course{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.skill_course li{
+    float: left;
+    margin: 5px 20px;
+    font-weight: bold;
+}
+.skill_course li:first-child{
+    margin-left: 5px;
+
 }

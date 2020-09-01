@@ -9,36 +9,31 @@
     <% @article_detail.each do |article| %>
       <%= cl_video_tag(article.video, :controls => true) %>
       <div class="w-title">
-        <h2>
+        <span class="article_title">
           <%= article.title %>
-        </h2>
+        </span >
         <p>
           <%= article.view_number %> view • <%= article.created_at.to_date %>
         </p>
       </div>
+      <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id) %>
+      <% @author.each do |author| %>
       <div class="w-description">
         <div class="w-icon">
-          <%= image_tag('2.jpg') %>
+          <% if !author.avatar.nil? %>
+            <%= cl_image_tag(author.avatar) %>
+          <% else %>
+            <%= image_tag('profile.png') %>
+          <% end %>
         </div>
         <div class="w-author">
-          <% if !@author.blank? %>
-            <p> Author: <%= @author.first.name %></p>
-          <% else %>
-
+            <% if !author.blank? %>
+              <p> Author: <%= author.name %></p>
+            <% else %>
+            <% end %>
           <% end %>
           Link attach:  <%= article.link_file_attach %>
           <p>Description: <%= article.description %></p>
-          <p>Level:
-            <% if article.level_id.to_int == 1 %>
-              beginner
-            <% elsif article.level_id.to_int == 2 %>
-              intermediate
-            <% elsif article.level_id.to_int == 3 %>
-              advanced
-            <% else %>
-              mixed
-            <% end %>
-          </p>
         </div>
       </div>
       <div class="w-information">
@@ -148,6 +143,14 @@
     </div>
   </div>
 </div>
+
+<script>
+    $(document).ready(() => {
+
+        $('video').attr('controlsList', 'nodownload');
+
+    });
+</script>
 
 
 <script>
