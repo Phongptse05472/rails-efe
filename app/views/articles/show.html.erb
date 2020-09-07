@@ -11,30 +11,30 @@
       <div class="w-title">
         <span class="article_title">
           <%= article.title %>
-        </span >
+        </span>
         <p>
           <%= article.view_number %> view • <%= article.created_at.to_date %>
         </p>
       </div>
       <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id) %>
       <% @author.each do |author| %>
-      <div class="w-description">
-        <div class="w-icon">
-          <% if !author.avatar.nil? %>
-            <%= cl_image_tag(author.avatar) %>
-          <% else %>
-            <%= image_tag('profile.png') %>
-          <% end %>
-        </div>
-        <div class="w-author">
+        <div class="w-description">
+          <div class="w-icon">
+            <% if !author.avatar.nil? %>
+              <%= cl_image_tag(author.avatar) %>
+            <% else %>
+              <%= image_tag('profile.png') %>
+            <% end %>
+          </div>
+          <div class="w-author">
             <% if !author.blank? %>
               <p> Author: <%= author.name %></p>
             <% else %>
             <% end %>
-          <% end %>
-          Link attach:  <%= article.link_file_attach %>
-          <p>Description: <%= article.description %></p>
-        </div>
+      <% end %>
+      Link attach:  <%= article.link_file_attach %>
+      <p>Description: <%= article.description %></p>
+      </div>
       </div>
       <div class="w-information">
       </div>
@@ -51,45 +51,45 @@
             </div>
           </div>
           <div class="user-input">
-            <%= form_for(@comment, html: {class: "input_comment", role: "form", :id => "form_comment", :onsubmit => "checkInput()"}, url: create_comment_path, method: :put, remote: true) do |f| %>
+            <%= form_for(@comment, html: {class: "input_comment", role: "form", :id => "form_comment", :onsubmit => "checkInput()"}, url: create_comment_path, method: :put, remote: true, require: true) do |f| %>
               <div class="input_comment">
                 <%= f.hidden_field :customer_id, value: current_user.id %>
                 <%= f.hidden_field :article_id, value: article.article_id %>
-                <%= f.text_field :content %>
-                <%= f.submit %>
+                <%= f.text_field :content , id: 'input1', required: true %>
+                <%= f.submit onclick: "removeSpace()"  %>
               </div>
             <% end %>
           </div>
         </div>
 
         <div class="article_comments">
-          <% @comment_pin.each do |pin| %>
-            <div class="user-comment">
-              <div class="user-icon">
-                <% if !pin.customer.avatar.nil? %>
-                  <%= cl_image_tag(pin.customer.avatar) %>
-                <% else %>
-                  <%= image_tag('profile.png') %>
-                <% end %>
-              </div>
-              <div class="user-right">
-                <div class="user-name" style="font-weight: bold">
-                  <%= pin.customer.name %>
-                </div>
-                <div class="u-comment pin">
-                  <%= pin.content %>
-                </div>
-              </div>
-              <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
-              <% if !current_role.blank? %>
-                <div class="comment_pin">
-                  <%= link_to update_comment_pin_path(pin.id), method: :post, remote: true do %>
-                    <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
+            <% @comment_pin.each do |pin| %>
+              <div class="user-comment">
+                <div class="user-icon">
+                  <% if !pin.customer.avatar.nil? %>
+                    <%= cl_image_tag(pin.customer.avatar) %>
+                  <% else %>
+                    <%= image_tag('profile.png') %>
                   <% end %>
-              <% end %>
-              </div>
-            </div>
+                </div>
+                <div class="user-right">
+                  <div class="user-name" style="font-weight: bold">
+                    <%= pin.customer.name %>
+                  </div>
+                  <div class="u-comment pin">
+                    <%= pin.content %>
+                  </div>
+                </div>
 
+                  <div class="comment_pin">
+                    <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
+                    <% if !current_role.blank? %>
+                    <%= link_to update_comment_pin_path(pin.id), method: :post, remote: true do %>
+                      <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
+                    <% end %>
+                <% end %>
+                </div>
+              </div>
           <% end %>
           <% @comment_user.each do |comment| %>
             <%= render "comments/comment", comment: comment %>
@@ -268,12 +268,12 @@
 
 <script>
     function removeSpace() {
-        document.getElementById('input').value =
-            document.getElementById('input').value.trim();
+        document.getElementById('input_cmt').value =
+            document.getElementById('input_cmt').value.trim();
     }
 
     function checkInput() {
-        if (document.getElementById('input').value.trim() == "") {
+        if (document.getElementById('input_cmt').value.trim() == "") {
             return false;
         }
         return true;
