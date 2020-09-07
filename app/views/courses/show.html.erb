@@ -25,9 +25,6 @@
     <% if current_user.present? %>
       <% check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND enrollment_date IS NOT null', current_user.id, @course.id) %>
       <% if check_archived_course.blank? %>
-        <!--          user not enroll this course-->
-        <p>Progress(0%)</p>
-        <progress max="100" value="0"></progress>
       <% else %>
         <!--       user enrolled in course-->
         <% check_archived_course.each do |course_detail| %>
@@ -35,9 +32,6 @@
           <progress max="100" value="<%= course_detail.progression %>"></progress>
         <% end %>
       <% end %>
-    <% else %>
-      <p>Progress(0%)</p>
-      <progress max="100" value="0"></progress>
     <% end %>
     <%= button_to enroll_to_course_path(@course.id), method: :post do %>
       Start learn
@@ -65,7 +59,7 @@
             <% if !a.video.nil? %>
               <%= cl_video_tag(a.video, :effect => "preview", :resource_type => "video") %>
             <% else %>
-              <%= image_tag('japanese.png') %>
+              <%= cl_video_tag('video/Introduction_to_the_Course_-_Introduction_to_the_Course_-_Coursera_jqhxzg' ,:effect => "preview", :resource_type => "video") %>
             <% end %>
           </a>
         </div>
@@ -92,13 +86,14 @@
     var count = -1;
     <% @list_article_paging.each do | full | %>
     count++;
+<%   if current_user.present? %>
     <% @list_article_viewed.each do |view| %>
     <% if view.article_id == full.id %>
     document.querySelectorAll('.fa-check-circle')[count].style.display = 'inline-block';
     <% end %>
     <% end %>
     <% end %>
-
+<% end %>
     function showmore() {
         if (document.getElementById('des').style.webkitLineClamp == "inherit") {
             document.getElementById('des').style.webkitLineClamp = "12";

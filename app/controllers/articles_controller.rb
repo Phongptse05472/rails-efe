@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-
     @article_detail = Article.select("articles.*, article_skills.* ").joins(:article_skills).where(id: params[:id])
     @author = Customer.joins(:customer_articles).where("article_id = ? AND is_owner = true", @article.id)
 
