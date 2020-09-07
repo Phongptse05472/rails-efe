@@ -55,7 +55,7 @@
               <div class="input_comment">
                 <%= f.hidden_field :customer_id, value: current_user.id %>
                 <%= f.hidden_field :article_id, value: article.article_id %>
-                <%= f.text_field :content , id: 'input1', required: true %>
+                <%= f.text_field :content , id: 'input_cmt', required: true %>
                 <%= f.submit onclick: "removeSpace()"  %>
               </div>
             <% end %>
