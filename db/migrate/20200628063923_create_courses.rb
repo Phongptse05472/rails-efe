@@ -9,6 +9,7 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.float :rate
       t.boolean :is_active , default: true
       t.bigint :number_enrollment
+      t.float :duration
       t.timestamps
     end
   end

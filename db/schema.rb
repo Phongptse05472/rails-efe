@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 2020_08_30_084441) do
     t.float "rate"
     t.boolean "is_active", default: true
     t.bigint "number_enrollment"
+    t.float "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
