@@ -9,7 +9,7 @@ class Admin::ArticlesController < Admin::AdminController
               else
                 Article.all.order(created_at: :desc)
               end
-    @pagy, @article_paging = pagy(@article, items: 10)
+    @pagy, @article_paging = pagy(@article, items: 5)
   end
 
   def deactivate_article
