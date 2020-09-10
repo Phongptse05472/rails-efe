@@ -92,7 +92,10 @@
               <div class="name">
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
-              <p><%= author.name %></p>
+              <% if !@author.blank? %>
+                <p><%= author.name %></p>
+              <% else %>
+              <% end %>
               <% end %>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
@@ -164,7 +167,10 @@
               <div class="name">
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
-              <p><%= author.name %></p>
+              <% if !@author.blank? %>
+                <p><%= author.name %></p>
+              <% else %>
+              <% end %>
               <% end %>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
@@ -234,7 +240,10 @@
               <div class="name">
                 <%= link_to course.name, course_path(course.slug) %>
               </div>
-              <p><%= author.name %></p>
+              <% if !@author.blank? %>
+                <p><%= author.name %></p>
+              <% else %>
+              <% end %>
           <% end %>
               <div class="star">
                 <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>

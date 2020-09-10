@@ -160,6 +160,15 @@ ActiveRecord::Schema.define(version: 2020_09_08_052308) do
     t.index ["customer_id"], name: "index_customer_courses_on_customer_id"
   end
 
+  create_table "customer_los", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "lo_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_customer_los_on_customer_id"
+    t.index ["lo_id"], name: "index_customer_los_on_lo_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
