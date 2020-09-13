@@ -1,6 +1,4 @@
 class Admin::CustomersController < Admin::AdminController
-
-
   def index
     if current_user.customer.role_id != 1
     redirect_to home_path
@@ -8,7 +6,7 @@ class Admin::CustomersController < Admin::AdminController
     @account = if params[:q].present?
                 Customer.search_list(params[:q])
               else
-                Customer.all
+                Customer.all.order(created_at: :desc)
               end.select("customers.*, users.* ").joins(:user).all.where("role_id = 2 OR role_id = 3")   
     @pagy, @customer_paging = pagy(@account, items: 10)
   end
@@ -16,6 +14,18 @@ class Admin::CustomersController < Admin::AdminController
     def deactivate
     @customer_disable = User.find(params[:id])
     @customer_disable.update(is_active: !@customer_disable.is_active)
+     respond_to do |format|
+        format.js {render inline: "location.reload();" }
+        end
+    end
+
+    def update_role
+    @customer_role = Customer.find(params[:id])
+    if @customer_role.role_id == 3
+    @customer_role.update_attributes(role_id: 2)
+    else
+    @customer_role.update_attributes(role_id: 3)
+    end
      respond_to do |format|
         format.js {render inline: "location.reload();" }
         end
