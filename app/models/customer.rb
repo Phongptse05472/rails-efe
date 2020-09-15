@@ -31,4 +31,7 @@ class Customer < ApplicationRecord
 
   scope :by_id, -> (id) { where("id= ?", id)}
 
+  has_many :customer_los
+  has_many :los, through: :customer_los
+
 end

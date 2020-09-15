@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_30_084441) do
+ActiveRecord::Schema.define(version: 2020_09_08_052308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,9 +125,11 @@ ActiveRecord::Schema.define(version: 2020_08_30_084441) do
     t.float "rate"
     t.boolean "is_active", default: true
     t.bigint "number_enrollment"
+    t.float "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.string "lo"
     t.index ["slug"], name: "index_courses_on_slug", unique: true
   end
 
@@ -156,6 +158,15 @@ ActiveRecord::Schema.define(version: 2020_08_30_084441) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_customer_courses_on_course_id"
     t.index ["customer_id"], name: "index_customer_courses_on_customer_id"
+  end
+
+  create_table "customer_los", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "lo_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_customer_los_on_customer_id"
+    t.index ["lo_id"], name: "index_customer_los_on_lo_id"
   end
 
   create_table "customers", force: :cascade do |t|

@@ -7,4 +7,7 @@ class Lo < ApplicationRecord
 
   has_many :path_los
   has_many :careerpaths, through: :path_los
+
+  has_many :customer_los
+  has_many :customers, through: :customer_los
 end
