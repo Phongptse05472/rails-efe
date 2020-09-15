@@ -19,16 +19,6 @@ class Admin::CustomersController < Admin::AdminController
         end
     end
 
-    def update_role
-    @customer_role = Customer.find(params[:id])
-    if @customer_role.role_id == 3
-    @customer_role.update_attributes(role_id: 2)
-    else
-    @customer_role.update_attributes(role_id: 3)
-    end
-     respond_to do |format|
-        format.js {render inline: "location.reload();" }
-        end
-    end
+
 
 end

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   post "/deactivate", to: "admin/customers#deactivate"
   post "/deactivate_course", to: "admin/courses#deactivate_course"
   post "/deactivate_article", to: "admin/articles#deactivate_article"
-  post '/update_role', to: "admin/customers#update_role"
+
 
 
   post 'update_customer', to: 'customers#update', :as => :update_customer

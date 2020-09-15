@@ -20,7 +20,6 @@
       <th>Name</th>
       <th>Role</th>
       <th>Created At</th>
-      <th>Update Role</th>
       <th>Active</th>
     </tr>
     <% @customer_paging.each do |customer| %>
@@ -36,13 +35,6 @@
           <td>Student</td>
           <% end %>
         <td><%= customer.created_at %></td>
-        <td>
-          <% if customer.role_id == 3 %>
-            <%= link_to "Update to Mentor", update_role_path(id: customer) ,method: :post,remote: true, class: "disable" %>
-          <%else%>
-            <%= link_to "Update to Student", update_role_path(id: customer) ,method: :post,remote: true, class: "enable" %>
-          <%end%>
-        </td>
         <td>
           <%if customer.is_active%>
             <%= link_to "Disable", deactivate_path(id: customer) ,method: :post,remote: true, class: "disable" %>
