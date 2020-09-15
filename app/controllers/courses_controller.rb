@@ -7,8 +7,6 @@ class CoursesController < ApplicationController
       redirect_to user_home_path
     end
     @course = Course.where(:is_active => true).order(number_enrollment: :desc).limit(20)
-
-
     @rate_course = Course.where(:is_active => true).order(rate: :desc).limit(20)
     @free_course = Course.where(:is_active => true).where(is_free: true).limit(20)
     @topic = Group.all
@@ -18,7 +16,6 @@ class CoursesController < ApplicationController
   def show
     article = Article.joins(:courses).where('courses.id = ?', @course.id)
     @skill = Skill.joins(:article_skills).where("article_id IN (?) ", article.ids).group(:id)
-
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
       if !@check_archived_course.blank?
@@ -30,12 +27,13 @@ class CoursesController < ApplicationController
       @course_detail = Course.where('course_id = ?', @course.id)
     end
     @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
+    if current_user.present?
     @list_article_viewed = CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_articles.ids)
+    end
     @pagy, @list_article_paging = pagy(@list_articles, items: 5)
   end
 
   def calculate_progression
-
     total_article = Article.joins(:course_articles).where('course_id = ?', @course.id).count
     viewed_article = Article.joins(:course_articles).joins(:customer_articles).where('course_id = ? AND is_viewed = true', @course.id).count
     #fix exception FloatDomainError
@@ -44,7 +42,6 @@ class CoursesController < ApplicationController
     else
       progress = viewed_article.to_f / total_article.to_f * 100
     end
-
     @customers_courses_progression = CustomerCourse.where(customer_id: current_user.id, course_id: @course.id)
     @customers_courses_progression.update(progression: progress.round) # => progression
   end

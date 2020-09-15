@@ -16,9 +16,9 @@
     </div>
   </div>
 
-  <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
-  <% if !current_role.blank? %>
+
     <div class="comment_pin">
+      <% if is_author %>
     <%= link_to update_comment_pin_path(comment.id), method: :post, remote: true do %>
       <% if !comment.is_pin %>
         <i class="fa fa-check" onclick="check(this)" aria-hidden="true"></i>
@@ -26,7 +26,6 @@
         <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
       <% end %>
     <% end %>
-  <% else %>
   <% end %>
   </div>
 </div>
