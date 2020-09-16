@@ -30,12 +30,17 @@ class CustomersCoursesController < ApplicationController
     @top_view_article = Article.where(:is_active => true).where.not(id: @article_ids).order(view_number: :desc).limit(20)
 
     @course_article = Course.joins(:course_articles).where("article_id IN (?) ", @top_view_article.ids)
-
+    cid = current_user.id
     # recommender course
+
     require "faraday"
     require "faraday_middleware"
-    response = Faraday.get 'http://localhost:8080/RecommendAPI/api1?pid=3&cid=4'
+    response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid='+cid.to_s
+  rescue Faraday::Error::ConnectionFailed, Octokit::TooManyRequests => e
     data = JSON.parse(response.body)
+
+
+
     @arr_course_id = []
     data.each do |d|
       # puts d["id"]

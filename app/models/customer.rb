@@ -17,6 +17,9 @@ class Customer < ApplicationRecord
   # mount_uploader :avatar , ImageUploader
   has_many :comments
 
+  has_many :customers_paths
+  has_many :careerpaths, through: :customers_paths
+
   pg_search_scope :search_list, against:[
     [:id, 'A'],
     [:name, 'B'],
