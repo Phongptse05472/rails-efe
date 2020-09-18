@@ -67,6 +67,9 @@ namespace :import do |import_namespace|
       when "Customer_LOs"
         puts 'creating customer_los'
         CustomerLo.import! data
+      when "Customer_Path"
+        puts 'creating customerPath'
+        CustomersPath.import! data
       when "Users"
         puts 'creating Users...'
         data.each do |user|

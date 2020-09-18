@@ -185,10 +185,10 @@ ActiveRecord::Schema.define(version: 2020_09_16_084416) do
 
   create_table "customers_paths", force: :cascade do |t|
     t.bigint "customer_id"
-    t.bigint "careerpaths_id"
+    t.bigint "careerpath_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["careerpaths_id"], name: "index_customers_paths_on_careerpaths_id"
+    t.index ["careerpath_id"], name: "index_customers_paths_on_careerpath_id"
     t.index ["customer_id"], name: "index_customers_paths_on_customer_id"
   end
 
