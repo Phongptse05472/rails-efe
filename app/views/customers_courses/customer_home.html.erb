@@ -46,9 +46,8 @@
       <%= link_to topic.name, topic_path(topic.id) %>
     <% end %>
   </div>
-
+<%# if !@arr_course_id.blank? %>
   <h1>Recommend for you</h1>
-
   <div id="exampleSlider5">
     <div class="MS-content">
       <% @recommender_course.each do |course| %>
@@ -116,12 +115,12 @@
         </div>
       <% end %>
     </div>
-
     <div class="MS-controls">
       <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
+
 
   <h1>Hot course</h1>
   <div id="exampleSlider1">
@@ -191,12 +190,13 @@
         </div>
       <% end %>
     </div>
-
     <div class="MS-controls">
       <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
+
+
   <h1>Top course</h1>
   <div id="exampleSlider2">
     <div class="MS-content">
@@ -436,7 +436,6 @@
 </script>
 
 <script>
-
     var amount = <%= @number_enroll.count.to_int %>;
     if (amount <= 4) {
         document.getElementById('MS-controls').style.display = "none";

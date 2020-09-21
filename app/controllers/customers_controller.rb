@@ -32,6 +32,17 @@ skip_before_action :verify_authenticity_token
         redirect_to "/profile"
       end
 
+  def update_careerpath
+    @customer =Customer.where("user_id = ?", current_user.id)
+
+  end
+
+  def insert_careerpath
+      @customer =Customer.where("user_id = ?", current_user.id)
+
+
+  end
+
 
   end
 

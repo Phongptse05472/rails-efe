@@ -35,16 +35,15 @@ class CustomersCoursesController < ApplicationController
 
     require "faraday"
     require "faraday_middleware"
-    response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid='+cid.to_s
-    rescue Faraday::Error::ConnectionFailed, Octokit::TooManyRequests => e
+    response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
     data = JSON.parse(response.body)
-    @arr_course_id = []
+    @arr_course_id = [].uniq
     data.each do |d|
-      # puts d["id"]
       @arr_course_id << d["id"]
-
     end
-  
+   # Faraday::Error #or more specific error type
+    # @arr_course_id = [1]
+
     @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
   end
 
