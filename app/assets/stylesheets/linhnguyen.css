@@ -1,0 +1,197 @@
+	.linhnguyen-modal-bg {
+	    position: fixed;
+	    height: 100%;
+	    width: 100%;
+	    background: lightgray;
+	    background: lightgray;
+	    z-index: 100;
+	    display: none;
+	    top: 0;
+	    left: 0;
+	    opacity: 0.8;
+	}
+	
+	.linhnguyen-modal {
+	    visibility: hidden;
+	    text-align: center;
+	    top: 20%;
+	    left: 50%;
+	    margin-left: -300px;
+	    width: 520px;
+	    background: #eee url(modal-gloss.png) no-repeat -200px -80px;
+	    position: absolute;
+	    z-index: 101;
+	    padding: 30px 40px 10px;
+	    -moz-border-radius: 5px;
+	    -webkit-border-radius: 5px;
+	    border-radius: 5px;
+	    -moz-box-shadow: 0 0 10px lightgray;
+	    -webkit-box-shadow: 0 0 10px lightgray;
+	    -box-shadow: 0 0 10px lightgray;
+	}
+	
+	.linhnguyen-modal.small {
+	    width: 200px;
+	    margin-left: -140px;
+	}
+	
+	.linhnguyen-modal.medium {
+	    width: 400px;
+	    margin-left: -240px;
+	}
+	
+	.linhnguyen-modal.large {
+	    width: 600px;
+	    margin-left: -340px;
+	}
+	
+	.linhnguyen-modal.xlarge {
+	    width: 800px;
+	    margin-left: -440px;
+	}
+	
+	.linhnguyen-modal .close-linhnguyen-modal {
+	    font-size: 22px;
+	    line-height: .5;
+	    position: absolute;
+	    top: 8px;
+	    right: 11px;
+	    color: #aaa;
+	    text-shadow: 0 -1px 1px rbga(0, 0, 0, .6);
+	    font-weight: bold;
+	    cursor: pointer;
+	}
+	
+	.big-link {
+	    display: block;
+	    margin-top: 100px;
+	    text-align: center;
+	    font-size: 70px;
+	    color: #14bdee;
+	}
+	
+	table {
+	    width: 100%;
+	    font-family: Arial, Helvetica, sans-serif;
+	    color: #273044;
+	}
+	
+	table tr td:first-child {
+	    width: 35%;
+	    font-weight: bold;
+	    font-size: 17px;
+	}
+	
+	table tr td {
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	    text-align: left;
+	}
+	
+	table tr td select {
+	    color: #fff;
+	    background-color: #14bdee;
+	    border-color: #14bdee;
+	    padding: 10px 20px;
+	    border-radius: 5px;
+	    font-weight: bold;
+	    font-size: 15px;
+	    outline: white;
+	}
+	
+	table tr td select option {
+	    padding-top: 10px;
+	    height: 20px;
+	    background-color: white;
+	    color: black;
+	    font-weight: bold;
+	}
+	
+	.linhnguyen-modal button {
+	    /* display: inline-block; */
+	    vertical-align: middle;
+	    padding: 10px 20px;
+	    background-color: #007bff;
+	    text-decoration: none;
+	    font-weight: bold;
+	    color: white;
+	    border-radius: 5px;
+	    border: 1px solid #007bff;
+	    cursor: pointer;
+	    float: right;
+	    margin-top: 20px;
+	    font-size: 16px;
+	    margin-top: 100px;
+	}
+	
+	.tooltip {
+	    position: relative;
+	    display: inline-block;
+	    cursor: pointer;
+	}
+	
+	.tooltiptext {
+	    visibility: hidden;
+	    width: 120px;
+	    background-color: #14bdee;
+	    color: #fff;
+	    text-align: center;
+	    border-radius: 6px;
+	    padding: 5px 0;
+	    position: absolute;
+	    left: 0;
+	    top: 30px;
+	    z-index: 1;
+	}
+	
+	.tooltip:hover .tooltiptext {
+	    visibility: visible;
+	}
+	
+	.tooltip1 {
+	    position: relative;
+	    display: inline-block;
+	    cursor: pointer;
+	}
+	
+	.tooltiptext1 {
+	    visibility: hidden;
+	    width: 120px;
+	    background-color: #14bdee;
+	    color: #fff;
+	    text-align: center;
+	    border-radius: 6px;
+	    padding: 5px 0;
+	    position: absolute;
+	    left: 0;
+	    top: 30px;
+	    z-index: 1;
+	}
+	
+	.tooltip1:hover .tooltiptext1 {
+	    visibility: visible;
+	}
+	
+	.tooltip2 {
+	    position: relative;
+	    display: inline-block;
+	    cursor: pointer;
+	}
+	
+	.tooltiptext2 {
+	    visibility: hidden;
+	    width: 120px;
+	    background-color: #14bdee;
+	    color: #fff;
+	    text-align: center;
+	    border-radius: 6px;
+	    padding: 5px 0;
+	    position: absolute;
+	    left: 0;
+	    top: 30px;
+	    z-index: 1;
+	}
+	
+	.tooltip2:hover .tooltiptext2 {
+	    visibility: visible;
+	}

@@ -1,4 +1,33 @@
+<head>
+  <%= stylesheet_link_tag 'linhnguyen', media: 'all', 'data-turbolinks-track': 'reload' %>
+<!--  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+  <script type="text/javascript">
+      $(window).load(function() {
+          $('#myModal').linhnguyen($('#myModal').data());
+      });
+  </script>
+</head>
 <%= content_for :page_title, 'User home' %>
+<div id="myModal" class="linhnguyen-modal">
+  <form action="#" method="post">
+    <table>
+      <tr>
+        <td>
+          Bạn muốn trở thành
+        </td>
+        <td>
+          <select>
+            <option>Front end dev</option>
+            <option>Back end dev</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <button type="submit">Submit</button>
+  </form>
+  <a class="close-linhnguyen-modal"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+</div>
+
 <div #app1 class="right">
   <h1 id="your_course">Your Course</h1>
   <div id="exampleSlider">
