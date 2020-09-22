@@ -104,6 +104,11 @@ button:hover {
     position: relative;
     height: auto;
 }
+#exampleSlider5 {
+    width: 100%;
+    position: relative;
+    height: auto;
+}
 
 @media (max-width: 767px) {
     .MS-content {

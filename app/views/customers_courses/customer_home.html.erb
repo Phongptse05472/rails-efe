@@ -48,7 +48,7 @@
   </div>
 <%# if !@arr_course_id.blank? %>
   <h1>Recommend for you</h1>
-  <div id="exampleSlider5">
+  <div id="exampleSlider1">
     <div class="MS-content">
       <% @recommender_course.each do |course| %>
         <div id="item" class="item">
@@ -120,10 +120,8 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-
-
   <h1>Hot course</h1>
-  <div id="exampleSlider1">
+  <div id="exampleSlider2">
     <div class="MS-content">
       <% @hot_course.each do |course| %>
         <div id="item" class="item">
@@ -195,10 +193,8 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-
-
   <h1>Top course</h1>
-  <div id="exampleSlider2">
+  <div id="exampleSlider3">
     <div class="MS-content">
       <% @rate_course.each do |course| %>
         <div id="item" class="item">
@@ -272,7 +268,7 @@
     </div>
   </div>
   <h1>New course</h1>
-  <div id="exampleSlider3">
+  <div id="exampleSlider4">
     <div class="MS-content">
       <% @new_course.each do |course| %>
         <div id="item" class="item">
@@ -344,10 +340,8 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-
-
   <h1>Top view article</h1>
-  <div id="exampleSlider4">
+  <div id="exampleSlider5">
     <div id="topView" class="MS-content">
       <% @top_view_article.each do |article| %>
         <div id="item" class="item">
@@ -494,7 +488,6 @@
         continuous: false
 
     });
-
 </script>
 <script>
     var perfEntries = performance.getEntriesByType("navigation");
