@@ -37,11 +37,6 @@ skip_before_action :verify_authenticity_token
 
   end
 
-  def insert_careerpath
-      @customer =Customer.where("user_id = ?", current_user.id)
-
-
-  end
 
 
   end

@@ -1,33 +1,39 @@
 <head>
   <%= stylesheet_link_tag 'linhnguyen', media: 'all', 'data-turbolinks-track': 'reload' %>
-<!--  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+  <!--  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
   <script type="text/javascript">
-      $(window).load(function() {
+      $(window).load(function () {
           $('#myModal').linhnguyen($('#myModal').data());
       });
   </script>
 </head>
+<% @user = User.where("id = ?", current_user.id) %>
 <%= content_for :page_title, 'User home' %>
-<div id="myModal" class="linhnguyen-modal">
-  <form action="#" method="post">
-    <table>
-      <tr>
-        <td>
-          Bạn muốn trở thành
-        </td>
-        <td>
-          <select>
-            <option>Front end dev</option>
-            <option>Back end dev</option>
-          </select>
-        </td>
-      </tr>
-    </table>
-    <button type="submit">Submit</button>
-  </form>
-  <a class="close-linhnguyen-modal"><i class="fa fa-window-close" aria-hidden="true"></i></a>
-</div>
-
+<% if @user.first.sign_in_count == 0 %>
+  <div id="myModal" class="linhnguyen-modal">
+    <%= form_with model: @customer_path, url: add_customer_path_path do |f| %>
+      <table>
+        <tr>
+          <td>
+            Select your career path:
+            <% a = User.where(id: current_user.id) %>
+            <%= a.first.sign_in_count %>
+          </td>
+          <td>
+            <%= f.select :careerpath_id, Careerpath.all.collect { |p| [p.name, p.id] }, include_blank: true %>
+            <%= f.hidden_field :customer_id, value: current_user.id %>
+          </td>
+<!--          <td>select your learning outcome you archived</td>-->
+<!--          <td>-->
+            <%#= f.select :lo_id, Lo.where(careerpath_id: ).collect { |p| [p.name, p.id] }, include_blank: true %>
+<!--          </td>-->
+        </tr>
+      </table>
+      <button onclick="location.reload()" type="submit">Submit</button>
+      <a class="close-linhnguyen-modal"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+      </div>
+    <% end %>
+<% end %>
 <div #app1 class="right">
   <h1 id="your_course">Your Course</h1>
   <div id="exampleSlider">
@@ -50,16 +56,16 @@
                 <% else %>
                   <%= image_tag('profile.png') %>
                 <% end %>
-            </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to my_courses.name, course_path(my_courses.course_id) %>
+                </div>
+                <div class="title">
+                  <div class="name">
+                    <%= link_to my_courses.name, course_path(my_courses.course_id) %>
               <% end %>
               </div>
               <p class="status">Progress (<%= my_courses.progression %>%)</p>
               <progress max="100" value="<%= my_courses.progression %>"></progress>
-            </div>
-          </div>
+              </div>
+              </div>
         </div>
       <% end %>
     </div>
@@ -75,11 +81,85 @@
       <%= link_to topic.name, topic_path(topic.id) %>
     <% end %>
   </div>
-<%# if !@arr_course_id.blank? %>
-  <h1>Recommend for you</h1>
-  <div id="exampleSlider1">
+  <% if !@cus_path.blank? %>
+    <h1>Recommend for you</h1>
+    <div id="exampleSlider1">
+      <div class="MS-content">
+        <% @recommender_course.each do |course| %>
+          <div id="item" class="item">
+            <div class="thumbnai">
+              <% if !course.image.nil? %>
+                <%= cl_image_tag(course.image) %>
+              <% else %>
+                <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+              <% end %>
+              <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
+              <% if customer_course.exists? %>
+                <% if customer_course.first.is_save == true %>
+                  <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
+                    <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
+                    <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= link_to add_to_archived_path(course.id), method: :post do %>
+                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="author">
+              <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
+              <% @author.each do |author| %>
+                <div class="icon">
+                  <% if !author.avatar.nil? %>
+                    <%= cl_image_tag(author.avatar) %>
+                  <% else %>
+                    <%= image_tag('profile.png') %>
+                  <% end %>
+                </div>
+                <div class="title">
+                  <div class="name">
+                    <%= link_to course.name, course_path(course.slug) %>
+                  </div>
+                  <% if !@author.blank? %>
+                    <p><%= author.name %></p>
+                  <% else %>
+                  <% end %>
+              <% end %>
+              <div class="star">
+                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
+              </div>
+              <% rate = course.rate.to_f %>
+              <% (1..rate).each do |i| %>
+                <% if rate >= i.floor %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              <% end %>
+              <% if rate != rate.floor %>
+                <span class="fa fa-star-half-o checked"></span>
+              <% end %>
+              <% (1..(5 - rate.ceil)).each do %>
+                <span class="fa fa-star-o checked"></span>
+              <% end %>
+              <span>(<%= course.number_enrollment %> enroll)</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="MS-controls">
+        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  <% end %>
+  <h1>Hot course</h1>
+  <div id="exampleSlider2">
     <div class="MS-content">
-      <% @recommender_course.each do |course| %>
+      <% @hot_course.each do |course| %>
         <div id="item" class="item">
           <div class="thumbnai">
             <% if !course.image.nil? %>
@@ -149,79 +229,6 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-  <h1>Hot course</h1>
-  <div id="exampleSlider2">
-    <div class="MS-content">
-      <% @hot_course.each do |course| %>
-        <div id="item" class="item">
-          <div class="thumbnai">
-            <% if !course.image.nil? %>
-              <%= cl_image_tag(course.image) %>
-            <% else %>
-              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
-            <% end %>
-            <% customer_course = CustomerCourse.where("customer_id = ? AND course_id = ?", current_user.id, course.id) %>
-            <% if customer_course.exists? %>
-              <% if customer_course.first.is_save == true %>
-                <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark" onclick="bookmark(this,123)" id="course_archived<%= course.id %>" aria-hidden="true"></i>
-                <% end %>
-              <% else %>
-                <%= link_to update_archived_path(course.id), method: :post, remote: true do %>
-                  <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
-                <% end %>
-              <% end %>
-            <% else %>
-              <%= link_to add_to_archived_path(course.id), method: :post do %>
-                <i class="fa fa-bookmark-o" onclick="bookmark(this,123)" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="author">
-            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
-            <% @author.each do |author| %>
-              <div class="icon">
-                <% if !author.avatar.nil? %>
-                  <%= cl_image_tag(author.avatar) %>
-                <% else %>
-                  <%= image_tag('profile.png') %>
-                <% end %>
-              </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to course.name, course_path(course.slug) %>
-              </div>
-              <% if !@author.blank? %>
-                <p><%= author.name %></p>
-              <% else %>
-              <% end %>
-              <% end %>
-              <div class="star">
-                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
-              </div>
-              <% rate = course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
-                <% end %>
-              <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span>(<%= course.number_enrollment %> enroll)</span>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="MS-controls">
-      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-    </div>
-  </div>
   <h1>Top course</h1>
   <div id="exampleSlider3">
     <div class="MS-content">
@@ -261,31 +268,31 @@
                   <%= image_tag('profile.png') %>
                 <% end %>
               </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to course.name, course_path(course.slug) %>
-              </div>
-              <% if !@author.blank? %>
-                <p><%= author.name %></p>
-              <% else %>
-              <% end %>
-              <% end %>
-              <div class="star">
-                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
-              </div>
-              <% rate = course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
+              <div class="title">
+                <div class="name">
+                  <%= link_to course.name, course_path(course.slug) %>
+                </div>
+                <% if !@author.blank? %>
+                  <p><%= author.name %></p>
+                <% else %>
                 <% end %>
+            <% end %>
+            <div class="star">
+              <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
+            </div>
+            <% rate = course.rate.to_f %>
+            <% (1..rate).each do |i| %>
+              <% if rate >= i.floor %>
+                <span class="fa fa-star checked"></span>
               <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span>(<%= course.number_enrollment %> enroll)</span>
+            <% end %>
+            <% if rate != rate.floor %>
+              <span class="fa fa-star-half-o checked"></span>
+            <% end %>
+            <% (1..(5 - rate.ceil)).each do %>
+              <span class="fa fa-star-o checked"></span>
+            <% end %>
+            <span>(<%= course.number_enrollment %> enroll)</span>
             </div>
           </div>
         </div>
@@ -334,31 +341,31 @@
                   <%= image_tag('profile.png') %>
                 <% end %>
               </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to course.name, course_path(course.slug) %>
-              </div>
-              <% if !@author.blank? %>
-                <p><%= author.name %></p>
-              <% else %>
-              <% end %>
-          <% end %>
-              <div class="star">
-                <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
-              </div>
-              <% rate = course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
+              <div class="title">
+                <div class="name">
+                  <%= link_to course.name, course_path(course.slug) %>
+                </div>
+                <% if !@author.blank? %>
+                  <p><%= author.name %></p>
+                <% else %>
                 <% end %>
+            <% end %>
+            <div class="star">
+              <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
+            </div>
+            <% rate = course.rate.to_f %>
+            <% (1..rate).each do |i| %>
+              <% if rate >= i.floor %>
+                <span class="fa fa-star checked"></span>
               <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span> (<%= course.number_enrollment %> enroll) </span>
+            <% end %>
+            <% if rate != rate.floor %>
+              <span class="fa fa-star-half-o checked"></span>
+            <% end %>
+            <% (1..(5 - rate.ceil)).each do %>
+              <span class="fa fa-star-o checked"></span>
+            <% end %>
+            <span> (<%= course.number_enrollment %> enroll) </span>
             </div>
           </div>
         </div>
@@ -394,7 +401,7 @@
             <% end %>
           </div>
           <div class="author">
-            <% @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , article.id) %>
+            <% @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) ", article.id) %>
             <div class="title">
               <div class="name">
                 <%= link_to article.title, course_path(@course_article.first.slug) %>

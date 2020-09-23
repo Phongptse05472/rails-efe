@@ -33,20 +33,35 @@ class CustomersCoursesController < ApplicationController
     cid = current_user.id
     # recommender course
 
-    require "faraday"
-    require "faraday_middleware"
-    response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
-    data = JSON.parse(response.body)
-    @arr_course_id = [].uniq
-    data.each do |d|
-      @arr_course_id << d["id"]
+    @cus_path = CustomersPath.where(customer_id: cid)
+    if !@cus_path.blank?
+      require "faraday"
+      require "faraday_middleware"
+      response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
+      data = JSON.parse(response.body)
+      @arr_course_id = [].uniq
+      data.each do |d|
+        @arr_course_id << d["id"]
+      end
+      Faraday::Error #or more specific error type
+      @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
     end
-   # Faraday::Error #or more specific error type
-    # @arr_course_id = [1]
-
-    @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
   end
 
+  def insert_careerpath
+    @customer = Customer.where("user_id = ?", current_user.id)
+    @customer_path = CustomersPath.new(customer_path_params)
+    @customer_path.save
+    user = User.where("id = ?", current_user.id)
+    user.update(sign_in_count: user.first.sign_in_count += 1)
+    respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end
+  end
+
+  def customer_path_params
+    params.permit(:customer_id, :careerpath_id)
+  end
 
   def enroll_courses
     enroll_course = Course.find(params[:slug])
