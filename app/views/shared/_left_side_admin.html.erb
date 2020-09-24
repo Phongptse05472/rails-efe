@@ -3,17 +3,17 @@
   <ul class="top">
     <li>
       <a href="/admin/customers">
-         Manager Account
+        Manager Account
       </a>
     </li>
     <li>
       <a href="/admin/courses">
-         Manager Course
+        Manager Course
       </a>
     </li>
     <li>
       <a href="/admin/articles">
-         Manager Article
+        Manager Article
       </a>
     </li>
   </ul>
@@ -21,11 +21,11 @@
 <script>
     var url = "<%= url_for(only_path: false) %>";
     var li = document.getElementsByTagName('li');
-    if(url.endsWith("customers")){
+    if (url.endsWith("customers")) {
         li[0].style.border = "2px solid #14bdee";
-    }else if(url.endsWith("courses")){
+    } else if (url.endsWith("courses")) {
         li[1].style.border = "2px solid #14bdee";
-    }else if(url.endsWith("articles")){
+    } else if (url.endsWith("articles")) {
         li[2].style.border = "2px solid #14bdee";
     }
 </script>

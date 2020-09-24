@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   post "/deactivate_article", to: "admin/articles#deactivate_article"
 
 
+
   post 'update_customer', to: 'customers#update', :as => :update_customer
 
   post 'update_img', to: 'customers#update_img', :as => :update_img

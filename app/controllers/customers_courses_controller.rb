@@ -1,9 +1,9 @@
 class CustomersCoursesController < ApplicationController
   #my course page
+
   def index
     @my_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id).order("customer_courses.updated_at DESC")
     @pagy, @my_course_paging = pagy(@my_courses, items: 5)
-
   end
 
   #customer home page
@@ -31,6 +31,17 @@ class CustomersCoursesController < ApplicationController
 
     @course_article = Course.joins(:course_articles).where("article_id IN (?) ", @top_view_article.ids)
 
+    # recommender course
+    require "faraday"
+    require "faraday_middleware"
+    response = Faraday.get 'http://localhost:8080/RecommendAPI/api1?pid=3&cid=4'
+    data = JSON.parse(response.body)
+    @arr_course_id = []
+    data.each do |d|
+      # puts d["id"]
+      @arr_course_id << d["id"]
+    end
+    @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
   end
 
 
@@ -73,7 +84,7 @@ class CustomersCoursesController < ApplicationController
 
   def archived_courses
     @archived_courses = Course.select("courses.*, customer_courses.*").joins(:customer_courses).where('customer_id = ? AND is_save = ?', current_user.id, true).order("customer_courses.updated_at DESC")
-        @pagy, @archived_courses_paging = pagy(@archived_courses, items: 5)
+    @pagy, @archived_courses_paging = pagy(@archived_courses, items: 5)
   end
 
 
