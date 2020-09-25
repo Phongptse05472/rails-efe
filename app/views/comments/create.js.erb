@@ -1,2 +1,2 @@
-$('.article_comments').prepend("<%= j render 'comments/comment', comment: @comment %>")
-$('#comment_content').val("")
+$('.user-comments').prepend("<%= j render partial: 'comments/comment', locals: {comment: @comment, is_author: @is_author} %>")
+$('#input_cmt').val("")

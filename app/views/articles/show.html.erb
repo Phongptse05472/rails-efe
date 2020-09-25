@@ -16,7 +16,7 @@
           <%= article.view_number %> view • <%= article.created_at.to_date %>
         </p>
       </div>
-      <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id) %>
+      
       <% @author.each do |author| %>
         <div class="w-description">
           <div class="w-icon">
@@ -55,6 +55,7 @@
               <div class="input_comment">
                 <%= f.hidden_field :customer_id, value: current_user.id %>
                 <%= f.hidden_field :article_id, value: article.article_id %>
+                <%= f.hidden_field :is_pin, value: false %>
                 <%= f.text_field :content , id: 'input_cmt', required: true %>
                 <%= f.submit onclick: "removeSpace()"  %>
               </div>
@@ -63,37 +64,39 @@
         </div>
 
         <div class="article_comments">
-            <% @comment_pin.each do |pin| %>
-              <div class="user-comment">
-                <div class="user-icon">
-                  <% if !pin.customer.avatar.nil? %>
-                    <%= cl_image_tag(pin.customer.avatar) %>
-                  <% else %>
-                    <%= image_tag('profile.png') %>
-                  <% end %>
-                </div>
-                <div class="user-right">
-                  <div class="user-name" style="font-weight: bold">
-                    <%= pin.customer.name %>
-                  </div>
-                  <div class="u-comment pin">
-                    <%= pin.content %>
-                  </div>
-                </div>
-
-                  <div class="comment_pin">
-                    <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
-                    <% if !current_role.blank? %>
-                    <%= link_to update_comment_pin_path(pin.id), method: :post, remote: true do %>
-                      <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
-                    <% end %>
-                <% end %>
-                </div>
+        <% @comment_pin.each do |pin| %>
+          <div class="user-comment">
+            <div class="user-icon">
+              <% if !pin.customer.avatar.nil? %>
+                <%= cl_image_tag(pin.customer.avatar) %>
+              <% else %>
+                <%= image_tag('profile.png') %>
+              <% end %>
+            </div>
+            <div class="user-right">
+              <div class="user-name" style="font-weight: bold">
+                <%= pin.customer.name %>
               </div>
+              <div class="u-comment pin">
+                <%= pin.content %>
+              </div>
+            </div>
+
+              <div class="comment_pin">
+                <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
+                <% if @is_author %>
+                <%= link_to update_comment_pin_path(pin.id), method: :post, remote: true do %>
+                  <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
+                <% end %>
+            <% end %>
+            </div>
+          </div>
           <% end %>
-          <% @comment_user.each do |comment| %>
-            <%= render "comments/comment", comment: comment %>
-          <% end %>
+          <div class="user-comments">
+            <% @comment_user.each do |comment| %>
+              <%= render partial: "comments/comment", locals: {comment: comment, is_author: @is_author} %>
+            <% end %>
+          </div>
         </div>
     <% end %>
     </div>

@@ -32,13 +32,7 @@ class Course < ApplicationRecord
   scope :by_levels, ->(level) { where("level = ?", level)}
   scope :by_prices, ->(price) { where("price = ?", price)}
 
-  STEPS = %i(over_view create_content comfirmed)
-
-
-  # has_one_attached :image
-
-  # has_and_belongs_to_many :groups
-
+  STEPS = %i(landing_page create_content over_view)
 
   has_many :course_groups
   has_many :groups, through: :course_groups
@@ -49,7 +43,8 @@ class Course < ApplicationRecord
   has_many :customer_courses
   has_many :customers, through: :customer_courses
 
-  has_many :course_preskills
+  accepts_nested_attributes_for :articles
+  accepts_nested_attributes_for :course_groups
 
   def update_slug
     self.slug = name.parameterize
@@ -62,5 +57,7 @@ class Course < ApplicationRecord
   def should_generate_new_friendly_id?
     name_changed? || super
   end
+
+  mount_uploader :image, ImageUploader
 
 end
