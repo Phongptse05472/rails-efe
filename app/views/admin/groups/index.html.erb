@@ -1,0 +1,58 @@
+<head>
+  <%= stylesheet_link_tag 'manager_video', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="right">
+  <h1>
+    Manage Group Course
+  </h1>
+  <div class="search managerAccount">
+    <%= form_tag admin_courses_path, :html => {:onsubmit => "checkInput()"}, class: "search", method: :get do %>
+      <%= text_field_tag 'q', params[:q], placeholder: "Search a Group...", required: true, :id => 'input', autocomplete: "off" %>
+      <button onclick="removeSpace()" type="submit">
+        <%= image_tag("search.png") %>
+      </button>
+    <% end %>
+  </div>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Group</th>
+    </tr>
+    <tr>
+      <% @group_paging.each do |group| %>
+        <td>
+          <p><%= group.id %></p>
+        </td>
+        <td>
+          <h3>
+            <%= group.name %></a>
+          </h3>
+        </td>
+        </tr>
+      <% end %>
+      </table>
+
+
+  <div class="paging">
+    <% if @group.ids.count > 5 %>
+      <%== pagy_nav(@pagy) %>
+    <% else %>
+    <% end %>
+  </div>
+
+  <div class="end">
+  </div>
+</div>
+<script>
+    function removeSpace() {
+        document.getElementById('input').value =
+            document.getElementById('input').value.trim();
+    }
+
+    function checkInput() {
+        if (document.getElementById('input').value.trim() == "") {
+            return false;
+        }
+        return true;
+    }
+</script>

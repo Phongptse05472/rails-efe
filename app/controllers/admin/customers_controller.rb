@@ -11,6 +11,8 @@ class Admin::CustomersController < Admin::AdminController
     @pagy, @customer_paging = pagy(@account, items: 10)
   end
 
+
+
     def deactivate
     @customer_disable = User.find(params[:id])
     @customer_disable.update(is_active: !@customer_disable.is_active)
