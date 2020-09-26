@@ -30,7 +30,8 @@
         <a href="#">
           <i class="fa fa-bell"></i>
         </a>
-        <%= link_to profile_path do %>
+
+        <%= link_to profile_path, :onMouseover => "myfunction()", id:"myBtn" do %>
           <% customer = current_user.customer %>
           <% if !customer.avatar.nil? %>
             <%= cl_image_tag(customer.avatar, :height=>100, :width=>50)  %>
@@ -40,10 +41,46 @@
           <a href="" class="profile"></a>
         <% end %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <div id="notifications" style="margin-top: 13px;">
+          <!-- <h3>Information User</h3> -->
+          <div class="show_menu">
+            <p>
+              <a href="userhome.html">
+                <i class="fa fa-user-circle-o"></i> Profile
+              </a>
+            </p>
+            <p>
+              <a href="userhome.html">
+                <i class="fa fa-star"></i> Carrer path
+              </a>
+            </p>
+            <p>
+              <a href="userhome.html">
+                <i class="fa fa-sign-out"></i> Login out
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
+<script>
+    window.addEventListener('click', function(e) {
+        if (!document.getElementById('myBtn').contains(e.target)) {
+            document.getElementById('notifications').style.display = "none"
+        }
+    });
+
+    function myfunction() {
+        if (document.getElementById('notifications').style.display == "none" ||
+            document.getElementById('notifications').style.display == '') {
+            document.getElementById('notifications').style.display = "block"
+        } else {
+            document.getElementById('notifications').style.display = "none"
+        }
+    }
+</script>
 <script>
     function removeSpace() {
         document.getElementById('input').value =
