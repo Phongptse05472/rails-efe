@@ -1,0 +1,46 @@
+<head>
+  <%= stylesheet_link_tag 'path', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'manager_video', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div #app1 class="right">
+  <h1>
+    Change career path
+  </h1>
+  <%= form_with model: @career_path, url: get_customer_path_path do |f| %>
+
+    <table>
+      <tr>
+        <td>
+          Select your career path:
+        </td>
+        <td>
+          <%= f.select :careerpath_id, Careerpath.all.collect { |p| [p.name, p.id] }, include_blank: true %>
+          <button  type="submit">Search</button>
+        </td>
+      </tr>
+    </table>
+
+  <% end %>
+  <br/>
+
+
+  <%#= form_with model: @career_path , url: get_ do |f| %>
+  <td>select your learning outcome you archived</td>
+  <br/>
+  <% @career_path.each do |path| %>
+    <%= check_box_tag "path_ids[]", path.id %>
+    <%= path.name %>
+    <br/>
+  <% end %>
+  <!--    <button onclick="location.reload()" type="submit">Submit</button>-->
+  <%# end %>
+  <!--  <button id="submit" class="submit" type="submit">Save</button>-->
+  <%= submit_tag 'Create and Add Another', name: 'ok' %>
+
+  <div class="end">
+  </div>
+</div>
+
+
+

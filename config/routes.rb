@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'search', to: 'courses#search', :as => :search_courses
   put 'comment', to: 'comments#create', :as => :create_comment
   post 'add_customer_path' , to: 'customers_courses#insert_careerpath', :as => :add_customer_path
+  get 'get_customer_path' , to: 'customers_courses#insert_careerpath', :as => :get_customer_path
 
   post 'enroll_courses/:slug', to: 'customers_courses#enroll_courses', :as => :enroll_to_course
   post 'courses/:id', to: 'customers_courses#update', :as => :update_archived
@@ -36,15 +37,14 @@ Rails.application.routes.draw do
   post "/deactivate_article", to: "admin/articles#deactivate_article"
 
 
-
   post 'update_customer', to: 'customers#update', :as => :update_customer
 
   post 'update_img', to: 'customers#update_img', :as => :update_img
-  # post 'update_customer_info/:id', to: 'customers#update_customer_info', :as => :update_customer_info
 
+  get 'update_path', to: 'customers_courses#update_path', :as => :get_update_path
 
-
-
+  # post 'update_career_path', to: 'customers#update_path', :as => :update_career_path
+  get 'get_lo/:path_id', to: 'customers_courses#update_path'
 
   resources :customers do
   end

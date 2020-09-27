@@ -30,33 +30,34 @@
         <a href="#">
           <i class="fa fa-bell"></i>
         </a>
-
-        <%= link_to profile_path, :onMouseover => "myfunction()", id:"myBtn" do %>
+        <%= link_to "#", :onMouseover => "myfunction()", id:"myBtn" do %>
           <% customer = current_user.customer %>
           <% if !customer.avatar.nil? %>
-            <%= cl_image_tag(customer.avatar, :height=>100, :width=>50)  %>
+            <%= cl_image_tag(customer.avatar, :height=>100, :width=>50)%>
           <% else %>
             <%= cl_image_tag('gshyksf1iqjf7ianfp5t.png', :height=>100, :width=>50)%>
           <% end %>
           <a href="" class="profile"></a>
         <% end %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
         <div id="notifications" style="margin-top: 13px;">
           <!-- <h3>Information User</h3> -->
           <div class="show_menu">
             <p>
-              <a href="userhome.html">
-                <i class="fa fa-user-circle-o"></i> Profile
+              <a href="">
+                <i class="fa fa-user-circle-o"></i>
+                <%= link_to " Profile", profile_path %>
               </a>
             </p>
             <p>
-              <a href="userhome.html">
-                <i class="fa fa-star"></i> Carrer path
+              <a href="">
+                <i class="fa fa-star"></i>
+                <%= link_to "Career path" , get_update_path_path %>
               </a>
             </p>
             <p>
-              <a href="userhome.html">
-                <i class="fa fa-sign-out"></i> Login out
+              <a href="">
+                <i class="fa fa-sign-out"></i>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
               </a>
             </p>
           </div>

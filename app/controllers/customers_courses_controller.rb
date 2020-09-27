@@ -33,19 +33,19 @@ class CustomersCoursesController < ApplicationController
     cid = current_user.id
     # recommender course
 
-    @cus_path = CustomersPath.where(customer_id: cid)
-    if !@cus_path.blank?
-      require "faraday"
-      require "faraday_middleware"
-      response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
-      data = JSON.parse(response.body)
-      @arr_course_id = [].uniq
-      data.each do |d|
-        @arr_course_id << d["id"]
-      end
-      Faraday::Error #or more specific error type
-      @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
-    end
+    # @cus_path = CustomersPath.where(customer_id: cid)
+    # if !@cus_path.blank?
+    #   require "faraday"
+    #   require "faraday_middleware"
+    #   response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
+    #   data = JSON.parse(response.body)
+    #   @arr_course_id = [].uniq
+    #   data.each do |d|
+    #     @arr_course_id << d["id"]
+    #   end
+    #   Faraday::Error #or more specific error type
+    #   @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
+    # end
   end
 
   def insert_careerpath
@@ -58,6 +58,8 @@ class CustomersCoursesController < ApplicationController
       format.js { render inline: "location.reload();" }
     end
   end
+
+
 
   def customer_path_params
     params.permit(:customer_id, :careerpath_id)
@@ -111,8 +113,6 @@ class CustomersCoursesController < ApplicationController
     archived_course = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, course.id).any?
     if archived_course == false
       CustomerCourse.create(customer_id: current_user.id, course_id: course.id, is_save: true)
-    else
-
     end
   end
 
@@ -121,4 +121,8 @@ class CustomersCoursesController < ApplicationController
     @archived_courses.update_attribute("is_save", !@archived_courses.is_save)
   end
 
+  def update_path
+    @path = params[:path_id]
+    @career_path = Lo.joins(:path_los).where("careerpath_id = ?", 5)
+  end
 end
