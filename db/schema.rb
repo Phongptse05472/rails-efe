@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_074630) do
     t.bigint "lo_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "lo_id"], name: "index_customer_los_on_customer_id_and_lo_id", unique: true
     t.index ["customer_id"], name: "index_customer_los_on_customer_id"
     t.index ["lo_id"], name: "index_customer_los_on_lo_id"
   end

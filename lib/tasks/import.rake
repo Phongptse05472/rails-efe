@@ -49,9 +49,6 @@ namespace :import do |import_namespace|
       when "Customers_courses"
         puts 'creating Customers_courses...'
         CustomerCourse.import! data
-      when "Course_Preskills"
-        puts 'creating course_preskill...'
-        CoursePreskill.import! data
       when "Learning_outcomes"
         puts 'creating learning out come'
         Lo.import! data

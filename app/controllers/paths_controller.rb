@@ -5,6 +5,9 @@ class PathsController < ApplicationController
     @list_lo_in_career_path = Lo.joins(:path_los).where("careerpath_id = ?", @path)
     @customer_lo_owner = Lo.joins(:customer_los, :path_los).where("customer_id = ? AND careerpath_id = ?", current_user.id, @path)
     @list_lo_not_owner = @list_lo_in_career_path - @customer_lo_owner
+
+    @current_path_id = CustomersPath.where("customer_id = ?", current_user.id)
+    @current_path = Careerpath.where("id = ?" , @current_path_id.first.careerpath_id)
   end
 
   def new

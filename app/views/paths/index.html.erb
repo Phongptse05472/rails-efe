@@ -4,15 +4,17 @@
 </head>
 
 <div class="right">
+  <h2>Your current career path you selected</h2>
+  <%= @current_path.first.name %>
   <h1>
     Change career path
   </h1>
   <%= form_tag('', :method => :get) do %>
-    Select your career path:
+    Select career path you want to become:
     <% %>
     <% @current_career_path = CustomersPath.where("customer_id = ?", current_user.id) %>
     <% @path = @current_career_path.first.careerpath_id %>
-    <%= select_tag "careerpath_id", options_for_select(@options = Careerpath.all.map { |a| [a.name, a.id] }), :onchange => "this.form.submit();" %>
+    <%= select_tag "careerpath_id", options_for_select(@options = Careerpath.all.map { |a| [a.name, a.id] }), :onchange => "this.form.submit();", :include_blank => false %>
   <% end %>
   <br/>
   select your learning outcome you have
