@@ -10,4 +10,6 @@ class Lo < ApplicationRecord
 
   has_many :customer_los
   has_many :customers, through: :customer_los
+
+  belongs_to :skill, optional: true
 end
