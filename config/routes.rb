@@ -35,16 +35,12 @@ Rails.application.routes.draw do
   post "/deactivate", to: "admin/customers#deactivate"
   post "/deactivate_course", to: "admin/courses#deactivate_course"
   post "/deactivate_article", to: "admin/articles#deactivate_article"
-
-
   post 'update_customer', to: 'customers#update', :as => :update_customer
-
   post 'update_img', to: 'customers#update_img', :as => :update_img
-
   get 'update_path', to: 'customers_courses#update_path', :as => :get_update_path
+  post 'insert_customer_lo', to: 'paths#insert_customer_lo', :as => :insert_customer_los
 
-  # post 'update_career_path', to: 'customers#update_path', :as => :update_career_path
-  get 'get_lo/:path_id', to: 'customers_courses#update_path'
+
 
   resources :customers do
   end
@@ -53,6 +49,9 @@ Rails.application.routes.draw do
   end
 
   resources :customers_articles do
+  end
+
+  resources :paths do
   end
 
   resources :courses, only: [:index, :show, :update], param: :slug do

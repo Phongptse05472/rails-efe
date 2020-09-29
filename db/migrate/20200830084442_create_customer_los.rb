@@ -3,6 +3,7 @@ class CreateCustomerLos < ActiveRecord::Migration[6.0]
     create_table :customer_los do |t|
       t.belongs_to :customer
       t.belongs_to :lo
+      t.index [:customer_id, :lo_id], unique: true
       t.timestamps
     end
   end

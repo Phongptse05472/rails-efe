@@ -1,0 +1,33 @@
+<head>
+  <%= stylesheet_link_tag 'path', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'manager_video', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="right">
+  <h1>
+    Change career path
+  </h1>
+  <%= form_tag('', :method => :get) do %>
+    Select your career path:
+    <% %>
+    <% @current_career_path = CustomersPath.where("customer_id = ?", current_user.id) %>
+    <% @path = @current_career_path.first.careerpath_id %>
+    <%= select_tag "careerpath_id", options_for_select(@options = Careerpath.all.map { |a| [a.name, a.id] }), :onchange => "this.form.submit();" %>
+  <% end %>
+  <br/>
+  select your learning outcome you have
+  <br/>
+  <%= form_tag('', url: paths_path) do %>
+    <% @list_lo_not_owner.each do |lo| %>
+      <%= check_box_tag "lo_id[]", lo.id %>
+      <%= lo.name %>
+      <br/>
+    <% end %>
+    <button id="submit" class="submit" type="submit">Save</button>
+  <% end %>
+  <div class="end">
+  </div>
+</div>
+
+
+

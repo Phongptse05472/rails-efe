@@ -33,7 +33,7 @@ class CustomersCoursesController < ApplicationController
     cid = current_user.id
     # recommender course
 
-    # @cus_path = CustomersPath.where(customer_id: cid)
+    @cus_path = CustomersPath.where(customer_id: cid)
     # if !@cus_path.blank?
     #   require "faraday"
     #   require "faraday_middleware"
@@ -58,8 +58,6 @@ class CustomersCoursesController < ApplicationController
       format.js { render inline: "location.reload();" }
     end
   end
-
-
 
   def customer_path_params
     params.permit(:customer_id, :careerpath_id)
@@ -121,8 +119,6 @@ class CustomersCoursesController < ApplicationController
     @archived_courses.update_attribute("is_save", !@archived_courses.is_save)
   end
 
-  def update_path
-    @path = params[:path_id]
-    @career_path = Lo.joins(:path_los).where("careerpath_id = ?", 5)
-  end
+
+
 end
