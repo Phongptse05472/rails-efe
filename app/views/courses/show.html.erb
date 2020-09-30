@@ -21,6 +21,11 @@
 
       <span id="des" onclick="showmore()"><%= @course.description %><br></span>
       <br>
+      <h2>Requirements</h2>
+      <% @lo_req.each do |lo_req| %>
+         <h>● <%= lo_req.name %></h>
+        <br>
+      <% end %>
     </div>
     <% if current_user.present? %>
       <% check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND enrollment_date IS NOT null', current_user.id, @course.id) %>
