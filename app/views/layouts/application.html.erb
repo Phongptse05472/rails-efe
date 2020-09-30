@@ -17,6 +17,9 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
   <body>
+    <div id="loader" class="loader">
+      <span class="fa fa-spinner xoay iconnn"></span>
+    </div>
     <div class="container">
       <%= render "shared/header" %>
       <div class="main">
@@ -27,5 +30,15 @@
       </div>
       <%= render "shared/footer" %>
     </div>
+    <script>
+        function myFunction() {
+            document.getElementById("loader").classList.add("loader");
+            document.getElementById("loader").style.display="block";
+        }
+        $(window).load(function(){
+            document.getElementById("loader").classList.remove("loader");
+            document.getElementById("loader").style.display="none";
+        })
+    </script>
   </body>
 </html>

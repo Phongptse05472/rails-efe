@@ -1,12 +1,12 @@
 <head>
   <%= stylesheet_link_tag 'linhnguyen', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <!--  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
   <script type="text/javascript">
       $(window).load(function () {
           $('#myModal').linhnguyen($('#myModal').data());
       });
   </script>
 </head>
+
 <% @user = User.where("id = ?", current_user.id) %>
 <%= content_for :page_title, 'User home' %>
 <% if @user.first.sign_in_count == 0 %>
@@ -23,7 +23,7 @@
           </td>
         </tr>
       </table>
-      <button onclick="location.reload()" type="submit">Submit</button>
+      <button onclick="myFunction()" type="submit">Submit</button>
       </div>
     <% end %>
 <% end %>
@@ -74,7 +74,7 @@
     </div>
   </div>
 
-  <h1>Group</h1>
+  <h1 >Group</h1>
   <div id="topic" class="topic">
     <% @topic.each do |topic| %>
       <%= link_to topic.name, topic_path(topic.id) %>
@@ -551,3 +551,5 @@
         });
     });
 </script>
+
+
