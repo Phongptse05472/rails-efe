@@ -34,23 +34,24 @@ class CustomersCoursesController < ApplicationController
     # recommender course
 
     @cus_path = CustomersPath.where(customer_id: cid)
-    # if !@cus_path.blank?
-    #   require "faraday"
-    #   require "faraday_middleware"
-    #   response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
-    #   data = JSON.parse(response.body)
-    #   @arr_course_id = [].uniq
-    #   data.each do |d|
-    #     @arr_course_id << d["id"]
-    #   end
-    #   Faraday::Error #or more specific error type
-    #   @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
-    # end
+    if !@cus_path.blank?
+      require "faraday"
+      require "faraday_middleware"
+      response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
+      data = JSON.parse(response.body)
+      @arr_course_id = [].uniq
+      data.each do |d|
+        @arr_course_id << d["id"]
+      end
+      Faraday::Error #or more specific error type
+      @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
+    end
   end
 
   def insert_careerpath
-    @customer = Customer.where("user_id = ?", current_user.id)
-    @customer_path = CustomersPath.new(customer_path_params)
+    @path_id = params[:careerpath_id]
+    @customer_path = CustomersPath.new
+    @customer_path = CustomersPath.find_or_create_by(customer_id: current_user.id, careerpath_id: @path_id)
     @customer_path.save
     user = User.where("id = ?", current_user.id)
     user.update(sign_in_count: user.first.sign_in_count += 1)
@@ -59,9 +60,6 @@ class CustomersCoursesController < ApplicationController
     end
   end
 
-  def customer_path_params
-    params.permit(:customer_id, :careerpath_id)
-  end
 
   def enroll_courses
     enroll_course = Course.find(params[:slug])
