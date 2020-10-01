@@ -44,9 +44,12 @@ class CustomersCoursesController < ApplicationController
         @arr_course_id << d["id"]
       end
       Faraday::Error #or more specific error type
-      @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
+      # @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).limit(20)
+      @recommender_course = Course.where(id: @arr_course_id).sort_by { |item| @arr_course_id.index(item.id) }
+
     end
   end
+
 
   def insert_careerpath
     @path_id = params[:careerpath_id]
