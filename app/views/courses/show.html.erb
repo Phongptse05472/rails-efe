@@ -21,6 +21,10 @@
 
       <span id="des" onclick="showmore()"><%= @course.description %><br></span>
       <br>
+      ● Number Enrollment <%= @course.number_enrollment %>
+      <br>
+      ● Rating <%= @course.rate %>
+      <br>
       <h2>Requirements</h2>
       <% @lo_req.each do |lo_req| %>
          <h>● <%= lo_req.name %></h>
