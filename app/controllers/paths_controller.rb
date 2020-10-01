@@ -2,6 +2,7 @@ class PathsController < ApplicationController
 
   def index
     @path = params[:careerpath_id]
+    @option = params[:careerpath_id]
     @list_lo_in_career_path = Lo.joins(:path_los).where("careerpath_id = ?", @path)
     @customer_lo_owner = Lo.joins(:customer_los, :path_los).where("customer_id = ? AND careerpath_id = ?", current_user.id, @path)
     @list_lo_not_owner = @list_lo_in_career_path - @customer_lo_owner
