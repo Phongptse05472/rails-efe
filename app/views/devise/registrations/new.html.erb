@@ -1,8 +1,12 @@
+<%= stylesheet_link_tag 'onLoad', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= content_for :page_title, 'Sign Up' %>
+<div id="loader">
+  <span class="fa fa-spinner xoay iconnn"></span>
+</div>
 <%- if controller_name != 'sessions' %>
   <div id="logreg-forms">
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name) , html: {class: "form-signin"}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name) , html: {class: "form-signin",:onsubmit =>"myFunction()"}) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign Up</h1>
       <%= f.email_field :email, autofocus: true, autocomplete: "email",type:"email", id:"inputEmail", class:"form-control", placeholder:"Email address", required:"", autofocus:"" %>
@@ -17,6 +21,13 @@
     <% end %>
   </div>
 <% end %>
+<script>
+    function myFunction() {
+        document.getElementById("loader").classList.add("loader");
+        document.getElementById("loader").style.display="block";
+    }
+    document.getElementById("loader").style.display="none";
+</script>
 
 
 
