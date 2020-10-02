@@ -4,21 +4,19 @@
 </head>
 
 <div class="right">
-  <h2>Your current career path you selected</h2>
-  <%= @current_path.first.name %>
-  <h1>
-    Change career path
-  </h1>
+<!--  <h2>Your current career path you selected</h2>-->
+  <%#= @current_path.first.name %>
+  <%#= @current_path.first.id %>
   <%= form_tag('', :method => :get) do %>
-    Select career path you want to become:
+    <h1 style="display: inline-block; margin-right: 10px">
+      Change career path
+    </h1>
     <% %>
     <% @current_career_path = CustomersPath.where("customer_id = ?", current_user.id) %>
     <% @path = @current_career_path.first.careerpath_id %>
     <%= select_tag "careerpath_id", options_for_select(@options = Careerpath.all.map { |a| [a.name, a.id] },:selected => @option), :onchange => "this.form.submit();", :include_blank => false %>
   <% end %>
-  <br/>
-  select your learning outcome you have
-  <br/>
+
   <div class="show_lo">
     <%= form_tag('', url: paths_path) do %>
       <% @list_lo_not_owner.each do |lo| %>
