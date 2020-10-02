@@ -27,9 +27,9 @@
       </div>
     <% else %>
       <div class="user">
-        <a href="#">
-          <i class="fa fa-bell"></i>
-        </a>
+<!--        <a href="#">-->
+<!--          <i class="fa fa-bell"></i>-->
+<!--        </a>-->
         <%= link_to "#", :onMouseover => "myfunction()", id:"myBtn" do %>
           <% customer = current_user.customer %>
           <% if !customer.avatar.nil? %>
