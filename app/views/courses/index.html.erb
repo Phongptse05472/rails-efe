@@ -119,11 +119,11 @@
           <div class="author">
             <% @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , article.id) %>
             <div class="icon">
-              <%# if !author.avatar.nil? %>
-                <%#= cl_image_tag(author.avatar) %>
-              <%# else %>
+              <% if !author.avatar.nil? %>
+                <%= cl_image_tag(author.avatar) %>
+              <% else %>
                 <%= image_tag('4.png') %>
-              <%# end %>
+              <% end %>
             </div>
             <div class="title">
               <div class="name">
@@ -141,58 +141,6 @@
       <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
   </div>
-  <h1>Free Course</h1>
-  <div id="exampleSlider3">
-    <div id="free" class="MS-content">
-      <% @free_course.each do |free_course| %>
-        <div id="item" class="item">
-          <div class="thumbnai">
-            <% if !free_course.image.nil? %>
-              <%= cl_image_tag(free_course.image) %>
-            <% else %>
-              <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
-            <% end %>
-          </div>
-          <div class="author">
-            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", free_course.id) %>
-            <% @author.each do |author| %>
-              <div class="icon">
-                <% if !author.avatar.nil? %>
-                  <%= cl_image_tag(author.avatar) %>
-                <% else %>
-                  <%= image_tag('profile.png') %>
-                <% end %>
-              </div>
-            <div class="title">
-              <div class="name">
-                <%= link_to free_course.name, course_path(free_course.slug) %>
-              </div>
-              <p><%= author.name %></p>
-              <% end %>
-              <% rate = free_course.rate.to_f %>
-              <% (1..rate).each do |i| %>
-                <% if rate >= i.floor %>
-                  <span class="fa fa-star checked"></span>
-                <% end %>
-              <% end %>
-              <% if rate != rate.floor %>
-                <span class="fa fa-star-half-o checked"></span>
-              <% end %>
-              <% (1..(5 - rate.ceil)).each do %>
-                <span class="fa fa-star-o checked"></span>
-              <% end %>
-              <span>(<%= free_course.number_enrollment %> enroll)</span>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="MS-controls">
-      <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-    </div>
-  </div>
-
   <div class="end">
   </div>
 </div>
