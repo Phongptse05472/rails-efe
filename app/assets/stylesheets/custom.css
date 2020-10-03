@@ -164,6 +164,16 @@ button:hover {
     .item .thumbnai img {
         height: 160px;
     }
+    .thumbnai i {
+        left: 83%;
+    }
+    .name a{
+        line-height: 1.1em;
+        height: 2.2em;
+    }
+    .title span:last-child{
+        display: none;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -180,3 +190,8 @@ button:hover {
         height: 160px;
     }
 }
+/*@media (max-width: 1334px) {*/
+/*    .thumbnai i {*/
+/*        left: 80% !important;*/
+/*    }*/
+/*}*/

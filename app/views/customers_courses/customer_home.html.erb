@@ -401,13 +401,14 @@
           </div>
           <div class="author">
             <% @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) ", article.id) %>
+            <div class="icon">
+              <%= image_tag('4.png') %>
+            </div>
             <div class="title">
               <div class="name">
                 <%= link_to article.title, course_path(@course_article.first.slug) %>
               </div>
-              <span>Course: <%= @course_article_favor.first.name %></span>
-              <br>
-              <br>
+              <p>Course: <%= @course_article_favor.first.name %></p>
               <span><%= article.view_number %> view • <%= article.created_at.strftime("%Y-%m-%d") %></span>
             </div>
           </div>

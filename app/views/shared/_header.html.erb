@@ -35,7 +35,8 @@
           <% if !customer.avatar.nil? %>
             <%= cl_image_tag(customer.avatar, :height=>100, :width=>50)%>
           <% else %>
-            <%= cl_image_tag('gshyksf1iqjf7ianfp5t.png', :height=>100, :width=>50)%>
+            <%#= cl_image_tag('gshyksf1iqjf7ianfp5t.png', :height=>100, :width=>50)%>
+            <%= image_tag("4.png") %>
           <% end %>
           <a href="" class="profile"></a>
         <% end %>
