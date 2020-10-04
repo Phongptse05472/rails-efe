@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
   def left_side_data
     #mentor
     #admin

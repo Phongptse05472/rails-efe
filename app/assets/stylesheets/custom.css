@@ -104,6 +104,11 @@ button:hover {
     position: relative;
     height: auto;
 }
+#exampleSlider5 {
+    width: 100%;
+    position: relative;
+    height: auto;
+}
 
 @media (max-width: 767px) {
     .MS-content {
@@ -159,6 +164,16 @@ button:hover {
     .item .thumbnai img {
         height: 160px;
     }
+    .thumbnai i {
+        left: 83%;
+    }
+    .name a{
+        line-height: 1.1em;
+        height: 2.2em;
+    }
+    .title span:last-child{
+        display: none;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -175,3 +190,8 @@ button:hover {
         height: 160px;
     }
 }
+/*@media (max-width: 1334px) {*/
+/*    .thumbnai i {*/
+/*        left: 80% !important;*/
+/*    }*/
+/*}*/

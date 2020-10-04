@@ -14,8 +14,14 @@ class CoursesController < ApplicationController
   end
 
   def show
-    article = Article.joins(:courses).where('courses.id = ?', @course.id)
-    @skill = Skill.joins(:article_skills).where("article_id IN (?) ", article.ids).group(:id)
+    course_lo_str = Course.where('courses.id = ?', @course.id)
+    @course_lo_arr = course_lo_str.first.lo.tr('', '').split(';').map(&:to_i)
+    @list_lo = Lo.where("id IN (?)", @course_lo_arr).group(:id)
+    @skill = Skill.where("id IN (?)", @list_lo.pluck(:skill_id).uniq)
+    lo_req = LoLo.where("lo_id IN (?)", @course_lo_arr)
+    req = lo_req.pluck(:lo_req_id).uniq
+    @lo_req = Lo.where("id IN (?)", req)
+
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
       if !@check_archived_course.blank?
@@ -28,7 +34,7 @@ class CoursesController < ApplicationController
     end
     @list_articles = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
     if current_user.present?
-    @list_article_viewed = CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_articles.ids)
+      @list_article_viewed = CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ", current_user.id, @list_articles.ids)
     end
     @pagy, @list_article_paging = pagy(@list_articles, items: 5)
   end

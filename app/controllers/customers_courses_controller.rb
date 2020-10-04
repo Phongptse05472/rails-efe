@@ -30,18 +30,37 @@ class CustomersCoursesController < ApplicationController
     @top_view_article = Article.where(:is_active => true).where.not(id: @article_ids).order(view_number: :desc).limit(20)
 
     @course_article = Course.joins(:course_articles).where("article_id IN (?) ", @top_view_article.ids)
-
+    cid = current_user.id
     # recommender course
-    require "faraday"
-    require "faraday_middleware"
-    response = Faraday.get 'http://localhost:8080/RecommendAPI/api1?pid=3&cid=4'
-    data = JSON.parse(response.body)
-    @arr_course_id = []
-    data.each do |d|
-      # puts d["id"]
-      @arr_course_id << d["id"]
+
+    @cus_path = CustomersPath.where(customer_id: cid)
+    if !@cus_path.blank?
+      require "faraday"
+      require "faraday_middleware"
+      response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
+      data = JSON.parse(response.body)
+      @arr_course_id = [].uniq
+      data.each do |d|
+        @arr_course_id << d["id"]
+      end
+      Faraday::Error #or more specific error type
+      @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).limit(20)
+      # @recommender_course = Course.where(id: @arr_course_id).where.not(id: @course_ids).sort_by { |item| @arr_course_id.index(item.id) }
+
     end
-    @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).order(number_enrollment: :desc).limit(20)
+  end
+
+
+  def insert_careerpath
+    @path_id = params[:careerpath_id]
+    @customer_path = CustomersPath.new
+    @customer_path = CustomersPath.find_or_create_by(customer_id: current_user.id, careerpath_id: @path_id)
+    @customer_path.save
+    user = User.where("id = ?", current_user.id)
+    user.update(sign_in_count: user.first.sign_in_count += 1)
+    respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end
   end
 
 
@@ -93,8 +112,6 @@ class CustomersCoursesController < ApplicationController
     archived_course = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, course.id).any?
     if archived_course == false
       CustomerCourse.create(customer_id: current_user.id, course_id: course.id, is_save: true)
-    else
-
     end
   end
 
@@ -102,5 +119,7 @@ class CustomersCoursesController < ApplicationController
     @archived_courses = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
     @archived_courses.update_attribute("is_save", !@archived_courses.is_save)
   end
+
+
 
 end

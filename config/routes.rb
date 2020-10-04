@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'user-home', to: 'customers_courses#customer_home', :as => :user_home
   get 'search', to: 'courses#search', :as => :search_courses
   put 'comment', to: 'comments#create', :as => :create_comment
+  post 'add_customer_path' , to: 'customers_courses#insert_careerpath', :as => :add_customer_path
+  get 'get_customer_path' , to: 'customers_courses#insert_careerpath', :as => :get_customer_path
 
   post 'enroll_courses/:slug', to: 'customers_courses#enroll_courses', :as => :enroll_to_course
   post 'courses/:id', to: 'customers_courses#update', :as => :update_archived
@@ -33,15 +35,10 @@ Rails.application.routes.draw do
   post "/deactivate", to: "admin/customers#deactivate"
   post "/deactivate_course", to: "admin/courses#deactivate_course"
   post "/deactivate_article", to: "admin/articles#deactivate_article"
-
-
-
   post 'update_customer', to: 'customers#update', :as => :update_customer
-
   post 'update_img', to: 'customers#update_img', :as => :update_img
-  # post 'update_customer_info/:id', to: 'customers#update_customer_info', :as => :update_customer_info
-
-
+  get 'update_path', to: 'customers_courses#update_path', :as => :get_update_path
+  post 'insert_customer_lo', to: 'paths#insert_customer_lo', :as => :insert_customer_los
 
 
 
@@ -52,6 +49,9 @@ Rails.application.routes.draw do
   end
 
   resources :customers_articles do
+  end
+
+  resources :paths do
   end
 
   resources :courses, only: [:index, :show, :update], param: :slug do

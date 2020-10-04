@@ -129,6 +129,9 @@
           <% end %>
           <h2><%= link_to course.name, course_path(course) %></h2>
           <p><%= course.description %></p>
+          <p>● Number Enrollment: <%= course.number_enrollment %> ● Rating: <%= course.rate %></p>
+
+
           <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
           <% @author.each do |author| %>
             <p class="my-name"> Author: <%= author.name %></p>

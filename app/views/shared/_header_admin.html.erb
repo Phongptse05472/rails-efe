@@ -1,6 +1,6 @@
 <div id="header">
   <div class="menu">
-    <div class="logo">
+    <div  class="logo">
       <% if !current_user.present? %>
         <a href="/home">
           <%= image_tag("logo_1.PNG") %>
@@ -25,15 +25,64 @@
       </div>
     <% else %>
       <div class="user">
-        <a href="#">
-          <i class="fa fa-bell"></i>
-        </a>
-        <%= link_to profile_path do %>
-            <%= cl_image_tag('gshyksf1iqjf7ianfp5t.png', :height=>100, :width=>50)%>
+        <%= link_to profile_path, :onMouseover => "myfunction()", id:"myBtn" do %>
+            <%#= cl_image_tag('4.png', :height=>100, :width=>50)%>
+          <%= image_tag("4.png") %>
         <% end %>
-
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <%#= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <div id="notifications" style="margin-top: 13px;">
+          <!-- <h3>Information User</h3> -->
+          <div class="show_menu">
+            <p>
+              <a href="">
+                <i class="fa fa-user-circle-o"></i>
+                <%= link_to " Profile", profile_path %>
+              </a>
+            </p>
+<!--            <p>-->
+<!--              <a href="">-->
+<!--                <i class="fa fa-star"></i>-->
+                <%#= link_to "Career path" , paths_path %>
+<!--              </a>-->
+<!--            </p>-->
+            <p>
+              <a href="">
+                <i class="fa fa-sign-out"></i>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
+<script>
+    window.addEventListener('click', function(e) {
+        if (!document.getElementById('myBtn').contains(e.target)) {
+            document.getElementById('notifications').style.display = "none"
+        }
+    });
+
+    function myfunction() {
+        if (document.getElementById('notifications').style.display == "none" ||
+            document.getElementById('notifications').style.display == '') {
+            document.getElementById('notifications').style.display = "block"
+        } else {
+            document.getElementById('notifications').style.display = "none"
+        }
+    }
+</script>
+<script>
+    function removeSpace() {
+        document.getElementById('input').value =
+            document.getElementById('input').value.trim();
+    }
+
+    function checkInput() {
+        if (document.getElementById('input').value.trim() == "") {
+            return false;
+        }
+        return true;
+    }
+</script>

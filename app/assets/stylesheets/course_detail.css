@@ -43,9 +43,11 @@
     margin-bottom: 10px;
 }
 .intro img {
-    width: 30%;
+    width: 350px;
+    height: 200px;
     float: left;
     margin-right: 20px;
+    margin-bottom: 10px;
 }
 .intro span{
     overflow: hidden;
@@ -54,6 +56,9 @@
     -webkit-box-orient: vertical;
     cursor: pointer;
     font-weight: normal !important;
+}
+.intro h2{
+    clear: both;
 }
 .right progress {
     width: 300px;

@@ -3,11 +3,11 @@
   <ul class="top">
     <li>
       <% if !current_user.present? %>
-        <a href="/home">
+        <a onclick="myFunction()" href="/home">
           <i class="fa fa-home"></i> Home Page
         </a>
       <% else %>
-        <a href="/user-home">
+        <a onclick="myFunction()" href="/user-home">
           <i class="fa fa-home"></i> Home Page
         </a>
       <% end %>
@@ -25,7 +25,7 @@
       </li>
     <% else %>
       <li>
-        <a href="/customers_courses">
+        <a onclick="myFunction()" href="/customers_courses">
           <i class="fa fa-user-circle-o"></i> My Course
         </a>
       </li>
@@ -53,7 +53,6 @@
     <h2>Follow</h2>
     <ul class="top">
       <% course.each do |a| %>
-
         <li>
           <%= link_to course_path(a.slug) do %>
             <i class="fa fa-graduation-cap"></i>
