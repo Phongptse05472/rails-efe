@@ -20,14 +20,17 @@
       <% end %>
       <span id="des" onclick="showmore()"><%= @course.description %><br></span>
       <br>
-      ● Number Enrollment <%= @course.number_enrollment %>
+      ● Students: <%= @course.number_enrollment %>
       <br>
-      ● Rating <%= @course.rate %>
+      ● Rating: <%= @course.rate %><br>
+      ● Duration: <%= @course.duration %> hours on-demand video
       <br>
-      <h2>Requirements</h2>
-      <% @lo_req.each do |lo_req| %>
-         <h>● <%= lo_req.name %></h>
-        <br>
+      <% if @lo_req.nil? %>
+        <h2>Requirements</h2>
+        <% @lo_req.each do |lo_req| %>
+          <h>● <%= lo_req.name %></h>
+          <br>
+        <% end %>
       <% end %>
     </div>
     <% if current_user.present? %>
@@ -67,7 +70,7 @@
             <% if !a.video.nil? %>
               <%= cl_video_tag(a.video, :effect => "preview", :resource_type => "video") %>
             <% else %>
-              <%= cl_video_tag('video/Introduction_to_the_Course_-_Introduction_to_the_Course_-_Coursera_jqhxzg' ,:effect => "preview", :resource_type => "video") %>
+              <%= cl_video_tag('video/Introduction_to_the_Course_-_Introduction_to_the_Course_-_Coursera_jqhxzg', :effect => "preview", :resource_type => "video") %>
             <% end %>
           </a>
         </div>
@@ -94,14 +97,15 @@
     var count = -1;
     <% @list_article_paging.each do | full | %>
     count++;
-<%   if current_user.present? %>
+    <%   if current_user.present? %>
     <% @list_article_viewed.each do |view| %>
     <% if view.article_id == full.id %>
     document.querySelectorAll('.fa-check-circle')[count].style.display = 'inline-block';
     <% end %>
     <% end %>
     <% end %>
-<% end %>
+    <% end %>
+
     function showmore() {
         if (document.getElementById('des').style.webkitLineClamp == "inherit") {
             document.getElementById('des').style.webkitLineClamp = "12";
