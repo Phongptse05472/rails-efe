@@ -37,7 +37,7 @@ class PathsController < ApplicationController
       arr_lo_req = lo_req.pluck(:lo_req_id)
       list_lo_checked = list_lo_checked + arr_lo_req
       valid_list_insert = list_lo_checked.map(&:to_i).uniq
-      binding.pry
+      # binding.pry
       valid_list_insert.each do |lo_id|
         CustomerLo.find_or_create_by(customer_id: current_user.id, lo_id: lo_id)
         if lo_id.equal?(list_lo_checked.last)
