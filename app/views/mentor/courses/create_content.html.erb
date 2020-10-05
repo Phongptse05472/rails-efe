@@ -1,8 +1,11 @@
 <head>
   <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 </head>
 <div id="right" class="right">
-  <%= render "process", step: @step  %>
+<%= render "process", step: @step  %>
+<h1>Step 2: Create Articles in "<%= @course.name %>"</h1>
   <div id="form_upload" class="form-upload">
     <%= form_with model: @course, url: wizard_path, method: :put, class: "form_upload" do |f| %>
       <%= f.fields_for :articles, f.object.articles.build do |ff| %>
@@ -13,16 +16,14 @@
               <p>Upload video</p>
               <%= ff.file_field :video %>
             </div>
-            <h2>Attached file</h2>
-              <%= ff.text_field :title, placeholder: "Link attached file" %>
           </div>
           <div class="information-video">
             <div class="per_row_article">
               <div class="row-left">
-                <h2>Title video</h2>
+                <h2>Title</h2>
               </div>
               <div class="row-right">
-                <%= ff.text_field :title, placeholder: "Title" %>
+                <%= ff.text_field :title, class: "title_article", placeholder: "Title",:required => true %>
               </div>
             </div>
             <div class="per_row_article">
@@ -30,223 +31,38 @@
                 <h2>Description</h2>
               </div>
               <div class="row-right">
-                <%= ff.text_field :description, placeholder: "Description" %>
+                <%= ff.text_area :description, class: "desc_course", placeholder: "Description", :required => true %>
               </div>
             </div>
             <div class="per_row_article">
               <div class="row-left">
-                <h2>Is free</h2>
+                <h2>Learning Outcomes</h2>
               </div>
               <div class="row-right">
-                <label class="container_input">isFree
-                  <%= ff.check_box :is_free, checked: true %>
-                  <span class="checkmark"></span>
-                </label>
+              <%= ff.select :lo_ids, (Lo.by_skill_ids(Skill.by_group_ids(@course.groups.ids))).name_and_id, {}, {:class => "js-example-basic-multiple", :multiple => "multiple"} %>
               </div>
             </div>
-            <button type="submit" class="btn btn-default">Save</button>
+            <div class="per_row_article">
+              <div class="row-left">
+                <h2>Attached file</h2>
+              </div>
+              <div class="row-right">      
+                <%= ff.text_field :link_file_attach, class: "title_article", placeholder: "Link attached file" %>       
+              </div>
+            </div>
+            <%= f.submit "Save", class: "btn-save"%>
           </div>
         </div>
         <% end %>
       <%= hidden_field_tag :course_id, params[:course_id] %>
     <% end %>
   </div>
-  <div class="end">
+  <div id="list-articles" class="end">
+    <%= render 'course', articles: @course.articles %>
   </div>
 </div>
 <script>
-    var arr=[];
-    function resetSkill(){
-        var levels = document.getElementsByName('level');
-        for (var i = 0; i < levels.length; i++) {
-            if (levels[i].checked) {
-                levels[i].checked=false;
-            }
-        }
-    }
-    function setSkill() {
-        var levels = document.getElementsByName('level');
-        var level;
-        for (var i = 0; i < levels.length; i++) {
-            if (levels[i].checked) {
-                level = levels[i].value;
-            }
-        }
-
-        if (level != undefined) {
-            var skill = document.getElementById('skill').value;
-            if(document.getElementById('skill').selectedIndex==0){
-                return;
-            }
-            var object = {s:skill,l:level};
-            for(var i=0; i<arr.length; i++){
-                if(skill==arr[i].s && level==arr[i].l){
-                    return;
-                }
-            }
-            arr.push(object);
-            var tr = document.createElement('tr');
-            tr.innerHTML = `
-                    <td> <p>${skill}</p></td>
-                    <td>
-                        <p>${level}</p>
-                        </td>
-                        <td>
-                            <i onclick="removeSkill(this,'${skill}','${level}')" class="fa fa-times" aria-hidden="true"></i>
-                        </td>
-                    `;
-            document.getElementById('table').tBodies[0].appendChild(tr);
-        }
-    }
-    function removeSkill(i,skill,level){
-
-        i.parentNode.parentNode.remove();
-        for(var i=0; i<arr.length; i++){
-            if(skill==arr[i].s && level==arr[i].l){
-                arr.splice(i, 1);
-                break;
-            }
-        }
-        resetSkill();
-    }
-
-    function countChar(val) {
-        var len = val.value.length;
-        document.getElementById('number').innerHTML = len;
-        console.log(len);
-    };
-
-    function showArticle() {
-        arr=[];
-        var forms = document.getElementsByClassName('form_upload');
-        for (var i = 0; i < forms.length; i++) {
-            // forms[i].style.display = "none";
-            forms[i].remove();
-        }
-        var courses = document.getElementsByClassName('per-course');
-        for (var i = 0; i < courses.length; i++) {
-            courses[i].style.display = "flex";
-        }
-        document.getElementById('submit').disabled = false;
-    }
-
-    function addMoreAricle() {
-        document.getElementById('submit').disabled = true;
-        const div = document.createElement('div');
-        div.innerHTML = `
-                    <form class="form_upload" action="#" method="post">
-                        <div id="container_upload" class="container_upload">
-                            <div class="upload-video">
-                                <div class="thum">
-                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                    <p>Upload video</p>
-                                    <input type="file">
-                                </div>
-                                <h2>Attack file</h2>
-                                <input type="file">
-                            </div>
-                            <div class="information-video">
-                                <div class="per_row_article">
-                                    <div class="row-left">
-                                        <h2>Title video</h2>
-                                    </div>
-                                    <div class="row-right">
-                                        <textarea onkeyup="countChar(this)" wrap="hard" rows="1" maxlength="100" class="title_article" name="title"></textarea>
-                                        <span id="number"></span>
-                                    </div>
-                                </div>
-                                <div class="per_row_article">
-                                    <div class="row-left">
-                                        <h2>Description</h2>
-                                    </div>
-                                    <div class="row-right">
-                                        <textarea class="desc_article" name="description" maxlength="300"></textarea>
-                                    </div>
-                                </div>
-                                <div class="per_row_article">
-                                    <div class="row-left">
-                                        <h2>Is free</h2>
-                                    </div>
-                                    <div class="row-right">
-                                        <label class="container_input">isFree
-                                            <input type="checkbox" name="isfree" checked="checked">
-                                            <span class="checkmark"></span>
-                                          </label>
-                                        </div>
-                                    </div>
-                                    <div class="per_row_article">
-                                        <div class="row-left">
-                                            <h2>Skill Set</h2>
-                                        </div>
-                                        <div class="row-right">
-                                            <select onchange="resetSkill()" id="skill" class="select_skill">
-                                            <option>-------------------Choose skill-------------------</option>
-                                            <option>Java core</option>
-                                            <option>Java web</option>
-                                            <option>Javascript core</option>
-                                            <option>Spring boot</option>
-                                        </select>
-                                            <div class="skill_level">
-                                                <label onclick="setSkill()" class="container_input">Beginner
-                                            <input type="radio" name="level"  value="Beginner">
-                                            <span class="checkmark"></span>
-                                          </label>
-                                                <label onclick="setSkill()" class="container_input">Intermediate
-                                            <input type="radio" name="level" value="Intermediate">
-                                            <span class="checkmark"></span>
-                                          </label>
-                                                <label onclick="setSkill()" class="container_input">Advanced
-                                            <input type="radio" name="level" value="Advanced">
-                                            <span class="checkmark"></span>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="per_row_article">
-                                    <div class="row-left">
-
-                                    </div>
-                                    <div class="row-right">
-                                        <table id="table">
-                                            <tr>
-
-                                            </tr>
-                                        </table>
-
-                                    </div>
-                                </div>
-
-                                <button onclick="showArticle()" type="button">Save</button>
-                            </div>
-                        </div>
-                    </form>
-                    <div id="container_show" class="per-course">
-                        <div class="c-left">
-                            <a href="#">
-                                <img src="../images/blog_single.jpg">
-                            </a>
-                        </div>
-                        <div class="c-right">
-                            <a href="#">
-                                    Quickly design and customize responsive mobile sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
-                                </a>
-                            <span>
-                                Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
-                                components, and powerful JavaScript plugins. Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                                responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                                Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
-                                components, and powerful JavaScript plugins. Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                                responsive gr
-                            </span>
-                            <div class="more-infor">
-                                <span class="infor">Free</span>
-                                <span class="infor">Java core</span>
-                                <span class="infor">Beginner</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    `; document.getElementById('form_upload').appendChild(div); }
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+  });
 </script>

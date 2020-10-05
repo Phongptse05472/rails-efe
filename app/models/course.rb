@@ -26,7 +26,7 @@ class Course < ApplicationRecord
           any_word: true,
       },
   }
-
+  
   scope :by_id, ->(id) { where("id= ?", id)}
   scope :by_rates, ->(rate) { where("rate = ?", rate)}
   scope :by_levels, ->(level) { where("level = ?", level)}
@@ -45,6 +45,7 @@ class Course < ApplicationRecord
 
   accepts_nested_attributes_for :articles
   accepts_nested_attributes_for :course_groups
+  accepts_nested_attributes_for :customer_courses
 
   def update_slug
     self.slug = name.parameterize
