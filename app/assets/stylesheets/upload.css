@@ -295,10 +295,13 @@ select option:hover {
     position: relative;
 }
 
-.row-right span {
-    position: absolute;
-    bottom: 5px;
-    right: 8%;
+.row-right .select2-container {
+    width: 92% !important;
+}
+
+.row-right .select2-selection--multiple {
+    border-radius: 5px;
+    border: 1px solid #14bdee;
 }
 
 .container_input {
@@ -402,7 +405,6 @@ select option:hover {
 }
 
 .per-course {
-    display: none;
     height: auto;
     margin-bottom: 25px;
     margin-top: 20px;
@@ -484,4 +486,18 @@ select option:hover {
     color: black;
     border-radius: 18px;
     margin: 0;
+}
+
+.btn-save {
+    background-color: white;
+    border-color: #14bdee;
+    color: #14bdee;
+    border-radius: 5px;
+    font-size: 24px
+}
+
+.btn-save:hover {
+    background-color: #14bdee;
+    color: white;
+    cursor: pointer;
 }

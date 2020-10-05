@@ -6,9 +6,9 @@
 <body>
 <div class="right">
   <h1>
-    Webcome back !adam
-    <%= link_to %>
+    Webcome back <%= current_user.customer.name  %>
   </h1>
+  <a class="btn-save" href="courses/landing_page">Create course</a>
   <% @mentor_course.each do |mentor_course| %>
     <span>Course name: <%= mentor_course.name %></span>
     <a class="upload" href="#">Upload video</a>
@@ -18,7 +18,11 @@
         <% @list_article_mentor.each do |article| %>
           <div id="item" class="item per_article">
             <div class="article-left">
-              <%= image_tag('course_2.jpg') %>
+              <% if !mentor_course.image.nil? %>
+                <%= cl_image_tag(mentor_course.image) %>
+              <% else %>
+                <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
+              <% end %>
             </div>
             <div class="article-right">
               <%= link_to article.title, click_on_article_path(mentor_course.slug, article.id) %>
@@ -42,30 +46,7 @@
     <%== pagy_nav(@pagy) %>
 
   </div>
-  <hr>
-  <h1>Preference video upload</h1>
-  <div class="list-article">
-<% @ref_article.each do |ref_article|  %>
-    <div id="item" class="item per_article_below">
-      <div class="article-left">
-        <%= image_tag('course_2.jpg') %>
-      </div>
-      <div class="article-right">
-       <%= ref_article.title %>
-        <p><%= ref_article.description %></p>
-      </div>
-    </div>
-<% end %>
 
-  </div>
-  <div class="paging_upload_article">
-    <a href="#">
-      <i class="fa fa-chevron-down" aria-hidden="true"></i> Show more...
-
-    </a>
-
-
-  </div>
   <div class="end">
   </div>
 </div>
