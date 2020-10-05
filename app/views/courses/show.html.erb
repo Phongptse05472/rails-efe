@@ -25,12 +25,10 @@
       ● Rating: <%= @course.rate %><br>
       ● Duration: <%= @course.duration %> hours on-demand video
       <br>
-      <% if @lo_req.nil? %>
         <h2>Requirements</h2>
         <% @lo_req.each do |lo_req| %>
           <h>● <%= lo_req.name %></h>
           <br>
-        <% end %>
       <% end %>
     </div>
     <% if current_user.present? %>

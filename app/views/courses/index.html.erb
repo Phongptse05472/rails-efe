@@ -115,15 +115,15 @@
           <div class="thumbnai">
             <%= cl_video_tag(article.video, :effect => "preview", :resource_type => "video") %>
           </div>
-
           <div class="author">
             <% @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , article.id) %>
             <div class="icon">
-              <% if !author.avatar.nil? %>
-                <%= cl_image_tag(author.avatar) %>
-              <% else %>
+              <%# @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", rate_course.id) %>
+              <%# if !author.avatar.nil? %>
+                <%#= cl_image_tag(author.avatar) %>
+              <%# else %>
                 <%= image_tag('4.png') %>
-              <% end %>
+              <%# end %>
             </div>
             <div class="title">
               <div class="name">
