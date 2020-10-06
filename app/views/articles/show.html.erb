@@ -12,9 +12,9 @@
         <span class="article_title">
           <%= article.title %>
         </span>
-        <p>
-          <%= article.view_number %> view • <%= article.created_at.to_date %>
-        </p>
+        <p>• View number <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> <br></p>
+        <p>• Created at:  <%= article.created_at.to_date %></p>
+
       </div>
       <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id) %>
       <% @author.each do |author| %>
@@ -55,41 +55,40 @@
               <div class="input_comment">
                 <%= f.hidden_field :customer_id, value: current_user.id %>
                 <%= f.hidden_field :article_id, value: article.article_id %>
-                <%= f.text_field :content , id: 'input_cmt', required: true %>
-                <%= f.submit onclick: "removeSpace()"  %>
+                <%= f.text_field :content, id: 'input_cmt', required: true %>
+                <%= f.submit onclick: "removeSpace()" %>
               </div>
             <% end %>
           </div>
         </div>
-
         <div class="article_comments">
-            <% @comment_pin.each do |pin| %>
-              <div class="user-comment">
-                <div class="user-icon">
-                  <% if !pin.customer.avatar.nil? %>
-                    <%= cl_image_tag(pin.customer.avatar) %>
-                  <% else %>
-                    <%= image_tag('profile.png') %>
-                  <% end %>
-                </div>
-                <div class="user-right">
-                  <div class="user-name" style="font-weight: bold">
-                    <%= pin.customer.name %>
-                  </div>
-                  <div class="u-comment pin">
-                    <%= pin.content %>
-                  </div>
-                </div>
-
-                  <div class="comment_pin">
-                    <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
-                    <% if !current_role.blank? %>
-                    <%= link_to update_comment_pin_path(pin.id), method: :post, remote: true do %>
-                      <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
-                    <% end %>
+          <% @comment_pin.each do |pin| %>
+            <div class="user-comment">
+              <div class="user-icon">
+                <% if !pin.customer.avatar.nil? %>
+                  <%= cl_image_tag(pin.customer.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
                 <% end %>
+              </div>
+              <div class="user-right">
+                <div class="user-name" style="font-weight: bold">
+                  <%= pin.customer.name %>
+                </div>
+                <div class="u-comment pin">
+                  <%= pin.content %>
                 </div>
               </div>
+
+              <div class="comment_pin">
+                <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
+                <% if !current_role.blank? %>
+                  <%= link_to update_comment_pin_path(pin.id), method: :post, remote: true do %>
+                    <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
           <% @comment_user.each do |comment| %>
             <%= render "comments/comment", comment: comment %>
@@ -99,6 +98,7 @@
     </div>
   </div>
   <div class="list">
+    <p style="font-size: 20px; font-weight: bold">List article in course</p>
     <div class="list-video">
       <ul>
         <% @list_article_right.each do |a| %>
@@ -135,12 +135,6 @@
         <% end %>
       </ul>
     </div>
-<!--    <h1>Recommend for you</h1>-->
-<!--    <div class="list-video">-->
-<!--      <ul>-->
-
-<!--      </ul>-->
-<!--    </div>-->
   </div>
 </div>
 
@@ -270,6 +264,7 @@
     function removeSpace() {
         document.getElementById('input_cmt').value =
             document.getElementById('input_cmt').value.trim();
+
     }
 
     function checkInput() {
