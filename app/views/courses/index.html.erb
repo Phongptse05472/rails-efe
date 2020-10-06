@@ -45,7 +45,7 @@
             <% (1..(5 - rate.ceil)).each do %>
               <span class="fa fa-star-o checked"></span>
             <% end %>
-            <span>(<%= course.number_enrollment %> enroll)</span>
+            <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll)</span>
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@
             <% (1..(5 - rate.ceil)).each do %>
               <span class="fa fa-star-o checked"></span>
             <% end %>
-            <span>  (<%= rate_course.number_enrollment %> enroll)</span>
+            <span>  (<%= rate_course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll)</span>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@
                 <%= article.title %>
               </div>
               <p>Course: <%= @course_article_favor.first.name %></p>
-              <span><%= article.view_number %> views • <%= article.created_at.strftime("%Y-%m-%d") %></span>
+              <span><%= article.view_number %> views</span>
             </div>
           </div>
         </div>

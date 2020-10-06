@@ -1,5 +1,4 @@
 <head>
-
   <%= stylesheet_link_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -11,7 +10,6 @@
     <% @author.each do |author| %>
       <span><%= author.name %></span>
     <% end %>
-
     <div class="intro">
       <% if !@course.image.nil? %>
         <%= cl_image_tag(@course.image) %>
@@ -20,7 +18,7 @@
       <% end %>
       <span id="des" onclick="showmore()"><%= @course.description %><br></span>
       <br>
-      ● Students: <%= @course.number_enrollment %>
+      ● Number enroll: <%= @course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>
       <br>
       ● Rating: <%= @course.rate %><br>
       ● Duration: <%= @course.duration %> hours on-demand video
@@ -46,12 +44,12 @@
       Start learn
     <% end %>
     <div class="skill_set">
-      <h2>Skill set</h2>
+      <h2>What you'll learn:</h2>
       <ul>
-        <% @skill.each do |skill| %>
+        <% @list_lo.each do |lo| %>
           <li>
             <span class="out_side_level">
-              <%= skill.name %>
+              <%= lo.name %>
                 </span>
           </li>
         <% end %>

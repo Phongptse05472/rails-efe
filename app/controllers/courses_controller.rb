@@ -17,10 +17,12 @@ class CoursesController < ApplicationController
     course_lo_str = Course.where('courses.id = ?', @course.id)
     @course_lo_arr = course_lo_str.first.lo.tr('', '').split(';').map(&:to_i)
     @list_lo = Lo.where("id IN (?)", @course_lo_arr).group(:id)
-    @skill = Skill.where("id IN (?)", @list_lo.pluck(:skill_id).uniq)
+    # @skill = Skill.where("id IN (?)", @list_lo.pluck(:skill_id).uniq)
     lo_req = LoLo.where("lo_id IN (?)", @course_lo_arr)
     req = lo_req.pluck(:lo_req_id).uniq
     @lo_req = Lo.where("id IN (?)", req)
+
+
 
     if current_user.present?
       @check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND customer_courses.enrollment_date IS null', current_user.id, @course.id)
