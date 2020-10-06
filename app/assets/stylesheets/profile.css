@@ -69,7 +69,7 @@
     color: white;
     width: 250px;
     font-weight: bold;
-
+    outline: none;
 }
 
 .profile-page table tr td::before {

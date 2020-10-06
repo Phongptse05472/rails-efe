@@ -27,7 +27,7 @@
             <tr>
               <th>Phone number</th>
               <td>
-                <%= text_field_tag :phone_number, customer.phone_number %>
+                <%= text_field_tag :phone_number, customer.phone_number, :maxlength => 20 %>
               </td>
             </tr>
             <tr>

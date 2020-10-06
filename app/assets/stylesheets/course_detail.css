@@ -236,3 +236,31 @@
     margin-left: 5px;
 
 }
+.show_weight{
+    font-size: 20px;
+    min-width: fit-content;
+    clear: both;
+    padding-top: 10px;
+}
+.show_weight tr td i{
+    margin-right: 5px;
+    color: #14bdee;
+}
+.show_weight tr td:last-child{
+    font-weight: bold;
+    padding-left: 20px;
+}
+.show_weight tr td span:first-child{
+    margin-left: 10px;
+}
+h{
+    font-size: 18px;
+    margin-top: 15px;
+}
+#des{
+    font-size: 18px;
+}
+.show_require{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
