@@ -104,6 +104,10 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.9.0)
     faker (2.13.0)
       i18n (>= 1.6, < 2)
@@ -216,6 +220,11 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rest-client (2.1.0-x64-mingw32)
       ffi (~> 1.9)
       http-accept (>= 1.7.0, < 2.0)
@@ -267,6 +276,7 @@ GEM
       tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
+    unf_ext (0.0.7.7)
     unf_ext (0.0.7.7-x64-mingw32)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -306,7 +316,9 @@ DEPENDENCIES
   carrierwave
   cloudinary
   devise
+  dotenv-rails
   faker (~> 2.13)
+  faraday
   foreman
   friendly_id (~> 5.2.4)
   jbuilder (~> 2.7)
