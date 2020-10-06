@@ -14,7 +14,7 @@ class PathsController < ApplicationController
     @customer_lo_owner = Lo.joins(:customer_los, :path_los).where("customer_id = ? AND careerpath_id = ?", current_user.id, @path)
 
     @list_lo_not_owner = @list_lo_in_career_path - @customer_lo_owner
-
+    # binding.pry
   end
 
   def new
