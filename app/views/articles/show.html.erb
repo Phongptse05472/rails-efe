@@ -13,7 +13,7 @@
           <%= article.title %>
         </span>
         <p>• View number <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> <br></p>
-        <p>• Created at:  <%= article.created_at.to_date %></p>
+        <p>• Created at:  <%= article.date_created.to_date.strftime("%d/%m/%Y") %></p>
 
       </div>
       <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id) %>
@@ -98,10 +98,11 @@
     </div>
   </div>
   <div class="list">
-    <p style="font-size: 20px; font-weight: bold">List article in course</p>
+    <p style="font-size: 20px; font-weight: bold">Course Content</p>
     <div class="list-video">
       <ul>
         <% @list_article_right.each do |a| %>
+          <% @author.each do |author| %>
           <li>
             <div class="l-left">
               <%= cl_video_tag(a.video) %>
@@ -128,10 +129,15 @@
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
               </div>
               <div class="l-view">
+                <% if !author.blank? %>
+                <%= author.name %><br>
+                <% else %>
+                <% end %>
                 <%= a.view_number %> views
               </div>
             </div>
           </li>
+            <% end %>
         <% end %>
       </ul>
     </div>

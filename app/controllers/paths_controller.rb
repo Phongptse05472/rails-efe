@@ -62,7 +62,6 @@ class PathsController < ApplicationController
       else
         valid_list_insert.each do |lo_id|
           CustomerLo.find_or_create_by(customer_id: current_user.id, lo_id: lo_id)
-          binding.pry
           if lo_id.eql?(valid_list_insert.last)
             redirect_to user_home_path
           end
