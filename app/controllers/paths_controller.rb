@@ -44,7 +44,6 @@ class PathsController < ApplicationController
     list_not_check = (lo_in_path.pluck(:lo_id) - valid_list_insert).uniq
 
     if list_lo_checked.blank?
-      binding.pry
       CustomerLo.where("customer_id = ? AND lo_id IN (?)", current_user.id, list_not_check).destroy_all
       @cus_path = CustomersPath.where("customer_id = ?", current_user.id)
       @cus_path.update(customer_id: current_user.id, careerpath_id: @path_id)
@@ -53,16 +52,12 @@ class PathsController < ApplicationController
       @cus_path = CustomersPath.where("customer_id = ?", current_user.id)
       @cus_path.update(customer_id: current_user.id, careerpath_id: @path_id)
       @customer_lo = CustomerLo.new
-
       # lo_req = LoLo.where("lo_id IN (?)", list_lo_checked)
       # arr_lo_req = lo_req.pluck(:lo_req_id)
       # list_lo_checked = list_lo_checked + arr_lo_req
-
       CustomerLo.where("customer_id = ? AND lo_id IN (?)", current_user.id, list_not_check).destroy_all
-
       #insert list LO checked
       if valid_list_insert == []
-        binding.pry
         redirect_to user_home_path
       else
         valid_list_insert.each do |lo_id|
