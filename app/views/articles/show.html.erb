@@ -12,8 +12,13 @@
         <span class="article_title">
           <%= article.title %>
         </span>
-        <p>• View number <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> <br></p>
-        <p>• Created at:  <%= article.created_at.to_date %></p>
+       <p>
+         <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> views
+         <i class="fa fa-circle"></i>
+         Created at: <%= article.created_at.to_date %>
+       </p>
+<!--        <p>• View number <%#= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> <br></p>-->
+<!--        <p>• Created at:  <%#= article.created_at.to_date %></p>-->
 
       </div>
       <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id) %>
@@ -28,7 +33,7 @@
           </div>
           <div class="w-author">
             <% if !author.blank? %>
-              <p> Author: <%= author.name %></p>
+              <p style="font-size: 16px; font-weight: bold"><%= author.name %></p>
             <% else %>
             <% end %>
       <% end %>
@@ -98,7 +103,7 @@
     </div>
   </div>
   <div class="list">
-    <p style="font-size: 20px; font-weight: bold">List article in course</p>
+    <p style="font-size: 20px; font-weight: bold; margin-top: 0">List article in course</p>
     <div class="list-video">
       <ul>
         <% @list_article_right.each do |a| %>
@@ -126,6 +131,9 @@
               <% end %>
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
+              </div>
+              <div class="l-author">
+                Đại học FPT
               </div>
               <div class="l-view">
                 <%= a.view_number %> views
