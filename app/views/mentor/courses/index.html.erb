@@ -8,11 +8,17 @@
   <h1>
     Webcome back <%= current_user.customer.name  %>
   </h1>
-  <a class="btn-save" href="courses/landing_page">Create course</a>
+  <a class="btn-save" href="courses/landing_page">
+    <i class="fa fa-upload" aria-hidden="true"></i>
+    Create course
+  </a>
+  <br>
+  <%index = 0 %>
   <% @mentor_course.each do |mentor_course| %>
     <span>Course name: <%= mentor_course.name %></span>
-    <a class="upload" href="#">Upload video</a>
-    <div id="exampleSlider1">
+    <a class="upload" href="#">Edit course</a>
+    <%index= index + 1%>
+    <div id="exampleSlider<%=index %>">
       <div class="MS-content">
         <% @list_article_mentor = Article.joins(:course_articles).where('course_id = ?', mentor_course.id).order(:created_at) %>
         <% @list_article_mentor.each do |article| %>
@@ -26,11 +32,11 @@
             </div>
             <div class="article-right">
               <%= link_to article.title, click_on_article_path(mentor_course.slug, article.id) %>
-              <p><%= article.description %></p>
+<!--              <p><%#= article.description %></p>-->
             </div>
-            <a href="#">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </a>
+<!--            <a href="#">-->
+<!--              <i class="fa fa-trash" aria-hidden="true"></i>-->
+<!--            </a>-->
           </div>
         <% end %>
       </div>
