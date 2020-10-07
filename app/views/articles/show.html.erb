@@ -15,10 +15,8 @@
        <p>
          <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> views
          <i class="fa fa-circle"></i>
-         Created at: <%= article.created_at.to_date %>
+         Created at:  <%= article.date_created.to_date.strftime("%d/%m/%Y") %>
        </p>
-<!--        <p>• View number <%#= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> <br></p>-->
-<!--        <p>• Created at:  <%#= article.created_at.to_date %></p>-->
 
       </div>
       <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id) %>
@@ -59,7 +57,7 @@
             <%= form_for(@comment, html: {class: "input_comment", role: "form", :id => "form_comment", :onsubmit => "checkInput()"}, url: create_comment_path, method: :put, remote: true, require: true) do |f| %>
               <div class="input_comment">
                 <%= f.hidden_field :customer_id, value: current_user.id %>
-                <%= f.hidden_field :article_id, value: article.article_id %>
+                <%= f.hidden_field :article_id, value: params[:id] %>
                 <%= f.text_field :content, id: 'input_cmt', required: true %>
                 <%= f.submit onclick: "removeSpace()" %>
               </div>
@@ -132,12 +130,18 @@
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
               </div>
+              <% @author.each do |author| %>
               <div class="l-author">
+                <% if !author.blank? %>
+                  <%= author.name %><br>
+                <% else %>
+                <% end %>
               </div>
               <div class="l-view">
                 <%= a.view_number %> views
               </div>
             </div>
+                <% end %>
           </li>
         <% end %>
       </ul>

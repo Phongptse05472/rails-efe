@@ -1,10 +1,5 @@
 class Customer < ApplicationRecord
   include PgSearch::Model
-
-  validates :phone_number, :presence => {:message => 'Phone number is not valid'},
-            :numericality => true,
-            :length => { :minimum => 10, :maximum => 15 }
-
   # 1 user have one User_info
   belongs_to :user
 # # 1 User can have many role

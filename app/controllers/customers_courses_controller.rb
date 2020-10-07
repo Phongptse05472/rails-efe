@@ -34,20 +34,20 @@ class CustomersCoursesController < ApplicationController
     # recommender course
 
     @cus_path = CustomersPath.where(customer_id: cid)
-    if !@cus_path.blank?
-      require "faraday"
-      require "faraday_middleware"
-      response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
-      data = JSON.parse(response.body)
-      @arr_course_id = [].uniq
-      data.each do |d|
-        @arr_course_id << d["id"]
-      end
-      Faraday::Error #or more specific error type
-      @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).limit(20)
-      # @recommender_course = Course.where(id: @arr_course_id).where.not(id: @course_ids).sort_by { |item| @arr_course_id.index(item.id) }
-
-    end
+    # if !@cus_path.blank?
+    #   require "faraday"
+    #   require "faraday_middleware"
+    #   response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
+    #   data = JSON.parse(response.body)
+    #   @arr_course_id = [].uniq
+    #   data.each do |d|
+    #     @arr_course_id << d["id"]
+    #   end
+    #   Faraday::Error #or more specific error type
+    #   @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).limit(20)
+    #   # @recommender_course = Course.where(id: @arr_course_id).where.not(id: @course_ids).sort_by { |item| @arr_course_id.index(item.id) }
+    #
+    # end
   end
 
 
