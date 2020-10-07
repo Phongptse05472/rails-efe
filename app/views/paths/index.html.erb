@@ -14,19 +14,17 @@
     <% %>
     <% @current_career_path = CustomersPath.where("customer_id = ?", current_user.id) %>
     <% @path = @current_career_path.first.careerpath_id %>
-    <%= select_tag "careerpath_id", options_for_select(@options = Careerpath.all.map { |a| [a.id, a.id] },:selected => @option), :onchange => "this.form.submit();", :include_blank => false %>
+    <%= select_tag "careerpath_id", options_for_select(@options = Careerpath.all.map { |a| [a.name, a.id] },:selected => @option), :onchange => "this.form.submit();", :include_blank => false %>
   <% end %>
 
   <div class="show_lo">
     <%= form_tag('', url: paths_path) do %>
-      <% @list_lo_not_owner.each do |lo| %>
+      <% @list_lo_in_career_path.each do |lo| %>
         <label class="container_input"><%= lo.name %>
           <%= check_box_tag "lo_id[]", lo.id%>
           <span class="checkmark"></span>
         </label>
         <br/>
-        <%#= check_box_tag "lo_id[]", lo.id,type: 'input' %>
-        <%#= lo.name %>
       <% end %>
   </div>
     <button onclick="myFunction()" id="submit" class="submit" type="submit">Save and View Course Recommend</button>
@@ -36,6 +34,16 @@
 </div>
 <script type=text/javascript>
     document.getElementsByClassName("choice").checked = false;
+    var arr = document.getElementsByTagName('input');
+    <% @customer_lo_owner.each do |lo| %>
+    for (let i = 0; i <arr.length ; i++) {
+        if(arr[i].type == "checkbox"){
+            if(arr[i].value ==  <%=lo.id%>){
+                arr[i].checked = true;
+            }
+        }
+    }
+    <% end %>
 <!--    document.getElementsByTagName("option")[<%#=@paths %>].selected = true;-->
 </script>
 

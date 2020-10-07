@@ -26,7 +26,7 @@
     <% else %>
       <li>
         <a onclick="myFunction()" href="/customers_courses">
-          <i class="fa fa-user-circle-o"></i> My Course
+          <i class="fa fa-laptop"></i> My Course
         </a>
       </li>
     <% end %>
@@ -51,7 +51,7 @@
   </ul>
   <% if current_user.present? %>
     <h2>Follow</h2>
-    <ul class="top">
+    <ul class="top" id="follow">
       <% course.each do |a| %>
         <li>
           <%= link_to course_path(a.slug) do %>
@@ -67,6 +67,7 @@
       </li>
     </ul>
   <% end %>
+
   <% if !current_user.present? %>
     <h2>Groups</h2>
     <ul class="top">

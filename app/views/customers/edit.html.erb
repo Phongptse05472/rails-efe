@@ -27,7 +27,7 @@
             <tr>
               <th>Phone number</th>
               <td>
-                <%= text_field_tag :phone_number, customer.phone_number %>
+                <%= text_field_tag :phone_number, customer.phone_number, :maxlength => 20,:pattern =>"([(+]*[0-9]+[()+. -]*)", :required => true %>
               </td>
             </tr>
             <tr>
@@ -52,8 +52,14 @@
 </script>
 <script type="text/javascript">
     var myWidget = cloudinary.createUploadWidget({
-            cloudName: 'dolv9j3dz', apiKey: '233187518769819',
-            uploadPreset: 'yfd3tn0d'
+            cloudName: 'hel88', apiKey: '846496373843319',
+            uploadPreset: 'mgspy3kj', preBatch: (cb, data) => {
+                if (data.maxImageFileSize > 1500000)
+                    cb({cancel: true});
+                else {
+                    cb();
+                }
+            }
         }, (error, result) => {
             if (!error && result && result.event === "success") {
                 var url_link = result.info.secure_url;
@@ -73,7 +79,10 @@
     document.getElementById("upload_widget").addEventListener("click", function () {
         myWidget.open();
     }, false);
+
 </script>
+
+
 
 
 

@@ -19,7 +19,6 @@
     width: 30%;
     height: auto;
 }
-
 .list-video ul {
     list-style: none;
     padding: 0;
@@ -91,16 +90,16 @@ l-title i{
 
 .list-video {
     overflow-y: scroll;
-    height: 500px;
-    margin-bottom: 50px;
+    height: 600px;
+    /*margin-bottom: 50px;*/
     border-bottom: 2px solid linen;
     border-top: 2px solid linen;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
 }
 
-.list-video:last-child {
-    height: 800px;
-}
+/*.list-video:last-child {*/
+/*    height: 800px;*/
+/*}*/
 
 .list-video::-webkit-scrollbar {
     width: 6px;

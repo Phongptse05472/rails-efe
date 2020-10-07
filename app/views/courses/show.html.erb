@@ -1,5 +1,4 @@
 <head>
-
   <%= stylesheet_link_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'course_detail', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -11,7 +10,6 @@
     <% @author.each do |author| %>
       <span><%= author.name %></span>
     <% end %>
-
     <div class="intro">
       <% if !@course.image.nil? %>
         <%= cl_image_tag(@course.image) %>
@@ -19,19 +17,58 @@
         <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
       <% end %>
       <span id="des" onclick="showmore()"><%= @course.description %><br></span>
-      <br>
-      ● Students: <%= @course.number_enrollment %>
-      <br>
-      ● Rating: <%= @course.rate %><br>
-      ● Duration: <%= @course.duration %> hours on-demand video
-      <br>
-      <% if @lo_req.nil? %>
-        <h2>Requirements</h2>
+<!--      <br>-->
+<!--      ● Number enroll: <%#= @course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>-->
+<!--      <br>-->
+<!--      ● Rating: <%#= @course.rate %><br>-->
+<!--      ● Duration: <%#= @course.duration %> hours on-demand video-->
+<!--      <br>-->
+      <table class="show_weight">
+        <tr>
+          <td><i class="fa fa-check-square" aria-hidden="true"></i>Number enroll:</td>
+          <td><%= @course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enrollments</td>
+        </tr>
+        <tr>
+          <td><i class="fa fa-check-square" aria-hidden="true"></i>Rating:</td>
+          <td style="display: flex">
+            <%= @course.rate %>
+            <% rate = @course.rate %>
+            <% (1..rate).each do |i| %>
+              <% if rate >= i.floor %>
+                <span class="fa fa-star checked"></span>
+              <% end %>
+            <% end %>
+            <% if rate != rate.floor %>
+              <span class="fa fa-star-half-o checked"></span>
+            <% end %>
+            <% (1..(5 - rate.ceil)).each do %>
+              <span class="fa fa-star-o checked"></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><i class="fa fa-check-square" aria-hidden="true"></i>Duration:</td>
+          <td><%= @course.duration %> hours</td>
+        </tr>
+      </table>
+      <h2>Requirements</h2>
         <% @lo_req.each do |lo_req| %>
-          <h>● <%= lo_req.name %></h>
-          <br>
-        <% end %>
+         <div class="show_require"> <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            <%= lo_req.name %>
+        </div>
       <% end %>
+<!--      <div class="skill_set">-->
+<!--        <h2>Requirements</h2>-->
+<!--        <ul>-->
+          <%# @lo_req.each do |lo_req| %>
+<!--            <li>-->
+<!--            <span class="out_side_level">-->
+              <%#= lo_req.name %>
+<!--                </span>-->
+<!--            </li>-->
+          <%# end %>
+<!--        </ul>-->
+<!--      </div>-->
     </div>
     <% if current_user.present? %>
       <% check_archived_course = CustomerCourse.where('customer_id = ? AND course_id = ? AND enrollment_date IS NOT null', current_user.id, @course.id) %>
@@ -48,12 +85,12 @@
       Start learn
     <% end %>
     <div class="skill_set">
-      <h2>Skill set</h2>
+      <h2>What you'll learn:</h2>
       <ul>
-        <% @skill.each do |skill| %>
+        <% @list_lo.each do |lo| %>
           <li>
             <span class="out_side_level">
-              <%= skill.name %>
+              <%= lo.name %>
                 </span>
           </li>
         <% end %>

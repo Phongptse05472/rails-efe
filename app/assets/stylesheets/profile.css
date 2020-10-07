@@ -4,10 +4,12 @@
     height: 700px;
     border: 1px dashed black;
     margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10%;
+    /*margin-right: auto;*/
     text-align: center;
     border-radius: 5%;
+    background-color: white;
+    box-shadow: 0px 1px 10px rgba(29, 34, 47, 0.1);
 }
 .avatar {
     display: flex;
@@ -45,21 +47,29 @@
 .profile-page table tr td {
     height: 60px;
     vertical-align: middle;
-    width: 200px;
+    width: 250px;
 }
-
+.profile-page table tr th {
+    text-align: left;
+    width: 30%;
+}
 .profile-page table {
-    width: 40%;
+    width: 60%;
     margin-bottom: 20px;
     margin-right: auto;
     margin-left: auto;
 }
 
 .profile-page table tr td input {
-    height: 20px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    padding: 5px 10px;
+    height: 30px;
+    border: 1px solid #007bff;
+    border-radius: 30px;
+    padding: 6px 20px;
+    background-color: #007bff;
+    color: white;
+    width: 250px;
+    font-weight: bold;
+    outline: none;
 }
 
 .profile-page table tr td::before {
@@ -69,7 +79,7 @@
 
 .logout {
     padding: 15px 30px;
-    background-color: #14bdee;
+    background-color: #2196F3;
     color: white;
     text-decoration: none;
     font-weight: bold;

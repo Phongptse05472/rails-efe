@@ -149,6 +149,9 @@ button:hover {
     .item {
         width: 23.4%;
     }
+    .item .thumbnai video {
+        height: 178px;
+    }
 }
 
 @media (max-width: 1440px) {
@@ -163,6 +166,10 @@ button:hover {
     }
     .item .thumbnai img {
         height: 160px;
+    }
+    .item .thumbnai video {
+        height: 135px;
+        width: 100% !important;
     }
     .thumbnai i {
         left: 83%;
@@ -189,9 +196,20 @@ button:hover {
     .item .thumbnai img {
         height: 160px;
     }
+    .user{
+        width: 10%;
+    }
 }
-/*@media (max-width: 1334px) {*/
-/*    .thumbnai i {*/
-/*        left: 80% !important;*/
+@media (max-width: 1280px) {
+    .item {
+        width: 31%;
+    }
+}
+/*@media (max-width: 1366px) {*/
+/*    .item {*/
+/*        width: 31%;*/
+/*    }*/
+/*    .item .thumbnai video {*/
+/*        width: 100% !important;*/
 /*    }*/
 /*}*/

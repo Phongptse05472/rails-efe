@@ -12,9 +12,12 @@
         <span class="article_title">
           <%= article.title %>
         </span>
-        <p>
-          <%= article.view_number %> view • <%= article.created_at.to_date %>
-        </p>
+       <p>
+         <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> views
+         <i class="fa fa-circle"></i>
+         Created at:  <%= article.date_created.to_date.strftime("%d/%m/%Y") %>
+       </p>
+
       </div>
       
       <% @author.each do |author| %>
@@ -28,7 +31,7 @@
           </div>
           <div class="w-author">
             <% if !author.blank? %>
-              <p> Author: <%= author.name %></p>
+              <p style="font-size: 16px; font-weight: bold"><%= author.name %></p>
             <% else %>
             <% end %>
       <% end %>
@@ -54,43 +57,44 @@
             <%= form_for(@comment, html: {class: "input_comment", role: "form", :id => "form_comment", :onsubmit => "checkInput()"}, url: create_comment_path, method: :put, remote: true, require: true) do |f| %>
               <div class="input_comment">
                 <%= f.hidden_field :customer_id, value: current_user.id %>
-                <%= f.hidden_field :article_id, value: article.article_id %>
-                <%= f.hidden_field :is_pin, value: false %>
-                <%= f.text_field :content , id: 'input_cmt', required: true %>
-                <%= f.submit onclick: "removeSpace()"  %>
+                <%= f.hidden_field :article_id, value: params[:id] %>
+                <%= f.text_field :content, id: 'input_cmt', required: true %>
+                <%= f.submit onclick: "removeSpace()" %>
               </div>
             <% end %>
           </div>
         </div>
-
         <div class="article_comments">
-        <% @comment_pin.each do |pin| %>
-          <div class="user-comment">
-            <div class="user-icon">
-              <% if !pin.customer.avatar.nil? %>
-                <%= cl_image_tag(pin.customer.avatar) %>
-              <% else %>
-                <%= image_tag('profile.png') %>
-              <% end %>
-            </div>
-            <div class="user-right">
-              <div class="user-name" style="font-weight: bold">
-                <%= pin.customer.name %>
+          <% @comment_pin.each do |pin| %>
+            <div class="user-comment">
+              <div class="user-icon">
+                <% if !pin.customer.avatar.nil? %>
+                  <%= cl_image_tag(pin.customer.avatar) %>
+                <% else %>
+                  <%= image_tag('profile.png') %>
+                <% end %>
               </div>
-              <div class="u-comment pin">
-                <%= pin.content %>
+              <div class="user-right">
+                <div class="user-name" style="font-weight: bold">
+                  <%= pin.customer.name %>
+                </div>
+                <div class="u-comment pin">
+                  <%= pin.content %>
+                </div>
               </div>
-            </div>
 
               <div class="comment_pin">
                 <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
-                <% if @is_author %>
-                <%= link_to update_comment_pin_path(pin.id), method: :post, remote: true do %>
-                  <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
+                <% if !current_role.blank? %>
+                  <%= link_to update_comment_pin_path(pin.id), method: :post, remote: true do %>
+                    <i class="fa fa-times" onclick="check(this)" aria-hidden="true"></i>
+                  <% end %>
                 <% end %>
-            <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
+          <% @comment_user.each do |comment| %>
+            <%= render "comments/comment", comment: comment %>
           <% end %>
           <div class="user-comments">
             <% @comment_user.each do |comment| %>
@@ -102,6 +106,7 @@
     </div>
   </div>
   <div class="list">
+    <p style="font-size: 20px; font-weight: bold; margin-top: 0">List article in course</p>
     <div class="list-video">
       <ul>
         <% @list_article_right.each do |a| %>
@@ -130,18 +135,20 @@
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
               </div>
+              <% @author.each do |author| %>
+              <div class="l-author">
+                <% if !author.blank? %>
+                  <%= author.name %><br>
+                <% else %>
+                <% end %>
+              </div>
               <div class="l-view">
                 <%= a.view_number %> views
               </div>
             </div>
+                <% end %>
           </li>
         <% end %>
-      </ul>
-    </div>
-<!--    <h1>Recommend for you</h1>-->
-    <div class="list-video">
-      <ul>
-
       </ul>
     </div>
   </div>
@@ -273,6 +280,7 @@
     function removeSpace() {
         document.getElementById('input_cmt').value =
             document.getElementById('input_cmt').value.trim();
+
     }
 
     function checkInput() {
