@@ -7,16 +7,18 @@ class ArticlesController < ApplicationController
   def show
     @article_detail = Article.where(id: params[:id])
     @author = Customer.joins(:customer_articles).where("article_id = ? AND is_owner = true", @article.id)
-
     @course = Course.friendly.find(params[:course_slug])
+    @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id)
+    @is_author = @author.first.id == current_user.id
     #right side - List article in course
     @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
     @list_article_viewed= CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_article_right.ids)
     @index_list_article = @list_article_right.pluck(:id).index(@article_detail.ids.first)
 
     @comment = Comment.new
-    @comment_user = Comment.where(:article_id => @article.id).custom_display
-    @comment_pin = @comment_user.where("is_pin = true").custom_display.order(updated_at: :desc).limit(1)
+    @comments = Comment.where(:article_id => @article.id).custom_display  
+    @comment_pin = @comments.where("is_pin = true").custom_display.order(updated_at: :desc).limit(1)
+    @comment_user = @comments.where("is_pin != true")
     cus_article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, @article.id)
 
     if !cus_article.exists?

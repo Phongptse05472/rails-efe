@@ -19,7 +19,7 @@
        </p>
 
       </div>
-      <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id) %>
+      
       <% @author.each do |author| %>
         <div class="w-description">
           <div class="w-icon">
@@ -96,6 +96,11 @@
           <% @comment_user.each do |comment| %>
             <%= render "comments/comment", comment: comment %>
           <% end %>
+          <div class="user-comments">
+            <% @comment_user.each do |comment| %>
+              <%= render partial: "comments/comment", locals: {comment: comment, is_author: @is_author} %>
+            <% end %>
+          </div>
         </div>
     <% end %>
     </div>
