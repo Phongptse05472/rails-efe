@@ -26,7 +26,7 @@ class Mentor::CoursesController < Mentor::MentorController
   def update  
     @step = step.to_s
     @course.assign_attributes course_params
-    byebug
+    # byebug
     unless step.to_sym == :create_content
       @course.id = Course.last.id.next unless @course.id
       @course.author = current_user.id

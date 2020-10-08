@@ -2,6 +2,16 @@
   <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<!--  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
+<!--  <script>tinymce.init({selector:'textarea'});</script>-->
+<!--  <style>-->
+<!--    .tox-notifications-container{-->
+<!--      display: none;-->
+<!--    }-->
+<!--      .tox-statusbar__branding{-->
+<!--        display: none;-->
+<!--      }-->
+<!--  </style>-->
 </head>
 <div class="right">
   <%= render "process", step: @step %>
@@ -33,7 +43,7 @@
           <h2>Description</h2>
         </div>
         <div class="row-right">
-          <%= f.text_area :description, class: "desc_course", value: @course.description, :required => true %>
+          <%= f.text_area :description, class: "desc_course",value: @course.description, :required => true %>
         </div>
       </div>
       <div class="per_row">
@@ -58,6 +68,9 @@
   <div class="end">
   </div>
 </div>
+
+
+
 <script>
 
   $('input[type=file]').change(function () {

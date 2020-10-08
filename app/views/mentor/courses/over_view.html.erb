@@ -36,11 +36,7 @@
             <h2>Groups</h2>
         </div>
         <div class="row-right">
-            <textarea disabled class="desc_course" maxlength="300">
-                <% @course.groups.each do |group| %>
-                    <%= group.name %>
-                <% end %>
-            </textarea>
+            <textarea disabled class="desc_course" maxlength="300"> <% @course.groups.each do |group| %><%= group.name %> <% end %></textarea>
         </div>
         </div>
         <div class="per_row">
@@ -48,43 +44,38 @@
             <h2>Learning Outcomes</h2>
         </div>
         <div class="row-right">
-            <textarea disabled class="desc_course" maxlength="300">
-                <% @course.articles.each do |article| %>
-                    <% article.los.each do |lo| %>
-                        <%= lo.name %>
-                    <% end %>
-                <% end %>
-            </textarea>
+            <textarea disabled class="desc_course" maxlength="300"><% @course.articles.each do |article| %><% article.los.each do |lo| %><%= lo.name %> - <% end %>  <% end %></textarea>
         </div>
         </div>
     </div>
-    </form>
+<!--    </form>-->
     <h2>List article</h2>
     <div id="exampleSlider1">
     <div class="MS-content">
         <% @course.articles.each do |article| %>
             <% if article.title != nil %>
                 <div id="item" class="item per_article">
-                    <div class="article-left">
+                    <div class="article-left video_left">
                         <% if !article.video.url.nil? %>
-                            <%= video_tag article.video.url, 
-                            :size => "320x240", :controls => true %>
+                            <%= video_tag article.video.url, :controls => true %>
                         <% else %>
-                            <%= cl_video_tag('video/Introduction_to_the_Course_-_Introduction_to_the_Course_-_Coursera_jqhxzg', :effect => "preview", :resource_type => "video") %>
+                        <%= image_tag("course_8.jpg") %>
+                        <%#= cl_image_tag("course_8.jpg") %>
+                            <%#= cl_video_tag('video/Introduction_to_the_Course_-_Introduction_to_the_Course_-_Coursera_jqhxzg', :effect => "preview", :resource_type => "video") %>
                         <% end %>
                     </div>
                     <div class="article-right">
                         <div href="#">
                             <%= article.title %>
                         </div>
-                        <div>
-                            <%= article.description %>
-                        </div>
-                        <div>
-                            <% article.los.each do |lo| %>
-                            <div> <%= lo.name %> </div>
-                            <% end %>
-                        </div>
+<!--                        <div>-->
+                            <%#= article.description %>
+<!--                        </div>-->
+<!--                        <div>-->
+                            <%# article.los.each do |lo| %>
+<!--                            <div> <%#= lo.name %> </div>-->
+                            <%# end %>
+<!--                        </div>-->
                     </div>
                 </div>
             <% end %>
