@@ -23,7 +23,7 @@
 
 .container_upload {
     margin-top: 20px;
-    width: 80%;
+    width: 77%;
     height: auto;
     display: flex;
     padding: 20px;
@@ -303,7 +303,6 @@ select option:hover {
     border-radius: 5px;
     border: 1px solid #42a7f5;
 }
-
 .container_input {
     display: block;
     position: relative;
@@ -462,6 +461,7 @@ select option:hover {
     width: 10%;
     float: right;
     display: inline-block;
+    padding-right: 10px;
 }
 
 .c-right span {

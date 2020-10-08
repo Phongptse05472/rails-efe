@@ -1,6 +1,6 @@
 <% articles.each do |article| %>
   <% if article.title != nil %>
-    <div id='container_show' class='<%="article-#{article.id}"%> per-course'>
+    <div id='container_show create_content_container' class='<%="article-#{article.id}"%> per-course'>
       <div class="c-left create_content-left">
 <!--        <a href="#">-->
           <% if !article.video.url.nil? %>

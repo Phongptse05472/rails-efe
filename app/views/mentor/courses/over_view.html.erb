@@ -44,7 +44,7 @@
             <h2>Learning Outcomes</h2>
         </div>
         <div class="row-right">
-            <textarea disabled class="desc_course" maxlength="300"><% @course.articles.each do |article| %><% article.los.each do |lo| %><%= lo.name %> - <% end %>  <% end %></textarea>
+            <textarea disabled id="show_lo" class="desc_course" maxlength="300"><% @course.articles.each do |article| %><% article.los.each do |lo| %><%= lo.name %> - <% end %>  <% end %></textarea>
         </div>
         </div>
     </div>
@@ -95,6 +95,9 @@
 </div>
 
 <script>
+  var txt =  document.getElementById('show_lo').value;
+  txt = txt.trim();
+  document.getElementById('show_lo').value = txt.substring(0,txt.length-1);
   $('#exampleSlider1').multislider({
       interval: 100000,
       continuous: false
