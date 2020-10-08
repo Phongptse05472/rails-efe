@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_070156) do
     t.bigint "customer_id"
     t.text "content"
     t.integer "parent_id"
-    t.boolean "is_pin"
+    t.boolean "is_pin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
