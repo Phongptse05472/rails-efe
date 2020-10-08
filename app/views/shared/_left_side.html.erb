@@ -34,16 +34,19 @@
     <% if current_user.present? %>
       <% current_role = Customer.where("user_id = ? AND role_id = 2", current_user.id) %>
       <% if !current_role.blank? %>
-        <li>
-          <%= link_to mentor_courses_path do %>
-            <i class="fa fa-user-circle-o"></i> Switch Mentor
-          <% end %>
-        </li>
-        <li>
-          <%= link_to '/user-home' do %>
-            <i class="fa fa-user-circle-o"></i> Switch User
-          <% end %>
-        </li>
+        <% if !request.original_fullpath.include? "/mentor" %>
+          <li>
+            <%= link_to mentor_courses_path do %>
+              <i class="fa fa-user-circle-o"></i> Working as Mentor
+            <% end %>
+          </li>
+        <% else %>  
+          <li>
+            <%= link_to '/user-home' do %>
+              <i class="fa fa-user-circle-o"></i> Working as Student
+            <% end %> 
+          </li>
+        <% end %>
       <% else %>
       <% end %>
     <% else %>

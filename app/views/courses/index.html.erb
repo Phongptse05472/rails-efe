@@ -113,7 +113,9 @@
       <% @top_view_article.each do |article| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <%= cl_video_tag(article.video, :effect => "preview", :resource_type => "video") %>
+            <% if !article.video.url.nil? %>
+              <%= cl_video_tag(article.video.instance_variable_get(:@public_id), :effect => "preview", :resource_type => "video") %>
+            <% end %>
           </div>
           <div class="author">
             <% @course_article_favor = Course.joins(:course_articles).where("article_id IN (?) " , article.id) %>

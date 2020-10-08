@@ -67,7 +67,7 @@ class CustomersCoursesController < ApplicationController
   def enroll_courses
     enroll_course = Course.find(params[:slug])
     course = CustomerCourse.where('customer_id = ? AND course_id = ?', current_user.id, enroll_course.id)
-    @article = Article.joins(:courses).where('courses.id = ?', enroll_course.id)
+    @article = Article.joins(:courses).where('courses.id = ?', enroll_course.id).where.not('articles.title is null')
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
     # when record don't have in customer_course
     if course.blank?

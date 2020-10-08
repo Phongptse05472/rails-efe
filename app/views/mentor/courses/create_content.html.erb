@@ -9,15 +9,18 @@
   <div id="form_upload" class="form-upload">
     <%= form_with model: @course, url: wizard_path, method: :put, class: "form_upload" do |f| %>
       <%= f.fields_for :articles, f.object.articles.build do |ff| %>
-        <div id="container_upload" class="container_upload">
-          <div class="upload-video">
-            <div class="thum">
-              <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-              <p>Upload video</p>
-              <%= ff.file_field :video %>
-            </div>
-          </div>
           <div class="information-video">
+            <div class="per_row_article">
+              <div class="row-left">
+              </div>
+              <div class="row-right">
+                <div class="thum">
+                  <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                  <p>Upload video</p>
+                  <%= ff.file_field :video, :required => true %>
+                </div>
+              </div>
+            </div>
             <div class="per_row_article">
               <div class="row-left">
                 <h2>Title</h2>
@@ -50,14 +53,23 @@
                 <%= ff.text_field :link_file_attach, class: "title_article", placeholder: "Link attached file" %>       
               </div>
             </div>
-            <%= f.submit "Save", class: "btn-save"%>
+            <%= ff.hidden_field :date_created, value: Time.now %>
+            <div class="per_row_article">
+              <div class="row-left">
+              </div>
+              <div class="row-right">      
+                <%= f.submit "Save", class: "btn-save"%>
+              </div>
+            </div>
           </div>
-        </div>
         <% end %>
       <%= hidden_field_tag :course_id, params[:course_id] %>
     <% end %>
   </div>
   <div id="list-articles" class="end">
+    <% if @course.articles.count > 0 %>
+      <h1>List Articles in "<%= @course.name %>"</h1>
+    <% end %>
     <%= render 'course', articles: @course.articles %>
   </div>
 </div>
@@ -65,4 +77,23 @@
   $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
   });
+  $('input[type=file]').change(function () {
+    var file = this.files[0];
+    const fileType = file['type'];
+    const validImageTypes = ['video/mp4'];
+    if (validImageTypes.includes(fileType)) {
+      if (file.size > 104857600){
+        alert("File size is not allowed bigger than 100Mb");
+        this.value = "";
+        return false;
+      } else {
+      }
+    }
+    else{
+      alert(fileType + " is invalid!");
+      this.value = "";
+      return false;
+    }
+  });
+
 </script>

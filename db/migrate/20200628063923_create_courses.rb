@@ -6,9 +6,9 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.text :description
       t.string :author
       t.boolean :is_free
-      t.float :rate
+      t.float :rate, default: 0
       t.boolean :is_active , default: true
-      t.bigint :number_enrollment
+      t.bigint :number_enrollment, default: 0
       t.float :duration
       t.timestamps
     end

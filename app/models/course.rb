@@ -2,6 +2,14 @@ class Course < ApplicationRecord
 
   include PgSearch::Model
   before_create :update_slug
+  before_create :check_for_duplicates?
+
+  def check_for_duplicates?
+    if !Course.find_by(:name => self.name).nil?
+      self.slug = (name + 10.times.map{rand(10)}.join).parameterize
+    end
+  end
+  validates :name, uniqueness: true, on: :landing_page
 
   extend FriendlyId
   friendly_id :name, use: [:slugged]
@@ -26,7 +34,7 @@ class Course < ApplicationRecord
           any_word: true,
       },
   }
-  
+
   scope :by_id, ->(id) { where("id= ?", id)}
   scope :by_rates, ->(rate) { where("rate = ?", rate)}
   scope :by_levels, ->(level) { where("level = ?", level)}

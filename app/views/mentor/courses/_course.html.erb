@@ -1,17 +1,19 @@
 <% articles.each do |article| %>
   <% if article.title != nil %>
     <div id='container_show' class='<%="article-#{article.id}"%> per-course'>
-      <div class="c-left">
-        <a href="#">
-          <% if !article.video.url.nil? %>
-            <%= video_tag article.video.url, 
-              :size => "320x240", :controls => true %>
-          <% else %>
-              <%= cl_video_tag('video/Introduction_to_the_Course_-_Introduction_to_the_Course_-_Coursera_jqhxzg', :effect => "preview", :resource_type => "video") %>
-          <% end %>
-        </a>
+      <div class="c-left create_content-left">
+        <% if !article.video.url.nil? %>
+          <%= video_tag article.video.url, 
+            :size => "320x240", :controls => true %>
+        <% else %>
+          <%= image_tag("course_8.jpg") %>
+          <%#= cl_video_tag('video/Introduction_to_the_Course_-_Introduction_to_the_Course_-_Coursera_jqhxzg', :effect => "preview", :resource_type => "video") %>
+        <% end %>
       </div>
-      <div class="c-right">
+      <div class="c-right create_content">
+        <%= link_to mentor_article_path(article), method: :delete, confirm: "Are you sure?", remote: true  do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        <% end %>
         <a href="#">
           <%= article.title %>
         </a>
@@ -25,9 +27,6 @@
             <% end %>
           <ul>
         </div>
-        <%= link_to mentor_article_path(article), method: :delete, confirm: "Are you sure?", remote: true  do %>
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        <% end %>
       </div>
     </div>
   <% end %>

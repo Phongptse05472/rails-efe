@@ -1,7 +1,6 @@
 class Mentor::CoursesController < Mentor::MentorController
   include Wicked::Wizard
   before_action :load_course, except: :index
-
   steps :landing_page, :create_content, :over_view
 
   def index
@@ -23,13 +22,18 @@ class Mentor::CoursesController < Mentor::MentorController
     render_wizard
   end
 
-  def update  
+  def update 
     @step = step.to_s
     @course.assign_attributes course_params
     unless step.to_sym == :create_content
       @course.id = Course.last.id.next unless @course.id
       @course.author = current_user.id
-      render_wizard @course
+      session[:course_id] = @course.id
+      begin
+        render_wizard @course
+      rescue
+        flash[:error] = @course.errors.full_messages
+      end
     else
       los = []
       @course.articles.each do |article| 
@@ -38,10 +42,15 @@ class Mentor::CoursesController < Mentor::MentorController
         end
       end
       los = los.uniq
-      @course.lo = los.join(";")
-      @course.save
+      @course.lo = los.join(";")   
+      if step.to_sym == :create_content
+        if @course.save
+          redirect_to wizard_path(:create_content)
+        else
+          flash[:error] = @course.errors.full_messages
+        end
+      end
     end
-    session[:course_id] = @course.id
   end
 
   private
@@ -56,7 +65,9 @@ class Mentor::CoursesController < Mentor::MentorController
         @course = Course.new
     elsif !session[:course_id].nil?
       @course = Course.find_by id: session[:course_id]
-      @course.articles.build
+      if @course.nil?
+        redirect_to mentor_courses_path
+      end
     else
       @course = Course.find_by slug: params[:id]
     end

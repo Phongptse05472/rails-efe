@@ -102,7 +102,7 @@
 
 .thum {
     width: 100%;
-    height: 100px;
+    height: 40px;
     border: 1px solid #42a7f5;
     margin-right: 20px;
     border-radius: 10px;
@@ -114,13 +114,14 @@
 }
 
 .thum i {
-    margin-top: 20px;
+    width: 20%;
 }
 
 .thum p {
     margin: 0;
     font-size: 16px;
     font-weight: bold;
+    width: 80%;
 }
 
 .thum:hover {
@@ -174,7 +175,7 @@
 }
 
 .title_article {
-    width: 90%;
+    width: 97%;
     height: 25px;
     border-radius: 5px;
     outline: #42a7f5;
@@ -194,8 +195,8 @@
 }
 
 .desc_course {
-    width: 90%;
-    height: 150px;
+    width: 97%;
+    height: 300px;
     border-radius: 5px;
     outline: #42a7f5;
     border: 1px solid #42a7f5;
@@ -209,6 +210,8 @@
 
 .create_course .thum {
     width: 30%;
+    display: flex;
+    align-items: center;
 }
 
 .create_course h2 {
@@ -295,7 +298,7 @@ select option:hover {
 }
 
 .row-right .select2-container {
-    width: 92% !important;
+    width: 100% !important;
 }
 
 .row-right .select2-selection--multiple {
@@ -412,11 +415,20 @@ select option:hover {
 }
 
 .c-left img {
-    width: 240px;
+    width: 300px;
     margin-right: 10px;
     height: 100%;
     border-radius: 10px;
 }
+.c-left video {
+    margin-right: 10px;
+    height: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    /*border-top-left-radius: 25px;*/
+    /*border-top-right-radius: 25px;*/
+}
+
 
 .c-left {
     height: 140px;
@@ -430,9 +442,11 @@ select option:hover {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    height: 140px;
+    padding-left: 10px;
 }
 
-.c-right a {
+.c-right a{
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -444,6 +458,11 @@ select option:hover {
     margin-bottom: 10px;
     margin-top: 5px;
     width: 70%;
+}
+.c-right a:first-child {
+    width: 10%;
+    float: right;
+    display: inline-block;
 }
 
 .c-right span {
@@ -491,7 +510,8 @@ select option:hover {
     border-color: #14bdee;
     color: #14bdee;
     border-radius: 5px;
-    font-size: 24px
+    font-size: 24px;
+    padding: 10px 20px;
 }
 
 .btn-save:hover {
@@ -503,4 +523,24 @@ select option:hover {
 .disable-click {
     pointer-events: none;
     cursor: default;
+}
+.video_left{
+    width: 280px;
+    height: 150px;
+}
+.video_left video{
+    width: 280px;
+    height: 150px;
+}
+/*.create_content a:last-child{*/
+/*    float: right;*/
+/*    display: inline-block;*/
+/*}*/
+#image-preview {
+    width: 50%;
+}
+.information-video .thum {
+    width: 30%;
+    display: flex;
+    align-items: center
 }

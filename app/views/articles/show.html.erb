@@ -7,38 +7,38 @@
 <div class="main-watch">
   <div class="watch">
     <% @article_detail.each do |article| %>
-      <%= cl_video_tag(article.video, :controls => true) %>
+      <% if !article.video.url.nil? %>
+        <%= cl_video_tag(article.video.instance_variable_get(:@public_id), :controls => true) %>
+      <% end %>
       <div class="w-title">
         <span class="article_title">
           <%= article.title %>
         </span>
        <p>
-         <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> views
+       
          <i class="fa fa-circle"></i>
          Created at:  <%= article.date_created.to_date.strftime("%d/%m/%Y") %>
        </p>
 
       </div>
       
-      <% @author.each do |author| %>
-        <div class="w-description">
-          <div class="w-icon">
-            <% if !author.avatar.nil? %>
-              <%= cl_image_tag(author.avatar) %>
-            <% else %>
-              <%= image_tag('profile.png') %>
-            <% end %>
-          </div>
-          <div class="w-author">
-            <% if !author.blank? %>
-              <p style="font-size: 16px; font-weight: bold"><%= author.name %></p>
-            <% else %>
-            <% end %>
-      <% end %>
+      <div class="w-description">
+        <div class="w-icon">
+          <% if !@author.avatar.nil? %>
+            <%= cl_image_tag(@author.avatar) %>
+          <% else %>
+            <%= image_tag('profile.png') %>
+          <% end %>
+        </div>
+        <div class="w-author">
+          <% if !@author.blank? %>
+            <p style="font-size: 16px; font-weight: bold"><%= @author.name %></p>
+          <% else %>
+          <% end %>
+        </div>
+      </div>
       Link attach:  <%= article.link_file_attach %>
       <p>Description: <%= article.description %></p>
-      </div>
-      </div>
       <div class="w-information">
       </div>
       <div class="comment">
@@ -112,7 +112,9 @@
         <% @list_article_right.each do |a| %>
           <li>
             <div class="l-left">
-              <%= cl_video_tag(a.video) %>
+            <% if !a.video.url.nil? %>
+              <%= cl_video_tag(a.video.instance_variable_get(:@public_id), :effect => "preview", :resource_type => "video") %>
+            <% end %>
               <i class="fa fa-check-circle" aria-hidden="true"></i>
             </div>
             <div class="l-right">
@@ -135,18 +137,16 @@
               <div class="l-title">
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
               </div>
-              <% @author.each do |author| %>
               <div class="l-author">
-                <% if !author.blank? %>
-                  <%= author.name %><br>
+                <% if !@author.blank? %>
+                  <%= @author.name %><br>
                 <% else %>
                 <% end %>
               </div>
               <div class="l-view">
-                <%= a.view_number %> views
+         
               </div>
             </div>
-                <% end %>
           </li>
         <% end %>
       </ul>

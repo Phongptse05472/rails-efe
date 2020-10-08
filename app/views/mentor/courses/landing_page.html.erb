@@ -2,6 +2,7 @@
   <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <%= cloudinary_js_config %>
 </head>
 <div class="right">
   <%= render "process", step: @step %>
@@ -13,10 +14,17 @@
           <h2>Image</h2>
         </div>
         <div class="row-right">
+          <div>
+            <% if !@course.image.url.nil? %>
+              <%= cl_image_tag @course.image, :id => "image-preview"%>
+            <% else %>
+              <img id="image-preview" src=""/>
+            <% end %>
+          </div>
           <div class="thum">
             <i class="fa fa-camera" aria-hidden="true"></i>
             <p id="selectedFileName">Upload course image</p>
-            <%= f.file_field :image, value: @course.image %>
+            <%= f.file_field :image, :value => @course.image, :required => true %>
           </div>
         </div>
       </div>
@@ -50,13 +58,15 @@
         <div class="row-left">
         </div>
         <div class="row-right">
-          <%= f.submit "Save", class: "btn-save" %>
+          <%= f.submit "Save & Continue", class: "btn-save" %>
         </div>
       </div>
-      <%= f.fields_for :customer_courses, f.object.customer_courses.build do |ff| %>
-        <%= ff.hidden_field :customer_id, value: current_user.id %>
-        <%= ff.hidden_field :course_id, value: @course.id %>
-        <%= ff.hidden_field :is_owner, value: true %>
+      <% if @course.customer_courses.count < 1 %>
+        <%= f.fields_for :customer_courses, f.object.customer_courses.build do |ff| %>
+          <%= ff.hidden_field :customer_id, value: current_user.id %>
+          <%= ff.hidden_field :course_id, value: @course.id %>
+          <%= ff.hidden_field :is_owner, value: true %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
@@ -66,68 +76,28 @@
 <script>
 
   $('input[type=file]').change(function () {
-    $("#image-preview").attr("src", URL.createObjectURL(event.target.files[0]))
-  })
+    var file = this.files[0];
+    const fileType = file['type'];
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+    if (validImageTypes.includes(fileType)) {
+      if (file.size > 10485760){
+        alert(file.size + "> 10Mb");
+        this.value = "";
+        $("#image-preview").attr("src", "");
+        return false;
+      } else {
+        $("#image-preview").attr("src", URL.createObjectURL(file));
+      }
+    }
+    else{
+      alert(fileType + " is invalid!");
+      this.value = "";
+      $("#image-preview").attr("src", "");
+      return false;
+    }
+  });
 
   $(document).ready(function() {
       $('.js-example-basic-multiple').select2();
-  });
-
-  var arr=[];
-  function resetSkill(){
-      var levels = document.getElementsByName('level');
-      for (var i = 0; i < levels.length; i++) {
-          if (levels[i].checked) {
-              levels[i].checked=false;
-          }
-      }
-  }
-  function setSkill() {
-      var levels = document.getElementsByName('level');
-      var level;
-      for (var i = 0; i < levels.length; i++) {
-          if (levels[i].checked) {
-              level = levels[i].value;
-          }
-      }
-
-      if (level != undefined) {
-          var skill = document.getElementById('skill').value;
-          if(document.getElementById('skill').selectedIndex==0){
-              return;
-          }
-          var object = {s:skill,l:level};
-          for(var i=0; i<arr.length; i++){
-              if(skill==arr[i].s && level==arr[i].l){
-                  return;
-              }
-          }
-          arr.push(object);
-          var tr = document.createElement('tr');
-          tr.innerHTML = `
-                  <td> <p>${skill}</p></td>
-                  <td>
-                      <p>${level}</p>
-                      </td>
-                      <td>
-                          <i onclick="removeSkill(this,'${skill}','${level}')" class="fa fa-times" aria-hidden="true"></i>
-                      </td>
-                  `;
-          document.getElementById('table').tBodies[0].appendChild(tr);
-      }
-  }
-  function removeSkill(i,skill,level){
-
-      i.parentNode.parentNode.remove();
-      for(var i=0; i<arr.length; i++){
-          if(skill==arr[i].s && level==arr[i].l){
-              arr.splice(i, 1);
-              break;
-          }
-      }
-      resetSkill();
-  }
-  $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
   });
 </script>
