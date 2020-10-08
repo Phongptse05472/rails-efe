@@ -12,14 +12,14 @@
         <span class="article_title">
           <%= article.title %>
         </span>
-       <p>
-         <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> views
-         <i class="fa fa-circle"></i>
-         Created at:  <%= article.date_created.to_date.strftime("%d/%m/%Y") %>
-       </p>
+        <p>
+          <%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> views
+          <i class="fa fa-circle"></i>
+          Created at:  <%= article.date_created.to_date.strftime("%d/%m/%Y") %>
+        </p>
 
       </div>
-      
+
       <% @author.each do |author| %>
         <div class="w-description">
           <div class="w-icon">
@@ -35,7 +35,13 @@
             <% else %>
             <% end %>
       <% end %>
-      Link attach: <a target="_blank" href="<%= article.link_file_attach %>"><%= article.link_file_attach %></a>
+      <% if article.link_file_attach.eql?("N/A") %>
+        Link attach: <%= article.link_file_attach %>
+
+      <% else %>
+        Link attach: <a target="_blank" href="<%= article.link_file_attach %>"><%= article.link_file_attach %></a>
+
+      <% end %>
       <p>Description: <%= article.description %></p>
       </div>
       </div>
@@ -138,18 +144,18 @@
                 <%= link_to a.title, course_article_path(params[:course_slug], a.id) %>
               </div>
               <% @author.each do |author| %>
-              <div class="l-author">
-                <% if !author.blank? %>
-                  <%= author.name %><br>
-                <% else %>
-                <% end %>
-              </div>
-              <div class="l-view">
-                <%= a.view_number %> views
-              </div>
-            </div>
-                <% end %>
-          </li>
+                <div class="l-author">
+                  <% if !author.blank? %>
+                    <%= author.name %><br>
+                  <% else %>
+                  <% end %>
+                </div>
+                <div class="l-view">
+                  <%= a.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> views
+                </div>
+                </div>
+              <% end %>
+              </li>
         <% end %>
       </ul>
     </div>
