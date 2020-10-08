@@ -71,7 +71,7 @@ class CustomersCoursesController < ApplicationController
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
     # when record don't have in customer_course
     if course.blank?
-      CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, is_save: true, enrollment_date: Date.today)
+      course.create(customer_id: current_user.id, course_id: enroll_course.id, enrollment_date: Date.today, is_save: true)
       # chech when this course have list article or not
       if !@article.ids.first.nil?
         # if have redirect to first article in list article
@@ -81,6 +81,11 @@ class CustomersCoursesController < ApplicationController
         redirect_to course_path
       end
     else
+      #check case if user archive course
+      if course.first.is_save
+        course.update(enrollment_date: Date.today)
+      end
+
       current_article = course.first.current_article_id
       if current_article.nil?
         if !@article.ids.first
@@ -119,7 +124,6 @@ class CustomersCoursesController < ApplicationController
     @archived_courses = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
     @archived_courses.update_attribute("is_save", !@archived_courses.is_save)
   end
-
 
 
 end
