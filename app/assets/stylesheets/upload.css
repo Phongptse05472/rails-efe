@@ -526,6 +526,14 @@ select option:hover {
     width: 280px;
     height: 150px;
 }
+.select2-selection__choice{
+    height: 40px !important;
+    border-radius: 15px !important;
+    background-color: #EBECED !important;
+    color: black !important;
+    border: none !important;
+    padding-bottom: 10px !important;
+}
 /*.create_content a:last-child{*/
 /*    float: right;*/
 /*    display: inline-block;*/

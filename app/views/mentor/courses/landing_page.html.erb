@@ -16,7 +16,7 @@
 <div class="right">
   <%= render "process", step: @step %>
   <h1>Create Course</h1>
-  <%= form_with model: @course, url: wizard_path, method: :put, local: false do |f| %>
+  <%= form_with model: @course, html: {:onsubmit =>"myFunction()"}, url: wizard_path, method: :put, local: false do |f| %>
     <div class="create_course">
       <div class="per_row">
         <div class="row-left">
@@ -60,7 +60,7 @@
         <div class="row-left">
         </div>
         <div class="row-right">
-          <%= f.submit "Continue", class: "btn-save", :onclick => "myFunction();" %>
+          <%= f.submit "Continue", class: "btn-save" %>
         </div>
       </div>
     </div>

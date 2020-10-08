@@ -7,7 +7,7 @@
 <%= render "process", step: @step  %>
 <h1>Create Articles in "<%= @course.name %>"</h1>
   <div id="form_upload" class="form-upload">
-    <%= form_with model: @course, url: wizard_path, method: :put, remote: true, class: "form_upload" do |f| %>
+    <%= form_with model: @course, html: {:onsubmit =>"myFunction()"}, url: wizard_path, method: :put, remote: true, class: "form_upload" do |f| %>
       <%= f.fields_for :articles, f.object.articles.build do |ff| %>
         <div id="container_upload" class="container_upload">
           <div class="upload-video">
@@ -50,7 +50,7 @@
                 <%= ff.text_field :link_file_attach, class: "title_article", placeholder: "Link attached file" %>       
               </div>
             </div>
-            <%= f.submit "Continue", class: "btn-save", :onclick => "myFunction();"%>
+            <%= f.submit "Continue", class: "btn-save"%>
           </div>
         </div>
         <% end %>
