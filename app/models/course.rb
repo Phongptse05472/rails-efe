@@ -2,6 +2,14 @@ class Course < ApplicationRecord
 
   include PgSearch::Model
   before_create :update_slug
+  before_create :check_for_duplicates?
+
+  def check_for_duplicates?
+    if !Course.find_by(:name => self.name).nil?
+      self.slug = (name + 10.times.map{rand(10)}.join).parameterize
+    end
+  end
+  validates :name, uniqueness: true, on: :landing_page
 
   extend FriendlyId
   friendly_id :name, use: [:slugged]
@@ -32,13 +40,7 @@ class Course < ApplicationRecord
   scope :by_levels, ->(level) { where("level = ?", level)}
   scope :by_prices, ->(price) { where("price = ?", price)}
 
-  STEPS = %i(over_view create_content comfirmed)
-
-
-  # has_one_attached :image
-
-  # has_and_belongs_to_many :groups
-
+  STEPS = %i(landing_page create_content over_view)
 
   has_many :course_groups
   has_many :groups, through: :course_groups
@@ -49,7 +51,9 @@ class Course < ApplicationRecord
   has_many :customer_courses
   has_many :customers, through: :customer_courses
 
-  has_many :course_preskills
+  accepts_nested_attributes_for :articles
+  accepts_nested_attributes_for :course_groups
+  accepts_nested_attributes_for :customer_courses
 
   def update_slug
     self.slug = name.parameterize
@@ -62,5 +66,7 @@ class Course < ApplicationRecord
   def should_generate_new_friendly_id?
     name_changed? || super
   end
+
+  mount_uploader :image, ImageUploader
 
 end

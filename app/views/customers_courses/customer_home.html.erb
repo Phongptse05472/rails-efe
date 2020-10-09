@@ -178,11 +178,11 @@
             <% end %>
           </div>
           <div class="author">
-            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
-            <% @author.each do |author| %>
+            <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id).first %>
+
               <div class="icon">
-                <% if !author.avatar.nil? %>
-                  <%= cl_image_tag(author.avatar) %>
+                <% if !@author.avatar.nil? %>
+                  <%= cl_image_tag(@author.avatar) %>
                 <% else %>
                   <%= image_tag('profile.png') %>
                 <% end %>
@@ -192,10 +192,10 @@
                   <%= link_to course.name, course_path(course.slug) %>
                 </div>
                 <% if !@author.blank? %>
-                  <p><%= author.name %></p>
+                  <p><%= @author.name %></p>
                 <% else %>
                 <% end %>
-            <% end %>
+
             <div class="star">
               <span class="stars " data-rating="<%= course.rate %>" data-num-stars="5"></span>
             </div>
@@ -284,7 +284,7 @@
             <% (1..(5 - rate.ceil)).each do %>
               <span class="fa fa-star-o checked"></span>
             <% end %>
-            <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll)</span>
+            <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll)</span>           
             </div>
           </div>
         </div>
@@ -357,7 +357,7 @@
             <% (1..(5 - rate.ceil)).each do %>
               <span class="fa fa-star-o checked"></span>
             <% end %>
-            <span> (<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll) </span>
+            <span> (<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll) </span>          
             </div>
           </div>
         </div>
@@ -374,7 +374,7 @@
       <% @top_view_article.each do |article| %>
         <div id="item" class="item">
           <div class="thumbnai">
-            <%= cl_video_tag(article.video) %>
+            <%= cl_video_tag(article.video.instance_variable_get(:@public_id)) %>
             <% customer_article = CustomerArticle.where("customer_id = ? AND article_id = ?", current_user.id, article.id) %>
             <% if customer_article.exists? %>
               <% if customer_article.first.is_favor == true %>

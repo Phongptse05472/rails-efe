@@ -1,0 +1,103 @@
+<head>
+  <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <%= cloudinary_js_config %>
+</head>
+<div class="right">
+  <%= render "process", step: @step %>
+  <h1>Step 1: Create Course</h1>
+  <%= form_with model: @course, html: {:onsubmit =>"myFunction()"}, url: wizard_path, method: :put, local: false do |f| %>
+    <div class="create_course">
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Image</h2>
+        </div>
+        <div class="row-right">
+          <div>
+            <% if !@course.image.url.nil? %>
+              <%= cl_image_tag @course.image, :id => "image-preview"%>
+            <% else %>
+              <img id="image-preview" src=""/>
+            <% end %>
+          </div>
+          <div class="thum">
+            <i class="fa fa-camera" aria-hidden="true"></i>
+            <p id="selectedFileName">Upload course image</p>
+            <%= f.file_field :image, :value => @course.image, :required => true %>
+          </div>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Title</h2>
+        </div>
+        <div class="row-right">
+          <%= f.text_field :name, class: "title_article", value: @course.name, :required => true %>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Description</h2>
+        </div>
+        <div class="row-right">
+          <%= f.text_area :description, class: "desc_course", value: @course.description, :required => true %>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+          <h2>Groups</h2>
+        </div>
+        <div class="row-right">
+          <div>
+            <%= f.select :group_ids, Group.name_and_id, {}, {:class => "js-example-basic-multiple", :multiple => "multiple"} %>
+          </div>
+        </div>
+      </div>
+      <div class="per_row">
+        <div class="row-left">
+        </div>
+        <div class="row-right">
+          <%= f.submit "Save & Continue", class: "btn-save" %>
+        </div>
+      </div>
+      <% if @course.customer_courses.count < 1 %>
+        <%= f.fields_for :customer_courses, f.object.customer_courses.build do |ff| %>
+          <%= ff.hidden_field :customer_id, value: current_user.id %>
+          <%= ff.hidden_field :course_id, value: @course.id %>
+          <%= ff.hidden_field :is_owner, value: true %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="end">
+  </div>
+</div>
+<script>
+
+  $('input[type=file]').change(function () {
+    var file = this.files[0];
+    const fileType = file['type'];
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+    if (validImageTypes.includes(fileType)) {
+      if (file.size > 10485760){
+        alert(file.size + "> 10Mb");
+        this.value = "";
+        $("#image-preview").attr("src", "");
+        return false;
+      } else {
+        $("#image-preview").attr("src", URL.createObjectURL(file));
+      }
+    }
+    else{
+      alert(fileType + " is invalid!");
+      this.value = "";
+      $("#image-preview").attr("src", "");
+      return false;
+    }
+  });
+
+  $(document).ready(function() {
+      $('.js-example-basic-multiple').select2();
+  });
+</script>

@@ -6,12 +6,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article_detail = Article.where(id: params[:id])
-    @author = Customer.joins(:customer_articles).where("article_id = ? AND is_owner = true", @article.id)
     @course = Course.friendly.find(params[:course_slug])
-    @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id)
-    @is_author = @author.first.id == current_user.id
+    @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", @course.id).first
+    @is_author = @author.id == current_user.id
     #right side - List article in course
-    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).order(id: :asc)
+    @list_article_right = Article.joins(:courses).where('courses.id = ?', @course.id).where.not('articles.video.url' => nil).order(id: :asc)
     @list_article_viewed= CustomerArticle.joins(:article).where("is_viewed = true AND customer_id = ? AND article_id IN (?) ",current_user.id, @list_article_right.ids)
     @index_list_article = @list_article_right.pluck(:id).index(@article_detail.ids.first)
 

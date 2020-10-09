@@ -21,8 +21,8 @@
     <% @favor_article.each do |favor_article| %>
       <div class="per-course" id="article_id<%= favor_article.article_id %>">
         <div class="c-left">
-          <% if !favor_article.video.nil? %>
-            <%= cl_video_tag(favor_article.video, :effect => "preview", :resource_type => "video") %>
+          <% if !favor_article.video.url.nil? %>
+            <%= cl_video_tag(favor_article.video.instance_variable_get(:@public_id), :effect => "preview", :resource_type => "video") %>
           <% else %>
             <%= image_tag('japanese.png') %>
           <% end %>

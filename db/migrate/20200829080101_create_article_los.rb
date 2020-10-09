@@ -3,6 +3,7 @@ class CreateArticleLos < ActiveRecord::Migration[6.0]
     create_table :article_los do |t|
       t.belongs_to :article, optional: true
       t.belongs_to :lo, optional: true
+      t.text :description
       t.timestamps
     end
   end

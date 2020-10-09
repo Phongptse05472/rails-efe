@@ -1,60 +1,101 @@
+<head>
+    <%= stylesheet_link_tag 'list-course', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 <div class="right">
-  <%= render "process" %>
-    <%= form_with model: @course, url: wizard_path, method: :put do |f| %>
+    <%= render "process", step: @step %>
+    <h1>Step 3: Overview</h1>
     <div class="create_course">
-      <div class="per_row">
-        <div class="row-left">
-          <h2>Avatar</h2>
-        </div>
-        <div class="row-right">
-          <div class="thum">
-            <i class="fa fa-camera" aria-hidden="true"></i>
-            <p id="selectedFileName">Upload avatar</p>
-            <%= f.file_field :image %>
-          </div>
-        </div>
-      </div>
-      <div class="per_row">
-        <div class="row-left">
-          <h2>Course title</h2>
-        </div>
-        <div class="row-right">
-          <%= f.text_field :name, class: "title_article" %>
-        </div>
-      </div>
-      <div class="per_row">
-        <div class="row-left">
-          <h2>Description</h2>
-        </div>
-        <div class="row-right">
-          <%= f.text_area :description, class: "desc_course" %>
-        </div>
-      </div>
-      <%= f.fields_for :course_groups, f.object.course_groups.build do |ff| %>
         <div class="per_row">
-          <div class="row-left">
-            <h2>Group</h2>
-          </div>
-          <div class="row-right">
-            <%= ff.select :group_id, Group.name_and_id, {} %>
-          </div>
-        </div>
-      <% end %>
-      <div class="per_row">
         <div class="row-left">
-          <h2>Is free</h2>
+            <h2>Image</h2>
         </div>
-        <label class="container_input">isFree
-          <%= f.check_box :is_free, checked: true %>
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <br>
-      <div class="form-group">
-        <button type="submit" class="btn btn-default">Create course</button>
-      </div>
+        <div class="row-right">
+            <div class="thum-image">
+                <%= cl_image_tag(@course.image, :width => 400) %>
+            </div>
+        </div>
+        </div>
+        <div class="per_row">
+        <div class="row-left">
+            <h2>Courses name</h2>
+        </div>
+        <div class="row-right">
+            <textarea disabled onkeyup="countChar(this)" wrap="hard" rows="2" maxlength="300" class="title_article" name="title"><%= @course.name %></textarea>
+        </div>
+        </div>
+        <div class="per_row">
+        <div class="row-left">
+            <h2>Description</h2>
+        </div>
+        <div class="row-right">
+            <textarea disabled class="desc_course" name="description" maxlength="300"><%= @course.description %></textarea>
+        </div>
+        </div>
+        <div class="per_row">
+        <div class="row-left">
+            <h2>Groups</h2>
+        </div>
+        <div class="row-right">
+            <textarea disabled class="desc_course" maxlength="300"><% @course.groups.each do |group| %><%= group.name %>&#10<% end %></textarea>
+        </div>
+        </div>
+        <div class="per_row">
+        <div class="row-left">
+            <h2>Learning Outcomes</h2>
+        </div>
+        <div class="row-right">
+            <textarea disabled class="desc_course" maxlength="300"><% course_lo_arr = @course.lo.tr('', '').split(';').map(&:to_i) %><% list_lo = Lo.where("id IN (?)", course_lo_arr).group(:id) %><% list_lo.each do |lo| %><%= lo.name %>&#10<% end %></textarea>
+        </div>
+        </div>
     </div>
+    <h2>List articles</h2>
+    <div id="exampleSlider1">
+    <div class="MS-content">
+        <% @course.articles.each do |article| %>
+            <% if article.title != nil %>
+                <div id="item" class="item per_article">
+                    <div class="article-left video_left">
+                        <% if !article.video.url.nil? %>
+                            <%= video_tag article.video.url, :controls => true %>
+                        <% else %>
+                        <%= image_tag("course_8.jpg") %>
+                        <%#= cl_image_tag("course_8.jpg") %>
+                            <%#= cl_video_tag('video/Introduction_to_the_Course_-_Introduction_to_the_Course_-_Coursera_jqhxzg', :effect => "preview", :resource_type => "video") %>
+                        <% end %>
+                    </div>
+                    <div class="article-right">
+                        <div href="#">
+                            <%= article.title %>
+                        </div>
+<!--                        <div>-->
+                            <%#= article.description %>
+<!--                        </div>-->
+<!--                        <div>-->
+                            <%# article.los.each do |lo| %>
+<!--                            <div> <%#= lo.name %> </div>-->
+                            <%# end %>
+<!--                        </div>-->
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <% if @course.articles.count > 2 %>
+        <div class="MS-controls">
+            <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+            <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
     <% end %>
+    </div>
     <div class="end">
+        <%= link_to "Finish", mentor_courses_path , class: "btn-save" %>
     </div>
 </div>
+
+<script>
+  $('#exampleSlider1').multislider({
+      interval: 100000,
+      continuous: false
+  });
+</script> 

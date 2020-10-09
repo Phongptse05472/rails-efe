@@ -1,25 +1,35 @@
+<head>
+  <%= stylesheet_link_tag 'upload', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+</head>
 <div id="right" class="right">
-  <%= render "process" %>
+<%= render "process", step: @step  %>
+<h1>Step 2: Create Articles in "<%= @course.name %>"</h1>
   <div id="form_upload" class="form-upload">
-    <%= form_with model: @course, url: wizard_path, method: :put, class: "form_upload" do |f| %>
+    <%= form_with model: @course, html: {:onsubmit =>"myFunction()"}, url: wizard_path, method: :put, class: "form_upload" do |f| %>
       <%= f.fields_for :articles, f.object.articles.build do |ff| %>
-        <div id="container_upload" class="container_upload">
-          <div class="upload-video">
-            <div class="thum">
-              <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-              <p>Upload video</p>
-              <%= ff.file_field :video %>
-            </div>
-            <h2>Attack file</h2>
-            <%= ff.file_field :link_file_attach %>
-          </div>
           <div class="information-video">
             <div class="per_row_article">
               <div class="row-left">
-                <h2>Title video</h2>
+                <h2>Video</h2>
               </div>
               <div class="row-right">
-                <%= ff.text_field :title, placeholder: "Title" %>
+                <video style="display: none" id="video_upload" width="320" height="240" controls>
+                </video>
+                <div class="thum">
+                  <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                  <p>Upload video</p>
+                  <%= ff.file_field :video, :required => true %>
+                </div>
+              </div>
+            </div>
+            <div class="per_row_article">
+              <div class="row-left">
+                <h2>Title</h2>
+              </div>
+              <div class="row-right">
+                <%= ff.text_field :title, class: "title_article", placeholder: "Title",:required => true %>
               </div>
             </div>
             <div class="per_row_article">
@@ -27,55 +37,75 @@
                 <h2>Description</h2>
               </div>
               <div class="row-right">
-                <%= ff.text_field :description, placeholder: "Description" %>
+                <%= ff.text_area :description, class: "desc_course", placeholder: "Description", :required => true %>
               </div>
             </div>
             <div class="per_row_article">
               <div class="row-left">
-                <h2>Is free</h2>
+                <h2>Learning Outcomes</h2>
               </div>
               <div class="row-right">
-                <label class="container_input">isFree
-                  <%= ff.check_box :is_free, checked: true %>
-                  <span class="checkmark"></span>
-                </label>
+              <%= ff.select :lo_ids, (Lo.by_skill_ids(Skill.by_group_ids(@course.groups.ids))).name_and_id, {}, {:class => "js-example-basic-multiple", :multiple => "multiple"} %>
               </div>
             </div>
             <div class="per_row_article">
               <div class="row-left">
-                <h2>Skill Set</h2>
+                <h2>Attached file</h2>
               </div>
-              <div class="row-right">
-                <div class="skill_level">
-                  <% Skill.name_and_id.each do |skill| %>
-                    <label class="container_input"><%= skill.first %>
-                      <%= ff.check_box :skill_ids, {multiple: true, class: "select_skill"}, skill.last, false %>
-                      <span class="checkmark"></span>
-                    </label>
-                  <% end %>
-                </div>
+              <div class="row-right">      
+                <%= ff.text_field :link_file_attach, class: "title_article", placeholder: "Link attached file" %>       
               </div>
             </div>
+            <%= ff.hidden_field :date_created, value: Time.now %>
             <div class="per_row_article">
               <div class="row-left">
-
               </div>
-              <div class="row-right">
-                <table id="table">
-                  <tr>
-
-                  </tr>
-                </table>
-
+              <div class="row-right">      
+                <%= f.submit "Save", class: "btn-save"%>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
       <%= hidden_field_tag :course_id, params[:course_id] %>
-      <%= f.submit "Save And Continue", class: "submit" %>
     <% end %>
   </div>
-  <div class="end">
+  <div id="list-articles" class="end">
+    <% if @course.articles.count > 0 %>
+      <h1>List Articles in "<%= @course.name %>"</h1>
+    <% end %>
+    <%= render 'course', articles: @course.articles %>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+  });
+  $('input[type=file]').change(function () {
+    var file = this.files[0];
+    const fileType = file['type'];
+    const validImageTypes = ['video/mp4'];
+    if (validImageTypes.includes(fileType)) {
+      if (file.size > 104857600){
+        alert("File size is not allowed bigger than 100Mb");
+        this.value = "";
+        return false;
+      } else {
+      }
+    }
+    else{
+      alert(fileType + " is invalid!");
+      this.value = "";
+      return false;
+    }
+  });
+
+</script>
+<script>
+    document.querySelector("input[type=file]")
+        .onchange = function(event) {
+        let file = event.target.files[0];
+        let blobURL = URL.createObjectURL(file);
+        document.querySelector("video").src = blobURL;
+        document.getElementById('video_upload').style.display = "block";
+    }
+</script>

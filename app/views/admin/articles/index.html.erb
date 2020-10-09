@@ -28,8 +28,8 @@
           <div class="per-course">
             <div class="c-left">
               <a href="#">
-                <% if !article.video.nil? %>
-                  <%= cl_video_tag(article.video, :effect => "preview", :resource_type => "video") %>
+                <% if !article.video.url.nil? %>
+                  <%= cl_video_tag(article.video.instance_variable_get(:@public_id), :controls => true) %>
                 <% else %>
                   <%= image_tag('japanese.png') %>
                 <% end %>
