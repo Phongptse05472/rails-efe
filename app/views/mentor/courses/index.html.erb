@@ -24,7 +24,7 @@
           <div id="item" class="item per_article">
             <div class="article-left">
               <% if !article.video.url.nil? %>
-                <%= cl_video_tag(article.video.instance_variable_get(:@public_id), :effect => "preview", :resource_type => "video") %>
+                <%= cl_video_tag(article.video.instance_variable_get(:@public_id)) %>
               <% else %>
                 <%= cl_image_tag('img/some-tips-to-understand-the-need-of-education-erp-software-blog-image564276_ggsimy.png') %>
               <% end %>
@@ -39,10 +39,12 @@
           </div>
         <% end %>
       </div>
-      <div class="MS-controls">
-        <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
-        <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-      </div>
+      <% if mentor_course.articles.count > 2 %>
+        <div class="MS-controls">
+          <button class="MS-left"><i class="fa fa-chevron-left"></i></button>
+          <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
+      <% end %>
     </div>
   <% end %>
 
