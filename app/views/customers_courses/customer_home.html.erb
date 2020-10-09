@@ -137,7 +137,7 @@
               <% (1..(5 - rate.ceil)).each do %>
                 <span class="fa fa-star-o checked"></span>
               <% end %>
-              <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enrollment)</span>
+              <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll)</span>
               </div>
             </div>
           </div>
@@ -211,7 +211,7 @@
             <% (1..(5 - rate.ceil)).each do %>
               <span class="fa fa-star-o checked"></span>
             <% end %>
-            <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enrollment)</span>
+            <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll)</span>
             </div>
           </div>
         </div>
@@ -284,7 +284,7 @@
             <% (1..(5 - rate.ceil)).each do %>
               <span class="fa fa-star-o checked"></span>
             <% end %>
-            <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enrollment)</span>
+            <span>(<%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> enroll)</span>
             </div>
           </div>
         </div>
