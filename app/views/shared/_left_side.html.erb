@@ -50,7 +50,7 @@
     <% end %>
   </ul>
   <% if current_user.present? %>
-    <h2>Follow</h2>
+    <h2 id="follow_text">Follow</h2>
     <ul class="top" id="follow">
       <% course.each do |a| %>
         <li>
@@ -68,6 +68,8 @@
     </ul>
   <% end %>
 
+
+
   <% if !current_user.present? %>
     <h2>Groups</h2>
     <ul class="top">
@@ -84,18 +86,30 @@
   <% end %>
 </div>
 <script>
-  <% if current_user.present? %>
-  <%  @number_enroll = CustomerCourse.where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id) %>
+    <% if current_user.present? %>
+    <%  @number_enroll = CustomerCourse.where('customer_id = ? AND customer_courses.enrollment_date IS NOT null', current_user.id) %>
     var amountLeftSide =  <%=  @number_enroll.count.to_int %>;
-  <% else %>
-  var amountLeftSide = 6
-  <% end %>
+    <% else %>
+    var amountLeftSide = 6
+    <% end %>
     var size = 1;
-    if(amountLeftSide <= 5 * size){
+    if (amountLeftSide <= 5 * size) {
         document.getElementsByClassName('show')[0].style.display = "none";
     }
 
     function showMore() {
         size++;
+    }
+</script>
+
+<script>
+    <% if current_user.present? %>
+    var x11 = <%=course.length %>
+    <% else %>
+    var x11 = 0
+    <% end %>
+    if (x11 == 0) {
+        document.getElementById('follow').style.borderBottom = "none";
+        document.getElementById('follow_text').style.display = "none";
     }
 </script>
