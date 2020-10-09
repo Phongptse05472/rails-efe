@@ -7,13 +7,16 @@
 <%= render "process", step: @step  %>
 <h1>Step 2: Create Articles in "<%= @course.name %>"</h1>
   <div id="form_upload" class="form-upload">
-    <%= form_with model: @course, url: wizard_path, method: :put, class: "form_upload" do |f| %>
+    <%= form_with model: @course, html: {:onsubmit =>"myFunction()"}, url: wizard_path, method: :put, class: "form_upload" do |f| %>
       <%= f.fields_for :articles, f.object.articles.build do |ff| %>
           <div class="information-video">
             <div class="per_row_article">
               <div class="row-left">
+                <h2>Video</h2>
               </div>
               <div class="row-right">
+                <video style="display: none" id="video_upload" width="320" height="240" controls>
+                </video>
                 <div class="thum">
                   <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                   <p>Upload video</p>
@@ -96,4 +99,13 @@
     }
   });
 
+</script>
+<script>
+    document.querySelector("input[type=file]")
+        .onchange = function(event) {
+        let file = event.target.files[0];
+        let blobURL = URL.createObjectURL(file);
+        document.querySelector("video").src = blobURL;
+        document.getElementById('video_upload').style.display = "block";
+    }
 </script>

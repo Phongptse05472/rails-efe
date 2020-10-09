@@ -485,8 +485,16 @@ select option:hover {
 
 .more-infor {
     display: flex;
+    margin-top: 10px;
 }
-
+.more-infor span{
+    background-color: #EBECED;
+    padding: 10px 10px 10px 25px;
+    color: black;
+    border-radius: 18px;
+    font-weight: normal !important;
+    margin-right: 5px;
+}
 .skill_level {
     display: flex;
     max-width: fit-content;
@@ -543,4 +551,12 @@ select option:hover {
     width: 30%;
     display: flex;
     align-items: center
+}
+.select2-selection__choice{
+    height: 40px !important;
+    border-radius: 15px !important;
+    background-color: #EBECED !important;
+    color: black !important;
+    border: none !important;
+    padding-bottom: 10px !important;
 }

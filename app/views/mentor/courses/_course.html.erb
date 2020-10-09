@@ -21,11 +21,9 @@
           <%= article.description %>
         </span>
         <div class="more-infor">
-          <ul>
             <% article.los.each do |lo| %>
-              <li> <%= lo.name %> </li>
+              <span> <%= lo.name %> </span>
             <% end %>
-          <ul>
         </div>
       </div>
     </div>

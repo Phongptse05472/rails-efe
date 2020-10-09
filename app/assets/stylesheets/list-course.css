@@ -9,9 +9,10 @@
     margin-right: 15px;
     width: 40%;
     float: left;
-    height: 235px;
 }
-
+.article-left video{
+    width: 100%;
+}
 .article-right {
     width: 50%;
     line-height: 1.4em;

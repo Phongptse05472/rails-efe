@@ -37,11 +37,7 @@
             <h2>Groups</h2>
         </div>
         <div class="row-right">
-            <textarea disabled class="desc_course" maxlength="300">
-                <% @course.groups.each do |group| %>
-                    <%= group.name %>
-                <% end %>
-            </textarea>
+            <textarea disabled class="desc_course" maxlength="300"><% @course.groups.each do |group| %><%= group.name %>&#10<% end %></textarea>
         </div>
         </div>
         <div class="per_row">
@@ -49,17 +45,10 @@
             <h2>Learning Outcomes</h2>
         </div>
         <div class="row-right">
-            <textarea disabled class="desc_course" maxlength="300">
-                <% course_lo_arr = @course.lo.tr('', '').split(';').map(&:to_i) %>
-                <% list_lo = Lo.where("id IN (?)", course_lo_arr).group(:id) %>
-                <% list_lo.each do |lo| %>
-                    <%= lo.name %>
-                <% end %>
-            </textarea>
+            <textarea disabled class="desc_course" maxlength="300"><% course_lo_arr = @course.lo.tr('', '').split(';').map(&:to_i) %><% list_lo = Lo.where("id IN (?)", course_lo_arr).group(:id) %><% list_lo.each do |lo| %><%= lo.name %>&#10<% end %></textarea>
         </div>
         </div>
     </div>
-    </form>
     <h2>List articles</h2>
     <div id="exampleSlider1">
     <div class="MS-content">
