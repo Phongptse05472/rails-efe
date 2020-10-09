@@ -64,8 +64,9 @@
                 <%= f.submit "Save", class: "btn-save"%>
               </div>
             </div>
-          </div>
-        <% end %>
+            </div>
+            <% end %>
+      <input id="duration" type="hidden" name="article_duration" />
       <%= hidden_field_tag :course_id, params[:course_id] %>
     <% end %>
   </div>
@@ -80,10 +81,16 @@
   $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
   });
+  var vid = document.createElement('video');
   $('input[type=file]').change(function () {
     var file = this.files[0];
     const fileType = file['type'];
     const validImageTypes = ['video/mp4'];
+    var fileURL = URL.createObjectURL(this.files[0]);
+    vid.src = fileURL;
+    vid.ondurationchange = function() {
+      $('#duration').val(this.duration);
+    };
     if (validImageTypes.includes(fileType)) {
       if (file.size > 104857600){
         alert("File size is not allowed bigger than 100Mb");

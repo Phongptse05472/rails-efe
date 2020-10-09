@@ -41,6 +41,7 @@ class Mentor::CoursesController < Mentor::MentorController
           los << lo.id
         end
       end
+      @course.duration += ('%.2f' % (params[:article_duration].to_f / 360 )).to_f
       los = los.uniq
       @course.lo = los.join(";")   
       if step.to_sym == :create_content
