@@ -34,20 +34,20 @@ class CustomersCoursesController < ApplicationController
     # recommender course
 
     @cus_path = CustomersPath.where(customer_id: cid)
-    # if !@cus_path.blank?
-    #   require "faraday"
-    #   require "faraday_middleware"
-    #   response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
-    #   data = JSON.parse(response.body)
-    #   @arr_course_id = [].uniq
-    #   data.each do |d|
-    #     @arr_course_id << d["id"]
-    #   end
-    #   Faraday::Error #or more specific error type
-    #   @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).limit(20)
-    #   # @recommender_course = Course.where(id: @arr_course_id).where.not(id: @course_ids).sort_by { |item| @arr_course_id.index(item.id) }
-    #
-    # end
+    if !@cus_path.blank?
+      require "faraday"
+      require "faraday_middleware"
+      response = Faraday.get 'http://localhost:8080/RecommendAPI/APIRecommend?cid=' + cid.to_s
+      data = JSON.parse(response.body)
+      @arr_course_id = [].uniq
+      data.each do |d|
+        @arr_course_id << d["id"]
+      end
+      Faraday::Error #or more specific error type
+      # @recommender_course = Course.where('id IN (?)', @arr_course_id).where.not(id: @course_ids).limit(20)
+      @recommender_course = Course.where(id: @arr_course_id).where.not(id: @course_ids).limit(30).sort_by { |item| @arr_course_id.index(item.id) }
+
+    end
   end
 
 
@@ -71,7 +71,7 @@ class CustomersCoursesController < ApplicationController
     @archived_course = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
     # when record don't have in customer_course
     if course.blank?
-      CustomerCourse.create(customer_id: current_user.id, course_id: enroll_course.id, is_save: true, enrollment_date: Date.today)
+      course.create(customer_id: current_user.id, course_id: enroll_course.id, enrollment_date: Date.today, is_save: true)
       # chech when this course have list article or not
       if !@article.ids.first.nil?
         # if have redirect to first article in list article
@@ -81,6 +81,11 @@ class CustomersCoursesController < ApplicationController
         redirect_to course_path
       end
     else
+      #check case if user archive course
+      if course.first.is_save
+        course.update(enrollment_date: Date.today)
+      end
+
       current_article = course.first.current_article_id
       if current_article.nil?
         if !@article.ids.first
@@ -119,7 +124,6 @@ class CustomersCoursesController < ApplicationController
     @archived_courses = CustomerCourse.find_by(course_id: params[:id], customer_id: current_user.id)
     @archived_courses.update_attribute("is_save", !@archived_courses.is_save)
   end
-
 
 
 end

@@ -132,7 +132,7 @@
                 <%= article.title %>
               </div>
               <p>Course: <%= @course_article_favor.first.name %></p>
-              <span><%= article.view_number %> views</span>
+              <span><%= article.view_number.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> views</span>
             </div>
           </div>
         </div>
