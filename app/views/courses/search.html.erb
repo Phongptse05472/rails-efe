@@ -129,7 +129,7 @@
           <% end %>
           <h2><%= link_to course.name, course_path(course) %></h2>
           <p style="margin-bottom: 5px"><%= course.description %></p>
-          <p style="font-size: 15px; margin-top: 0px">● Enroll: <%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> ● Rating: <%= course.rate %></p>
+          <p style="font-size: 15px; margin-top: 0px">● Enrollment: <%= course.number_enrollment.to_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> ● Rating: <%= course.rate %></p>
 
           <% @author = Customer.joins(:customer_courses).where("is_owner = true AND course_id = ? ", course.id) %>
           <% @author.each do |author| %>
