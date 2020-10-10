@@ -442,3 +442,12 @@ progress {
     background-color: #14bdee !important;
     border-color: #14bdee !important;
 }
+
+.course-name {
+    color: 14bdee;
+}
+
+.course-name a {
+    text-decoration: none;
+    color: #14bdee;
+}

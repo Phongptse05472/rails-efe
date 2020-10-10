@@ -7,10 +7,17 @@
           <span>Edfective</span><span style="color: #14bdee;">ly</span>
         </a>
       <% else %>
-        <a onclick="myFunction()" href="/user-home">
-          <%= image_tag("logo_1.PNG") %>
-          <span>Edfective</span><span style="color: #14bdee;">ly</span>
-        </a>
+        <% if !request.original_fullpath.include? "/mentor" %>
+          <a onclick="myFunction()" href="/user-home">
+            <%= image_tag("logo_1.PNG") %>
+            <span>Edfective</span><span style="color: #14bdee;">ly</span>
+          </a>
+        <% else %>
+          <a onclick="myFunction()" href="/mentor/courses">
+            <%= image_tag("logo_1.PNG") %>
+            <span>Edfective</span><span style="color: #14bdee;">ly</span>
+          </a>
+        <% end %>
       <% end %>
     </div>
 

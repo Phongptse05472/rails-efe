@@ -15,7 +15,7 @@
   <br>
   <%index = 0 %>
   <% @mentor_course.each do |mentor_course| %>
-    <span>Course name: <%= mentor_course.name %></span>
+    <h1 class="course-name">Course name: <%= link_to mentor_course.name, course_path(mentor_course.slug) %></h1>
     <%index= index + 1%>
     <div id="exampleSlider<%=index %>">
       <div class="MS-content">
